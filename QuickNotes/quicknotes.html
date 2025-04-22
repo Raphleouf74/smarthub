@@ -1,0 +1,69 @@
+<!-- QuickNotes - Simple Note Taking App -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickNotes</title>
+    <link rel="stylesheet" href="quicknotes.css">
+</head>
+
+<body>
+
+    <header>
+        <div id="cursorLight"></div>
+        <h1>QuickNotes</h1>
+        <a href="../"><button class="Back">
+                <p>
+                    < Retour vers SmartHub</p>
+            </button></a>
+        <div id="account">
+            <img src="../download.png" alt="User Avatar">
+            <span>User Name</span>
+        </div>
+    </header>
+    <div id="content">
+        <div id="Notes">
+            <h1> Vos Notes ✏️</h1>
+            <div id="AddNoteDiv">
+                <button id="AddNote">Ajouter une note</button>
+            </div>
+            <div id="SafetyDiv" style="position: relative; display: inline-block;">
+                <button id="NotesSafety">En savoir plus sur la sécurité de vos notes</button>
+                <div id="NotesSafetyModal" class="hidden">
+
+                    <h2>Sécurité de vos notes 🔒</h2>
+                    <p>Avec SmartLock, vos notes sont personnelles et ne peuvent être modifiées que par vous. Les
+                        fichiers sont stockés sur votre machine ce qui renforce la sécurité. Cepandant, vos notes ne
+                        seront pas disponibles sur d'autres appareils. Ultérieurement, vous pourrez créer un compte et
+                        uploader vos fichiers dans un cloud sécurisé interplatformes et pourrez modifier, supprimer,
+                        créer des fichiers sur d'autres appareils connéctés à votre compte.</p>
+
+                </div>
+            </div>
+            <div id="NotesContainer"></div>
+            <p id="EmptyMessage" class="text-gray-500 text-center mt-4">Aucune note pour le moment. Créez une note et
+                laissez place à votre imagination !
+            </p>
+
+        </div>
+    </div>
+
+    <div id="NoteModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Nouvelle note</h2>
+            <input type="text" id="NoteTitleInput" placeholder="Titre de la note">
+            <textarea id="NoteContentInput" placeholder="Contenu de la note..."></textarea>
+            <div class="modal-actions">
+                <button id="CreateNoteButton">Créer</button>
+                <button id="CancelNoteButton">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="quicknotes.js"></script>
+
+</html>
