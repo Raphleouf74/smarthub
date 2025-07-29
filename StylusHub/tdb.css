@@ -1,0 +1,699 @@
+/* Import des polices */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap');
+
+/* Style global */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f0f0f0;
+}
+
+h3 {
+    margin-bottom: 20px;
+}
+
+/* Styles pour le champ d'entrée et le bouton */
+#input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-direction: column;
+    width: 100%;
+}
+
+#start {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: center;
+    position: fixed;
+    /* Position fixe pour garder le bouton au même endroit même en scrollant */
+    top: 50%;
+    /* Position verticale au milieu de l'écran */
+    left: 50%;
+    /* Position horizontale au milieu de l'écran */
+    transform: translate(-50%, -50%);
+}
+
+#input input {
+    padding: 10px;
+    font-size: 50px;
+    font-weight: 100;
+    border: 2px solid #000;
+    border-radius: 15px;
+    width: 100%;
+    height: 50px;
+    max-width: 300px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 25px;
+    text-align: center;
+    box-shadow: 5px 5px #092241;
+    transition: all 0.3s;
+    color: red;
+    background-color: rgba(50, 50, 50, 0.2);
+    transform-origin: center;
+}
+
+#ipt {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #000;
+    border-radius: 15px;
+    background-color: #00aaff;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s;
+    cursor: pointer;
+    width: 90%;
+    max-width: 300px;
+    margin-top: 50px;
+    box-shadow: 2px 2px #092241;
+}
+
+#ipt:hover {
+    background-color: #007acc;
+}
+
+#input input:focus {
+    background-color: #fff;
+    box-shadow: none;
+    color: #092241;
+}
+
+#ipt:active {
+    transform: translateX(2px) translateY(2px);
+    box-shadow: none;
+}
+
+/* Contenu principal */
+#content {
+    display: none;
+    text-align: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+#data {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+#data h1 {
+    font-size: 30px;
+}
+
+/* Styles pour les sections */
+#LvlEncre,
+#rest {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.Titre {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.couleurs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+}
+
+.couleurs div {
+    font-family: 'Poppins';
+    font-weight: 800;
+    flex: 1;
+    text-align: center;
+}
+
+.b,
+.r,
+.g,
+.bk {
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+.b {
+    background-color: blue;
+}
+
+.r {
+    background-color: red;
+}
+
+.g {
+    background-color: green;
+}
+
+.bk {
+    background-color: #092241;
+}
+
+h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Transition et animation pour l'apparition des éléments */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ----------------------------- */
+/*         HEADER STYLES        */
+/* ----------------------------- */
+
+
+header {
+    pointer-events: auto;
+    background: rgb(100, 100, 100, 0.2);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    background-size: 100% 300%;
+    background-position: 0% 0%;
+    color: white;
+    padding: 0;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-radius: 30px;
+    width: 325px;
+    align-self: center;
+    position: fixed;
+    top: 10px;
+    left: 2.5%;
+    margin-bottom: 35px;
+    font-family: "Poppins";
+    overflow: hidden;
+    transition: none;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+    padding: 20px;
+}
+
+header:hover {
+    height: 500px;
+    padding: 20px;
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(40px);
+    background: rgb(100, 100, 100, 0.5);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(100, 100, 100, 0.25);
+    top: 15px;
+    left: 2.5%;
+    margin-bottom: 35px;
+    font-family: "Poppins";
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+}
+
+header a {
+    width: 100%;
+}
+
+header:hover p {
+    font-size: 20px;
+    opacity: 1;
+}
+
+header p{
+    opacity: 0;
+    font-size: 1px;
+}
+
+header button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1.05);
+}
+
+header h1 {
+    font-size: 50px;
+    margin-top: -12.5px;
+}
+
+header button {
+    opacity: 0;
+    display: flex;
+    width: 100%;
+    height: 100px;
+    font-family: "Poppins";
+    justify-content: center;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 3);
+    transition: all 0.3s;
+    font-size: 25px;
+    text-align: center;
+    color: #092241;
+    text-decoration: none;
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    /* glass effect */
+    -webkit-backdrop-filter: blur(10px);
+}
+
+header:hover button {
+    opacity: 1;
+}
+
+header a {
+    text-decoration: none;
+    color: #092241;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header button:hover {
+    transform: scale(1.05);
+}
+
+#About {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    margin-top: 50px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    font-size: 25px;
+    font-family: "Poppins";
+    z-index: 10;
+    font-weight: 800;
+    border: solid 1px #092241;
+    background-color: rgb(50, 50, 250, 0.7);
+    transition: all 0.3s;
+}
+
+#About:hover {
+    margin-top: 50px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    font-size: 25px;
+    font-family: "Poppins";
+    font-weight: 800;
+    border: solid 3px rgb(50, 50, 250, 0.7);
+    background-color: #092241;
+    color: white;
+}
+
+#modalabout {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: #444444a6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
+    transform: scale(1.5);
+}
+
+#modalabout.shown {
+    z-index: 5;
+    opacity: 1;
+    transform: scale(1);
+}
+
+#modal-about-content {
+    width: 50%;
+    height: auto;
+    background-color: white;
+    border-radius: 25px;
+    transition: all 0.3s;
+    padding: 10px;
+    transform: scale(1) translateY(650px) translateX(550px);
+}
+
+#modalabout.shown #modal-about-content {
+    width: 50%;
+    height: auto;
+    background-color: white;
+    border-radius: 25px;
+    padding: 10px;
+    transform: scale(1) translateY(0);
+}
+
+#modal-about h1 {
+    font-size: 50px;
+}
+
+#modal-about p {
+    font-size: 25px;
+}
+
+#data,
+#rest,
+#Titreet {
+    opacity: 0;
+    transform: translateY(-20px);
+    /* Position initiale au-dessus */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* Animation du fondu et du glissement */
+}
+
+#data.visible,
+#rest.visible,
+#Titreet.visible {
+    opacity: 1;
+    transform: translateY(0);
+    /* Position finale */
+}
+
+#warningmodal {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: #440404a6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+#warning-content {
+    width: 50%;
+    height: auto;
+    background-color: white;
+    border-radius: 25px;
+    padding: 10px;
+    transform: scale(1) ;
+}
+
+#warning-content h1 {
+    font-size: 50px;
+}
+#warning-content p {
+    font-size: 25px;
+}
+#warning-content button {
+    width: 100%;
+    height: auto;
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+
+/* ----------------------------- */
+/*         WELCOME SECTION      */
+/* ----------------------------- */
+#Welcome {
+    position: fixed;
+    width: calc(100% + 20px);
+    height: 101vh;
+    overflow: hidden;
+    background: radial-gradient(rgb(0, 0, 0) 0%, rgb(0, 0, 100) 90%);
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 30000;
+    top: 0;
+    display: none;
+    margin-top: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s;
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 20000;
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.welcome-content h1,
+.welcome-content p,
+.scrollbtn {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.scrollbtn:hover {
+    transform: scale(1.05);
+}
+
+
+#Welcome h1 {
+    font-size: 50px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#Welcome p {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#welcomebtn {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #007bff;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#welcomebtn:hover {
+    color: #092241;
+    background-color: white;
+    transform: scale(1.1);
+    border: 2px solid #007bff;
+}
+
+#Welcome .interactive {
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+}
+
+#Welcome:hover .interactive {
+    pointer-events: none;
+}
+
+#welcomeCanvas {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+
+#Welcome>*:not(canvas) {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+#toggleLinesBtn {
+    background-color: transparent;
+    opacity: 0.2;
+    position: absolute;
+    top: -55%;
+    right: -45%;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#toggleLinesBtn:hover {
+    background-color: rgb(255, 255, 255, 0.3);
+    opacity: 0.5;
+    transform: scale(1);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .ttrp {
+        display: block;
+    }
+
+    .ttrg {
+        display: none;
+    }
+
+    /* Styles pour le logo */
+    .logo {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        z-index: 2000;
+        background-color: white;
+        height: 50px;
+        width: 250px;
+        justify-content: center;
+        top: 5px;
+        left: 5px;
+        border-radius: 20px;
+        border: solid #092241 3px;
+        box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s;
+    }
+
+    .logo h1 {
+        transition: all 0.3s;
+        color: #092241;
+        font-size: 18px;
+    }
+
+    .logo:hover h1 {
+        color: white;
+    }
+
+    .logo:hover {
+        background-color: #092241;
+        border: solid white 3px;
+        box-shadow: 1px 5px 5px rgba(255, 255, 255, 0.5);
+        transform: scale(1.1);
+        left: 15px;
+    }
+
+    .logo:hover .logo-icon {
+        transform: rotate(-540deg);
+    }
+
+    .logo-icon {
+        transition: all 0.3s;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .logo-icon svg {
+        width: 100%;
+        height: 100%;
+        fill: #333;
+    }
+
+    .logo-text {
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #333;
+    }
+
+    /* Styles pour le sous-menu */
+    .submenu {
+        position: absolute;
+        top: 50px;
+        /* Align with the bottom of the logo */
+        left: 0;
+        background-color: #092241;
+        border: solid white 2px;
+        border-radius: 10px;
+        box-shadow: 1px 5px 5px rgba(255, 255, 255, 0.3);
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 999;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        overflow: hidden;
+    }
+
+    .submenu a {
+        display: block;
+        padding: 10px;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+
+    .submenu a:hover {
+        background-color: #696969;
+        border-radius: 10px;
+    }
+
+    .logo:hover .submenu {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    #welcome {
+        font-size: 50px;
+        font-family: 'Poppins';
+        font-weight: 900;
+        top: 50%
+    }
+
+    .couleurs {
+        flex-direction: column;
+    }
+}

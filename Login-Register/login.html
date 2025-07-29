@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="auth.css" rel="stylesheet" />
+    <title>Connexion - SmartHub</title>
+    <link rel="icon" href="../medias/logo.png" type="png" />
+  </head>
+  <body>
+    <header>
+      <h1>Connexion</h1>
+      <a href="../"
+        ><button class="Back">
+          <p>< Retour vers SmartHub</p>
+        </button></a
+      >
+    </header>
+    <div id="Welcome">
+      <canvas id="welcomeCanvas"></canvas>
+    </div>
+    <form action="/auth/login" method="POST">
+      <h2>Connexion</h2>
+      <input
+        name="username"
+        type="text"
+        placeholder="Nom d'utilisateur"
+        required
+      />
+      <input
+        name="password"
+        type="password"
+        placeholder="Mot de passe"
+        required
+      />
+      <span>Montrer le mot de passe</span>
+
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          width: 46%;
+          gap: 10px;
+        "
+      >
+        <input
+          type="checkbox"
+          name="remember"
+          style="height: 15px; width: 15px; margin-bottom: 20px"
+        />
+        <label for="remember">Se souvenir de moi</label>
+      </div>
+      <button type="submit">Connexion</button>
+      <p>Pas encore de compte ? <a href="register.html">Inscrivez-vous</a></p>
+    </form>
+  </body>
+</html>
+<script>
+  document.querySelector("span").addEventListener("click", function () {
+    const passwordInput = document.querySelector('input[name="password"]');
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      this.textContent = "Cacher le mot de passe";
+      this.style.backgroundColor = "rgba(0, 255, 0, 0.05)";
+    } else {
+      passwordInput.type = "password";
+      this.textContent = "Montrer le mot de passe";
+      this.style.backgroundColor = "rgba(255, 0, 0, 0.05)";
+    }
+  });
+</script>
+<script src="auth.js"></script>

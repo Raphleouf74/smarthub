@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="auth.css" rel="stylesheet" />
+    <title>Inscription - SmartHub</title>
+    <link rel="icon" href="../medias/logo.png" type="png" />
+  </head>
+  <body>
+    <div id="Welcome">
+      <canvas id="welcomeCanvas"></canvas>
+    </div>
+    <header>
+      <h1>Inscription</h1>
+      <a href="../"
+        ><button class="Back">
+          <p>< Retour vers SmartHub</p>
+        </button></a
+      >
+    </header>
+    <form action="/auth/login" method="POST">
+      <h2>Inscription</h2>
+      <input
+        name="username"
+        type="text"
+        placeholder="Nom d'utilisateur"
+        required
+      />
+      <input name="email" type="email" placeholder="Email (facultatif)" />
+      <input
+        name="password"
+        type="password"
+        placeholder="Mot de passe"
+        required
+      />
+
+      <input
+        name="password"
+        type="password"
+        placeholder="Confirmez le mot de passe"
+        required
+      />
+      <span>Montrer les mots de passe</span>
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          width: 46%;
+          gap: 10px;
+        "
+      >
+        <input
+          type="checkbox"
+          name="remember"
+          style="height: 15px; width: 15px; margin-bottom: 20px"
+        />
+        <label for="remember">Se souvenir de moi</label>
+      </div>
+      <button type="submit">Inscription</button>
+      <p>Déjà un compte ? <a href="login.html">Connectez-vous</a></p>
+    </form>
+  </body>
+</html>
+<script>
+  document.querySelector("span").addEventListener("click", function () {
+    const passwordInput = document.querySelector('input[name="password"]');
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      this.textContent = "Cacher les mots de passe";
+      this.style.backgroundColor = "rgba(0, 255, 0, 0.05)";
+    } else {
+      passwordInput.type = "password";
+      this.textContent = "Montrer les mots de passe";
+      this.style.backgroundColor = "rgba(255, 0, 0, 0.05)";
+    }
+  });
+  document.querySelector("form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    const res = await fetch("/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+      credentials: "include",
+    });
+
+    const text = await res.text();
+    if (res.ok) {
+      alert("Inscription réussie !");
+      window.location.href = "/Login-Register/login.html";
+    } else {
+      alert("Erreur : " + text);
+    }
+  });
+</script>
+<script src="auth.js"></script>

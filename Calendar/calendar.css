@@ -1,0 +1,910 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url("https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap");
+
+
+
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #000000;
+    color: white;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: device-width;
+    cursor: url('images-removebg-preview.png'), auto;
+}
+
+
+header {
+    pointer-events: auto;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    background: rgb(100, 100, 100, 0.2);
+    background-size: 100% 300%;
+    background-position: 0% 0%;
+    color: white;
+    padding: 0;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+    border-radius: 30px;
+    width: 375px;
+    align-self: center;
+    position: fixed;
+    top: 5px;
+    left: 2.5%;
+    margin-bottom: 35px;
+    font-family: "Poppins";
+    overflow: hidden;
+    transition: none;
+    transition: all 0.3s ease-in-out;
+    z-index: 20;
+    padding: 20px;
+}
+
+header:hover {
+    height: 425px;
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    top: 15px;
+    left: 2.5%;
+    margin-bottom: 35px;
+    font-family: "Poppins";
+    transition: all 0.3s ease-in-out;
+    z-index: 200;
+    animation: SlideUp 0.6s forwards;
+}
+
+header a {
+    width: 100%;
+}
+
+header button {
+    border-radius: 10px;
+    width: 100%;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 25px;
+    opacity: 0;
+    transition: all 0.3s;
+    font-family: "Poppins";
+    text-decoration: none;
+}
+
+header:hover button {
+    font-size: 20px;
+    text-decoration: none;
+    opacity: 1;
+}
+
+header button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1.05);
+}
+
+header h1 {
+    margin-top: -20px;
+    transition: all 0.6s ease;
+}
+
+
+@keyframes SlideUp {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 0% 100%;
+    }
+}
+
+@keyframes SlideDown {
+    from {
+        background-position: 0% 100%;
+    }
+
+    to {
+        background-position: 0% 0%;
+    }
+}
+
+
+.calendar-header {
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(to right, #007bff, #36fa71);
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s;
+    top: 0;
+
+    margin-top: 0;
+
+}
+
+.calendar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.calendar-nav button {
+    padding: 5px 10px;
+    border: 1px solid white;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #ffc107;
+    color: #092241;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.calendar-nav button:hover {
+    background-color: white;
+    border: 3px solid #ffc107;
+    transform: scale(1.2);
+}
+
+.calendar-nav button:active {
+    background-color: white;
+    border: 3px solid #ffc107;
+    transform: scale(0.8);
+}
+
+.calendar-container {
+    background-color: #333;
+    margin-top: 20px;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s;
+}
+
+.calendar-days,
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-family: 'Bahnschrift';
+    gap: 0;
+}
+
+.calendar-grid {
+    height: calc(100vh - 100px);
+}
+
+.calendar-days div {
+    font-weight: bold;
+    height: 100%;
+    margin: 0;
+    color: #ffc107;
+    background-color: #222;
+    border-radius: 10px;
+    gap: 0;
+}
+
+.calendar-grid div {
+    border-radius: 0;
+    transition: all 0.3s;
+    height: auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    overflow: hidden;
+    border: solid 1px #092241;
+}
+
+#month-year {
+    text-transform: capitalize;
+}
+
+.calendar-grid div span {
+    position: relative;
+    overflow: hidden;
+    top: 35%;
+    left: 38%;
+    font-family: "Bahnschrift";
+    font-size: 100px;
+    transition: all 0.3s;
+    z-index: 100;
+}
+
+#EventModal .modal-content {
+    height: auto;
+    max-height: 90vh;
+}
+
+.calendar-grid div:hover {
+    color: #36fa71;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.calendar-grid div:hover span {
+    transform: translateX(-10px) translateY(-5px);
+}
+
+.calendar-grid div:hover {
+    background-color: #36fa7165;
+    cursor: pointer;
+}
+
+.has-event {
+    color: gold;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    text-align: center;
+    color: #092241;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    animation: slideFadeOut 0.3s forwards;
+}
+
+.modal.hidden .modal-overlay {
+    display: none;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    z-index: 1001;
+}
+
+.modal-content {
+    position: relative;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 400px;
+    width: 90%;
+    height: auto;
+    max-height: 90vh;
+    z-index: 1001;
+    animation: slideFadeIn 0.3s ease-out;
+}
+
+#eventsList {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    height: auto;
+    max-height: 85vh;
+}
+
+@keyframes slideFadeOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(30px);
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes slideFadeIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+#CreateEventModal,
+#EventModal {
+    position: fixed;
+    background-color: transparent;
+    padding: 20px;
+    color: #092241;
+    border-radius: 10px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+    width: 550px;
+    height: 1px;
+    transform: translateY(-500px);
+}
+
+#CreateEventModal.shown,
+#EventModal.shown {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 101;
+    transform: translateY(0);
+}
+
+#CreateEventModal.hidden .modal-content,
+#EventModal.hidden .modal-content {
+    transform: translateY(-100px);
+    height: auto;
+    max-height: 80vh;
+    z-index: 102;
+}
+
+.modal-content textarea {
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    resize: none;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: "Poppins";
+}
+
+.modal-content input[type="text"] {
+    width: 100%;
+    max-height: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: "Poppins";
+}
+
+.modal-content input[type="date"] {
+    width: 100%;
+    height: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: "Poppins";
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    z-index: 101;
+}
+
+.modal button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: rgb(0, 0, 0) 0px 6px 0px 5px;
+}
+
+.modal button:hover {
+    background: #36fa71;
+    transform: scale(1.1) translateY(5px);
+    box-shadow: rgb(0, 0, 0) 0px 10px 0px 5px;
+}
+
+.modal button:active {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 5px;
+}
+
+
+
+
+.modal-item {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Une fois que le modal s'ouvre */
+#CreateEventModal.shown .modal-item,
+#SettingsModal.shown .modal-item,
+#EventModal.shown .modal-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+#SettingsModal footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    left: 10px;
+    margin-top: 0px;
+    text-align: left;
+    position: absolute;
+    bottom: 0px;
+}
+
+#SettingsModal footer p {
+    font-size: 10px;
+    color: #092241;
+    font-family: "Poppins";
+    margin: 0;
+}
+
+
+
+.Work {
+    position: relative;
+    background-color: #444;
+    /* Fond gris foncé */
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    font-family: "Poppins";
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+/* Bande animée */
+.Work::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(135deg,
+            #ffc107 25%,
+            #444 25%,
+            #444 50%,
+            #ffc107 50%,
+            #ffc107 75%,
+            #444 75%,
+            #444 100%);
+    background-size: 80px 80px;
+    animation: moveStripes 1s linear infinite;
+    opacity: 0.5;
+    z-index: -1;
+    transition: all 0.3s;
+}
+
+/* Animation des bandes */
+@keyframes moveStripes {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 80px 0;
+    }
+}
+
+#saveEventBtn {
+    color: white;
+    background-color: rgb(100, 100, 255);
+    border: solid 1px white;
+    height: 40px;
+    font-family: "Poppins";
+    width: 125px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+#saveEventBtn:hover {
+    color: rgb(100, 100, 255);
+    border: solid 2px rgb(100, 100, 255);
+    background-color: white;
+    transform: scale(1.1);
+}
+
+#closeCreateEventModal,
+#closeEventModal,
+#deleteEventbtn {
+    color: white;
+    background-color: rgb(255, 100, 100);
+    border: solid 1px white;
+    height: 40px;
+    font-family: "Poppins";
+    width: 125px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+#closeCreateEventModal:hover,
+#closeEventModal:hover,
+#deleteEventbtn:hover {
+    color: rgb(255, 100, 100);
+    border: solid 2px rgb(255, 100, 100);
+    background-color: white;
+    transform: scale(1.1);
+}
+
+
+/* ----------------------------- */
+/*         WELCOME SECTION      */
+/* ----------------------------- */
+#Welcome {
+    position: fixed;
+    width: calc(100% + 20px);
+    height: 101vh;
+    overflow: hidden;
+    background: radial-gradient(rgb(0, 0, 0) 0%, rgb(0, 0, 100) 90%);
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 30000;
+    top: 0;
+    margin-top: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s;
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 20000;
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.welcome-content h1,
+.welcome-content p,
+.scrollbtn {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.scrollbtn:hover {
+    transform: scale(1.05);
+}
+
+
+#Welcome h1 {
+    font-size: 50px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#Welcome p {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#welcomebtn {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #007bff;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#welcomebtn:hover {
+    color: #092241;
+    background-color: white;
+    transform: scale(1.1);
+    border: 2px solid #007bff;
+}
+
+#Welcome .interactive {
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+}
+
+#Welcome:hover .interactive {
+    pointer-events: none;
+}
+
+#welcomeCanvas {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+
+#Welcome>*:not(canvas) {
+    position: relative;
+    z-index: 1;
+}
+
+#toggleLinesBtn {
+    background-color: transparent;
+    opacity: 0.2;
+    position: absolute;
+    top: -55%;
+    right: -45%;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#toggleLinesBtn:hover {
+    background-color: rgb(255, 255, 255, 0.3);
+    opacity: 0.5;
+    transform: scale(1);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#clockWidget {
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    width: 275px;
+    height: 40px;
+    padding: 15px;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 10px;
+    font-family: "Bahnschrift", sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+#clockWidget #customizeWidgetBtn {
+    opacity: 0;
+    margin-top: 15px;
+    z-index: -1;
+}
+
+#clockWidget.full #customizeWidgetBtn {
+    opacity: 1;
+    z-index: 10;
+}
+
+#customizeWidgetBtn,
+#customizer-content button {
+    border-radius: 10px;
+    width: 95%;
+    margin-top: 75px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 1px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 25px;
+    transition: all 0.3s;
+    font-family: "Poppins";
+    text-decoration: none;
+}
+
+#customizeWidgetBtn:hover,
+#customizer-content button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1.05);
+}
+
+#customizeWidgetBtn:active,
+#customizer-content button:active {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(0.95);
+}
+
+
+
+
+
+
+
+
+
+#clockWidget.modif {
+    width: 100%;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    background: rgba(0, 0, 0);
+    background-color: rgba(0, 0, 0);
+    z-index: 9999;
+    transition: all 0.3s;
+    font-size: 35px;
+    box-shadow: 0 0 1000px 1000px rgb(0, 0, 0, 0.7);
+}
+
+#clockWidget.modif:hover {
+    width: 100%;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    box-shadow: 0 0 1000px 1000px rgb(0, 0, 0, 0.9);
+    z-index: 9999;
+    transition: all 0.3s;
+}
+
+#clockWidget.modif .clock-main {
+    opacity: 0;
+    transform: translateY(-500px);
+}
+
+
+#customizer-content {
+    display: none;
+    color: white;
+    margin: 0 0 0 0;
+    position: fixed;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+#customizer-content input {
+    width: auto;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: greenyellow;
+    font-size: 20px;
+    outline: none;
+    border: 1px black solid;
+}
+
+#customizer-content input[type="color"] {
+    width: 100px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: transparent;
+    font-size: 20px;
+    outline: none;
+    border: none;
+}
+
+#clockWidget.modif #customizer-content {
+    display: block;
+    transform: translateY(-200px) translateX(50px);
+}
+
+
+/* Conteneurs distincts pour gérer la transition */
+#clock-time {
+    font-size: 32px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+#clock-date {
+    font-size: 16px;
+    opacity: 0.8;
+    transition: all 0.2s ease-in-out;
+}
+
+#clock-events {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    font-size: 14px;
+    margin-top: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Effet au survol */
+#clockWidget.full {
+    width: 400px;
+    border-radius: 0;
+    top: 0;
+    right: 0;
+    height: calc(100vh - 20px);
+    background-color: rgba(0, 0, 0, 0.95);
+    box-shadow: 0 -30px 50px 50px rgba(0, 0, 0, 0.4);
+}
+
+#clockWidget:hover {
+    width: 400px;
+    font-size: 30px;
+    height: 75px;
+    background-color: rgba(0, 0, 0, 0.95);
+    box-shadow: 0 -30px 50px 50px rgba(0, 0, 0, 0.4);
+}
+#clockWidget.full:hover {
+    height: calc(100vh - 20px);
+}
+
+/* Survol : l'heure plus grande + détails visibles */
+#clockWidget.full #clock-time {
+    font-size: 100px;
+    font-weight: 900;
+    transition: all 0.3s;
+}
+
+#clockWidget.full #clock-events {
+    opacity: 1;
+    max-height: 200px;
+}
+
+#clockCustomizer.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
