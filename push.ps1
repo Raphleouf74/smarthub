@@ -24,4 +24,4 @@ git add .
 git commit -m "SmartHub version $newVersion"
 git push origin main
 
-Write-Host "Push éfféctué !"
+Write-Host "push realise avec succes !"
