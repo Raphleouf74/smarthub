@@ -1,4 +1,4 @@
-# Lire la version actuelle depuis version.json
+# Check version.json and compare versions
 $versionFile = "version.json"
 if (Test-Path $versionFile) {
     $json = Get-Content $versionFile | ConvertFrom-Json
@@ -8,16 +8,16 @@ if (Test-Path $versionFile) {
     exit
 }
 
-# Afficher la version actuelle et demander la nouvelle
+# Show to user the old version and ask for the new one
 Write-Host "Old version : $currentVersion"
 $newVersion = Read-Host "New version ('', '-' or ' ' to keep $currentVersion)"
 
-# Si l'utilisateur ne tape rien, un espace ou un tiret, on garde l'ancienne version
+#If no user input, or if the user put a space or a "-", the old version number is pushed
 if ([string]::IsNullOrWhiteSpace($newVersion) -or $newVersion -eq "-") {
     $newVersion = $currentVersion
     Write-Host "Unchaged Version: $currentVersion"
 } else {
-    # Mettre à jour le JSON
+    # Update the JSON
     $json.version = $newVersion
     $json | ConvertTo-Json -Depth 10 | Set-Content $versionFile -Encoding UTF8
     Write-Host "version.json updated to $newVersion"
