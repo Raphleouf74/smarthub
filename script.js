@@ -111,9 +111,8 @@ function showCriticalNotification(title, body) {
 }
 
 
-showNotification("Bienvenue sur SmartHub", "Site propulsé par smartUI 1.3.1");
 showCriticalNotification("Systèmes de Connexion et d'inscription désactivés","");
-
+showNotification("Modification des CGU", "Les Conditions Générales d'Utilisation du Service ont été modifiées, n'hésitez pas à aller les consulter, vous pouvez y accéder tout en bas de cette page")
 
 // Header scroll effect
 window.addEventListener('scroll', () => {
@@ -149,10 +148,12 @@ closeAccSettingsBtn.addEventListener('click', () => {
 
 // ----- Vérification de version -----
 async function checkSiteVersion() {
+    const SiteVersion = document.getElementById("SiteVersion");
     try {
         const res = await fetch('/version.json', { cache: 'no-cache' });
         const { version: latest } = await res.json();
         const current = localStorage.getItem('siteVersion');
+        SiteVersion.innerText = current;
 
         if (current && current !== latest) {
             showUpdateNotification();

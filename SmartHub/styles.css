@@ -83,7 +83,7 @@
         align-self: center;
         position: fixed;
         top: -100px;
-        left: 2.5%;
+        left: 10px;;
         margin-bottom: 35px;
         font-family: "Poppins";
         transition: none;
@@ -118,7 +118,7 @@
         align-self: center;
         position: fixed;
         top: 10px;
-        left: 2.5%;
+        left: 10px;;
         margin-bottom: 35px;
         font-family: "Poppins";
         overflow: hidden;
@@ -141,7 +141,7 @@
         font-family: "Poppins";
         transition: all 0.3s ease-in-out;
         z-index: 2;
-        left: 2.5%;
+        left: 10px;;
     }
 
     header.hovered {
@@ -1079,7 +1079,7 @@
         align-self: center;
         position: fixed;
         top: -100px;
-        left: 2.5%;
+        left: 10px;;
         margin-bottom: 35px;
         font-family: "Poppins";
         transition: none;
@@ -1115,7 +1115,7 @@
         align-self: center;
         position: fixed;
         top: 10px;
-        left: 2.5%;
+        left: 10px;;
         margin-bottom: 35px;
         font-family: "Poppins";
         overflow: hidden;
@@ -1174,7 +1174,7 @@
     }
 
     header.scrolled:hover {
-        left: 2.5%;
+        left: 10px;;
     }
 
     header.scrolled {

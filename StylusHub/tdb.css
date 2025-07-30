@@ -222,7 +222,7 @@ header {
     align-self: center;
     position: fixed;
     top: 10px;
-    left: 2.5%;
+    left: 10px;;
     margin-bottom: 35px;
     font-family: "Poppins";
     overflow: hidden;
@@ -241,7 +241,7 @@ header:hover {
     -webkit-backdrop-filter: blur(40px);
     border: 1px solid rgba(100, 100, 100, 0.25);
     top: 15px;
-    left: 2.5%;
+    left: 10px;;
     margin-bottom: 35px;
     font-family: "Poppins";
     transition: all 0.3s ease-in-out;
