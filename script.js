@@ -341,41 +341,7 @@ notifs.forEach(adjustTextColorForElement);
 
 window.addEventListener('DOMContentLoaded', () => {
     checkSiteVersion();
-    // registerServiceWorkerAndSetupPush();
 });
-
-// async function registerServiceWorkerAndSetupPush() {
-//     const reg = await navigator.serviceWorker.register('/sw.js');
-//     console.log('SW registered:', reg);
-
-//     if (Notification.permission === 'default') {
-//         if (confirm("Autoriser les notifications ?")) {
-//             await Notification.requestPermission();
-//         }
-//     }
-
-//     if (Notification.permission === 'granted') {
-//         const sub = await reg.pushManager.subscribe({
-//             userVisibleOnly: true,
-//             applicationServerKey: urlBase64ToUint8Array('BItI9diKW9m5auaIa_V_ryMAxbCQwBdGkGK3XhNWQ8wO4y9LW92wXMVG2JtazM_CvTA0KwawOoGqlQmFxxcQK9E')
-
-//         });
-//         await fetch('/push/subscribe', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify(sub),
-//         });
-//     }
-//     if (Notification.permission === 'denied') {
-//         console.warn("Notifications denied by user");
-//     }
-// }
-
-// // Utilitaire pour la clé VAPID
-// function urlBase64ToUint8Array(base64String) { /* ... */ }
-
-
-
 
 
 // Notifications intra-site
