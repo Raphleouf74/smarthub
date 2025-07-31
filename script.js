@@ -111,8 +111,10 @@ function showCriticalNotification(title, body) {
 }
 
 
-showCriticalNotification("Systèmes de Connexion et d'inscription désactivés","");
-showNotification("Modification des CGU", "Les Conditions Générales d'Utilisation du Service ont été modifiées, n'hésitez pas à aller les consulter, vous pouvez y accéder tout en bas de cette page")
+// Placer ici les notifications et les notifications critiques
+
+// showNotification();
+// showCriticalNotification();
 
 // Header scroll effect
 window.addEventListener('scroll', () => {
@@ -132,19 +134,19 @@ window.addEventListener('scroll', () => {
 
 
 
-const UserSettingsBtn = document.getElementById('AccSettings');
-const accountSettings = document.getElementById('AccountSettings');
-const closeAccSettingsBtn = document.getElementById('CloseAccSett');
-UserSettingsBtn.addEventListener('click', () => {
-    showNotification("Créez un compte pour pouvoir modifier vos infos !", "Pour l'instant, vous ne pouvez pas modifier vos informations car vous n'avez pas de compte. Pour en créer un, rendez-vous dans la section 'Créer un compte' dans le menu !");
+// const UserSettingsBtn = document.getElementById('AccSettings');
+// const accountSettings = document.getElementById('AccountSettings');
+// const closeAccSettingsBtn = document.getElementById('CloseAccSett');
+// UserSettingsBtn.addEventListener('click', () => {
+//     showNotification("Créez un compte pour pouvoir modifier vos infos !", "Pour l'instant, vous ne pouvez pas modifier vos informations car vous n'avez pas de compte. Pour en créer un, rendez-vous dans la section 'Créer un compte' dans le menu !");
 
-    accountSettings.classList.toggle('shown');
-    setTimeout(() => accountSettings.classList.add('show'), 0); // un petit délai pour déclencher la transition
-});
+//     accountSettings.classList.toggle('shown');
+//     setTimeout(() => accountSettings.classList.add('show'), 0); // un petit délai pour déclencher la transition
+// });
 
-closeAccSettingsBtn.addEventListener('click', () => {
-    accountSettings.classList.toggle('shown'); // attendre que l'anim sorte
-});
+// closeAccSettingsBtn.addEventListener('click', () => {
+//     accountSettings.classList.toggle('shown'); // attendre que l'anim sorte
+// });
 
 // ----- Vérification de version -----
 async function checkSiteVersion() {

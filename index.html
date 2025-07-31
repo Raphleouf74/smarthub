@@ -57,19 +57,19 @@
   </div>
   <header>
     <h1>SmartHub</h1>
-    <div id="account" class="modal-item">
+    <!-- <div id="account" class="modal-item">
       <span id="username-display">Non connecté</span>
     </div>
     <p class="modal-item">Gestion des comptes</p>
 
-    <!-- href="/Login-Register/login.html" --><a class="modal-item" style="display: none;"><button class="Work"><!--Connexion-->
+    href="/Login-Register/login.html" <a class="modal-item" style="display: none;"><button class="Work">Connexion
         <h2>Fonctionnalités indisponibles</h2>
       </button></a>
-    <!-- href="/Login-Register/register.html" --><a class="modal-item"  style="display: none;"><button class="Work"><!--Inscription-->
+     href="/Login-Register/register.html"<a class="modal-item"  style="display: none;"><button class="Work">Inscription
         <h2>pour le moment</h2>
       </button></a>
     <button id="AccSettings" class="modal-item">Paramètres du compte</button>
-    <!-- <button class="modal-item" onclick="logout()" >Déconnexion</button> -->
+    <button class="modal-item" onclick="logout()" >Déconnexion</button> -->
 
     <p class="modal-item">Paramètres de la page</p>
     <button onclick="scrollToPlatformState();" class="modal-item" id="DarkMode">
@@ -79,6 +79,9 @@
     <a href="LegalDocs/privacypolicy.html" class="modal-item"><button class="modal-item" id="PrivacyPolicy">
         Politique de confidentialité
       </button></a>
+      <a href="LegalDocs/ugc.html" class="modal-item"><button class="modal-item" id="PrivacyPolicy">
+        Conditions Générales d'Utilisation du Service
+      </button></a>
     <button class="modal-item" id="About" onclick="scrollToAboutUs();">
       À propos
     </button>
@@ -87,7 +90,7 @@
     </p>
   </header>
   <div id="MenuSettings"></div>
-  <div id="AccountSettings">
+  <!-- <div id="AccountSettings">
     <button id="CloseAccSett">X</button>
     <div id="AccountSettingsContent">
       <b>
@@ -110,7 +113,7 @@
       <p>Adresse e-mail (optionnelle):</p>
       <input type="email" id="email" placeholder="Adresse e-mail" disabled>
     </div>
-  </div>
+  </div>-->
   <div id="notifications-container">
     <div class="notification hidden">
       <div class="notiglow"></div>
@@ -223,18 +226,11 @@
       </div>
     </div>
 
-    <div id="PlatformStatus" style="height: auto">
+    <div id="PlatformStatus">
       <h2>Etat de la plateforme</h2>
-      <div id="PlatformStatusContent" style="
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          ">
+      <div id="PlatformStatusContent">
         <p style="text-align: center;">
-          État général de la plateforme <b style="color: orange">Moyen</b><br>
-          <b style="color: red;"><i>Systèmes de connexion et d'inscriptions désactivées momentanément !</i></b>
+          État général de la plateforme <b style="color: green">OK</b><br>
         </p>
         <a href="platformstate.html"><button style="
                 background-color: white;
