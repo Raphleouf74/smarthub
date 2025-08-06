@@ -457,7 +457,8 @@ body::before {
 
 #login-tmdb,
 #profile-btn,
-#news-btn {
+#news-btn,
+#back-btn {
     cursor: pointer;
     position: fixed;
     border-radius: 15px;
@@ -482,7 +483,8 @@ body::before {
 
 #login-tmdb.shown,
 #profile-btn.shown,
-#news-btn.shown {
+#news-btn.shown,
+#back-btn.shown {
     opacity: 1;
     z-index: 100;
     right: 15px;
@@ -500,17 +502,30 @@ body::before {
 }
 
 #news-btn {
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
+    border-radius: 0;
     right: -200px;
     top: 180px;
 }
 
-#login-tmdb:hover,
+#back-btn {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    right: -250px;
+    top: 230px;
+}
+
 #profile-btn:hover,
-#news-btn:hover {
+#news-btn:hover,
+#back-btn:hover {
     background-color: rgb(150, 150, 150);
     transform: translateX(-5px);
+    font-size: 17.5px;
+}
+
+#login-tmdb:hover{
+    background-color: rgb(150, 150, 150);
+    transform: translateX(-5px);
+    font-size: 16.5px;
 }
 
 .profile-menu {
@@ -673,7 +688,7 @@ body::before {
     border-radius: 15px;
     padding: 15px;
     width: 800px;
-    height: 650px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     gap: 12px;

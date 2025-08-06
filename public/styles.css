@@ -60,7 +60,7 @@
         pointer-events: auto;
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
-        
+
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         background: rgb(100, 100, 100, 0.2);
@@ -372,20 +372,11 @@
     }
 
     #qn {
-        background: linear-gradient(135deg,
-                #44c8fc3b 25%,
-                #00418b3b 25%,
-                #00418b3a 50%,
-                #44c8fc38 50%,
-                #44c8fc33 75%,
-                #00418b3b 75%,
-                rgba(0, 0, 255, 0.25) 10%);
+        background: #00418b3b;
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
-
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background-size: 1750px 1750px;
         background-position: -800px 0px;
         font-family: "Poppins";
         font-size: 15px;
@@ -399,24 +390,14 @@
     }
 
     #qn:hover {
+        background: #44c8fc38;
         transform: scale(1.05);
-        background-size: 2000px 2000px;
         box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-        background-position: -2000px 0%;
     }
 
     #sc {
         background: greenyellow;
-        background: linear-gradient(135deg,
-                rgba(172, 255, 47, 0.25) 25%,
-                #00418b36 25%,
-                #00418b36 50%,
-                rgba(172, 255, 47, 0.25) 50%,
-                rgba(172, 255, 47, 0.25) 75%,
-                #00418b34 75%,
-                rgba(172, 255, 47, 0.25) 10%);
-        background-size: 1750px 1750px;
-
+        background: rgba(172, 255, 47, 0.25);
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.25);
@@ -434,24 +415,14 @@
     }
 
     #sc:hover {
+        background: #00418b36;
         transform: scale(1.05);
-        background-size: 2000px 2000px;
         box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-        background-position: -2000px 0%;
     }
 
     #afi {
         background: blue;
-        background: linear-gradient(135deg,
-                rgba(255, 200, 60, 0.25) 25%,
-                #00418b36 25%,
-                #00418b36 50%,
-                rgba(255, 200, 60, 0.25) 50%,
-                rgba(255, 200, 60, 0.25) 75%,
-                #00418b34 75%,
-                rgba(255, 200, 60, 0.25) 10%);
-        background-size: 1750px 1750px;
-
+        background: rgba(255, 200, 60, 0.25);
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.25);
@@ -469,10 +440,9 @@
     }
 
     #afi:hover {
+        background: #00418b36;
         transform: scale(1.05);
-        background-size: 2000px 2000px;
         box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-        background-position: -2000px 0%;
     }
 
 
@@ -1001,7 +971,7 @@
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);
         /* glass effect */
-        
+
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         transition: transform 0.4s ease, opacity 0.4s ease;
         display: flex;
@@ -1046,6 +1016,23 @@
         align-items: center;
     }
 
+    #PlatformStatusContent button {
+        background-color: white;
+        height: 50px;
+        width: 150px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #PlatformStatusContent p {
+        text-align: center;
+    }
+
+    #PlatformStatusContent b {
+        color: green;
+    }
+
     #ToolsDiv,
     #News,
     #AboutUs,
@@ -1055,7 +1042,7 @@
     .Productivity,
     .Organisation {
         background: rgba(255, 255, 255, 0.15);
-        
+
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.25);
@@ -1651,7 +1638,7 @@
         backdrop-filter: blur(12px);
         border-radius: 4px;
     }
-    
+
 
     ::-webkit-scrollbar-track {
         background: transparent;
@@ -1745,7 +1732,7 @@
         background: radial-gradient(at bottom right, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.8));
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
-        
+
         padding: 10px;
         text-align: left;
         font-size: 10px;
@@ -1795,7 +1782,7 @@
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         /* glass effect */
-        
+
     }
 
     #MenuSettings button:hover {
@@ -1821,7 +1808,7 @@
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);
         /* glass effect */
-        
+
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         transition: transform 0.4s ease, opacity 0.4s ease;
         display: flex;
@@ -1850,7 +1837,7 @@
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);
         /* glass effect */
-        
+
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         transition: transform 0.4s ease, opacity 0.4s ease;
         display: flex;
@@ -1897,7 +1884,7 @@
         background: rgba(255, 255, 255, 0.15);
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
-        
+
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     }
@@ -1983,7 +1970,7 @@
         background: rgba(255, 255, 255, 0.15);
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
-        
+
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         display: flex;
@@ -2013,7 +2000,7 @@
         background: rgba(255, 255, 255, 0.15);
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
-        
+
         border: 1px solid rgba(255, 255, 255, 0.5);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         z-index: 2;
@@ -2102,7 +2089,7 @@
     background: rgba(255, 255, 255, 0.15);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
-    
+
     border: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     color: #092241;
@@ -2211,8 +2198,13 @@
     border: 1px solid white;
     border-radius: 5px;
     cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5px;
     transition: all 0.3s ease;
 }
+
 
 #welcomebtn:hover {
     color: #092241;
@@ -2499,6 +2491,10 @@
 
 #AssistantContent #closeAssistant:hover {
     background-color: rgb(255, 0, 0, 0.4);
+}
+
+#CommandInput {
+    color: white;
 }
 
 #commandmodal {

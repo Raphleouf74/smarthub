@@ -242,16 +242,19 @@ const menubtn = document.getElementById('menu');
 const loginbtn = document.getElementById('login-tmdb');
 const profilebtn = document.getElementById('profile-btn');
 const newsbtn = document.getElementById('news-btn');
+const backbtn = document.getElementById('back-btn');
 const NewsBox = document.getElementById('News');
 
 loginbtn.classList.remove('shown');
 profilebtn.classList.remove('shown');
 NewsBox.classList.remove('shown');
+backbtn.classList.remove('shown');
 newsbtn.classList.remove('shown');
 menubtn.addEventListener('click', () => {
   loginbtn.classList.toggle('shown');
   profilebtn.classList.toggle('shown');
   newsbtn.classList.toggle('shown');
+  backbtn.classList.toggle('shown');
 });
 
 menubtn.addEventListener('mouseenter', () => {
