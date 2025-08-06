@@ -1,0 +1,26 @@
+<h2>Connexion en cours...</h2>
+<script>
+    const API_KEY = '94cdc79bc9522b0bc848d2e567d38ca9'; // Mets ta clé TMDb ici
+    const BASE_URL = 'https://api.themoviedb.org/3';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const requestToken = urlParams.get('request_token');
+
+    async function createSession() {
+        const res = await fetch(`${BASE_URL}/authentication/session/new?api_key=${API_KEY}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ request_token: requestToken })
+        });
+        const data = await res.json();
+
+        if (data.session_id) {
+            localStorage.setItem('tmdb_session_id', data.session_id);
+            window.location.href = "index.html";
+        } else {
+            alert("Erreur lors de la connexion.");
+            h2.innerHTML = `Erreur de connexion`
+        }
+    }
+    createSession();
+</script>

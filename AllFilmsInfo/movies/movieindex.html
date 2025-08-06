@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Films Info</title>
+  <link rel="stylesheet" href="../css/movie.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+
+<body>
+  <div id="notificationsContainer">
+    <div class="notification hidden">
+      <div class="notiglow"></div>
+      <div class="notiborderglow"></div>
+      <div class="notititle"></div>
+    </div>
+  </div>
+  <header>
+    <a href="../index.html" class="backbtn"><span class="material-symbols-outlined"> arrow_back_ios </span>Retour</a>
+    <span id="MovieTitle"></span>
+    <h1>Détails du Film</h1>
+  </header>
+
+  <main id="movie-container">
+    <!-- Contenu chargé dynamiquement -->
+    <div class="skeleton-loading">
+      <div class="skeleton-poster"></div>
+      <div class="skeleton-info">
+        <div class="skeleton-title"></div>
+        <div class="skeleton-text"></div>
+      </div>
+    </div>
+  </main>
+  <script src="../js/movie.js"></script>
+</body>
+
+</html>

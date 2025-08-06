@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/movies/:id"
+  to = "/movies/movieindex.html?id=:id"
+  status = 200
+  force = true

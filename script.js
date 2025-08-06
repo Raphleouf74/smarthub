@@ -110,26 +110,24 @@ function showCriticalNotification(title, body) {
     });
 }
 
-
+const body = document.querySelector('body');
 // Placer ici les notifications et les notifications critiques
 
 // showNotification();
 // showCriticalNotification();
 
 // Header scroll effect
+body.classList.add('scroll-hidden');
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
 
     if (window.scrollY > 30) {
         header.classList.add('scrolled');
+
+        
     } else {
         header.classList.remove('scrolled');
     }
-});
-
-window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY > 30;
-    document.body.classList.toggle('scrolled', scrolled);
 });
 
 

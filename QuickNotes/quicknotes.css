@@ -355,7 +355,7 @@ header h1 {
 
 
 /* Créer Note */
-#AddNote {
+#createNoteBtn {
     background: rgb(0, 17, 255);
     border: solid 1px white;
     cursor: pointer;
@@ -376,7 +376,7 @@ header h1 {
     font-family: "Poppins";
 }
 
-#AddNote:hover {
+#createNoteBtn:hover {
     transform: scale(1.1);
     color: #092241;
     background: white;

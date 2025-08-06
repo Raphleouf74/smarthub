@@ -1,63 +1,71 @@
 <!-- index.html-->
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartHub</title>
+    <link rel="icon" href="medias/logo.png" type="png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SmartHub</title>
-  <link rel="icon" href="medias/logo.png" type="png" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-
-<body>
-  <div id="Assistant">
-    <div id="AssistantContent">
-      <input id="commandInput"
-        placeholder="Tapez une commande... Appuyez sur la touche 'Entrée' pour lancer la commande. Ecrivez 'Fermer' ou 'Cacher' pour fermer l'assistant."
-        style="color: white;" />
-      <button onclick="handleCommand()">Exécuter</button>
-      <button id="commandmodalbtn" onclick="toggleCommandModal()"
-        title="Voir les commandes disponibles par l'assistant">
-        Commandes
-      </button>
-      <button id="closeAssistant" onclick="document.getElementById('Assistant').classList.remove('show')">
-        Fermer
+  <body>
+    <div id="Assistant">
+      <div id="AssistantContent">
+        <input
+          id="commandInput"
+          placeholder="Tapez une commande... Appuyez sur la touche 'Entrée' pour lancer la commande. Ecrivez 'Fermer' ou 'Cacher' pour fermer l'assistant."
+          style="color: white"
+        />
+        <button onclick="handleCommand()">Exécuter</button>
+        <button
+          id="commandmodalbtn"
+          onclick="toggleCommandModal()"
+          title="Voir les commandes disponibles par l'assistant"
+        >
+          Commandes
+        </button>
+        <button
+          id="closeAssistant"
+          onclick="document.getElementById('Assistant').classList.remove('show')"
+        >
+          Fermer
+        </button>
+      </div>
     </div>
-  </div>
 
-  <div id="commandmodal">
-    <div id="commandmodalcontent">
-      <button id="closecommandmodal" onclick="toggleCommandModal()">X</button>
-      <h1>Commandes disponibles</h1>
-      <ul>
-        <li>"Accueil": Aller à l'accueil</li>
-        <li>"Outils": Aller à la section des outils</li>
-        <li>"Actualites": Aller à la section des actualités</li>
-        <li>"Propos": Aller à la section À propos</li>
-        <li>"Compte": Ouvrir les paramètres du compte</li>
-        <li>"Plateforme": Voir l'état de la plateforme</li>
-        <li>"Connexion": Aller à la page de connexion</li>
-        <li>"Inscription": Aller à la page d'inscription</li>
-        <li>"Recharger": Recharger la page</li>
-        <li>"Haut": Remonter en haut de la page</li>
-        <li>"Bas": Descendre en bas de la page</li>
-        <li>"Cacher", "Fermer": Fermer l'assistant</li>
-        <br />
-        <p>D'AUTRES COMMANDES ARRIVERONT PLUS TARD</p>
-        <br /><br />
-        <li>
-          <b>Attention:</b> Vous pouvez écrire les commandes en minuscules ou majuscules mais évitez les espaces ou les
-          points en fin de mot.
-        </li>
-        <br /><br />
-        <p>Version Assistant: 1.1</p>
-      </ul>
+    <div id="commandmodal">
+      <div id="commandmodalcontent">
+        <button id="closecommandmodal" onclick="toggleCommandModal()">X</button>
+        <h1>Commandes disponibles</h1>
+        <ul>
+          <li>"Accueil": Aller à l'accueil</li>
+          <li>"Outils": Aller à la section des outils</li>
+          <li>"Actualites": Aller à la section des actualités</li>
+          <li>"Propos": Aller à la section À propos</li>
+          <li>"Compte": Ouvrir les paramètres du compte</li>
+          <li>"Plateforme": Voir l'état de la plateforme</li>
+          <li>"Connexion": Aller à la page de connexion</li>
+          <li>"Inscription": Aller à la page d'inscription</li>
+          <li>"Recharger": Recharger la page</li>
+          <li>"Haut": Remonter en haut de la page</li>
+          <li>"Bas": Descendre en bas de la page</li>
+          <li>"Cacher", "Fermer": Fermer l'assistant</li>
+          <br />
+          <p>D'AUTRES COMMANDES ARRIVERONT PLUS TARD</p>
+          <br /><br />
+          <li>
+            <b>Attention:</b> Vous pouvez écrire les commandes en minuscules ou
+            majuscules mais évitez les espaces ou les points en fin de mot.
+          </li>
+          <br /><br />
+          <p>Version Assistant: 1.1</p>
+        </ul>
+      </div>
     </div>
-  </div>
-  <header>
-    <h1>SmartHub</h1>
-    <!-- <div id="account" class="modal-item">
+    <header>
+      <h1>SmartHub</h1>
+      <!-- <div id="account" class="modal-item">
       <span id="username-display">Non connecté</span>
     </div>
     <p class="modal-item">Gestion des comptes</p>
@@ -71,26 +79,34 @@
     <button id="AccSettings" class="modal-item">Paramètres du compte</button>
     <button class="modal-item" onclick="logout()" >Déconnexion</button> -->
 
-    <p class="modal-item">Paramètres de la page</p>
-    <button onclick="scrollToPlatformState();" class="modal-item" id="DarkMode">
-      État de la plateforme
-    </button>
-    <!-- <button id="LightMode" class="modal-item">Mode clair</button> -->
-    <a href="LegalDocs/privacypolicy.html" class="modal-item"><button class="modal-item" id="PrivacyPolicy">
-        Politique de confidentialité
-      </button></a>
-    <a href="LegalDocs/ugc.html" class="modal-item"><button class="modal-item" id="PrivacyPolicy">
-        Conditions Générales d'Utilisation du Service
-      </button></a>
-    <button class="modal-item" id="About" onclick="scrollToAboutUs();">
-      À propos
-    </button>
-    <p class="modal-item">
-      Version site: <span id="SiteVersion">Chargement...</s> <br />
-    </p>
-  </header>
-  <div id="MenuSettings"></div>
-  <!-- <div id="AccountSettings">
+      <p class="modal-item">Paramètres de la page</p>
+      <button
+        onclick="scrollToPlatformState();"
+        class="modal-item"
+        id="DarkMode"
+      >
+        État de la plateforme
+      </button>
+      <!-- <button id="LightMode" class="modal-item">Mode clair</button> -->
+      <a href="LegalDocs/privacypolicy.html" class="modal-item"
+        ><button class="modal-item" id="PrivacyPolicy">
+          Politique de confidentialité
+        </button></a
+      >
+      <a href="LegalDocs/ugc.html" class="modal-item"
+        ><button class="modal-item" id="PrivacyPolicy">
+          Conditions Générales d'Utilisation du Service
+        </button></a
+      >
+      <button class="modal-item" id="About" onclick="scrollToAboutUs();">
+        À propos
+      </button>
+      <p class="modal-item">
+        Version site: <span id="SiteVersion">Chargement...</span> <br />
+      </p>
+    </header>
+    <div id="MenuSettings"></div>
+    <!-- <div id="AccountSettings">
     <button id="CloseAccSett">X</button>
     <div id="AccountSettingsContent">
       <b>
@@ -114,235 +130,164 @@
       <input type="email" id="email" placeholder="Adresse e-mail" disabled>
     </div>
   </div>-->
-  <div id="notifications-container">
-    <div class="notification hidden">
-      <div class="notiglow"></div>
-      <div class="notiborderglow"></div>
-      <div class="notititle"></div>
-      <div class="notibody"></div>
-    </div>
-  </div>
-
-  <div id="content">
-    <div id="Welcome">
-      <canvas id="welcomeCanvas"></canvas>
-      <h1 id="welcometext">Bienvenue sur SmartHub !</h1>
-
-      <button id="welcomebtn" onclick="scrollToTools()" style="margin-top: 5px">
-        <span class="scrolltext">Découvrir nos outils</span>
-        <span class="scrollarrow">↓</span>
-      </button>
-      <span id="easteregg">coucou :D</span>
-      <button id="toggleLinesBtn">Masquer les lignes</button>
+    <div id="notifications-container">
+      <div class="notification hidden">
+        <div class="notiglow"></div>
+        <div class="notiborderglow"></div>
+        <div class="notititle"></div>
+        <div class="notibody"></div>
+      </div>
     </div>
 
-    <div id="ToolsDiv">
-      <h1>Outils disponibles</h1>
-      <div id="ToolsContent">
-        <a id="qn" href="/QuickNotes/quicknotes.html">
-          <h1>QuickNotes</h1>
-        </a>
+    <div id="content">
+      <div id="Welcome">
+        <canvas id="welcomeCanvas"></canvas>
+        <h1 id="welcometext">Bienvenue sur SmartHub !</h1>
 
-        <a id="sc" href="/Calendar/calendar.html">
-          <h1>SmartCalendar</h1>
-        </a>
+        <button
+          id="welcomebtn"
+          onclick="scrollToTools()"
+          style="margin-top: 5px"
+        >
+          <span class="scrolltext">Découvrir nos outils</span>
+          <span class="scrollarrow">↓</span>
+        </button>
+        <span id="easteregg">coucou :D</span>
+        <button id="toggleLinesBtn">Masquer les lignes</button>
+      </div>
 
-        <a id="sc" href="https://allfilmsinfo.netlify.app">
-          <h1>All Film Info</h1>
-          <p>Obtenez toutes les informations concernants vos films préférés rapidement et intuitivement <br> (Même
-            créateur mais site non interne à SmartHub)</p>
-        </a>
-        <div class="Work">
-          <h2>En cours de développement...</h2>
-          <!-- <a id="sh" href="StylusHub/tableaudebord.html">
+      <div id="ToolsDiv">
+        <h1>Outils disponibles</h1>
+        <div id="ToolsContent">
+          <a id="qn" href="/QuickNotes/quicknotes.html">
+            <h1>QuickNotes</h1>
+          </a>
+
+          <a id="sc" href="/Calendar/calendar.html">
+            <h1>SmartCalendar</h1>
+          </a>
+
+          <a id="afi" href="/AllFilmsInfo/index.html">
+            <h1>All Films Info</h1>
+          </a>
+          <div class="Work">
+            <h2>En cours de développement...</h2>
+            <!-- <a id="sh" href="StylusHub/tableaudebord.html">
               <h1>StylusHub</h1>
             </a> -->
-        </div>
-        <!--
+          </div>
+          <!--
             <h2>En cours de développement...</h2>
             <h2>Appareils connéctés de votre domicile</h2>
               <a href="/SmartHome/smarthome.html">
                   <button>Appareils connéctés</button>
               </a>
           </div>-->
-      </div>
-    </div>
-    <div id="News">
-      <h2>Nouveautés du Hub</h2>
-      <div id="NewsContent">
-        <div class="NewBox">
-          <div class="NewTitle">
-            <h3>MàJ globale v1.6.2 !🆕</h3>
-          </div>
-          <div class="NewContent">
-            <p>
-              Introduction de SmartAST, votre nouvel assistant qui vous permet de naviguer encore plus simplement dans
-              le site. Comment l'activer ? Cliquez simplement sur la touche "Maj" de votre ordinateur (Option non
-              optimisée donc désactivée sur mobile.) <br />
-              Mise à jour de smartUI 1.3.1
-            </p>
-          </div>
-        </div>
-        <div class="NewBox">
-          <div class="NewTitle">
-            <h3><b>Les anciennes mises à jour peuvent êtres vues ici!</b></h3>
-          </div>
-          <div class="NewContent">
-            <p>
-              Retrouvez les plus anciennes mises à jour, information,
-              avertissements, et plein d'autres <a href="news.html">ici</a> !
-            </p>
-          </div>
         </div>
       </div>
-    </div>
-
-    <div id="AboutUs">
-      <h2>À propos de nous</h2>
-      <div id="AboutUsContent">
-        <p>
-          Nous sommes une équipe de développeurs passionnés par la création
-          d'outils utiles et innovants pour améliorer votre productivité et
-          votre expérience en ligne. Notre objectif est de vous fournir des
-          outils simples, efficaces et accessibles à tous.
-        </p>
-        <p>
-          Nous travaillons constamment pour améliorer nos outils et en ajouter
-          de nouveaux. N'hésitez pas à nous faire part de vos suggestions et
-          commentaires !
-        </p>
+      <div id="News">
+        <h2>Nouveautés du Hub</h2>
+        <div id="NewsContent">
+          <div class="NewBox">
+            <div class="NewTitle">
+              <h3>MàJ globale v1.7.1 !🆕</h3>
+            </div>
+            <div class="NewContent">
+              <p>
+                - Amélioration de SmartAST.
+                - Intégration de All Films Info dans SmartHub (V: AFI 1.5)
+                <br />
+                Mise à jour de smartUI 1.3.4:
+                - Corrections graphiques et améliorations diverses
+              </p>
+            </div>
+          </div>
+          <div class="NewBox">
+            <div class="NewTitle">
+              <h3><b>Les anciennes mises à jour peuvent êtres vues ici!</b></h3>
+            </div>
+            <div class="NewContent">
+              <p>
+                Retrouvez les plus anciennes mises à jour, information,
+                avertissements, et plein d'autres <a href="news.html">ici</a> !
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div id="PlatformStatus">
-      <h2>Etat de la plateforme</h2>
-      <div id="PlatformStatusContent">
-        <p style="text-align: center;">
-          État général de la plateforme <b style="color: green">OK</b><br>
-        </p>
-        <a href="platformstate.html"><button style="
+      <div id="AboutUs">
+        <h2>À propos de nous</h2>
+        <div id="AboutUsContent">
+          <p>
+            Nous sommes une équipe de développeurs passionnés par la création
+            d'outils utiles et innovants pour améliorer votre productivité et
+            votre expérience en ligne. Notre objectif est de vous fournir des
+            outils simples, efficaces et accessibles à tous.
+          </p>
+          <p>
+            Nous travaillons constamment pour améliorer nos outils et en ajouter
+            de nouveaux. N'hésitez pas à nous faire part de vos suggestions et
+            commentaires !
+          </p>
+        </div>
+      </div>
+
+      <div id="PlatformStatus">
+        <h2>Etat de la plateforme</h2>
+        <div id="PlatformStatusContent">
+          <p style="text-align: center">
+            État général de la plateforme <b style="color: green">OK</b><br />
+          </p>
+          <a href="platformstate.html"
+            ><button
+              style="
                 background-color: white;
                 height: 50px;
                 width: 150px;
                 border-radius: 20px;
                 cursor: pointer;
                 transition: all 0.3s ease-in-out;
-              ">
-            Voir l'état complet de la plateforme
-          </button></a>
-        <button onclick="location.reload()" style="
+              "
+            >
+              Voir l'état complet de la plateforme
+            </button></a
+          >
+          <button
+            onclick="location.reload()"
+            style="
               background-color: white;
               height: 50px;
               width: 150px;
               border-radius: 20px;
               cursor: pointer;
               transition: all 0.3s ease-in-out;
-            ">
-          Recharger la page
-        </button>
+            "
+          >
+            Recharger la page
+          </button>
+        </div>
       </div>
-    </div>
-    <!-- <button onclick="sendTestNotification()">
+      <!-- <button onclick="sendTestNotification()">
         🔔 Envoyer notification test
       </button> -->
-    <h2>Website powered by</h2>
-    <div id="smartUIdiv">
-      <span>1.3.1</span>
-      <h1>smartUI</h1>
+      <h2>Website powered by</h2>
+      <div id="smartUIdiv">
+        <h1>smartUI</h1>
+      </div>
     </div>
-  </div>
 
-  <p style="width: 100%">
-    &copy; 2025 SmartHub. Tous droits réservés. <br />
-    Toute reproduction partielle ou totale d'un ou des services proposés par
-    SmartHub est interdite. <br />
-    Retrouvez plus d'infos dans nos
-    <a href="LegalDocs/ugc.html">Conditions d'utilisation</a>.
-  </p>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.0.0-rc.6/html2canvas.min.js"></script>
-  <script src="script.js"></script>
-  </div>
-</body>
+    <p style="width: 100%">
+      &copy; 2025 SmartHub. Tous droits réservés. <br />
+      Toute reproduction partielle ou totale d'un ou des services proposés par
+      SmartHub est interdite. <br />
+      Retrouvez plus d'infos dans nos
+      <a href="LegalDocs/ugc.html">Conditions d'utilisation</a>.
+    </p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.0.0-rc.6/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+    <script src="assistant.js"></script>
+  </body>
 
-<script>
-  document.addEventListener("keydown", (e) => {
-    if (e.shiftKey) {
-      document.getElementById("Assistant").classList.add("show");
-    }
-
-  });
-  const commandInput = document.getElementById("commandInput");
-  document.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      if (commandInput.value.trim() === '') {
-        document.getElementById("Assistant").classList.remove("show");
-
-      } else {
-        handleCommand();
-      }
-    }
-  });
-
-  function handleCommand() {
-    const cmd = document.getElementById("commandInput").value.toLowerCase();
-    if (cmd.length === 0) {
-      alert("Veuillez entrer une commande.");
-    } else if (cmd.includes("accueil")) {
-      document.getElementById("Welcome").scrollIntoView({
-        behavior: "smooth",
-      });
-    } else if (cmd.includes("outils")) {
-      document.getElementById("ToolsDiv").scrollIntoView({
-        behavior: "smooth",
-      });
-    } else if (cmd.includes("actualites")) {
-      document.getElementById("News").scrollIntoView({
-        behavior: "smooth",
-      });
-    } else if (cmd.includes("propos")) {
-      document.getElementById("AboutUs").scrollIntoView({
-        behavior: "smooth",
-      });
-    } else if (cmd.includes("compte")) {
-      document.getElementById("AccountSettings").style.display = "block";
-    } else if (cmd.includes("connexion")) {
-      window.location.href = "/Login-Register/login.html";
-    } else if (cmd.includes("inscription")) {
-      window.location.href = "/Login-Register/register.html";
-    } else if (cmd.includes("recharger")) {
-      location.reload();
-    } else if (cmd.includes("haut")) {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    } else if (cmd.includes("fermer") || cmd.includes("cacher")) {
-      document.getElementById("Assistant").classList.toggle("show");
-    } else if (cmd.includes("plateforme") || cmd.includes("etat")) {
-      scrollToPlatformState();
-    } else if (cmd.includes("bas")) {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth",
-      });
-    } else if (cmd.includes("menu")) {
-      header.classList.toggle("hovered");
-      header.addEventListener("mouseenter", () => {
-        header.classList.remove("hovered");
-      });
-    } else {
-      alert("Commande non reconnue.");
-    }
-  }
-  function toggleCommandModal() {
-    const modal = document.getElementById("commandmodal");
-    modal.style.transform =
-      modal.style.transform === "translateY(0px) scale(1.1)"
-        ? "translateY(150px) scale(1)"
-        : "translateY(0px) scale(1.1)";
-    modal.style.opacity = modal.style.opacity === "1" ? "0" : "1";
-    modal.style.zIndex = modal.style.zIndex === "1000" ? "-1" : "1000";
-  }
-</script>
-
+  
 </html>

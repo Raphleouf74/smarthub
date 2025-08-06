@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* -------- HEADER---------------- */
+
+/* -------- VARIABLES -------- */
+:root {
+    --primary-color: #e50914;
+    --secondary-color: #b00710;
+    --dark-bg: #141414;
+    --light-text: #ffffff;
+    --glass-effect: rgba(100, 100, 100, 0.2);
+    --transition: all 0.2s ease-in-out;
+}
+
+/* -------- HEADER -------- */
+/* -------- HEADER -------- */
+header,
+header.scrolled:hover {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 150px;
+    max-width: 1200px;
+    padding: 15px 25px;
+    background: var(--glass-effect);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+
+header.scrolled {
+    width: 200px;
+    overflow: hidden;
+    padding: 10px 15px;
+    height: 40px;
+    left: 120px;
+}
+
+header.scrolled h1 {
+    transform: translateX(5px);
+}
+
+header .search-container {
+    transition: all 0.3s;
+}
+
+header.scrolled .search-container,
+header.scrolled #FilmCategoryList {
+    transform: translateY(-100px);
+}
+
+header.scrolled:hover h1,
+header.scrolled:hover .category-container,
+header.scrolled:hover .search-container {
+    transform: translateX(0) translateY(0);
+}
+
+header.scrolled .search-container {
+    transform: translateY(-200px);
+}
+
+header.scrolled .category-container {
+    transform: translateX(-200px);
+}
+
+.header-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    color: var(--light-text);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* -------- SEARCH BAR -------- */
+.search-container {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    position: relative;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+#searchInput:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#searchBtn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* -------- CATEGORY DROPDOWN -------- */
+.category-container {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.category-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.category-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+}
+
+.dropdown-icon {
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.category-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 10px;
+    width: 250px;
+    background: var(--dark-bg);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition);
+    z-index: 100;
+}
+
+.category-container:hover .category-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.category-container:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.category-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-dropdown li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.category-dropdown li:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.category-dropdown span {
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* -------- RESPONSIVE -------- */
+header {
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 25px;
+    top: 10px;
+}
+
+.header-content {
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-container {
+    width: 100%;
+}
+
+.category-container {
+    width: 100%;
+}
+
+.category-dropdown {
+    width: 100%;
+    right: auto;
+    left: 0;
+}
+
+/* -----------------*/
+
+
+#SelectFilmCategory {
+    background: rgba(40, 40, 40, 0.6);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+}
+
+#SelectFilmCategory:hover {
+    background: rgba(60, 60, 60, 0.8);
+    transform: scale(1.05);
+}
+
+#FilmCategoryList {
+    position: fixed;
+    top: 175px;
+
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 12px;
+    padding: 15px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.7);
+}
+
+#FilmCategoryList.show {
+    display: flex;
+    left: 50%;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+#FilmCategoryList li {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    padding: 8px;
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+#FilmCategoryList li:hover {
+    background: rgba(80, 80, 80, 0.8);
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+/* Ton style reste inchangé, j’ajoute juste la barre de recherche */
+
+#SearchFilm {
+    left: 200px;
+    top: 10px;
+    width: 250px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #61dafb;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#SearchFilm input {
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    height: 100%;
+    margin-left: -5px;
+    outline: none;
+    border-radius: 10px;
+}
+
+#searchBtn {
+    background: #61dafb;
+    width: 50px;
+    height: 100%;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#SearchFilm button:hover {
+    background: #21a1f1;
+}
+
+
+/* Garde tes styles initiaux */
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #111;
+    color: white;
+    text-align: center;
+}
+
+/* Grille des films */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    border-bottom: 1px solid #333;
+}
+
+.movie-title {
+    font-size: 1.1em;
+    padding: 10px;
+}
+
+.update-notification {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    color: #092241;
+    padding: 15px 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.update-notification:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+    color: #092241;
+}
+
+.update-notification button {
+    background: #36fa71;
+    color: #092241;
+    border: none;
+    margin-left: 10px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Placeholder (avant que l’utilisateur choisisse) */
+.placeholder {
+    color: #ccc;
+    text-align: center;
+    padding: 50px 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.placeholder h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+}
+
+
+
+/* Animation des cartes de film */
+.movie-card {
+    opacity: 0;
+    transform: scale(0.9) translateY(50px);
+    animation: popIn 0.4s ease forwards;
+}
+
+@keyframes popIn {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Transition du menu catégories */
+#FilmCategoryList {
+    transition: all 0.4s ease, opacity 0.4s ease;
+}
+
+
+/* Arrière-plan global avec dégradé */
+body {
+    background: radial-gradient(circle at 20% 30%, #141414, #000);
+    background-attachment: fixed;
+    color: white;
+}
+
+/* Fond dynamique (affiche floutée) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px) brightness(0.4);
+    z-index: -2;
+    transition: background-image 0.6s ease, opacity 0.6s ease;
+}
+
+/* Glow léger sur les cartes */
+.movie-card {
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+}
+
+.movie-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.movie-card::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    width: 90%;
+    height: 20px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, transparent 80%);
+    filter: blur(10px);
+    z-index: -1;
+}
+
+
+.movie-info h1 span {
+    font-weight: normal;
+    color: #aaa;
+}
+
+
+/* Squelette de chargement */
+.skeleton-loading {
+    display: flex;
+    gap: 20px;
+}
+
+.skeleton-poster {
+    width: 300px;
+    height: 450px;
+    background: #2a2a2a;
+    border-radius: 10px;
+}
+
+.skeleton-title {
+    width: 200px;
+    height: 30px;
+    background: #2a2a2a;
+    margin-bottom: 20px;
+}
+
+.skeleton-text {
+    width: 100%;
+    height: 100px;
+    background: #2a2a2a;
+}
