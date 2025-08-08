@@ -4,7 +4,7 @@ if (Test-Path $versionFile) {
     $json = Get-Content $versionFile | ConvertFrom-Json
     $currentVersion = $json.version
 } else {
-    Write-Host "version.json net found !"
+    Write-Host "version.json not found !"
     exit
 }
 
