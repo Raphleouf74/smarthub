@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Espace Concentration — SmartHub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div id="notifications-container">
+        <div class="notification hidden">
+            <div class="notiglow"></div>
+            <div class="notiborderglow"></div>
+            <div class="notititle"></div>
+            <div class="notibody"></div>
+        </div>
+    </div>
+
+
+    <!-- Overlay qui empêche interactions sur le reste du site en focus-mode -->
+
+    <!-- Modal principal -->
+    <header class="fs-header">
+        <div class="fs-title">
+            <h2>Espace de concentration</h2>
+            <small id="sessionStatus">Prêt</small>
+            <small>Mode concentration : <span id="focusIndicator">OFF</span></small>
+
+        </div>
+        <a href="../index.html" class="backbtn"><span class="material-symbols-outlined"> arrow_back_ios
+            </span>Retour vers SmartHub</a>
+    </header>
+
+    <nav class="fs-tabs" role="tablist" aria-label="Onglets">
+        <button class="tab active" data-tab="pomodoro" role="tab" aria-selected="true">Pomodoro</button>
+        <button class="tab" data-tab="notes" role="tab">Notes</button>
+        <button class="tab" data-tab="flashcards" role="tab">Fiches</button>
+        <!-- <button class="tab" data-tab="audio" role="tab">Audio</button> -->
+        <button class="tab" data-tab="calc" role="tab">Calculatrice</button>
+        <button class="tab" data-tab="todo" role="tab">To-do</button>
+        <button class="tab" data-tab="stats" role="tab">Stats</button>
+    </nav>
+
+    <main class="fs-body">
+        <!-- Pomodoro -->
+        <section id="pomodoro" class="panel active" role="tabpanel">
+            <div class="pomodoro-display">
+                <div class="timer" id="timerDisplay">25:00</div>
+                <div class="session-type" id="sessionType">Travail</div>
+                <div class="pom-controls">
+                    <button id="startPom">Démarrer</button>
+                    <button id="pausePom">Pause</button>
+                    <button id="resetPom">Reset</button>
+                    <button id="settingsPom" title="Paramètres">⚙️</button>
+                </div>
+            </div>
+
+            <div class="pom-settings" id="pomSettings">
+                <label>Durée travail (min): <input type="number" id="workDuration" min="1" value="25"></label>
+                <label>Pause courte (min): <input type="number" id="shortBreak" min="1" value="5"></label>
+                <label>Pause longue (min): <input type="number" id="longBreak" min="5" value="15"></label>
+                <label>Cycles avant pause longue: <input type="number" id="cyclesBeforeLong" min="1" value="4"></label>
+                <label><input type="checkbox" id="autoStartNext"> Démarrer automatiquement la session
+                    suivante</label>
+                <button id="savePomSettings">Enregistrer</button>
+            </div>
+        </section>
+
+        <!-- Notes -->
+        <section id="notes" class="panel" role="tabpanel" hidden>
+            <div class="notes-top">
+                <input id="noteTitle" placeholder="Titre rapide" />
+                <button id="addNote">+ Ajouter</button>
+                <button id="exportNotes">Exporter (.txt)</button>
+            </div>
+            <div id="notesList" class="notes-list" aria-live="polite"></div>
+            <textarea id="noteEditor" placeholder="Rédige ta note ici..."></textarea>
+        </section>
+
+        <!-- Flashcards -->
+        <section id="flashcards" class="panel" role="tabpanel" hidden>
+            <div class="flash-controls">
+                <input id="cardFront" placeholder="Question / recto" />
+                <input id="cardBack" placeholder="Réponse / verso" />
+                <button id="addCard">Ajouter la fiche</button>
+                <button id="clearCards">Tout supprimer</button>
+            </div>
+            <div id="cardArea" class="card-area"></div>
+        </section>
+
+        <!-- Audio recorder -->
+        <!-- <section id="audio" class="panel" role="tabpanel" hidden>
+                <div class="audio-controls">
+                    <button id="startRec">🎤 Enregistrer</button>
+                    <button id="stopRec" disabled>⏹ Stop</button>
+                    <button id="downloadAll">Télécharger tout</button>
+                </div>
+                <div id="recordingsList" class="recordings-list"></div>
+            </section> -->
+
+        <!-- Calculator -->
+        <section id="calc" class="panel" role="tabpanel" hidden>
+            <div class="calc">
+                <input id="calcDisplay" readonly />
+                <div class="calc-grid">
+                    <button data-val="7">7</button><button data-val="8">8</button><button data-val="9">9</button><button
+                        data-val="/">÷</button>
+                    <button data-val="4">4</button><button data-val="5">5</button><button data-val="6">6</button><button
+                        data-val="*">×</button>
+                    <button data-val="1">1</button><button data-val="2">2</button><button data-val="3">3</button><button
+                        data-val="-">−</button>
+                    <button data-val="0">0</button><button data-val=".">.</button><button
+                        id="calcClear">C</button><button data-val="+">+</button>
+                    <button id="calcEquals" class="equals">=</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- To-do -->
+        <section id="todo" class="panel" role="tabpanel" hidden>
+            <div class="todo-top">
+                <input id="todoInput" placeholder="Nouvelle tâche..." />
+                <button id="addTodo">Ajouter</button>
+                <button id="clearTodos">Supprimer terminées</button>
+            </div>
+            <ul id="todoList" class="todo-list"></ul>
+        </section>
+
+        <!-- Stats -->
+        <section id="stats" class="panel" role="tabpanel" hidden>
+            <h3>Statistiques</h3>
+            <p>Sessions de travail complétées : <strong id="statSessions">0</strong></p>
+            <p>Temps total en concentration : <strong id="statMinutes">0</strong> minutes</p>
+            <button id="resetStats">Réinitialiser</button>
+        </section>
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -124,7 +124,7 @@ window.addEventListener('scroll', () => {
     if (window.scrollY > 30) {
         header.classList.add('scrolled');
 
-        
+
     } else {
         header.classList.remove('scrolled');
     }
@@ -419,3 +419,20 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+(function () {
+    // Vérifie dans le localStorage si le mode focus est actif
+    function checkFocusMode() {
+        const isFocusMode = localStorage.getItem('focusMode') === 'true';
+        if (isFocusMode) {
+            showCriticalNotification("Mode Concentration <b>activé</b>", "Le mode concentration est activé, certaines fonctions sont indisponibles")
+        } else {
+            showNotification("Mode Concentration <b>désactivé</b>", "Mode désactivé ou erreur")
+        }
+    }
+
+    // Surveille les changements du localStorage
+    window.addEventListener('storage', checkFocusMode);
+
+    // Lancer au chargement
+    document.addEventListener('DOMContentLoaded', checkFocusMode);
+})();

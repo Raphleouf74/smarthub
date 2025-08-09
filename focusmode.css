@@ -1,0 +1,7 @@
+/* Éléments désactivés en mode focus */
+.focus-mode .focus-disable {
+    pointer-events:none !important;
+    filter: grayscale(0.5);
+    transition: all 0.3s ease-in-out;
+    cursor: not-allowed;
+}

@@ -1,0 +1,633 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+:root {
+    --bg: #0f1724;
+    --panel: #0b1220;
+    --accent: #3b82f6;
+    --muted: #cbd5e1;
+    --glass: rgba(255, 255, 255, 0.03);
+}
+
+/* reset simple */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    font-family: "Poppins", system-ui, Arial;
+    color: var(--muted);
+    background: linear-gradient(180deg, #071024 0%, #081428 100%);
+}
+
+/* header */
+.fs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03)
+}
+
+.fs-title h2 {
+    margin: 0;
+    color: white;
+    font-size: 18px
+}
+
+.fs-title small {
+    display: block;
+    font-size: 12px;
+    color: var(--muted)
+}
+
+
+/* tabs */
+.fs-tabs {
+    display: flex;
+    gap: 6px;
+    padding: 10px 12px;
+    overflow: auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02)
+}
+
+.fs-tabs .tab {
+    background: transparent;
+    border: 0;
+    color: var(--muted);
+    padding: 8px 12px;
+    font-family: "Poppins";
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    width: calc(100% /6);
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.fs-tabs .tab.active {
+    background: rgba(50, 50, 50);
+    color: white;
+    box-shadow: inset 0 -2px 0 rgba(59, 130, 246, 0.5)
+}
+
+.fs-tabs .tab.active:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: white;
+    box-shadow: inset 0 -2px 0 rgba(59, 130, 246, 0.5)
+}
+
+.fs-tabs .tab:hover {
+    background: rgba(255, 255, 255, 0);
+    color: white;
+    box-shadow: inset 0 -2px 0 rgba(59, 130, 246, 0.2)
+}
+
+/* body panels */
+.fs-body {
+    display: flex;
+    gap: 12px;
+    padding: 14px;
+    width: 100%;
+    align-items: flex-start
+}
+
+.panel {
+    flex: 1;
+    min-height: 260px;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.panel.active {
+    display: flex;
+    flex-direction: row;
+}
+
+/* pomodoro layout */
+.pomodoro-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px;
+    height: 80vh;
+    width: 80vh;
+    background: var(--glass);
+    border-radius: 10px
+}
+
+section {
+    width: 100%;
+}
+
+.timer {
+    font-size: 75px;
+    font-family: "Poppins";
+    color: white;
+    font-weight: 800;
+    letter-spacing: 1px
+}
+
+.session-type {
+    font-size: 14px;
+    color: var(--muted)
+}
+
+.pom-controls {
+    display: flex;
+    gap: 8px
+}
+
+.pom-controls button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 0;
+    background: var(--accent);
+    color: white;
+    cursor: pointer
+}
+
+.pom-controls button[disabled] {
+    opacity: .5;
+    cursor: not-allowed
+}
+
+.pom-settings {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: calc(100% - 80vh);
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px
+}
+
+.pom-settings label {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.pom-settings input[type=number] {
+    width: 70px;
+    padding: 6px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(0, 0, 0, 0.15);
+    color: white
+}
+
+/* notes */
+.notes-top {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.notes-top input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: transparent;
+    color: white
+}
+
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.note-item {
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-item small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+#noteEditor {
+    min-height: 120px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: transparent;
+    color: white;
+    resize: vertical;
+}
+
+/* flashcards */
+.flash-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.flash-controls input {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: transparent;
+    color: white
+}
+
+.card-area {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap
+}
+
+.flash-card {
+    width: 200px;
+    height: 120px;
+    background: linear-gradient(180deg, #ffffff06, #00000006);
+    backdrop-filter: blur(3px);
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform .2s, box-shadow .2s;
+    user-select: none
+}
+
+.flash-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6)
+}
+
+.flash-card .back {
+    display: none
+}
+
+.flash-card.flipped .front {
+    display: none
+}
+
+.flash-card.flipped .back {
+    display: block
+}
+
+/* audio */
+.audio-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.recordings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 200px;
+    overflow: auto
+}
+
+.recording {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+/* calculator */
+.calc {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 320px
+}
+
+#calcDisplay {
+    height: 44px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: transparent;
+    color: white;
+    font-size: 20px;
+    text-align: right
+}
+
+.calc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px
+}
+
+.calc-grid button {
+    padding: 12px;
+    border-radius: 8px;
+    border: 0;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--muted);
+    cursor: pointer
+}
+
+.calc-grid .equals {
+    grid-column: 1 / -1;
+    background: var(--accent);
+    color: white
+}
+
+/* todo */
+.todo-top {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.todo-top input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: transparent;
+    color: white
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px
+}
+
+.todo-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 8px;
+    border-radius: 8px
+}
+
+.todo-item.done {
+    opacity: .5;
+    text-decoration: line-through
+}
+
+/* stats footer */
+.fs-footer {
+    padding: 8px 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+/* responsive */
+@media (max-width:720px) {
+    .focus-modal {
+        right: 10px;
+        left: 10px;
+        bottom: 90px;
+        width: auto
+    }
+
+    .fs-body {
+        flex-direction: column
+    }
+
+    .pom-settings {
+        grid-template-columns: 1fr
+    }
+}
+
+#Widget {
+    position: fixed;
+    top: 10px;
+    right: 15px;
+    width: 350px;
+    height: 225px;
+    transition: all 0.3s;
+    border-radius: 15px;
+    background-color: rgb(75, 75, 75, 0.8);
+}
+
+#Widget .pomodoro-display {
+    width: 100%;
+    height: 100%;
+}
+.backbtn {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    font-size: 15px;
+    width: 225px;
+    justify-content: space-around;
+    background-color: rgb(75, 75, 75, 0.1);
+    padding: 10px;
+    border-radius: 20px;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.backbtn span {
+    transition: all 0.3s ease-in-out
+}
+
+.backbtn:hover {
+    background-color: rgb(150, 150, 150, 0.4);
+}
+
+.backbtn:hover span {
+    transform: translateX(-5px);
+}
+
+    /*         NOTIFICATIONS        */
+    /* ----------------------------- */
+    .notification {
+        top: 10px;
+        right: 17.5%;
+        /* Commence en dehors de l'écran */
+        position: fixed;
+        transition: all 0.3s ease;
+        z-index: 501;
+        will-change: transform, opacity;
+    }
+
+    /* Conteneur pour toutes les notifications */
+    #notifications-container {
+        position: fixed;
+        top: 10px;
+        left: 17.5%;
+        right: 17.5%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        /* Espace entre les notifications */
+        z-index: 500;
+        height: 1px;
+    }
+
+    /* Affichage de la notification */
+
+    .notification.show {
+        opacity: 1;
+        top: 10px;
+        transition: all 0.3s ease;
+        z-index: 100000;
+    }
+
+    /* Disparition de la notification */
+    .notification.hidden {
+        opacity: 0;
+        top: -100px;
+        z-index: 100;
+        transition: all 0.3s ease;
+    }
+
+    .notification {
+        background: rgba(255, 255, 255, 0.15);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        isolation: isolate;
+        position: fixed;
+        width: 65%;
+        height: auto;
+        cursor: default;
+        transform: translateY(0);
+        transition: all 0.3s ease;
+        border-radius: 1rem;
+        overflow: hidden;
+        padding: 10px 10px 10px 10px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 16px;
+        --gradient: linear-gradient(to bottom, #32a6ff, #3d8cff, #61a0ff);
+        --gradientC: linear-gradient(to bottom, red, #ff3d3d, #ff6161);
+        --color: #32a6ff;
+        z-index: 2;
+        border: 2px rgb(240, 250, 200);
+    }
+
+    .notification:before {
+        position: absolute;
+        content: "";
+        inset: 0.0625rem;
+        border-radius: 0.9375rem;
+        background: rgba(255, 255, 255, 0.15);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        z-index: 2;
+    }
+
+    .notification:after {
+        position: absolute;
+        content: "";
+        width: 0.25rem;
+        inset: 0.65rem auto 0.65rem 0.5rem;
+        border-radius: 0.125rem;
+        background: var(--gradient);
+        transition: transform 300ms ease;
+        z-index: 4;
+    }
+
+    .critical::after {
+        background: var(--gradientC);
+        color: var(--gradientC);
+    }
+
+
+
+    .notification:hover:after {
+        transform: translateX(0.15rem);
+    }
+
+    .notititle {
+        color: var(--color);
+        padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: transform 300ms ease;
+        z-index: 5;
+    }
+
+    .critical .notititle {
+        color: red;
+    }
+
+    .critical {
+        color: var(--gradientC);
+    }
+
+
+    .notification:hover .notititle {
+        transform: translateX(0.15rem);
+    }
+
+    .notibody {
+        color: #99999d;
+        padding: 0 1.25rem;
+        transition: all 300ms ease;
+        z-index: 5;
+    }
+
+    .notification:hover .notibody {
+        transform: translateX(0.25rem);
+        color: #092241;
+    }
+
+    .notiglow,
+    .notiborderglow {
+        position: absolute;
+        width: 20rem;
+        height: 20rem;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(circle closest-side at center, white, transparent);
+        opacity: 0;
+        transition: opacity 300ms ease;
+    }
+
+    .notiglow {
+        z-index: 3;
+    }
+
+    .notiborderglow {
+        z-index: 1;
+    }
+
+    .notification:hover .notiglow {
+        opacity: 0.1;
+    }
+
+    .notification:hover .notiborderglow {
+        opacity: 0.1;
+    }
+
+    .notification:hover {
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+    }
