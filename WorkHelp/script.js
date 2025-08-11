@@ -227,10 +227,10 @@ function resetPom() {
 startBtn.addEventListener('click', () => { startPom(); });
 pauseBtn.addEventListener('click', () => { pausePom(); });
 resetBtn.addEventListener('click', () => { resetPom(); });
-
 settingsBtn.addEventListener('click', () => {
-    pomSettings.style.display = pomSettings.style.display === 'grid' ? 'none' : 'grid';
+    pomSettings.classList.toggle('shown');
 });
+
 $('#savePomSettings').addEventListener('click', () => {
     pomState.work = Number($('#workDuration').value) || 25;
     pomState.short = Number($('#shortBreak').value) || 5;

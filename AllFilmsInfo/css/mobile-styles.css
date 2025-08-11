@@ -16,70 +16,31 @@
 
 /* -------- HEADER -------- */
 /* -------- HEADER -------- */
-header,
-header.scrolled:hover {
+/* -------- HEADER -------- */
+/* -------- HEADER -------- */
+header {
     position: fixed;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    height: 150px;
-    max-width: 1200px;
-    padding: 15px 25px;
+    left: 10px;
+    width: 250px;
+    height: 50px;
     background: var(--glass-effect);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50px;
+    border-top-left-radius: 30px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
+    background: rgb(50, 50, 50, 0.6);
     align-items: center;
     z-index: 1000;
     transition: all 0.3s ease-in-out;
 }
 
-header.scrolled {
-    width: 200px;
-    overflow: hidden;
-    padding: 10px 15px;
-    height: 40px;
-    left: 120px;
-}
-
-header.scrolled h1 {
-    transform: translateX(5px);
-}
-
-header .search-container {
-    transition: all 0.3s;
-}
-
-header.scrolled .search-container,
-header.scrolled #FilmCategoryList {
-    transform: translateY(-100px);
-}
-
-header.scrolled:hover h1,
-header.scrolled:hover .category-container,
-header.scrolled:hover .search-container {
-    transform: translateX(0) translateY(0);
-}
-
-header.scrolled .search-container {
-    transform: translateY(-200px);
-}
-
-header.scrolled .category-container {
-    transform: translateX(-200px);
-}
-
-.header-content {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
+header:hover {
+    background: rgb(150, 150, 150, 0.6);
 }
 
 .logo {
@@ -93,257 +54,211 @@ header.scrolled .category-container {
 /* -------- SEARCH BAR -------- */
 .search-container {
     flex: 1;
-    max-width: 500px;
+    width: 450px;
+    left: 10px;
+    border-radius: 50px;
+    overflow: hidden;
+    height: 50px;
+    margin-bottom: 0;
     display: flex;
-    position: relative;
+    align-self: right;
+    position: sticky;
+    top: 75px;
+    z-index: 1000;
 }
 
 #searchInput {
-    width: 100%;
+    width: 410px;
     padding: 12px 20px;
-    border-radius: 30px;
-    border: none;
-    background: rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
     color: white;
+    overflow: hidden;
     font-size: 1rem;
     transition: var(--transition);
+    top: 75px;
+    left: 10px;
+    background: rgb(50, 50, 50, 0.6);
+    font-weight: 500;
+    cursor: pointer;
+    position: fixed;
+    font-family: "Poppins";
+    background: var(--glass-effect);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#searchInput:hover {
+    background: rgb(150, 150, 150, 0.6);
 }
 
 #searchInput:focus {
     outline: none;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(200, 200, 200, 0.8);
+    color: black;
 }
 
 #searchBtn {
     position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(0, 0, 0, 0.1);
+    top: 5px;
+    height: 40px;
+    width: 40px;
     border: none;
+    border-radius: 50%;
     color: white;
     font-size: 1.2rem;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
     padding: 5px;
+}
+
+#searchBtn:hover {
+    background-color: rgb(0, 0, 0, 0.3);
 }
 
 /* -------- CATEGORY DROPDOWN -------- */
 .category-container {
-    position: relative;
+    position: sticky;
+    top: 25px;
+    z-index: 1000;
     transition: all 0.3s ease-in-out;
 }
 
 .category-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    width: 197px;
+    z-index: 1001;
+    font-family: "Poppins";
+    height: 51.5px;
+    left: 265px;
+    padding: 10px;
+    background: rgb(50, 50, 50, 0.6);
     color: white;
     border: none;
-    border-radius: 30px;
-    font-size: 1rem;
+    font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-    transition: var(--transition);
+    position: fixed;
+    top: 20px;
+    background: var(--glass-effect);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top-right-radius: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
 }
 
 .category-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+    background: rgb(150, 150, 150, 0.6);
 }
+
 
 .dropdown-icon {
     font-size: 0.8rem;
     transition: transform 0.3s;
 }
 
-.category-dropdown {
-    position: absolute;
-    right: 0;
-    top: 100%;
-    margin-top: 10px;
-    width: 250px;
-    background: var(--dark-bg);
-    border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: var(--transition);
-    z-index: 100;
-}
-
-.category-container:hover .category-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.category-container:hover .dropdown-icon {
-    transform: rotate(180deg);
-}
-
-.category-dropdown ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.category-dropdown li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.category-dropdown li:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.category-dropdown span {
-    color: white;
-    font-size: 0.9rem;
-}
-
-/* -------- RESPONSIVE -------- */
-header {
-    flex-direction: column;
-    padding: 15px;
-    border-radius: 25px;
-    top: 10px;
-}
-
-.header-content {
-    flex-direction: column;
-    gap: 15px;
-}
-
-.search-container {
-    width: 100%;
-}
-
-.category-container {
-    width: 100%;
-}
-
-.category-dropdown {
-    width: 100%;
-    right: auto;
-    left: 0;
-}
-
 /* -----------------*/
 
 
-#SelectFilmCategory {
-    background: rgba(40, 40, 40, 0.6);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s, transform 0.3s;
-}
 
-#SelectFilmCategory:hover {
-    background: rgba(60, 60, 60, 0.8);
-    transform: scale(1.05);
-}
 
 #FilmCategoryList {
-    position: fixed;
-    top: 175px;
-
-    width: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    border-radius: 12px;
-    padding: 15px;
-    display: none;
+    top: 100px;
+    left: -250px;
+    width: 650px;
+    border-radius: 25px;
+    justify-content: left;
     flex-direction: column;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    font-family: "Poppins";
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    position: fixed;
+    background: var(--light-glass-effect);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-15px);
+    height: 50px;
+    pointer-events: none;
+    overflow: hidden;
 }
 
 #FilmCategoryList.show {
+    opacity: 1;
+    z-index: 100;
+    pointer-events: all;
+    height: 375px;
+    transform: translateX(0);
+}
+
+#FilmCategoryList.show:hover {
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+}
+
+#FilmCategoryList ul {
+    width: 100%;
+    left: 0;
     display: flex;
-    left: 50%;
-    animation: fadeIn 0.3s ease forwards;
+    flex-wrap: wrap;
+    margin: 0 0 0 0;
+    margin-top: -10px;
+    gap: 1%;
 }
 
 #FilmCategoryList li {
     display: flex;
+    justify-content: center;
     align-items: center;
+    transform: translateX(-17.5px);
     margin: 8px 0;
-    padding: 8px;
-    background: rgba(30, 30, 30, 0.8);
+    width: 49%;
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
 
 #FilmCategoryList li:hover {
-    background: rgba(80, 80, 80, 0.8);
-    transform: scale(1.05);
+    background: rgba(80, 80, 80, 0);
+    transform: translateX(-18px) scale(1.05);
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateX(-10px) translateY(-10px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0) translateY(0);
     }
-}
-
-
-
-
-/* Ton style reste inchangé, j’ajoute juste la barre de recherche */
-
-#SearchFilm {
-    left: 200px;
-    top: 10px;
-    width: 250px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #61dafb;
-    padding: 10px;
-    border-radius: 15px;
-}
-
-#SearchFilm input {
-    padding: 5px;
-    font-size: 16px;
-    border: none;
-    height: 100%;
-    margin-left: -5px;
-    outline: none;
-    border-radius: 10px;
-}
-
-#searchBtn {
-    background: #61dafb;
-    width: 50px;
-    height: 100%;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#SearchFilm button:hover {
-    background: #21a1f1;
 }
 
 
@@ -516,34 +431,287 @@ body::before {
 }
 
 
-.movie-info h1 span {
-    font-weight: normal;
-    color: #aaa;
-}
 
-
-/* Squelette de chargement */
-.skeleton-loading {
-    display: flex;
-    gap: 20px;
-}
-
-.skeleton-poster {
-    width: 300px;
-    height: 450px;
-    background: #2a2a2a;
-    border-radius: 10px;
-}
-
-.skeleton-title {
-    width: 200px;
+#menu {
+    position: fixed;
+    top: 15px;
+    right: 15px;
     height: 30px;
-    background: #2a2a2a;
-    margin-bottom: 20px;
+    display: flex;
+    width: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 15px;
+    background-color: rgb(50, 50, 50);
+    transition: all 0.3s ease-in-out;
+    border: none;
+    color: white;
+    font-family: "Poppins";
+    cursor: pointer;
+    z-index: 100;
 }
 
-.skeleton-text {
+#menu:hover {
+    background-color: rgb(150, 150, 150);
+    scale: 1.05;
+}
+
+#login-tmdb,
+#profile-btn,
+#news-btn,
+#back-btn {
+    cursor: pointer;
+    position: fixed;
+    border-radius: 15px;
+    top: 80px;
+    right: -100px;
+    height: 50px;
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 15px;
+    background-color: rgb(50, 50, 50);
+    transition: all 0.3s ease-in-out;
+    border: none;
+    color: white;
+    font-family: "Poppins";
+    opacity: 0;
+    z-index: -1;
+}
+
+#login-tmdb.shown,
+#profile-btn.shown,
+#news-btn.shown,
+#back-btn.shown {
+    opacity: 1;
+    z-index: 100;
+    right: 15px;
+}
+
+#login-tmdb {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#profile-btn {
+    right: -150px;
+    top: 130px;
+    border-radius: 0;
+}
+
+#news-btn {
+    border-radius: 0;
+    right: -200px;
+    top: 180px;
+}
+
+#back-btn {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    right: -250px;
+    top: 230px;
+}
+
+#profile-btn:hover,
+#news-btn:hover,
+#back-btn:hover {
+    background-color: rgb(150, 150, 150);
+    transform: translateX(-5px);
+    font-size: 17.5px;
+}
+
+#login-tmdb:hover {
+    background-color: rgb(150, 150, 150);
+    transform: translateX(-5px);
+    font-size: 16.5px;
+}
+
+.profile-menu {
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    background: rgba(75, 75, 75, 0.9);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 15px;
+    width: 220px;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    transition: all 0.3s;
+}
+
+.profile-menu.hidden {
+    right: -300px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.profile-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    transition: all 0.15s ease-in-out;
+}
+
+.profile-header img:hover {
+    scale: 1.2;
+}
+
+.profile-header span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.profile-actions .profile-action {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s;
+}
+
+.profile-actions .profile-action:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#favorites-section {
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+#favorites-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.favorites-grid .movie-card {
+    background-color: #1c1c1c;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.favorites-grid .movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.favorites-grid img {
     width: 100%;
-    height: 100px;
-    background: #2a2a2a;
+    height: 260px;
+    object-fit: cover;
+}
+
+.favorites-grid .movie-title {
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+#back-home {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 8px;
+    position: fixed;
+    bottom: 50px;
+    cursor: pointer;
+    left: 50%;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    font-family: "Poppins";
+    font-size: 20px;
+    justify-content: center;
+}
+
+#back-home:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#load-more {
+    position: sticky;
+    border: none;
+    width: 150px;
+    height: 50px;
+    bottom: 20px;
+    left: calc(50% - 50px);
+    padding: 15px;
+    background: #000;
+    border-radius: 15px;
+    font-family: "Poppins";
+    font-size: 15px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+#load-more:hover {
+    transform: scale(1.1) translateY(-2px);
+    background: #333;
+}
+
+#News {
+    position: fixed;
+    bottom: 20px;
+    right: -900px;
+    background: rgba(75, 75, 75, 0.9);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 15px;
+    width: 800px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    transition: all 0.3s;
+    text-align: left;
+}
+
+#News.shown {
+    pointer-events: auto;
+    right: 15px;
+    opacity: 1;
+}
+
+#News h1,
+h2,
+i {
+    text-align: center;
+    margin-bottom: -20px;
 }

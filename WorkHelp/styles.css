@@ -19,7 +19,7 @@ body {
     height: 100%;
     margin: 0;
     width: 100%;
-    font-family: "Poppins", system-ui, Arial;
+    font-family: "Poppins", system-ui;
     color: var(--muted);
     background: linear-gradient(180deg, #071024 0%, #081428 100%);
 }
@@ -27,10 +27,15 @@ body {
 /* header */
 .fs-header {
     display: flex;
+    z-index: 300;
     justify-content: space-between;
     align-items: center;
     padding: 14px 18px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.03)
+}
+
+.fs-header button{
+    z-index: 350;
 }
 
 .fs-title h2 {
@@ -50,6 +55,7 @@ body {
 .fs-tabs {
     display: flex;
     gap: 6px;
+    z-index: 100;
     padding: 10px 12px;
     overflow: auto;
     border-bottom: 1px solid rgba(255, 255, 255, 0.02)
@@ -58,6 +64,7 @@ body {
 .fs-tabs .tab {
     background: transparent;
     border: 0;
+    z-index: 110;
     color: var(--muted);
     padding: 8px 12px;
     font-family: "Poppins";
@@ -114,13 +121,17 @@ body {
 /* pomodoro layout */
 .pomodoro-display {
     display: flex;
+    position: fixed;
+    bottom: 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 8px;
     padding: 18px;
-    height: 80vh;
-    width: 80vh;
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
     background: var(--glass);
     border-radius: 10px
 }
@@ -151,10 +162,19 @@ section {
     padding: 8px 12px;
     border-radius: 8px;
     border: 0;
-    background: var(--accent);
+    background: rgb(75, 75, 75, 0.8);
     color: white;
-    cursor: pointer
+    cursor: pointer;
+    width: 50px;
+    transition: all 0.3s ease-in-out;
+    height: 50px;
 }
+
+.pom-controls button:hover {
+    background: rgb(100, 100, 100);
+    width: 150px;
+}
+
 
 .pom-controls button[disabled] {
     opacity: .5;
@@ -163,12 +183,31 @@ section {
 
 .pom-settings {
     display: grid;
+    position: fixed;
+    transition: all 0.3s ease-in-out;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    width: calc(100% - 80vh);
-    padding: 8px;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 8px
+    width: 90vh;
+    top: 20%;
+    left: 15px;
+    height: 200px;
+    padding: 15px;
+    background: rgba(25, 25, 25, 1);
+    border-radius: 25px;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.pom-settings.shown {
+    opacity: 1;
+    width: 90vh;
+    top: 20%;
+    left: 15px;
+    height: 200px;
+    padding: 15px;
+    background: rgba(25, 25, 25, 1);
+    border-radius: 25px;
+    transform: translateY(-30px);
 }
 
 .pom-settings label {
@@ -261,6 +300,7 @@ section {
     width: 200px;
     height: 120px;
     background: linear-gradient(180deg, #ffffff06, #00000006);
+    -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
     border-radius: 8px;
     padding: 12px;
@@ -269,8 +309,9 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: transform .2s, box-shadow .2s;
-    user-select: none
+    transition: all 0.2s ease-in-out;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .flash-card:hover {
@@ -445,6 +486,7 @@ section {
     background-color: rgb(75, 75, 75, 0.1);
     padding: 10px;
     border-radius: 20px;
+    z-index: 351;
     align-items: center;
     transition: all 0.3s;
 }

@@ -31,6 +31,9 @@
             <small>Mode concentration : <span id="focusIndicator">OFF</span></small>
 
         </div>
+        
+        <button class="theme-toggle-btn" onclick="toggleTheme()">Changer de thème</button>
+
         <a href="../index.html" class="backbtn"><span class="material-symbols-outlined"> arrow_back_ios
             </span>Retour vers SmartHub</a>
     </header>
@@ -52,10 +55,18 @@
                 <div class="timer" id="timerDisplay">25:00</div>
                 <div class="session-type" id="sessionType">Travail</div>
                 <div class="pom-controls">
-                    <button id="startPom">Démarrer</button>
-                    <button id="pausePom">Pause</button>
-                    <button id="resetPom">Reset</button>
-                    <button id="settingsPom" title="Paramètres">⚙️</button>
+                    <button id="startPom"><span class="material-symbols-outlined">
+                            play_arrow
+                        </span></button>
+                    <button id="pausePom"><span class="material-symbols-outlined">
+                            pause
+                        </span></button>
+                    <button id="resetPom"><span class="material-symbols-outlined">
+                            refresh
+                        </span></button>
+                    <button id="settingsPom" title="Paramètres"><span class="material-symbols-outlined">
+                            settings
+                        </span></button>
                 </div>
             </div>
 
@@ -104,8 +115,8 @@
 
         <!-- Calculator -->
         <section id="calc" class="panel" role="tabpanel" hidden>
+            <input id="calcDisplay" readonly />
             <div class="calc">
-                <input id="calcDisplay" readonly />
                 <div class="calc-grid">
                     <button data-val="7">7</button><button data-val="8">8</button><button data-val="9">9</button><button
                         data-val="/">÷</button>
@@ -118,6 +129,7 @@
                     <button id="calcEquals" class="equals">=</button>
                 </div>
             </div>
+            
         </section>
 
         <!-- To-do -->
@@ -141,6 +153,7 @@
 
 
     <script src="script.js"></script>
+    <script src="../focusmode.js"></script>
 </body>
 
 </html>

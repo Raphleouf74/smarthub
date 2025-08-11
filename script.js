@@ -426,7 +426,7 @@ document.addEventListener("keydown", (e) => {
         if (isFocusMode) {
             showCriticalNotification("Mode Concentration <b>activé</b>", "Le mode concentration est activé, certaines fonctions sont indisponibles")
         } else {
-            showNotification("Mode Concentration <b>désactivé</b>", "Mode désactivé ou erreur")
+
         }
     }
 
@@ -436,3 +436,8 @@ document.addEventListener("keydown", (e) => {
     // Lancer au chargement
     document.addEventListener('DOMContentLoaded', checkFocusMode);
 })();
+
+const ToolsNo = document.getElementById('ToolsNo');
+const tools = document.querySelectorAll('#ToolsContent a');
+
+ToolsNo.innerHTML = `Il y a ${tools.length} outils disponibles`;

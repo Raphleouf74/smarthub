@@ -7,12 +7,17 @@
 
 /* Laptop styles */
 @media(min-width: 1024px) {
+
     /* ----------------------------- */
     /*         GLOBAL RESET         */
     /* ----------------------------- */
     body {
         background: linear-gradient(to bottom, #0033FF 0%, #0033FF 101vh, #a6b8ff 120vh);
         overflow-x: hidden;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
         font-size: auto;
         font-family: "Poppins";
     }
@@ -31,6 +36,18 @@
         overflow-y: scroll;
     }
 
+    body.light-theme {
+        background: linear-gradient(to bottom, #0033FF 0%, #0033FF 101vh, #a6b8ff 120vh);
+        color: #0c0022;
+        transition: all 0.3s ease-in-out;
+    }
+
+    body.dark-theme {
+        background: linear-gradient(to bottom, #0033FF 0%, #0033FF 101vh, #3a3c42 120vh);
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+
+    }
 
 
 
@@ -84,8 +101,8 @@
 
     header.scrolled {
         pointer-events: auto;
-        backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         background: rgb(100, 100, 100, 0.2);
@@ -118,9 +135,9 @@
         border-radius: 0;
         padding: 20px;
         box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+        -webkit-backdrop-filter: blur(40px);
         backdrop-filter: blur(40px);
         background: rgb(100, 100, 100, 0.5);
-        -webkit-backdrop-filter: blur(40px);
         border: 1px solid rgba(100, 100, 100, 0.25);
         top: 0;
         left: 0;
@@ -151,8 +168,9 @@
 
     header.scrolled {
         background: rgb(100, 100, 100, 0.2);
-        backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
+        backdrop-filter: blur(25px);
+
     }
 
     header a {
@@ -233,9 +251,8 @@
         align-items: center;
         cursor: pointer;
         z-index: 2;
-        backdrop-filter: blur(10px);
-        /* glass effect */
         -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
     }
 
     header:hover button {
@@ -808,10 +825,8 @@
         border: 1px solid white;
     }
 
-    .NewBox:hover {
-        background-color: white;
-        border: 2px solid rgb(50, 50, 50);
-        color: #092241;
+    .NewBox:hover p, .NewBox:hover a {
+        transform: translateX(5px);
     }
 
     .NewBox h3 {
@@ -834,7 +849,7 @@
         height: auto;
         overflow-y: auto;
         overflow-x: hidden;
-        background-color: white;
+        background-color: transparent;
         border-radius: 10px;
     }
 
@@ -1031,7 +1046,9 @@
     .Productivity,
     .Organisation {
         background: rgba(255, 255, 255, 0.15);
-
+        justify-content: center;
+        align-self: center;
+        align-items: center;
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.25);
@@ -1091,8 +1108,8 @@
 
     header {
         pointer-events: auto;
-        backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         background: rgb(100, 100, 100, 0.2);
@@ -1128,8 +1145,8 @@
 
     header.scrolled {
         pointer-events: auto;
-        backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         background: rgb(100, 100, 100, 0.2);
@@ -1161,8 +1178,8 @@
 
     header.endscroll {
         pointer-events: auto;
-        backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         background: rgb(100, 100, 100, 0.2);
@@ -1195,9 +1212,9 @@
         height: 900px;
         padding: 20px;
         box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+        -webkit-backdrop-filter: blur(40px);
         backdrop-filter: blur(40px);
         background: rgb(100, 100, 100, 0.5);
-        -webkit-backdrop-filter: blur(40px);
         border: 1px solid rgba(100, 100, 100, 0.25);
         top: 15px;
         border-radius: 50px;
@@ -1214,8 +1231,9 @@
 
     header.scrolled {
         background: rgb(100, 100, 100, 0.2);
-        backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
+        backdrop-filter: blur(25px);
+
     }
 
     header a {
@@ -1280,10 +1298,12 @@
         transition: all 0.3s;
         font-size: 20px;
         text-align: center;
-        color: #092241;
+        color: #0c0022;
         display: flex;
         align-items: center;
     }
+
+
 
     #ToolsContent div {
         width: 95%;
@@ -1315,9 +1335,9 @@
         align-items: center;
         cursor: pointer;
         z-index: 2;
-        backdrop-filter: blur(10px);
-        /* glass effect */
         -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+
     }
 
     header:hover button {
@@ -1436,8 +1456,9 @@
                 #44c8fc33 75%,
                 #00418b3b 75%,
                 rgba(0, 0, 255, 0.25) 10%);
-        backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         background-size: 1750px 1750px;
@@ -1471,8 +1492,8 @@
                 #00418b34 75%,
                 rgba(172, 255, 47, 0.25) 10%);
         background-size: 1750px 1750px;
-        backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         background-position: -800px 0px;
@@ -2528,4 +2549,28 @@
     color: #092241;
     background-color: red;
     outline: none;
+}
+
+.light-theme #ToolsDiv,
+.light-theme #ToolsContent,
+.light-theme #ToolsContent a,
+.light-theme #News,
+.light-theme #AboutUs,
+.light-theme #PlatformStatus,
+p,
+a {
+    color: #0c0022;
+    transition: all 0.3s ease-in-out;
+}
+
+.dark-theme #ToolsDiv,
+.light-theme #ToolsContent,
+.light-theme #ToolsContent a,
+.dark-theme #News,
+.dark-theme #AboutUs,
+.dark-theme #PlatformStatus,
+p,
+a {
+    color: #fff;
+    transition: all 0.3s ease-in-out;
 }

@@ -5,3 +5,18 @@
     transition: all 0.3s ease-in-out;
     cursor: not-allowed;
 }
+/* Thème clair */
+.light-theme {
+    background-color: #f5f5f5;
+    background: #f5f5f5;
+    color: #0c0022;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Thème sombre */
+.dark-theme {
+    background-color: #0c0022;
+    background: #0c0022;
+    color: #f5f5f5;
+    transition: all 0.3s ease-in-out;
+}
