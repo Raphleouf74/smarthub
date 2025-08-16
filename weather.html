@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>WeatherPanel</title>
+    <link rel="stylesheet" href="weather.css" />
+  </head>
+  <header class="wp-header">
+    <div class="left">
+      <button id="locateBtn" title="Utiliser ma position">📍</button>
+      <input id="citySearch" placeholder="Rechercher une ville..." />
+      <button id="searchBtn">🔎</button>
+    </div>
+    <div class="right">
+      <div id="localTime"></div>
+    </div>
+  </header>
+  <body>
+    <main id="weatherApp">
+      <section id="panel" class="clear">
+        <div id="visual" class="visual sunny">
+          <!-- Animations (SVG / DOM) injectées via CSS classes -->
+        </div>
+
+        <div id="info">
+          <div class="main">
+            <div class="temp" id="temp">--°C</div>
+            <div class="desc" id="desc">Chargement...</div>
+            <div class="place" id="place">—</div>
+          </div>
+
+          <div class="extras">
+            <div>Humidité: <span id="humidity">--</span>%</div>
+            <div>Vent: <span id="wind">--</span> km/h</div>
+            <div>Précip.: <span id="precip">--</span> mm</div>
+          </div>
+
+          <div id="forecast" class="forecast">
+            <!-- mini forecast cards -->
+          </div>
+        </div>
+      </section>
+
+      <section id="news">
+        <h3>Actualités / Suggestions</h3>
+        <ul id="newsList">
+          <li>Chargement...</li>
+        </ul>
+      </section>
+
+      <footer class="wp-footer">
+        <small
+          >WeatherPanel — données fournies par OpenWeatherMap & NewsAPI (clé
+          requise)</small
+        >
+      </footer>
+    </main>
+  </body>
+</html>
+<script src="weather.js"></script>

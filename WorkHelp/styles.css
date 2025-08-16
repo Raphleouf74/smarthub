@@ -20,8 +20,6 @@ body {
     margin: 0;
     width: 100%;
     font-family: "Poppins", system-ui;
-    color: var(--muted);
-    background: linear-gradient(180deg, #071024 0%, #081428 100%);
 }
 
 /* header */
@@ -34,20 +32,18 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.03)
 }
 
-.fs-header button{
+.fs-header button {
     z-index: 350;
 }
 
 .fs-title h2 {
     margin: 0;
-    color: white;
     font-size: 18px
 }
 
 .fs-title small {
     display: block;
     font-size: 12px;
-    color: var(--muted)
 }
 
 
@@ -61,18 +57,23 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.02)
 }
 
+.dark-theme .fs-tabs .tab {
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02)
+}
+
+
 .fs-tabs .tab {
     background: transparent;
     border: 0;
     z-index: 110;
-    color: var(--muted);
     padding: 8px 12px;
     font-family: "Poppins";
     border-radius: 15px;
     cursor: pointer;
     font-weight: 600;
     font-size: 15px;
-    width: calc(100% /6);
+    width: calc(100% /5);
     transition: all 0.3s ease-in-out;
     opacity: 1;
 }
@@ -85,13 +86,11 @@ body {
 
 .fs-tabs .tab.active:hover {
     background: rgba(255, 255, 255, 0.4);
-    color: white;
     box-shadow: inset 0 -2px 0 rgba(59, 130, 246, 0.5)
 }
 
 .fs-tabs .tab:hover {
     background: rgba(255, 255, 255, 0);
-    color: white;
     box-shadow: inset 0 -2px 0 rgba(59, 130, 246, 0.2)
 }
 
@@ -122,7 +121,8 @@ body {
 .pomodoro-display {
     display: flex;
     position: fixed;
-    bottom: 0;
+    top: 50px;
+    left: 10px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -132,9 +132,10 @@ body {
     height: 100%;
     width: 100%;
     z-index: 0;
-    background: var(--glass);
+    background: transparent;
     border-radius: 10px
 }
+
 
 section {
     width: 100%;
@@ -143,36 +144,150 @@ section {
 .timer {
     font-size: 75px;
     font-family: "Poppins";
-    color: white;
     font-weight: 800;
     letter-spacing: 1px
 }
 
 .session-type {
     font-size: 14px;
-    color: var(--muted)
 }
 
 .pom-controls {
     display: flex;
-    gap: 8px
+    gap: 8px;
 }
 
 .pom-controls button {
     padding: 8px 12px;
     border-radius: 8px;
-    border: 0;
-    background: rgb(75, 75, 75, 0.8);
-    color: white;
+    border: none;
+    background: rgba(175, 175, 175, 0.6);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
     cursor: pointer;
     width: 50px;
-    transition: all 0.3s ease-in-out;
     height: 50px;
+    transition: all 0.3s ease-in-out;
 }
 
 .pom-controls button:hover {
     background: rgb(100, 100, 100);
-    width: 150px;
+    width: 75px;
+}
+
+/* Icônes */
+.pom-controls button span {
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation initiale (une seule fois au chargement) */
+.pom-controls button span#Pause.init-anim,
+.pom-controls button span#Play.init-anim {
+    animation: grow1 0.5s forwards;
+}
+
+.pom-controls button span#rotate1.init-anim,
+.pom-controls button span#rotate2.init-anim {
+    animation: rotate1 0.5s forwards;
+}
+
+.pom-controls button span#shrink1.init-anim {
+    animation: shrink1 0.5s forwards;
+}
+
+
+
+
+/* Animation au survol */
+.pom-controls button.hover-anim span#Pause,
+.pom-controls button.hover-anim span#Play {
+    animation: grow 0.5s forwards;
+}
+
+.pom-controls button.hover-anim span#rotate1,
+.pom-controls button.hover-anim span#rotate2 {
+    animation: rotate 0.5s forwards;
+}
+
+.pom-controls button.hover-anim span#shrink1 {
+    animation: shrink 0.5s forwards;
+}
+
+/* Animations */
+@keyframes rotate {
+    0% {
+        rotate: 0;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}
+
+@keyframes rotate1 {
+
+    0%,
+    100% {
+        rotate: 0;
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.3;
+    }
+
+    99% {
+        rotate: 360deg;
+    }
+}
+
+@keyframes grow1 {
+
+    0%,
+    100% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.3;
+    }
+}
+
+@keyframes grow {
+
+    0%,
+    100% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.3;
+    }
+}
+
+@keyframes shrink1 {
+
+    0%,
+    100% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 0.8;
+    }
+}
+
+@keyframes shrink {
+
+    0%,
+    100% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 0.8;
+    }
 }
 
 
@@ -212,7 +327,6 @@ section {
 
 .pom-settings label {
     font-size: 13px;
-    color: var(--muted);
     display: flex;
     align-items: center;
     gap: 8px
@@ -224,44 +338,125 @@ section {
     border-radius: 6px;
     border: none;
     background: rgba(0, 0, 0, 0.15);
-    color: white
 }
 
 /* notes */
+#notes.active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 15%;
+    width: 70%;
+    font-family: "Poppins";
+}
 .notes-top {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 8px;
-    align-items: center
+    align-items: center;
 }
 
-.notes-top input {
+#addNote {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: "Poppins";
+    transition: all 0.3s;
+}
+
+#addNote:hover {
+    background: #414141;
+    scale: 1.05;
+}
+#addNote:active {
+    background: #1d1d1d;
+    scale: 0.95;
+}
+
+.light-theme .notes-top input {
     flex: 1;
     padding: 8px;
+    height: 50px;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(0,0, 0);
+    color: black;
     background: transparent;
-    color: white
+    font-family: "Poppins";
+}
+.dark-theme .notes-top input {
+    flex: 1;
+    padding: 8px;
+    height: 50px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255);
+    color: white;
+    background: transparent;
+    font-family: "Poppins";
+}
+
+.notes-top button {transition: all 0.3s;}
+
+.dark-theme .notes-top button {
+    height: 50px;
+    width: 150px;
+    background-color: rgb(39, 39, 39);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    transition: all 0.3s;
+}
+
+.light-theme .notes-top button {
+    height: 50px;
+    width: 150px;
+    background-color: rgb(216, 216, 216);
+    border: none;
+    border-radius: 15px;
+    color: black;
 }
 
 .notes-list {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    max-height: 200px;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 400px;
+    width: 100%;
+    font-family: "Poppins";
+}
+.note-item button{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    border: 1px solid rgb(50, 50, 50, 0.8);
+    transition: all 0.3s;
+    cursor: pointer;
+    color: rgb(75, 75, 75);
+    background-color: rgb(50, 50, 50, 0.8);
 }
 
+.note-item button:hover{
+    border: 2px solid white;
+    color: white;
+    background-color: transparent;
+    scale: 1.05;
+}
 .note-item {
     padding: 8px;
     border-radius: 8px;
+    height: 75px;
+    min-height: 50px;
     background: rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
 }
 
 .note-item small {
-    color: var(--muted);
     font-size: 12px;
 }
 
@@ -271,9 +466,48 @@ section {
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.04);
     background: transparent;
-    color: white;
     resize: vertical;
+    font-family: "Poppins";
 }
+
+.light-theme #noteEditor {
+    min-height: 120px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgb(0, 0, 0);
+    color: black;
+    background: transparent;
+    resize: vertical;
+    font-family: "Poppins";
+}
+.dark-theme #noteEditor {
+    min-height: 120px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255);
+    color: white;
+    background: transparent;
+    resize: vertical;
+    font-family: "Poppins";
+}
+
+
+.note-item.deleting {
+    background-color: rgb(230, 40, 40);
+    transform: translateX(100px);
+    opacity: 0;
+}
+
+.note-item.hiding {
+    background-color: rgb(44, 146, 230);
+    transform: translateX(-100px);
+    opacity: 0;
+}
+
+
+
+
+
 
 /* flashcards */
 .flash-controls {
@@ -287,7 +521,6 @@ section {
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.06);
     background: transparent;
-    color: white
 }
 
 .card-area {
@@ -369,7 +602,6 @@ section {
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.04);
     background: transparent;
-    color: white;
     font-size: 20px;
     text-align: right
 }
@@ -385,14 +617,12 @@ section {
     border-radius: 8px;
     border: 0;
     background: rgba(255, 255, 255, 0.03);
-    color: var(--muted);
     cursor: pointer
 }
 
 .calc-grid .equals {
     grid-column: 1 / -1;
     background: var(--accent);
-    color: white
 }
 
 /* todo */
@@ -408,7 +638,6 @@ section {
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     background: transparent;
-    color: white
 }
 
 .todo-list {
@@ -476,200 +705,231 @@ section {
     width: 100%;
     height: 100%;
 }
-.backbtn {
-    color: white;
+
+.backbtn, .theme-toggle-btn {
     text-decoration: none;
     display: flex;
     font-size: 15px;
     width: 225px;
+    font-family: "Poppins";
     justify-content: space-around;
     background-color: rgb(75, 75, 75, 0.1);
     padding: 10px;
     border-radius: 20px;
     z-index: 351;
     align-items: center;
+    border: 1px solid white;
     transition: all 0.3s;
+    color: white;
+}
+.theme-toggle-btn {
+    width: 45px;
+    color: transparent;
+    font-size: 1px;
+}
+.theme-toggle-btn span {
+    color: white;
+}
+
+.light-theme .backbtn, .light-theme .theme-toggle-btn {
+    color: black;
+    border: 1px solid black;
 }
 
 .backbtn span {
-    transition: all 0.3s ease-in-out
+    transition: all 0.3s ease-in-out;
 }
 
-.backbtn:hover {
+.light-theme .backbtn:hover, .light-theme .theme-toggle-btn:hover {
     background-color: rgb(150, 150, 150, 0.4);
+    width: 225px;
+    font-size: 15px;
+    color: black;
+}
+
+.dark-theme .backbtn:hover, .dark-theme .theme-toggle-btn:hover {
+    background-color: rgb(150, 150, 150, 0.4);
+    width: 225px;
+    font-size: 15px;
+    color: white;
 }
 
 .backbtn:hover span {
     transform: translateX(-5px);
 }
 
-    /*         NOTIFICATIONS        */
-    /* ----------------------------- */
-    .notification {
-        top: 10px;
-        right: 17.5%;
-        /* Commence en dehors de l'écran */
-        position: fixed;
-        transition: all 0.3s ease;
-        z-index: 501;
-        will-change: transform, opacity;
-    }
+/*         NOTIFICATIONS        */
+/* ----------------------------- */
+.notification {
+    top: 10px;
+    right: 17.5%;
+    /* Commence en dehors de l'écran */
+    position: fixed;
+    transition: all 0.3s ease;
+    z-index: 501;
+    will-change: transform, opacity;
+}
 
-    /* Conteneur pour toutes les notifications */
-    #notifications-container {
-        position: fixed;
-        top: 10px;
-        left: 17.5%;
-        right: 17.5%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        /* Espace entre les notifications */
-        z-index: 500;
-        height: 1px;
-    }
+/* Conteneur pour toutes les notifications */
+#notifications-container {
+    position: fixed;
+    top: 10px;
+    left: 17.5%;
+    right: 17.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Espace entre les notifications */
+    z-index: 500;
+    height: 1px;
+}
 
-    /* Affichage de la notification */
+/* Affichage de la notification */
 
-    .notification.show {
-        opacity: 1;
-        top: 10px;
-        transition: all 0.3s ease;
-        z-index: 100000;
-    }
+.notification.show {
+    opacity: 1;
+    top: 10px;
+    transition: all 0.3s ease;
+    z-index: 100000;
+}
 
-    /* Disparition de la notification */
-    .notification.hidden {
-        opacity: 0;
-        top: -100px;
-        z-index: 100;
-        transition: all 0.3s ease;
-    }
+/* Disparition de la notification */
+.notification.hidden {
+    opacity: 0;
+    top: -100px;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
 
-    .notification {
-        background: rgba(255, 255, 255, 0.15);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        display: flex;
-        flex-direction: column;
-        isolation: isolate;
-        position: fixed;
-        width: 65%;
-        height: auto;
-        cursor: default;
-        transform: translateY(0);
-        transition: all 0.3s ease;
-        border-radius: 1rem;
-        overflow: hidden;
-        padding: 10px 10px 10px 10px;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 16px;
-        --gradient: linear-gradient(to bottom, #32a6ff, #3d8cff, #61a0ff);
-        --gradientC: linear-gradient(to bottom, red, #ff3d3d, #ff6161);
-        --color: #32a6ff;
-        z-index: 2;
-        border: 2px rgb(240, 250, 200);
-    }
+.notification {
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    isolation: isolate;
+    position: fixed;
+    width: 65%;
+    height: auto;
+    cursor: default;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    border-radius: 1rem;
+    overflow: hidden;
+    padding: 10px 10px 10px 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    --gradient: linear-gradient(to bottom, #32a6ff, #3d8cff, #61a0ff);
+    --gradientC: linear-gradient(to bottom, red, #ff3d3d, #ff6161);
+    --color: #32a6ff;
+    z-index: 2;
+    border: 2px rgb(240, 250, 200);
+}
 
-    .notification:before {
-        position: absolute;
-        content: "";
-        inset: 0.0625rem;
-        border-radius: 0.9375rem;
-        background: rgba(255, 255, 255, 0.15);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        z-index: 2;
-    }
+.notification:before {
+    position: absolute;
+    content: "";
+    inset: 0.0625rem;
+    border-radius: 0.9375rem;
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
 
-    .notification:after {
-        position: absolute;
-        content: "";
-        width: 0.25rem;
-        inset: 0.65rem auto 0.65rem 0.5rem;
-        border-radius: 0.125rem;
-        background: var(--gradient);
-        transition: transform 300ms ease;
-        z-index: 4;
-    }
+.notification:after {
+    position: absolute;
+    content: "";
+    width: 0.25rem;
+    inset: 0.65rem auto 0.65rem 0.5rem;
+    border-radius: 0.125rem;
+    background: var(--gradient);
+    transition: transform 300ms ease;
+    z-index: 4;
+}
 
-    .critical::after {
-        background: var(--gradientC);
-        color: var(--gradientC);
-    }
-
-
-
-    .notification:hover:after {
-        transform: translateX(0.15rem);
-    }
-
-    .notititle {
-        color: var(--color);
-        padding: 0.65rem 0.25rem 0.4rem 1.25rem;
-        font-weight: 500;
-        font-size: 1.1rem;
-        transition: transform 300ms ease;
-        z-index: 5;
-    }
-
-    .critical .notititle {
-        color: red;
-    }
-
-    .critical {
-        color: var(--gradientC);
-    }
+.critical::after {
+    background: var(--gradientC);
+    color: var(--gradientC);
+}
 
 
-    .notification:hover .notititle {
-        transform: translateX(0.15rem);
-    }
 
-    .notibody {
-        color: #99999d;
-        padding: 0 1.25rem;
-        transition: all 300ms ease;
-        z-index: 5;
-    }
+.notification:hover:after {
+    transform: translateX(0.15rem);
+}
 
-    .notification:hover .notibody {
-        transform: translateX(0.25rem);
-        color: #092241;
-    }
+.notititle {
+    color: var(--color);
+    padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    transition: transform 300ms ease;
+    z-index: 5;
+}
 
-    .notiglow,
-    .notiborderglow {
-        position: absolute;
-        width: 20rem;
-        height: 20rem;
-        transform: translate(-50%, -50%);
-        background: radial-gradient(circle closest-side at center, white, transparent);
-        opacity: 0;
-        transition: opacity 300ms ease;
-    }
+.critical .notititle {
+    color: red;
+}
 
-    .notiglow {
-        z-index: 3;
-    }
+.critical {
+    color: var(--gradientC);
+}
 
-    .notiborderglow {
-        z-index: 1;
-    }
 
-    .notification:hover .notiglow {
-        opacity: 0.1;
-    }
+.notification:hover .notititle {
+    transform: translateX(0.15rem);
+}
 
-    .notification:hover .notiborderglow {
-        opacity: 0.1;
-    }
+.notibody {
+    color: #99999d;
+    padding: 0 1.25rem;
+    transition: all 300ms ease;
+    z-index: 5;
+}
 
-    .notification:hover {
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-    }
+.notification:hover .notibody {
+    transform: translateX(0.25rem);
+    color: #092241;
+}
+
+.notiglow,
+.notiborderglow {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle closest-side at center, white, transparent);
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.notiglow {
+    z-index: 3;
+}
+
+.notiborderglow {
+    z-index: 1;
+}
+
+.notification:hover .notiglow {
+    opacity: 0.1;
+}
+
+.notification:hover .notiborderglow {
+    opacity: 0.1;
+}
+
+.notification:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+}

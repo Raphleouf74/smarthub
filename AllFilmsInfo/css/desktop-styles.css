@@ -15,9 +15,7 @@
     --transition: all 0.3s ease-in-out;
 }
 
-body {
-    justify-content: center;
-}
+
 
 /* -------- HEADER -------- */
 /* -------- HEADER -------- */
@@ -457,8 +455,8 @@ body::before {
 
 #login-tmdb,
 #profile-btn,
-#news-btn,
-#back-btn {
+#back-btn,
+.theme-toggle-btn {
     cursor: pointer;
     position: fixed;
     border-radius: 15px;
@@ -483,8 +481,8 @@ body::before {
 
 #login-tmdb.shown,
 #profile-btn.shown,
-#news-btn.shown,
-#back-btn.shown {
+#back-btn.shown,
+.theme-toggle-btn.shown {
     opacity: 1;
     z-index: 100;
     right: 15px;
@@ -501,13 +499,15 @@ body::before {
     border-radius: 0;
 }
 
-#news-btn {
+
+
+#back-btn {
     border-radius: 0;
     right: -200px;
     top: 180px;
 }
 
-#back-btn {
+.theme-toggle-btn {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
     right: -250px;
@@ -515,8 +515,8 @@ body::before {
 }
 
 #profile-btn:hover,
-#news-btn:hover,
-#back-btn:hover {
+#back-btn:hover,
+.theme-toggle-btn:hover {
     background-color: rgb(150, 150, 150);
     transform: translateX(-5px);
     font-size: 17.5px;
@@ -678,37 +678,4 @@ body::before {
 #load-more:hover {
     transform: scale(1.1) translateY(-2px);
     background: #333;
-}
-
-#News {
-    position: fixed;
-    bottom: 20px;
-    right: -900px;
-    background: rgba(75, 75, 75, 0.9);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border-radius: 15px;
-    padding: 15px;
-    width: 800px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    z-index: 998;
-    transition: all 0.3s;
-    text-align: left;
-}
-
-#News.shown {
-    pointer-events: auto;
-    right: 15px;
-    opacity: 1;
-}
-
-#News h1,
-h2,
-i {
-    text-align: center;
-    margin-bottom: -20px;
 }

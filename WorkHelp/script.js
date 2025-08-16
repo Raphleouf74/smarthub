@@ -38,8 +38,8 @@ function showNotification(title, body) {
         }, 200);
     }, 5000);
 
-    if (notificationsContainer.children.length > 3) {
-        const lastNotification = notificationsContainer.children[3];
+    if (notificationsContainer.children.length > 5) {
+        const lastNotification = notificationsContainer.children[5];
         lastNotification.classList.remove("show");
         lastNotification.classList.add("hidden");
         setTimeout(() => {
@@ -87,8 +87,8 @@ function showCriticalNotification(title, body) {
         }, 200);
     }, 9999999999999); // Notification critique, ne disparaît pas automatiquement
 
-    if (notificationsContainer.children.length > 3) {
-        const lastNotification = notificationsContainer.children[3];
+    if (notificationsContainer.children.length > 5) {
+        const lastNotification = notificationsContainer.children[5];
         lastNotification.classList.remove("show");
         lastNotification.classList.add("hidden");
         setTimeout(() => {
@@ -142,6 +142,8 @@ const pauseBtn = $('#pausePom');
 const resetBtn = $('#resetPom');
 const settingsBtn = $('#settingsPom');
 const pomSettings = $('#pomSettings');
+const pomodorodisplay = $('.pomodoro-display')
+const fullscreenPom = $('#fullscreenPom');
 
 function formatTime(sec) { const m = Math.floor(sec / 60).toString().padStart(2, '0'); const s = (sec % 60).toString().padStart(2, '0'); return `${m}:${s}`; }
 
@@ -149,12 +151,12 @@ function updatePomUI() {
     timerDisplay.textContent = formatTime(pomState.remaining);
 
     sessionType.textContent = pomState.mode === 'work' ? 'Travail' : (pomState.mode === 'short' ? 'Pause courte' : 'Pause longue');
-    $('#sessionStatus').textContent = pomState.running ? 'En session' : 'Prêt';
+    $('#sessionStatus').textContent = pomState.running ? 'Travail en cours...' : 'Prêt à commencer ?';
     $('#focusIndicator').textContent = pomState.running ? 'ON' : 'OFF';
 
     if (pomState.running) {
         localStorage.setItem('focusMode', 'true');
-        
+
     } else {
         localStorage.setItem('focusMode', 'false');
     }
@@ -205,14 +207,17 @@ function startPom() {
     if (pomState.running) return;
     pomState.running = true;
     if (!pomInterval) pomInterval = setInterval(tick, 1000);
-    showNotification('Pomodoro activé', '');
+    showNotification('<span class="material-symbols-outlined">check</span> Pomodoro activé', '');
+    setTimeout(() => { showNotification('<span class="material-symbols-outlined">bedtime</span> Mode "Ne pas déranger" activé', "") }, 500);
     updatePomUI();
 }
 function pausePom() {
     pomState.running = false;
     clearInterval(pomInterval); pomInterval = null;
     updatePomUI();
-    showNotification('Pomodoro mit en pause', '')
+    showNotification('<span class="material-symbols-outlined">check</span>Pomodoro mit en pause', '')
+    setTimeout(() => { showNotification('<span class="material-symbols-outlined">bedtime_off</span> Mode "Ne pas déranger" désactivé', "") }, 500);
+
 }
 function resetPom() {
     pomState.running = false;
@@ -221,7 +226,7 @@ function resetPom() {
     pomState.cyclesDone = 0;
     clearInterval(pomInterval); pomInterval = null;
     updatePomUI();
-    showNotification('Pomodoro réinitialisé', '')
+    showNotification('<span class="material-symbols-outlined">check</span>Pomodoro réinitialisé', '')
 }
 
 startBtn.addEventListener('click', () => { startPom(); });
@@ -230,6 +235,7 @@ resetBtn.addEventListener('click', () => { resetPom(); });
 settingsBtn.addEventListener('click', () => {
     pomSettings.classList.toggle('shown');
 });
+
 
 $('#savePomSettings').addEventListener('click', () => {
     pomState.work = Number($('#workDuration').value) || 25;
@@ -287,34 +293,60 @@ const notesList = $('#notesList'), noteEditor = $('#noteEditor'), noteTitle = $(
 function renderNotes() {
     notesList.innerHTML = '';
     notes.slice().reverse().forEach((n, i) => {
+        if (!n) return; // <-- Ajouté pour ignorer les notes nulles
         const idx = notes.length - 1 - i;
         const div = document.createElement('div'); div.className = 'note-item';
-        div.innerHTML = `<div>
-      <strong>${n.title || 'Sans titre'}</strong><br><small>${new Date(n.t).toLocaleString()}</small>
-    </div>
-    <div>
-      <button data-index="${idx}" class="editNote">✏️</button>
-      <button data-index="${idx}" class="delNote">🗑️</button>
-    </div>`;
+        div.innerHTML = `
+            <div>
+                <strong>${n.title || 'Sans titre'}</strong><br><small>${new Date(n.t).toLocaleString()}</small>
+            </div>
+            <div>
+                <button data-index="${idx}" class="editNote" title="Éditer la note"><span class="material-symbols-outlined">edit</span></button>
+                <button data-index="${idx}" class="delNote" title="Supprimer la note"><span class="material-symbols-outlined">delete</span></button>
+                <button data-index="${idx}" class="hideNote" title="Cacher la note"><span class="material-symbols-outlined">visibility_lock</span></button>
+            </div>`;
         notesList.appendChild(div);
     });
 }
 notesList.addEventListener('click', (e) => {
     const ed = e.target.closest('.editNote');
     const del = e.target.closest('.delNote');
+    const hide = e.target.closest('.hideNote');
+
     if (ed) {
         const idx = Number(ed.dataset.index);
         noteEditor.value = notes[idx].content;
         noteTitle.value = notes[idx].title;
-        // move cursor focus
         noteEditor.focus();
-        // store editing index
         noteEditor.dataset.editing = idx;
+
     } else if (del) {
         const idx = Number(del.dataset.index);
-        notes.splice(idx, 1); save('fsNotes', notes); renderNotes();
+        const noteEl = del.closest('.note-item'); // élément DOM de la note
+
+        noteEl.classList.add('deleting'); // déclenche l'animation
+
+        // attendre la fin de l'animation avant de supprimer
+        setTimeout(() => {
+            notes.splice(idx, 1);
+            save('fsNotes', notes);
+            renderNotes();
+        }, 400); // doit correspondre à la durée du CSS (0.4s)
+    } else if (hide) {
+        const idx = Number(hide.dataset.index);
+        const noteHi = hide.closest('.note-item'); // élément DOM de la note
+
+        noteHi.classList.add('hiding'); // déclenche l'animation
+
+        // attendre la fin de l'animation avant de supprimer
+        setTimeout(() => {
+            notes.splice(idx, 1);
+            save('fsNotes', notes);
+            renderNotes();
+        }, 400); // doit correspondre à la durée du CSS (0.4s)
     }
 });
+
 $('#addNote').addEventListener('click', () => {
     const title = noteTitle.value.trim();
     const content = noteEditor.value.trim();
@@ -329,12 +361,7 @@ $('#addNote').addEventListener('click', () => {
     save('fsNotes', notes);
     noteTitle.value = ''; noteEditor.value = ''; renderNotes();
 });
-$('#exportNotes').addEventListener('click', () => {
-    const text = notes.map(n => `${n.title || 'Sans titre'}\n${n.content}\n---\n`).join('\n');
-    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href = url; a.download = 'notes.txt'; document.body.appendChild(a); a.click(); a.remove();
-});
+
 renderNotes();
 
 /* ---------- Flashcards ---------- */
@@ -458,6 +485,27 @@ todoList.addEventListener('click', (e) => {
 });
 $('#clearTodos').addEventListener('click', () => { todos = todos.filter(t => !t.done); save('fsTodos', todos); renderTodos(); });
 renderTodos();
+document.querySelectorAll(".pom-controls button").forEach(btn => {
+    const spans = btn.querySelectorAll("span");
+
+    // Animation initiale au chargement
+    spans.forEach(span => {
+        span.classList.add("init-anim");
+
+        span.addEventListener("animationend", () => {
+            span.classList.remove("init-anim");
+        }, { once: true });
+    });
+
+    // Animation uniquement au survol
+    btn.addEventListener("mouseenter", () => {
+        btn.classList.add("hover-anim");
+    });
+    btn.addEventListener("mouseleave", () => {
+        btn.classList.remove("hover-anim");
+    });
+});
+
 
 /* ---------- persistent data migrations ---------- */
 /* Ensure recs have urls (for persistent display) */

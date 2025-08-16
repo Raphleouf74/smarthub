@@ -241,20 +241,18 @@ categoryButtons.forEach(btn => {
 const menubtn = document.getElementById('menu');
 const loginbtn = document.getElementById('login-tmdb');
 const profilebtn = document.getElementById('profile-btn');
-const newsbtn = document.getElementById('news-btn');
 const backbtn = document.getElementById('back-btn');
-const NewsBox = document.getElementById('News');
+const themebtn = document.querySelector('.theme-toggle-btn');
 
 loginbtn.classList.remove('shown');
 profilebtn.classList.remove('shown');
-NewsBox.classList.remove('shown');
 backbtn.classList.remove('shown');
-newsbtn.classList.remove('shown');
+themebtn.classList.remove('shown');
 menubtn.addEventListener('click', () => {
   loginbtn.classList.toggle('shown');
   profilebtn.classList.toggle('shown');
-  newsbtn.classList.toggle('shown');
   backbtn.classList.toggle('shown');
+  themebtn.classList.toggle('shown');
 });
 
 menubtn.addEventListener('mouseenter', () => {
@@ -272,13 +270,7 @@ profileBtn.addEventListener("click", () => {
 profileMenu.addEventListener("click", () => {
   profileMenu.classList.toggle("hidden");
 });
-newsbtn.addEventListener('click', () => {
-  NewsBox.classList.toggle('shown');
-})
 
-NewsBox.addEventListener('click', () => {
-  NewsBox.classList.remove('shown');
-})
 
 let sessionId = localStorage.getItem('tmdb_session_id');
 let accountId = localStorage.getItem("tmdb_account_id");

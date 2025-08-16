@@ -7,7 +7,7 @@ SmartHub est une plateforme web tout-en-un regroupant plusieurs outils pratiques
 Les outils disponibles sur SmartHub
 
 Il y a plusieurs outils disponibles sur SmartHub, il y en a 4: 
-    - QuickNotes: Prenez des notes facilement, rapidement et intuitivement avec des outils crées pour cela$
+    - QuickNotes: Prenez des notes facilement, rapidement et intuitivement avec des outils crées pour cela
     - SmartCalendar: Ajoutez des évènements, gérez les et ajouter des rappels. Tout est sécurisé, tout est sauvegardé dans votre machine en utilisant la fonction `localStorage`
     - AllFilmsInfo: Trouvez facilement toutes les informations concernant vos films préférés. Connectez vous avec TheMovieDatabase afin d'avoir un compte et de pouvoir ajouter des films en favorie ou d'en ajouter des avis.
     - WorkHelp: Travaillez encore plus efficacement avec cet outil, vous pouvez créer un timer Pomodoro et toutes les distractions du sites sont inaccessibles. Plusieurs petits outils sont intégrés pour vous aider dans votre travail comme un bloc-notes, vous pouvez créer des fiches de révisions pour mieux apprendre, une calculatrice intégrée, vous aurez bientôt la possibilité de vous enregistrer et de vous réecouter pour une présentation par exemple, enfin vous pouvez aussi créer une liste de tâches pour vous retrouvez dans ce que vous devez faire !
@@ -71,5 +71,5 @@ Dernière mise à jour : juillet 2025
 
 
 SmartHub © 2024-2025 
-QuickNotes, SmartCalendar, AllFilmsInfo, WorkHelp, SmartAST, SmartUI, SmartHub sont des outils et/ou services et/ou produits appartenant à SmartHub.
+QuickNotes, SmartCalendar, AllFilmsInfo, WorkHelp, SmartPomodoro, SmartAssist, SmartUI, SmartJobs, SmartPeople et SmartHub sont des noms appartenant à SmartHub.
 Toute copie, partielle ou totale sans le consentement de son auteur est interdit et illégal.
