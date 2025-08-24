@@ -11,7 +11,6 @@ body {
 
 
 /* Laptop styles */
-@media(min-width: 1024px) {
 
     /* ----------------------------- */
     /*         GLOBAL RESET         */
@@ -147,7 +146,7 @@ body {
     header button:hover {
         transform: scale(1.05);
     }
-}
+
 
 
 
@@ -227,12 +226,12 @@ body {
     height: 150px;
     border-radius: 15px;
     background-color: rgb(200, 200, 200, 0.6);
-    
+
 }
 
 #Conditions {
     width: 90%;
-    background-color: rgb(255,255,255,0.5);
+    background-color: rgb(255, 255, 255, 0.5);
     -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     border-radius: 25px;
@@ -257,6 +256,30 @@ body {
     justify-content: center;
     text-align: center;
     height: 150px;
+    transition: all 0.3s;
     border-radius: 20px;
-    background-color: rgb(105,105,105,0.6);
+    background-color: rgb(105, 105, 105, 0.6);
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+#Cond.show-key {
+    animation: fadein 0.3s forwards;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+#Conds div span {
+    font-size: 50px;
 }

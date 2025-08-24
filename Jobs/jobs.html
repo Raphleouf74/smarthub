@@ -1,131 +1,199 @@
 <!-- index.html-->
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartHub</title>
+    <link rel="icon" href="../medias/logo.png" type="png" />
+    <link rel="stylesheet" href="jobs.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SmartHub</title>
-  <link rel="icon" href="../medias/logo.png" type="png" />
-  <link rel="stylesheet" href="jobs.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-  <link rel="stylesheet" href="focusmode.css" />
-  <script src="focusmode.js"></script>
-</head>
+  <body>
+    
+    <header>
+      <h1>Nous rejoindre</h1>
+      <a href="../index.html" class="modal-item"
+        ><button class="modal-item" id="PrivacyPolicy">
+          Retour à SmartHub
+        </button></a
+      >
+    </header>
+    <div id="MenuSettings"></div>
 
-<body>
-  <header>
-    <h1>Nous rejoindre</h1>
-    <a href="index.html" class="modal-item"><button class="modal-item" id="PrivacyPolicy">
-        Retour à SmartHub
-      </button></a>
-  </header>
-  <div id="MenuSettings"></div>
+    <div id="content">
+      <div id="Welcome">
+        <h1 id="welcometext">
+          Rejoignez-nous pour améliorer votre Hub préféré !
+        </h1>
 
-  <div id="content">
-    <div id="Welcome">
-      <h1 id="welcometext">
-        Rejoignez-nous pour améliorer votre Hub préféré !
-      </h1>
-
-      <span class="scrolltext">Glissez vers le bas pour voir les travails disponibles, leur
-        descriptions et leurs conditions.</span>
-    </div>
-    <div id="AboutUS">
-      <h1>Vous souhaitez nous rejoindre ?</h1>
-      <p>Rejoignez-nous afin de faire continuer l'aventure de SmartHub ! Regardez la liste des SmartJobs disponibles
-        ci-dessous et dirigez-vous à la fin de cette page afin de trouver les différentes conditions et autres
-        informations !</p>
-    </div>
-    <div id="Jobs">
-      <h2>SmartJobs disponibles (7)</h2>
-      <div id="JobBoxes">
-        <div id="Job" data-id="frontend">
-          <h1 id="JobTitle">Développeur FrontEnd</h1>
-          <p>Nous recherchons un développeur frontend pour améliorer l'expérience utilisateur.</p>
-        </div>
-        <div id="Job" data-id="backend">
-          <h1 id="JobTitle">Développeur BackEnd</h1>
-          <p>Nous recherchons un développeur backend pour pouvoir créer ou améliorer des outils avec des fonctionnalités
-            backend.</p>
-        </div>
-        <div id="Job" data-id="designuiux">
-          <h1 id="JobTitle">Designer UI/UX</h1>
-          <p>Nous recherchons un Designer UI/UX pour améliorer l'interface utilisateur et son éxpérience.</p>
-        </div>
-        <div id="Job" data-id="designer">
-          <h1 id="JobTitle">Designer</h1>
-          <p>Nous recherchons un Designer UI/UX pour améliorer l'interface utilisateur et son éxpérience.</p>
-        </div>
-        <div id="Job" data-id="creationoutil">
-          <h1 id="JobTitle">Créateur outil</h1>
-          <p>Nous recherchons un créateur Outil pour créer des idées de nouveaux outils que l'on peut ajouter à
-            SmartHub.</p>
-        </div>
-        <div id="Job" data-id="moderation">
-          <h1 id="JobTitle">Modérateur</h1>
-          <p>Nous recherchons un modérateur afin de s'assurer du bien-être des utilisateurs et de la sécurité des
-            fonctionnalités critiques.</p>
-        </div>
-        <div id="Job" data-id="commmanager">
-          <h1 id="JobTitle">Community Manager</h1>
-          <p>Nous recherchons une personne dans la communication afin de mieux faire connaitre SmartHub.</p>
+        <span class="scrolltext"
+          >Glissez vers le bas pour voir les travails disponibles, leur
+          descriptions et leurs conditions.</span
+        >
+      </div>
+      <div id="AboutUS">
+        <h1>Vous souhaitez nous rejoindre ?</h1>
+        <p>
+          Rejoignez-nous afin de faire continuer l'aventure de SmartHub !
+          Regardez la liste des SmartJobs disponibles ci-dessous et dirigez-vous
+          à la fin de cette page afin de trouver les différentes conditions et
+          autres informations !
+        </p>
+      </div>
+      <div id="Jobs">
+        <h2>SmartJobs disponibles (7)</h2>
+        <div id="JobBoxes">
+          <div id="Job" data-id="frontend">
+            <h1 id="JobTitle">Développeur FrontEnd</h1>
+            <p>
+              Nous recherchons un développeur frontend pour améliorer
+              l'expérience utilisateur.
+            </p>
+          </div>
+          <div id="Job" data-id="backend">
+            <h1 id="JobTitle">Développeur BackEnd</h1>
+            <p>
+              Nous recherchons un développeur backend pour pouvoir créer ou
+              améliorer des outils avec des fonctionnalités backend.
+            </p>
+          </div>
+          <div id="Job" data-id="designuiux">
+            <h1 id="JobTitle">Designer UI/UX</h1>
+            <p>
+              Nous recherchons un Designer UI/UX pour améliorer l'interface
+              utilisateur et son éxpérience.
+            </p>
+          </div>
+          <div id="Job" data-id="designer">
+            <h1 id="JobTitle">Designer</h1>
+            <p>
+              Nous recherchons un Designer UI/UX pour améliorer l'interface
+              utilisateur et son éxpérience.
+            </p>
+          </div>
+          <div id="Job" data-id="creationoutil">
+            <h1 id="JobTitle">Créateur outil</h1>
+            <p>
+              Nous recherchons un créateur Outil pour créer des idées de
+              nouveaux outils que l'on peut ajouter à SmartHub.
+            </p>
+          </div>
+          <div id="Job" data-id="moderation">
+            <h1 id="JobTitle">Modérateur</h1>
+            <p>
+              Nous recherchons un modérateur afin de s'assurer du bien-être des
+              utilisateurs et de la sécurité des fonctionnalités critiques.
+            </p>
+          </div>
+          <div id="Job" data-id="commmanager">
+            <h1 id="JobTitle">Community Manager</h1>
+            <p>
+              Nous recherchons une personne dans la communication afin de mieux
+              faire connaitre SmartHub.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div id="Conditions">
-      <h1>Conditions et informations</h1>
-      <p>Ces jobs se font sur la base du volontariat car le site ne prévoit pas de source de revenu. Il est tout de même
-        demandé d'avoir des connaissances et des travaux à compléter pour faire partie des SmartPeople. Cela veut
-        également dire que vous n'êtes pas obligé(e) de rester parmi les SmartPeople, mais vous passerez à coté de
-        bonus/avantages.
-        <br>Voici ce que vous devez retenir:
-      </p>
-      <div id="Conds">
-        <div id="Cond1"><span class="material-symbols-outlined">timer</span>Au moins 3h de travail par semaine requis
-          pour
-          les développeurs et au moins 2h pour les autres</div>
-        <div id="Cond2"><span class="material-symbols-outlined">person_play</span> Avoir des bonnes connaissaces dans le
-          Job demandé.</div>
-        <div id="Cond3"><span class="material-symbols-outlined">sentiment_excited</span> Faire preuve de courtoisie
-          envers l'équipe et apporter de la bonne humeur !</div>
+      <div id="Conditions">
+        <h1>Conditions et informations</h1>
+        <p>
+          Ces jobs se font sur la base du volontariat car le site ne prévoit pas
+          de source de revenu. Il est tout de même demandé d'avoir des
+          connaissances et des travaux à compléter pour faire partie des
+          SmartPeople. Cela veut également dire que vous n'êtes pas obligé(e) de
+          rester parmi les SmartPeople, mais vous passerez à coté de
+          bonus/avantages. <br />Voici ce que vous devez retenir:
+        </p>
+        <div id="Conds">
+          <div id="Cond">
+            <span class="material-symbols-outlined">timer</span>Au moins 3h de
+            travail par semaine requis pour les développeurs et au moins 2h pour
+            les autres
+          </div>
+          <div id="Cond">
+            <span class="material-symbols-outlined">person_play</span> Avoir des
+            bonnes connaissaces dans le Job demandé.
+          </div>
+          <div id="Cond">
+            <span class="material-symbols-outlined">sentiment_excited</span>
+            Faire preuve de courtoisie envers l'équipe et apporter de la bonne
+            humeur !
+          </div>
+        </div>
       </div>
-
-    </div>
-    <div id="Conditions">
-      <h1>Postuler</h1>
-      <p>Pour postulez, écrivez un mail à jobsmarthub@gmail.com décrivant le SmartJob que vous voulez, avec vos
-        motivations, ce que vous pensez apporter à l'équipe. Vous serez ensuite confronté à des tests afin de confimer
-        votre niveau. Comme c'est sur la base du bénévolat pour le moment, aucun CV ou lettre de motivation n'est
-        obligatoire.
-        Mais nous vous contronlerons tout de même afin d'éviter de faux contrats (ce qui sera sévèrement puni si cela arrive).</p>
-      <div id="Conds">
-        <div id="Cond1"><span class="material-symbols-outlined">mail</span>jobsmarthub@gmail.com</div>
+      <div id="Conditions">
+        <h1>Postuler</h1>
+        <p>
+          Pour postulez, écrivez un mail à jobsmarthub@gmail.com décrivant le
+          SmartJob que vous voulez, avec vos motivations, ce que vous pensez
+          apporter à l'équipe. Vous serez ensuite confronté à des tests afin de
+          confimer votre niveau. Comme c'est sur la base du bénévolat pour le
+          moment, aucun CV ou lettre de motivation n'est obligatoire. Mais nous
+          vous contrôlerons tout de même afin d'éviter de faux contrats (ce qui
+          sera sévèrement puni si cela arrive).
+        </p>
+        <div id="Conds">
+          <div id="Cond">
+            <span class="material-symbols-outlined">mail</span
+            >jobsmarthub@gmail.com
+          </div>
+          <div id="Cond">
+            <span class="material-symbols-outlined">explore</span>
+            En attendant, n'hésitez pas à explorer notre site afin de trouver des idées. N'hésitez pas aussi à rejoindre nos réseaux sociaux !
+          </div>
+        </div>
+        <p>Nous vous répondrons au plus vite et éspérons que tout ira bien !</p>
+        <p>Les délais d'attentes sont entre 1 et 2 jours</p>
       </div>
-      <p>Nous vous répondrons au plus vite et éspérons que tout ira bien !</p>
-      <p>Les délais d'attentes sont entre 1 et 2 jours</p>
     </div>
-  </div>
-</body>
-<script>
-  const welcometext = document.getElementById("welcometext");
-  const scrolltext = document.querySelector(".scrolltext");
-  welcometext.style.opacity = "0";
-  welcometext.style.transform = "translateY(-20px)";
-  welcometext.style.transition = "all 0.2s ease-in-out";
-  scrolltext.style.opacity = "0";
-  scrolltext.style.transform = "translateY(-20px)";
-  scrolltext.style.transition = "all 0.2s ease-in-out";
-  setTimeout(() => {
-    welcometext.style.opacity = "1";
-    welcometext.style.transform = "translateY(0)";
-  }, 250);
-  setTimeout(() => {
-    scrolltext.style.opacity = "1";
-    scrolltext.style.transform = "translateY(0)";
-  }, 500);
+  </body>
+  <script>
+    const welcometext = document.getElementById("welcometext");
+    const scrolltext = document.querySelector(".scrolltext");
+    welcometext.style.opacity = "0";
+    welcometext.style.transform = "translateY(-20px)";
+    welcometext.style.transition = "all 0.2s ease-in-out";
+    scrolltext.style.opacity = "0";
+    scrolltext.style.transform = "translateY(-20px)";
+    scrolltext.style.transition = "all 0.2s ease-in-out";
+    setTimeout(() => {
+      welcometext.style.opacity = "1";
+      welcometext.style.transform = "translateY(0)";
+    }, 250);
+    setTimeout(() => {
+      scrolltext.style.opacity = "1";
+      scrolltext.style.transform = "translateY(0)";
+    }, 500);
 
-</script>
 
+
+    // On cible toutes les touches
+    const keys = document.querySelectorAll("#Conds div")
+    // Création de l'observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Lancer l'animation en cascade
+            keys.forEach((div, index) => {
+              div.style.animationDelay = `${index * 0.15}s`;
+              div.classList.add("show-key");
+            });
+            // On peut arrêter d'observer une fois joué
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    ); // 20% de l'élément doit être visible
+
+    // On observe le premier élément (ou un wrapper)
+    observer.observe(document.querySelector("#Conds"));
+  </script>
 </html>

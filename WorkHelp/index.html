@@ -14,6 +14,34 @@
   </head>
 
   <body>
+    <div id="ThemeMenu" class="theme-menu">
+      <button id="light"><span class="material-symbols-outlined">light_mode</span>Thème clair</button>
+      <button id="dark"><span class="material-symbols-outlined">dark_mode</span> Thème sombre</button>
+    </div>
+    <div id="AppMenu" class="app-menu">
+      <a href="../index.html"><button><span class="material-symbols-outlined">arrow_back_ios</span>SmartHub</button></a>
+      <a href="../QuickNotes/quicknotes.html"><button><span class="material-symbols-outlined">
+arrow_forward
+</span>QuickNotes</button></a>
+      <a href="../Calendar/calendar.html"><button><span class="material-symbols-outlined">
+arrow_forward
+</span>SmartCalendar</button></a>
+      <a href="../AllFilmsInfo/index.html"><button><span class="material-symbols-outlined">
+arrow_forward
+</span>AllFilmsInfo</button></a>
+      <a href="../LegalDocs/privacypolicy.html"><button><span class="material-symbols-outlined">
+arrow_forward
+</span>Politique de confidentialité</button></a>
+      <a href="../LegalDocs/ugc.html"><button><span class="material-symbols-outlined">
+arrow_forward
+</span>Conditions générales d'utilisations du service</button></a>
+      <a href="../platformstate.html"><button><span class="material-symbols-outlined">
+arrow_forward
+</span>Etat de la plateforme</button></a>
+      <a href="../Jobs/jobs.html"><button><span class="material-symbols-outlined">
+arrow_forward
+</span>Nous rejoindre</button></a>
+    </div>
     <div id="notifications-container">
       <div class="notification hidden">
         <div class="notiglow"></div>
@@ -116,7 +144,9 @@
       <section id="notes" class="panel" role="tabpanel" hidden>
         <div class="notes-top">
           <input id="noteTitle" placeholder="Titre rapide" />
-          <button id="addNote"><span class="material-symbols-outlined">add</span> Ajouter</button>
+          <button id="addNote">
+            <span class="material-symbols-outlined">add</span> Ajouter
+          </button>
         </div>
         <textarea
           id="noteEditor"
@@ -129,39 +159,111 @@
       <!-- Flashcards -->
       <section id="flashcards" class="panel" role="tabpanel" hidden>
         <div class="flash-controls">
-          <input id="cardFront" placeholder="Question / recto" />
-          <input id="cardBack" placeholder="Réponse / verso" />
-          <button id="addCard">Ajouter la fiche</button>
-          <button id="clearCards">Tout supprimer</button>
+          <input id="cardFront" placeholder="Question / recto" /><br>
+          <input id="cardBack" placeholder="Réponse / verso" /><br>
+          <button id="addCard"><span class="material-symbols-outlined">add</span>Ajouter la fiche</button><br>
+          <button id="clearCards"><span class="material-symbols-outlined">delete_forever</span>Tout supprimer</button>
         </div>
         <div id="cardArea" class="card-area"></div>
+        <div id="cardMenu" class="card-menu">
+          <button id="dupCard"><span class="material-symbols-outlined">content_copy</span> Dupliquer la carte</button>
+          <button id="delCard"><span class="material-symbols-outlined">delete</span> Supprimer la carte</button>
+        </div>
       </section>
-
-      <!-- Audio recorder -->
-      <!-- <section id="audio" class="panel" role="tabpanel" hidden>
-                <div class="audio-controls">
-                    <button id="startRec">🎤 Enregistrer</button>
-                    <button id="stopRec" disabled>⏹ Stop</button>
-                    <button id="downloadAll">Télécharger tout</button>
-                </div>
-                <div id="recordingsList" class="recordings-list"></div>
-            </section> -->
 
       <!-- Calculator -->
       <section id="calc" class="panel" role="tabpanel" hidden>
-        <input id="calcDisplay" readonly />
-        <div class="calc">
-          <div class="calc-grid">
-            <button data-val="7">7</button><button data-val="8">8</button
-            ><button data-val="9">9</button><button data-val="/">÷</button>
-            <button data-val="4">4</button><button data-val="5">5</button
-            ><button data-val="6">6</button><button data-val="*">×</button>
-            <button data-val="1">1</button><button data-val="2">2</button
-            ><button data-val="3">3</button><button data-val="-">−</button>
-            <button data-val="0">0</button><button data-val=".">.</button
-            ><button id="calcClear">C</button><button data-val="+">+</button>
-            <button id="calcEquals" class="equals">=</button>
+        <div class="calc-wrap">
+          <div class="calc-top">
+            <div class="calc-mode">
+              <button id="modeBasic" class="active" title="Mode standard">
+                Basique
+              </button>
+              <button id="modeSci" title="Mode scientifique">
+                Scientifique
+              </button>
+            </div>
+            <div class="calc-tools">
+              <button id="copyResult" title="Copier le résultat">
+                <span class="material-symbols-outlined">content_copy</span>
+              </button>
+              <button id="clearHistory" title="Vider l'historique">
+                <span class="material-symbols-outlined">delete</span>
+              </button>
+            </div>
           </div>
+
+          <div class="display">
+            <div id="historyLine"></div>
+            <input
+              id="screen"
+              type="text"
+              inputmode="decimal"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </div>
+
+          <div class="keys">
+            <!-- Mémoire -->
+            <button class="key mem" data-act="MC">MC</button>
+            <button class="key mem" data-act="MR">MR</button>
+            <button class="key mem" data-act="M+">M+</button>
+            <button class="key mem" data-act="M-">M-</button>
+            <button class="key" data-act="CE" style="background-color: red">
+              CE
+            </button>
+            <button class="key" data-act="C" style="background-color: grey">
+              C
+            </button>
+            <button class="key" data-act="DEL">
+              <span class="material-symbols-outlined">backspace</span>
+            </button>
+            <button class="key op" data-insert="/">÷</button>
+
+            <!-- Scientifique (ligne 1) -->
+            <button class="key sci" data-insert="sin(">sin</button>
+            <button class="key sci" data-insert="cos(">cos</button>
+            <button class="key sci" data-insert="tan(">tan</button>
+            <button class="key sci" data-insert="sqrt(">√</button>
+            <button class="key" data-insert="(">(</button>
+            <button class="key" data-insert=")">)</button>
+            <button class="key op" data-insert="^">xʸ</button>
+            <button class="key op" data-insert="*">×</button>
+
+            <!-- Scientifique (ligne 2) -->
+            <button class="key sci" data-insert="ln(">ln</button>
+            <button class="key sci" data-insert="log10(">log</button>
+            <button class="key sci" data-insert="abs(">abs</button>
+            <button class="key sci" data-insert="!">n!</button>
+            <button class="key op" data-insert="-">−</button>
+
+            <!-- Chiffres -->
+            <button class="key sci" data-insert="π">π</button>
+            <button class="key sci" data-insert="e">e</button>
+            <button class="key sci" data-act="sign">±</button>
+            <button class="key" data-insert="%">%</button>
+
+            <button class="key op" data-insert="+">+</button>
+            <button class="key" data-insert=",">,</button>
+
+            <button class="key" data-insert="0">0</button>
+            <button class="key" data-insert="1">1</button>
+            <button class="key" data-insert="2">2</button>
+            <button class="key" data-insert="3">3</button>
+            <button class="key" data-insert="4">4</button>
+            <button class="key" data-insert="5">5</button>
+            <button class="key" data-insert="6">6</button>
+            <button class="key" data-insert="7">7</button>
+            <button class="key" data-insert="8">8</button>
+            <button class="key" data-insert="9">9</button>
+
+            <button class="key wide equals" data-act="=">=</button>
+          </div>
+        </div>
+        <div class="history">
+          <h4>Historique</h4>
+          <ul id="histList"></ul>
         </div>
       </section>
 

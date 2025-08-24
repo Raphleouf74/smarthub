@@ -349,6 +349,7 @@ section {
     width: 70%;
     font-family: "Poppins";
 }
+
 .notes-top {
     display: flex;
     align-items: center;
@@ -369,6 +370,7 @@ section {
     background: #414141;
     scale: 1.05;
 }
+
 #addNote:active {
     background: #1d1d1d;
     scale: 0.95;
@@ -379,23 +381,26 @@ section {
     padding: 8px;
     height: 50px;
     border-radius: 8px;
-    border: 1px solid rgba(0,0, 0);
+    border: 1px solid rgba(0, 0, 0);
     color: black;
     background: transparent;
     font-family: "Poppins";
 }
+
 .dark-theme .notes-top input {
     flex: 1;
     padding: 8px;
     height: 50px;
     border-radius: 8px;
-    border: 1px solid rgba(255,255,255);
+    border: 1px solid rgba(255, 255, 255);
     color: white;
     background: transparent;
     font-family: "Poppins";
 }
 
-.notes-top button {transition: all 0.3s;}
+.notes-top button {
+    transition: all 0.3s;
+}
 
 .dark-theme .notes-top button {
     height: 50px;
@@ -426,7 +431,8 @@ section {
     width: 100%;
     font-family: "Poppins";
 }
-.note-item button{
+
+.note-item button {
     border-radius: 50%;
     height: 40px;
     width: 40px;
@@ -437,12 +443,13 @@ section {
     background-color: rgb(50, 50, 50, 0.8);
 }
 
-.note-item button:hover{
+.note-item button:hover {
     border: 2px solid white;
     color: white;
     background-color: transparent;
     scale: 1.05;
 }
+
 .note-item {
     padding: 8px;
     border-radius: 8px;
@@ -480,11 +487,12 @@ section {
     resize: vertical;
     font-family: "Poppins";
 }
+
 .dark-theme #noteEditor {
     min-height: 120px;
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid rgba(255,255,255);
+    border: 1px solid rgba(255, 255, 255);
     color: white;
     background: transparent;
     resize: vertical;
@@ -510,90 +518,509 @@ section {
 
 
 /* flashcards */
+
+#flashcards {
+    display: none;
+}
+
+#flashcards.active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 80vh;
+    top: 20vh;
+}
+
+.light-theme #flashcards {color: black;
+transition: all 0.3s ease-in-out;}
+.dark-theme #flashcards {color: white;}
+
+.light-theme #flashcards input {color: black;
+transition: all 0.3s ease-in-out;}
+.dark-theme #flashcards input {color: white;}
+
 .flash-controls {
     display: flex;
-    gap: 8px;
-    align-items: center
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
 }
 
 .flash-controls input {
     padding: 8px;
+    margin-top: -15px;
+    width: 50%;
+    height: 50px;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(0,0,0, 0.6);
     background: transparent;
+}
+
+.flash-controls button {
+    margin-top: 8px;
+    height: 50px;
+    width: 200px;
+    background-color: rgb(39, 39, 39);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Poppins";
+    margin-top: -20px;
 }
 
 .card-area {
     display: flex;
-    gap: 12px;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
+/* conteneur avec perspective pour le flip */
 .flash-card {
     width: 200px;
     height: 120px;
-    background: linear-gradient(180deg, #ffffff06, #00000006);
-    -webkit-backdrop-filter: blur(3px);
-    backdrop-filter: blur(3px);
-    border-radius: 8px;
-    padding: 12px;
+    perspective: 1000px;
     cursor: pointer;
+    
+}
+
+.flash-card-inner:hover {
+    border: 3px solid black;
+}
+
+.flash-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1), border 0.15s ease-in-out;
+    transform-style: preserve-3d;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    border: solid 1px transparent;
+}
+
+/* rotation quand flip */
+.flash-card.flipped .flash-card-inner {
+    transform: rotateX(180deg) rotate(180deg) scale(1.1);
+}
+
+/* faces */
+.flash-card .front, 
+.flash-card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 600;
+}
+
+/* styles front/back */
+.flash-card .front {
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    color: white;
+}
+
+.flash-card .back {
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    color: #222;
+    transform: rotateY(180deg);
+}
+
+.card-menu {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    background: rgba(40,40,40,0.95);
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 9999;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+
+.card-menu button {
+    background: none;
+    border: 0;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Poppins";
+    padding: 8px 12px;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+#delCard {color: red;}
+#delCard:hover {color: black; background: red;}
+#dupCard {color: white;}
+#dupCard:hover {color: black; background: white;}
+.card-menu button:hover {
+    background: rgba(255,255,255,0.1);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.theme-menu {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    background: rgba(40,40,40,0.95);
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 9999;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.theme-menu button {
+    background: none;
+    border: 0;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Poppins";
+    padding: 8px 12px;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    background: white; 
+    color: black;
+}
+
+.theme-menu button:hover {
+    color: white; 
+    background: black;
+}
+
+.app-menu {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    background: rgba(40,40,40,0.95);
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 9999;
+    width: 225px;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.app-menu button {
+    background: none;
+    border: 0;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Poppins";
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    text-align: right;
+    background: white; 
+    width: 100%;
+    color: black;
+}
+
+.app-menu button:hover {
+    color: white; 
+    background: black;
+}
+
+.app-menu a  {
+    background: none;
+    text-decoration: none;
+}
+
+
+/* calculator */
+#calc {
+    --bg: rgba(20, 20, 28, .6);
+    --fg: #fff;
+    --muted: #a9b0c2;
+    --accent: #7bd389;
+    --kbd: #2a2f3a;
+    --btn: rgba(255, 255, 255, .08);
+    --btn-hover: rgba(255, 255, 255, .16);
+    font-family: system-ui, "Segoe UI", Roboto, "Poppins", Arial;
+    position: relative;
+    max-width: 1000px;
+    margin: 24px auto;
+    padding: 12px;
+}
+
+#calc * {
+    box-sizing: border-box;
+}
+
+.calc-wrap {
+    display: flex;
+    position: fixed;
+    top: 15vh;
+    left: 0;
+    flex-direction: column;
+    grid-template-columns: 1fr 240px;
+    gap: 12px;
+    width: calc(100% - 400px);
+    height: 85vh;
+    background: var(--bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: var(--fg);
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, .12);
+}
+
+.calc-top {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.calc-mode button {
+    background: var(--btn);
+    color: var(--fg);
+    border: 0;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.calc-mode button.active {
+    background: var(--accent);
+    color: #07290f;
+    font-weight: 700
+}
+
+.calc-mode button:hover {
+    background: var(--btn-hover)
+}
+
+.calc-tools button {
+    background: var(--btn);
+    border: 0;
+    color: var(--fg);
+    padding: 8px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 50px;
+    transition: all 0.15s ease-in-out;
+}
+
+.calc-tools button:hover {
+    background: var(--btn-hover);
+    scale: 1.1;
+}
+
+#clearHistory:hover {
+    background-color: rgb(255,0,0,0.8);
+}
+
+.display {
+    grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.2s ease-in-out;
+    gap: 6px;
+}
+
+.history {
+    position: fixed;
+    animation: toright 0.3s forwards;
+    bottom: 0;
+    width: 400px;
+    font-family: "Poppins";
+    font-size: 25px;
+    height: 85vh;
+    transition: all 0.3s;
+    border-left: 1px solid rgba(255, 255, 255, .1);
+    padding-left: 12px;
+    overflow: hidden;
+}
+#calc.active .history {
+    animation: toleft 0.3s forwards;
+}
+
+@keyframes toleft {
+    0% {
+        right: -110%;
+    }
+    100% {
+        right: 0;
+    }
+    
+}
+@keyframes toright {
+    0% {
+        right: -110%;
+    }
+    100% {
+        right: 0;
+    }
+    
+}
+
+#historyLine {
+    min-height: 18px;
+    color: var(--muted);
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+#screen {
+    width: 100%;
+    background: #0f1320;
+    border: 1px solid rgba(255, 255, 255, .12);
+    color: #e9f0ff;
+    font-size: 32px;
+    padding: 14px 12px;
+    border-radius: 12px;
+    outline: none;
+    font-weight: 600;
+    text-align: right;
+}
+
+.keys {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    font-family: "Poppins";
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+    align-items: stretch
+}
+
+.key {
+    background: var(--btn);
+    border: 0;
+    color: var(--fg);
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Poppins";
+    font-size: 30px;
+    font-weight: 600;
+    transition: transform .06s ease, background .2s ease;
     -webkit-user-select: none;
     user-select: none;
 }
 
-.flash-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6)
+.key:active {
+    transform: translateY(1px) scale(.98)
 }
 
-.flash-card .back {
+.key:hover {
+    background: var(--btn-hover)
+}
+
+.op {
+    background: rgba(255, 255, 255, .10)
+}
+
+.equals {
+    background: var(--accent);
+    color: #062915
+}
+
+.equals:hover {
+    filter: brightness(1.05)
+}
+
+.wide {
+    grid-column: span 3;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.mem {
+    color: #b6f2c3
+}
+
+.sci {
     display: none
 }
 
-.flash-card.flipped .front {
-    display: none
-}
+/* masquées en mode basique */
 
-.flash-card.flipped .back {
-    display: block
-}
-
-/* audio */
-.audio-controls {
-    display: flex;
-    gap: 8px;
-    align-items: center
-}
-
-.recordings-list {
+#histList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    max-height: 200px;
-    overflow: auto
+    gap: 6px
 }
 
-.recording {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 8px;
-    border-radius: 8px;
+#histList li {
     display: flex;
     justify-content: space-between;
-    align-items: center
+    gap: 8px;
+    background: rgba(255, 255, 255, .06);
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer
 }
 
-/* calculator */
+#histList li:hover {
+    background: rgba(255, 255, 255, .1)
+}
+
+#histList small {
+    color: var(--muted)
+}
+
+
+/* micro-animations d’apparition */
+.key {
+    animation: pop .25s ease both;
+}
+
+.key:nth-child(odd) {
+    animation-delay: .02s
+}
+
+@keyframes pop {
+    from {
+        transform: translateY(6px);
+        opacity: .0
+    }
+
+    to {
+        transform: none;
+        opacity: 1
+    }
+}
+
 .calc {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    max-width: 320px
 }
 
 #calcDisplay {
@@ -706,13 +1133,14 @@ section {
     height: 100%;
 }
 
-.backbtn, .theme-toggle-btn {
+.backbtn,
+.theme-toggle-btn {
     text-decoration: none;
     display: flex;
     font-size: 15px;
     width: 225px;
     font-family: "Poppins";
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: rgb(75, 75, 75, 0.1);
     padding: 10px;
     border-radius: 20px;
@@ -722,16 +1150,19 @@ section {
     transition: all 0.3s;
     color: white;
 }
+
 .theme-toggle-btn {
     width: 45px;
     color: transparent;
     font-size: 1px;
 }
+
 .theme-toggle-btn span {
     color: white;
 }
 
-.light-theme .backbtn, .light-theme .theme-toggle-btn {
+.light-theme .backbtn,
+.light-theme .theme-toggle-btn {
     color: black;
     border: 1px solid black;
 }
@@ -740,14 +1171,16 @@ section {
     transition: all 0.3s ease-in-out;
 }
 
-.light-theme .backbtn:hover, .light-theme .theme-toggle-btn:hover {
+.light-theme .backbtn:hover,
+.light-theme .theme-toggle-btn:hover {
     background-color: rgb(150, 150, 150, 0.4);
     width: 225px;
     font-size: 15px;
     color: black;
 }
 
-.dark-theme .backbtn:hover, .dark-theme .theme-toggle-btn:hover {
+.dark-theme .backbtn:hover,
+.dark-theme .theme-toggle-btn:hover {
     background-color: rgb(150, 150, 150, 0.4);
     width: 225px;
     font-size: 15px;

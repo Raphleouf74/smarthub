@@ -367,98 +367,295 @@ renderNotes();
 /* ---------- Flashcards ---------- */
 let cards = load('fsCards') || [];
 const cardArea = $('#cardArea');
+
 function renderCards() {
     cardArea.innerHTML = '';
     cards.forEach((c, i) => {
-        const el = document.createElement('div'); el.className = 'flash-card';
-        el.innerHTML = `<div class="front">${c.front}</div><div class="back">${c.back}</div>`;
+        const el = document.createElement('div');
+        el.className = 'flash-card';
+        el.style.animationDelay = `${i * 0.1}s`; // décalage 100ms par carte
+        el.innerHTML = `
+          <div class="flash-card-inner">
+            <div class="front">${c.front}</div>
+            <div class="back">${c.back}</div>
+          </div>
+        `;
+        // flip au clic gauche
         el.addEventListener('click', () => el.classList.toggle('flipped'));
+
+        // clic droit -> menu contextuel custom
+        el.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            showCardMenu(e.pageX, e.pageY, i);
+        });
+
         cardArea.appendChild(el);
     });
 }
+
+
 $('#addCard').addEventListener('click', () => {
-    const f = $('#cardFront').value.trim(); const b = $('#cardBack').value.trim();
+    const f = $('#cardFront').value.trim(); 
+    const b = $('#cardBack').value.trim();
     if (!f || !b) return alert('Remplis recto et verso.');
-    cards.push({ front: f, back: b }); save('fsCards', cards); $('#cardFront').value = ''; $('#cardBack').value = ''; renderCards();
+
+    cards.push({ front: f, back: b });
+    save('fsCards', cards);
+    $('#cardFront').value = '';
+    $('#cardBack').value = '';
+    renderCards();
 });
-$('#clearCards').addEventListener('click', () => { if (confirm('Supprimer toutes les fiches ?')) { cards = []; save('fsCards', cards); renderCards(); } });
+
+$('#clearCards').addEventListener('click', () => {
+    if (confirm('Supprimer toutes les fiches ?')) {
+        cards = [];
+        save('fsCards', cards);
+        renderCards();
+    }
+});
+
 renderCards();
 
-/* ---------- Audio Recorder ---------- */
-// let mediaRecorder, chunks = [], recs = load('fsRecs') || [];
-// const recordingsList = $('#recordingsList');
 
-// async function initRec() {
-//     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return alert('Enregistreur non supporté.');
-//     try {
-//         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-//         mediaRecorder = new MediaRecorder(stream);
-//         mediaRecorder.ondataavailable = e => chunks.push(e.data);
-//         mediaRecorder.onstop = () => {
-//             const blob = new Blob(chunks, { type: 'audio/webm' });
-//             chunks = [];
-//             const url = URL.createObjectURL(blob);
-//             const name = `rec-${Date.now()}.webm`;
-//             recs.push({ url, name, t: Date.now(), blobSize: blob.size });
-//             save('fsRecs', recs.map(r => ({ name: r.name, t: r.t, blobSize: r.blobSize }))); // store metadata only
-//             // keep blob in-memory for this session (ok for small app)
-//             recs[recs.length - 1].blob = blob;
-//             renderRecs();
-//         };
-//         $('#startRec').addEventListener('click', () => { if (mediaRecorder && mediaRecorder.state === 'inactive') { mediaRecorder.start(); $('#startRec').disabled = true; $('#stopRec').disabled = false; } });
-//         $('#stopRec').addEventListener('click', () => { if (mediaRecorder && mediaRecorder.state === 'recording') { mediaRecorder.stop(); $('#startRec').disabled = false; $('#stopRec').disabled = true; } });
-//         $('#downloadAll').addEventListener('click', () => {
-//             recs.forEach(r => {
-//                 if (!r.blob) return;
-//                 const a = document.createElement('a'); a.href = URL.createObjectURL(r.blob); a.download = r.name; document.body.appendChild(a); a.click(); a.remove();
-//             });
-//         });
-//     } catch (e) { console.warn(e); alert('Impossible d’accéder au micro.'); }
-// }
-// function renderRecs() {
-//     recordingsList.innerHTML = '';
-//     recs.forEach((r, i) => {
-//         const div = document.createElement('div'); div.className = 'recording';
-//         const btnPlay = document.createElement('button');
-//         btnPlay.textContent = '▶️';
-//         const a = document.createElement('a'); a.textContent = r.name; a.href = r.url || '#';
-//         const dl = document.createElement('button'); dl.textContent = '⬇︎';
-//         btnPlay.addEventListener('click', () => {
-//             const audio = new Audio(r.blob ? URL.createObjectURL(r.blob) : r.url);
-//             audio.play();
-//         });
-//         dl.addEventListener('click', () => {
-//             if (!r.blob) return alert('Enregistrement non disponible (reload perdu).');
-//             const a2 = document.createElement('a'); a2.href = URL.createObjectURL(r.blob); a2.download = r.name; document.body.appendChild(a2); a2.click(); a2.remove();
-//         });
-//         div.appendChild(btnPlay); div.appendChild(a); div.appendChild(dl);
-//         recordingsList.appendChild(div);
-//     });
-// }
-// initRec();
-// renderRecs();
+const menu = document.getElementById('cardMenu');
+let currentCardIndex = null;
+
+function showCardMenu(x, y, index) {
+    currentCardIndex = index;
+    menu.style.left = x + 'px';
+    menu.style.top = (y - 250) + 'px';
+    menu.style.display = 'flex';
+}
+
+// fermer menu si clic ailleurs
+document.addEventListener('click', () => menu.style.display = 'none');
+
+// actions
+$('#dupCard').addEventListener('click', () => {
+    if (currentCardIndex !== null) {
+        const card = cards[currentCardIndex];
+        cards.push({ front: card.front, back: card.back });
+        save('fsCards', cards);
+        renderCards();
+    }
+    menu.style.display = 'none';
+});
+
+$('#delCard').addEventListener('click', () => {
+    if (currentCardIndex !== null) {
+        cards.splice(currentCardIndex, 1);
+        save('fsCards', cards);
+        renderCards();
+    }
+    menu.style.display = 'none';
+});
+
+
 
 /* ---------- Calculator ---------- */
-let calcExp = '';
-const calcDisplay = $('#calcDisplay');
-$$('.calc-grid button').forEach(b => {
-    b.addEventListener('click', () => {
-        const v = b.dataset.val;
-        if (!v) return;
-        calcExp += v;
-        calcDisplay.value = calcExp;
+(function () {
+    const screen = document.getElementById('screen');
+    const historyLine = document.getElementById('historyLine');
+    const histList = document.getElementById('histList');
+
+    const modeBasic = document.getElementById('modeBasic');
+    const modeSci = document.getElementById('modeSci');
+    const copyBtn = document.getElementById('copyResult');
+    const clearHist = document.getElementById('clearHistory');
+
+    const sciKeys = () => Array.from(document.querySelectorAll('.key.sci'));
+
+    // état
+    let memory = 0;
+    let history = JSON.parse(localStorage.getItem('calcHistory') || '[]');
+
+    // helpers
+    const setScreen = v => screen.value = v;
+    const insertAtCursor = (txt) => {
+        const el = screen;
+        const start = el.selectionStart ?? el.value.length;
+        const end = el.selectionEnd ?? el.value.length;
+        const before = el.value.slice(0, start);
+        const after = el.value.slice(end);
+        const cleanTxt = txt === ',' ? '.' : txt;
+        el.value = before + cleanTxt + after;
+        const pos = start + cleanTxt.length;
+        el.setSelectionRange(pos, pos);
+        el.focus();
+    };
+
+    function formatForEval(expr) {
+        // remplacements autorisés
+        let s = expr.replace(/,/g, '.')
+            .replace(/π/g, 'PI')
+            .replace(/×/g, '*')
+            .replace(/÷/g, '/')
+            .replace(/\^/g, '**')
+            .replace(/%/g, '*0.01');
+
+        // Factorielle n!  -> fact(n)
+        s = s.replace(/(\d+|\))!/g, (m) => {
+            // transforme "n!" en fact(n) en traitant )! aussi: ( ... )!
+            if (m.endsWith(')!')) {
+                // on compte les parenthèses pour retrouver l'ouverture
+                // simple: remplace ")!" par "))fact(" puis réorganise ; plus sûr: marqueur
+                // on fait simple ici: ")!" => " ) )fact(" n'est pas fiable -> on gère uniquement nombre!
+                // pour fiabilité: laissons seulement 123! cas
+                return m; // fallback
+            }
+            const n = m.slice(0, -1);
+            return `fact(${n})`;
+        });
+
+        // Fonctions vers Math.*
+        s = s.replace(/\b(sin|cos|tan|sqrt|abs)\(/g, 'Math.$1(')
+            .replace(/\bln\(/g, 'Math.log(')
+            .replace(/\blog10\(/g, 'Math.log10(')
+            .replace(/\bPI\b/g, 'Math.PI')
+            .replace(/\be\b/g, 'Math.E');
+
+        // Sanitize rudimentaire : caractères autorisés uniquement
+        if (/[^0-9+\-*/().,%^ a-zA-Z_]/.test(expr.replace(/π/g, ''))) {
+            throw new Error('Caractère non autorisé');
+        }
+        return s;
+    }
+
+    function fact(n) {
+        n = Number(n);
+        if (!Number.isFinite(n) || n < 0 || Math.floor(n) !== n) throw new Error('n! nécessite un entier ≥ 0');
+        let r = 1; for (let i = 2; i <= n; i++) r *= i; return r;
+    }
+
+    function evaluate() {
+        let input = screen.value.trim();
+        if (!input) return;
+        try {
+            const prepared = formatForEval(input);
+            // remplace les cas (...)! qu'on a laissé passer (facultatif)
+            // Ici, on ne gère pas (expr)! pour rester simple.
+
+            // eslint-disable-next-line no-new-func
+            const result = Function('fact', 'return (' + prepared + ')')(fact);
+            if (result === undefined) throw new Error('Expression invalide');
+            const pretty = (v) => Number.isFinite(v) ? +(+v).toFixed(12) : v;
+            const out = pretty(result);
+
+            historyLine.textContent = input + ' =';
+            setScreen(String(out));
+
+            // historiser
+            history.unshift({ expr: input, res: String(out), ts: Date.now() });
+            history = history.slice(0, 50);
+            localStorage.setItem('calcHistory', JSON.stringify(history));
+            renderHistory();
+        } catch (e) {
+            historyLine.textContent = 'Erreur : ' + e.message;
+        }
+    }
+
+    function renderHistory() {
+        histList.innerHTML = '';
+        history.forEach((h, i) => {
+            const li = document.createElement('li');
+            li.innerHTML = `<small>${h.expr}</small><strong>= ${h.res}</strong>`;
+            li.title = new Date(h.ts).toLocaleString();
+            li.addEventListener('click', () => {
+                setScreen(h.res);
+                historyLine.textContent = h.expr + ' =';
+            });
+            histList.appendChild(li);
+        });
+    }
+    document.querySelectorAll('.key').forEach((btn, index) => {
+        btn.style.animationDelay = `${index * 15}ms`; // 150ms entre chaque
     });
-});
-$('#calcClear').addEventListener('click', () => { calcExp = ''; calcDisplay.value = ''; });
-$('#calcEquals').addEventListener('click', () => {
-    try {
-        // safe eval replacement: allow only numbers and operators
-        if (!/^[0-9+\-*/().\s]+$/.test(calcExp)) throw new Error('Expression invalide');
-        const res = Function(`return (${calcExp})`)();
-        calcDisplay.value = String(res);
-        calcExp = String(res);
-    } catch (e) { calcDisplay.value = 'Erreur'; calcExp = ''; }
-});
+
+    // boutons
+    document.querySelectorAll('#calc .key').forEach(btn => {
+        const ins = btn.dataset.insert;
+        const act = btn.dataset.act;
+
+
+        if (ins) {
+            btn.addEventListener('click', () => insertAtCursor(ins));
+        } else if (act) {
+            btn.addEventListener('click', () => {
+                switch (act) {
+                    case 'C': setScreen(''); historyLine.textContent = ''; break;
+                    case 'CE': {
+                        // efface le dernier "token" (nombre ou opérateur)
+                        const v = screen.value;
+                        const nv = v.replace(/(\s*[+\-*/^%]\s*|\d+\.?\d*|\.\d+)$/, '');
+                        setScreen(nv);
+                        break;
+                    }
+                    case 'DEL': {
+                        const v = screen.value; setScreen(v.slice(0, -1)); break;
+                    }
+                    case '=': evaluate(); break;
+                    case 'sign': {
+                        // transforme le dernier nombre en ±
+                        const v = screen.value;
+                        const m = v.match(/(-?\d*\.?\d+)(?!.*\d)/);
+                        if (m) {
+                            const num = m[0].startsWith('-') ? m[0].slice(1) : '-' + m[0];
+                            setScreen(v.slice(0, m.index) + num);
+                        }
+                        break;
+                    }
+                    case 'MC': memory = 0; break;
+                    case 'MR': insertAtCursor(String(memory)); break;
+                    case 'M+': memory += Number(screen.value || 0) || 0; break;
+                    case 'M-': memory -= Number(screen.value || 0) || 0; break;
+                }
+            });
+        }
+    });
+
+    // modes
+    function setMode(sci) {
+        sciKeys().forEach(k => k.style.display = sci ? 'block' : 'none');
+        modeBasic.classList.toggle('active', !sci);
+        modeSci.classList.toggle('active', sci);
+    }
+    modeBasic.addEventListener('click', () => setMode(false));
+    modeSci.addEventListener('click', () => setMode(true));
+    setMode(false);
+
+    // clavier
+    screen.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); evaluate(); }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        // touches globales utiles
+        if (e.ctrlKey && e.key.toLowerCase() === 'm') { // Ctrl+M = bascule mode
+            setMode(!modeSci.classList.contains('active'));
+        }
+    });
+
+    // outils top
+    document.getElementById('copyResult').addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(screen.value || '');
+            const old = copyBtn.textContent;
+            copyBtn.textContent = '✅';
+            setTimeout(() => copyBtn.textContent = old, 700);
+        } catch { }
+    });
+
+    clearHist.addEventListener('click', () => {
+        history = [];
+        localStorage.removeItem('calcHistory');
+        renderHistory();
+    });
+
+
+    // init
+    setScreen('');
+    renderHistory();
+})();
 
 /* ---------- Todo ---------- */
 let todos = load('fsTodos') || [];
@@ -506,23 +703,6 @@ document.querySelectorAll(".pom-controls button").forEach(btn => {
     });
 });
 
-
-/* ---------- persistent data migrations ---------- */
-/* Ensure recs have urls (for persistent display) */
-// (function hydrateRecs() {
-//     const meta = load('fsRecs') || [];
-//     // we only stored metadata previously — keep that but recordings cannot survive a reload unless stored with IndexedDB
-//     if (meta.length && !recs.length) {
-//         // just copy meta to recs with placeholder url (won't play)
-//         recs = meta.map(m => ({ name: m.name, t: m.t, url: '', blobSize: m.blobSize }));
-//         save('fsRecs', meta);
-//         renderRecs();
-//     }
-// })();
-
-/* ---------- accessibility small improvements ---------- */
-
-
 /* ---------- Initialize UI ---------- */
 updatePomUI();
 renderNotes();
@@ -531,4 +711,50 @@ renderCards();
 renderTodos();
 renderStats();
 
-/* End of file */
+const Thememenu = document.getElementById('ThemeMenu');
+
+// afficher le menu au clic droit
+document.querySelector('.theme-toggle-btn').addEventListener('contextmenu', (e) => {
+    e.preventDefault(); // empêche le menu contextuel du navigateur
+    Thememenu.style.left = e.pageX + 'px';
+    Thememenu.style.top = e.pageY + 'px';
+    Thememenu.style.display = 'flex';
+});
+
+// fermer menu si clic ailleurs
+document.addEventListener('click', (e) => {
+    if (!Thememenu.contains(e.target)) {
+        Thememenu.style.display = 'none';
+    }
+});
+
+// actions
+$('#light').addEventListener('click', () => {
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    Thememenu.style.display = 'none';
+});
+
+$('#dark').addEventListener('click', () => {
+    document.body.classList.add('dark-theme');
+    document.body.classList.remove('light-theme');
+    Thememenu.style.display = 'none';
+});
+
+const Appmenu = document.getElementById('AppMenu');
+
+// afficher le menu au clic droit
+document.querySelector('.backbtn').addEventListener('contextmenu', (e) => {
+    e.preventDefault(); // empêche le menu contextuel du navigateur
+    Appmenu.style.left = (e.pageX - 225 )+ 'px';
+    Appmenu.style.top = e.pageY + 'px';
+    Appmenu.style.display = 'flex';
+});
+
+// fermer menu si clic ailleurs
+document.addEventListener('click', (e) => {
+    if (!Appmenu.contains(e.target)) {
+        Appmenu.style.display = 'none';
+    }
+});
+
