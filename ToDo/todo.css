@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #575788;
+    color: white;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    justify-content: center;
+}
+/* header */
+.fs-header {
+    display: flex;
+    z-index: 300;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03)
+}
+
+.fs-header button {
+    z-index: 350;
+}
+
+.fs-title h2 {
+    margin: 0;
+    font-size: 18px
+}
+
+.fs-title small {
+    display: block;
+    font-size: 12px;
+}
+
+.backbtn,
+.theme-toggle-btn {
+    text-decoration: none;
+    display: flex;
+    font-size: 15px;
+    width: 225px;
+    font-family: "Poppins";
+    justify-content: space-between;
+    background-color: rgb(75, 75, 75, 0.1);
+    padding: 10px;
+    border-radius: 20px;
+    z-index: 351;
+    align-items: center;
+    border: 1px solid white;
+    transition: all 0.3s;
+    color: white;
+}
+
+.theme-toggle-btn {
+    width: 45px;
+    color: transparent;
+    font-size: 1px;
+}
+
+.theme-toggle-btn span {
+    color: white;
+}
+
+.light-theme .backbtn,
+.light-theme .theme-toggle-btn {
+    color: black;
+    border: 1px solid black;
+}
+
+.backbtn span {
+    transition: all 0.3s ease-in-out;
+}
+
+.light-theme .backbtn:hover,
+.light-theme .theme-toggle-btn:hover {
+    background-color: rgb(150, 150, 150, 0.4);
+    width: 225px;
+    font-size: 15px;
+    color: black;
+}
+
+.dark-theme .backbtn:hover,
+.dark-theme .theme-toggle-btn:hover {
+    background-color: rgb(150, 150, 150, 0.4);
+    width: 225px;
+    font-size: 15px;
+    color: white;
+}
+
+.backbtn:hover span {
+    transform: translateX(-5px);
+}
+
+
+.theme-menu {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    background: rgba(40, 40, 40, 0.95);
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+.theme-menu button {
+    background: none;
+    border: 0;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Poppins";
+    padding: 8px 12px;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    background: white;
+    color: black;
+}
+
+.theme-menu button:hover {
+    color: white;
+    background: black;
+}
+
+.app-menu {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    background: rgba(40, 40, 40, 0.95);
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+    width: 225px;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.app-menu button {
+    background: none;
+    border: 0;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Poppins";
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    text-align: right;
+    background: white;
+    width: 100%;
+    color: black;
+}
+
+.app-menu button:hover {
+    color: white;
+    background: black;
+}
+
+.app-menu a {
+    background: none;
+    text-decoration: none;
+}
+
+form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+form input,
+form select,
+form button {
+    padding: 8px;
+    border-radius: 8px;
+    border:none;
+}
+
+#taskList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    width: 97%;
+    border-radius: 10px;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+
+
+.task:hover {
+    width: calc(97% - 205px);
+}
+
+.task.overdue {
+    border: 4px solid red;
+    background-color: rgb(50,0,0);
+}
+
+.task.almost {
+    border: 4px solid orange;
+    background-color: rgb(50,50,0);
+}
+
+.task .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.task .meta {
+    font-size: 12px;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: space-around;
+}
+
+#AddToDo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: rgb(100, 100, 100, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+#ToDoContent {
+    padding: 55px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    background-color: #fff;
+}
+
+#taskForm {
+    height: 100%;
+    width: 100%;
+    margin: 0 0 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+button,
+a {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+* {
+    font-family: "Poppins";
+}
+
+button {
+    cursor: pointer;
+}
+
+#taskPriority {
+    border-radius: 15px;
+}
+
+#taskPriority option {
+    font-weight: 900;
+    height: 100px;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+#taskPriority option:hover {
+    color: green;
+    scale: 1.2;
+    border-radius: 35px;
+}
+
+form input {
+    border: black 2px solid;
+}
+
+#CreateToDo {
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #fff;
+    border: none;
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 15px;
+}
+#AddToDo button span {
+    transition: all 0.2s ease-in-out;
+}
+#AddToDo button:hover span {
+    rotate: 180deg;
+}
+
+.task .actions {
+    display: flex;
+    opacity: 0;
+    flex-direction: row;
+    position: absolute;
+    right: 10px;
+    align-items: center;
+    height: 75px;
+    background-color: transparent;
+    transform: translateX(100px);
+    transition: all 0.3s ease-in-out;
+}
+
+.task:hover .actions {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.actions button {
+    height: 35px;
+    width: 35px;
+    color: white;
+    border-radius: 50%;
+    background: rgb(25,25,25);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    margin-right: 5px;
+}
+
+.actions button:hover {
+    background: rgb(255,255,255,0.6);
+}
+
+.actions:hover {
+    background-color: rgb(255,255,255,0.2);
+    border-radius: 10px;
+}

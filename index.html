@@ -8,7 +8,7 @@
   <title>SmartHub</title>
   <link rel="icon" href="../medias/logo.png" type="png" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
   <link rel="stylesheet" href="focusmode.css" />
   <script src="focusmode.js"></script>
 </head>
@@ -60,10 +60,6 @@
   <header>
     <h1>SmartHub</h1>
 
-    <p class="modal-item">Paramètres de la page</p>
-    <button onclick="scrollToPlatformState();" class="modal-item" id="DarkMode">
-      État de la plateforme
-    </button>
     <!-- <button id="LightMode" class="modal-item">Mode clair</button> -->
     <a href="../LegalDocs/privacypolicy.html" class="modal-item"><button class="modal-item focus-disable" id="PrivacyPolicy">
         Politique de confidentialité
@@ -71,9 +67,6 @@
     <a href="../LegalDocs/ugc.html" class="modal-item"><button class="modal-item focus-disable" id="UGC">
         Conditions Générales d'Utilisation du Service
       </button></a>
-    <button class="modal-item" id="About" onclick="scrollToAboutUs();">
-      À propos
-    </button>
     <button class="theme-toggle-btn" onclick="toggleTheme()">
       
       Changer de thème
@@ -81,6 +74,10 @@
     <a href="Jobs/jobs.html"><button class="modal-item" id="JoinUs">
       
       Nous rejoindre
+    </button></a>
+    <a href="https://smartdcbot.netlify.app"><button class="modal-item" id="Bot">
+      
+      Notre bot Discord
     </button></a>
 
     <p class="modal-item">
@@ -105,7 +102,7 @@
 
       <button id="welcomebtn" onclick="scrollToTools()">
         <span class="scrolltext">Découvrir nos outils</span>
-        <span class="scrollarrow"><span class="material-symbols-outlined">
+        <span class="scrollarrow"><span class="material-symbols-rounded">
             keyboard_arrow_down
           </span></span>
       </button>
@@ -130,7 +127,9 @@
         </a>
         <a id="afi" href="/WorkHelp/index.html">
           <h1>WorkHelp</h1>
-          <p>Nouveau</p>
+        </a>
+        <a id="afi" href="/ToDo/" class"focus-disable">
+          <h1>DoSmart</h1>
         </a>
       </div>
     </div>

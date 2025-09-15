@@ -23,3 +23,242 @@ body {
     background-position: 100% 100%;
     color: #f5f5f5;
 }
+
+.Work {
+    cursor: not-allowed;
+    position: relative;
+    background-color: #444;
+    /* Fond gris foncé */
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    font-family: "Poppins";
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: #092241 2px 5px 10px 2px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Bande animée */
+.Work::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    min-height: 100%;
+    background: linear-gradient(135deg,
+            #ffc107 25%,
+            #444 25%,
+            #444 50%,
+            #ffc107 50%,
+            #ffc107 75%,
+            #444 75%,
+            #444 100%);
+    background-size: 80px 80px;
+    animation: moveStripes 1s linear infinite;
+    opacity: 0.5;
+    z-index: 0;
+    transition: all 0.3s;
+}
+
+.Work {
+    transition: all 0.3s;
+}
+
+.Work:hover {
+    transform: scale(1.05);
+}
+
+
+/* Texte au-dessus des bandes */
+.Work h2 {
+    position: relative;
+    z-index: 2;
+}
+
+/* Animation des bandes */
+@keyframes moveStripes {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 80px 0;
+    }
+}
+
+/* ----------------------------- */
+/*         NOTIFICATIONS        */
+/* ----------------------------- */
+.notification {
+    top: 10px;
+    right: 17.5%;
+    /* Commence en dehors de l'écran */
+    position: fixed;
+    transition: all 0.3s ease;
+    z-index: 501;
+    will-change: transform, opacity;
+}
+
+/* Conteneur pour toutes les notifications */
+#notifications-container {
+    position: fixed;
+    top: 10px;
+    left: 17.5%;
+    right: 17.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Espace entre les notifications */
+    z-index: 500;
+    height: 1px;
+}
+
+/* Affichage de la notification */
+
+.notification.show {
+    opacity: 1;
+    top: 10px;
+    transition: all 0.3s ease;
+    z-index: 100000;
+}
+
+/* Disparition de la notification */
+.notification.hidden {
+    opacity: 0;
+    top: -100px;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.notification {
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    isolation: isolate;
+    position: fixed;
+    width: 65%;
+    height: auto;
+    cursor: default;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    border-radius: 1rem;
+    overflow: hidden;
+    padding: 10px 10px 10px 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    --gradient: linear-gradient(to bottom, #32a6ff, #3d8cff, #61a0ff);
+    --gradientC: linear-gradient(to bottom, red, #ff3d3d, #ff6161);
+    --color: #32a6ff;
+    z-index: 2;
+    border: 2px rgb(240, 250, 200);
+}
+
+.notification:before {
+    position: absolute;
+    content: "";
+    inset: 0.0625rem;
+    border-radius: 0.9375rem;
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+.notification:after {
+    position: absolute;
+    content: "";
+    width: 0.25rem;
+    inset: 0.65rem auto 0.65rem 0.5rem;
+    border-radius: 0.125rem;
+    background: var(--gradient);
+    transition: transform 300ms ease;
+    z-index: 4;
+}
+
+.critical::after {
+    background: var(--gradientC);
+    color: var(--gradientC);
+}
+
+
+
+.notification:hover:after {
+    transform: translateX(0.15rem);
+}
+
+.notititle {
+    color: var(--color);
+    padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: transform 300ms ease;
+    z-index: 5;
+}
+
+.critical .notititle {
+    color: red;
+}
+
+.critical {
+    color: var(--gradientC);
+}
+
+
+.notification:hover .notititle {
+    transform: translateX(0.15rem);
+}
+
+.notibody {
+    color: #99999d;
+    padding: 0 1.25rem;
+    transition: all 300ms ease;
+    z-index: 5;
+}
+
+.notification:hover .notibody {
+    transform: translateX(0.25rem);
+    color: #092241;
+}
+
+.notiglow,
+.notiborderglow {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle closest-side at center, white, transparent);
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.notiglow {
+    z-index: 3;
+}
+
+.notiborderglow {
+    z-index: 1;
+}
+
+.notification:hover .notiglow {
+    opacity: 0.1;
+}
+
+.notification:hover .notiborderglow {
+    opacity: 0.1;
+}
+
+.notification:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+}

@@ -1,297 +1,270 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>WorkHelp</title>
-    <link rel="icon" href="../medias/logo.png" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="../focusmode.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <div id="ThemeMenu" class="theme-menu">
-      <button id="light"><span class="material-symbols-outlined">light_mode</span>Thème clair</button>
-      <button id="dark"><span class="material-symbols-outlined">dark_mode</span> Thème sombre</button>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WorkHelp</title>
+  <link rel="icon" href="../medias/logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../focusmode.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="ThemeMenu" class="theme-menu">
+    <button id="light"><span class="material-symbols-rounded">light_mode</span>Thème clair</button>
+    <button id="dark"><span class="material-symbols-rounded">dark_mode</span> Thème sombre</button>
+  </div>
+  <div id="AppMenu" class="app-menu">
+    <a href="../index.html"><button><span class="material-symbols-rounded">arrow_back_ios</span>SmartHub</button></a>
+    <a href="../QuickNotes/quicknotes.html"><button><span class="material-symbols-rounded">
+          arrow_forward
+        </span>QuickNotes</button></a>
+    <a href="../Calendar/calendar.html"><button><span class="material-symbols-rounded">
+          arrow_forward
+        </span>SmartCalendar</button></a>
+    <a href="../AllFilmsInfo/index.html"><button><span class="material-symbols-rounded">
+          arrow_forward
+        </span>AllFilmsInfo</button></a>
+    <a href="../LegalDocs/privacypolicy.html"><button><span class="material-symbols-rounded">
+          arrow_forward
+        </span>Politique de confidentialité</button></a>
+    <a href="../LegalDocs/ugc.html"><button><span class="material-symbols-rounded">
+          arrow_forward
+        </span>Conditions générales d'utilisations du service</button></a>
+    <a href="../platformstate.html"><button><span class="material-symbols-rounded">
+          arrow_forward
+        </span>Etat de la plateforme</button></a>
+    <a href="../Jobs/jobs.html"><button><span class="material-symbols-rounded">
+          arrow_forward
+        </span>Nous rejoindre</button></a>
+  </div>
+  <div id="notifications-container">
+    <div class="notification hidden">
+      <div class="notiglow"></div>
+      <div class="notiborderglow"></div>
+      <div class="notititle"></div>
+      <div class="notibody"></div>
     </div>
-    <div id="AppMenu" class="app-menu">
-      <a href="../index.html"><button><span class="material-symbols-outlined">arrow_back_ios</span>SmartHub</button></a>
-      <a href="../QuickNotes/quicknotes.html"><button><span class="material-symbols-outlined">
-arrow_forward
-</span>QuickNotes</button></a>
-      <a href="../Calendar/calendar.html"><button><span class="material-symbols-outlined">
-arrow_forward
-</span>SmartCalendar</button></a>
-      <a href="../AllFilmsInfo/index.html"><button><span class="material-symbols-outlined">
-arrow_forward
-</span>AllFilmsInfo</button></a>
-      <a href="../LegalDocs/privacypolicy.html"><button><span class="material-symbols-outlined">
-arrow_forward
-</span>Politique de confidentialité</button></a>
-      <a href="../LegalDocs/ugc.html"><button><span class="material-symbols-outlined">
-arrow_forward
-</span>Conditions générales d'utilisations du service</button></a>
-      <a href="../platformstate.html"><button><span class="material-symbols-outlined">
-arrow_forward
-</span>Etat de la plateforme</button></a>
-      <a href="../Jobs/jobs.html"><button><span class="material-symbols-outlined">
-arrow_forward
-</span>Nous rejoindre</button></a>
-    </div>
-    <div id="notifications-container">
-      <div class="notification hidden">
-        <div class="notiglow"></div>
-        <div class="notiborderglow"></div>
-        <div class="notititle"></div>
-        <div class="notibody"></div>
-      </div>
+  </div>
+
+  <!-- Overlay qui empêche interactions sur le reste du site en focus-mode -->
+
+  <!-- Modal principal -->
+  <header class="fs-header">
+    <div class="fs-title">
+      <h2>WorkHelp</h2>
+      <small id="sessionStatus">...</small>
+      <small>Mode concentration : <span id="focusIndicator">OFF</span></small>
     </div>
 
-    <!-- Overlay qui empêche interactions sur le reste du site en focus-mode -->
+    <button class="theme-toggle-btn" onclick="toggleTheme()">
+      <span class="material-symbols-rounded"> routine </span>Changer de thème
+    </button>
 
-    <!-- Modal principal -->
-    <header class="fs-header">
-      <div class="fs-title">
-        <h2>WorkHelp</h2>
-        <small id="sessionStatus">...</small>
-        <small>Mode concentration : <span id="focusIndicator">OFF</span></small>
-      </div>
+    <a href="../index.html" class="backbtn"><span class="material-symbols-rounded"> arrow_back_ios </span>Retour
+      vers SmartHub</a>
+  </header>
 
-      <button class="theme-toggle-btn" onclick="toggleTheme()">
-        <span class="material-symbols-outlined"> routine </span>Changer de thème
-      </button>
+  <nav class="fs-tabs" role="tablist" aria-label="Onglets">
+    <button class="tab active" data-tab="pomodoro" role="tab" aria-selected="true">
+      Pomodoro
+    </button>
+    <button class="tab" data-tab="notes" role="tab">Notes</button>
+    <button class="tab" data-tab="flashcards" role="tab">Fiches</button>
+    <!-- <button class="tab" data-tab="audio" role="tab">Audio</button> -->
+    <button class="tab" data-tab="calc" role="tab">Calculatrice</button>
+    <button class="tab" data-tab="todo" role="tab">To-do</button>
+  </nav>
 
-      <a href="../index.html" class="backbtn"
-        ><span class="material-symbols-outlined"> arrow_back_ios </span>Retour
-        vers SmartHub</a
-      >
-    </header>
-
-    <nav class="fs-tabs" role="tablist" aria-label="Onglets">
-      <button
-        class="tab active"
-        data-tab="pomodoro"
-        role="tab"
-        aria-selected="true"
-      >
-        Pomodoro
-      </button>
-      <button class="tab" data-tab="notes" role="tab">Notes</button>
-      <button class="tab" data-tab="flashcards" role="tab">Fiches</button>
-      <!-- <button class="tab" data-tab="audio" role="tab">Audio</button> -->
-      <button class="tab" data-tab="calc" role="tab">Calculatrice</button>
-      <button class="tab" data-tab="todo" role="tab">To-do</button>
-    </nav>
-
-    <main class="fs-body">
-      <!-- Pomodoro -->
-      <section id="pomodoro" class="panel active" role="tabpanel">
-        <div class="pomodoro-display">
-          <div class="timer" id="timerDisplay">25:00</div>
-          <div class="session-type" id="sessionType">Travail</div>
-          <div class="pom-controls">
-            <button id="startPom">
-              <span class="material-symbols-outlined" id="Play">
-                play_arrow
-              </span>
-            </button>
-            <button id="pausePom">
-              <span class="material-symbols-outlined" id="Pause"> pause </span>
-            </button>
-            <button id="resetPom">
-              <span class="material-symbols-outlined" id="rotate1">
-                refresh
-              </span>
-            </button>
-            <button id="settingsPom" title="Paramètres">
-              <span class="material-symbols-outlined" id="rotate2">
-                settings
-              </span>
-            </button>
-          </div>
-        </div>
-
-        <div class="pom-settings" id="pomSettings">
-          <label
-            >Durée travail (min):
-            <input type="number" id="workDuration" min="1" value="25"
-          /></label>
-          <label
-            >Pause courte (min):
-            <input type="number" id="shortBreak" min="1" value="5"
-          /></label>
-          <label
-            >Pause longue (min):
-            <input type="number" id="longBreak" min="5" value="15"
-          /></label>
-          <label
-            >Cycles avant pause longue:
-            <input type="number" id="cyclesBeforeLong" min="1" value="4"
-          /></label>
-          <label
-            ><input type="checkbox" id="autoStartNext" /> Démarrer
-            automatiquement la session suivante</label
-          >
-          <button id="savePomSettings">Enregistrer</button>
-        </div>
-      </section>
-
-      <!-- Notes -->
-      <section id="notes" class="panel" role="tabpanel" hidden>
-        <div class="notes-top">
-          <input id="noteTitle" placeholder="Titre rapide" />
-          <button id="addNote">
-            <span class="material-symbols-outlined">add</span> Ajouter
+  <main class="fs-body">
+    <!-- Pomodoro -->
+    <section id="pomodoro" class="panel active" role="tabpanel">
+      <div class="pomodoro-display">
+        <div class="timer" id="timerDisplay">25:00</div>
+        <div class="session-type" id="sessionType">Travail</div>
+        <div class="pom-controls">
+          <button id="startPom">
+            <span class="material-symbols-rounded" id="Play">
+              play_arrow
+            </span>
+          </button>
+          <button id="pausePom">
+            <span class="material-symbols-rounded" id="Pause"> pause </span>
+          </button>
+          <button id="resetPom">
+            <span class="material-symbols-rounded" id="rotate1">
+              refresh
+            </span>
+          </button>
+          <button id="settingsPom" title="Paramètres">
+            <span class="material-symbols-rounded" id="rotate2">
+              settings
+            </span>
           </button>
         </div>
-        <textarea
-          id="noteEditor"
-          placeholder="Rédige ta note ici..."
-        ></textarea>
+      </div>
 
-        <div id="notesList" class="notes-list" aria-live="polite"></div>
-      </section>
+      <div class="pom-settings" id="pomSettings">
+        <label>Durée travail (min):
+          <input type="number" id="workDuration" min="1" value="25" /></label>
+        <label>Pause courte (min):
+          <input type="number" id="shortBreak" min="1" value="5" /></label>
+        <label>Pause longue (min):
+          <input type="number" id="longBreak" min="5" value="15" /></label>
+        <label>Cycles avant pause longue:
+          <input type="number" id="cyclesBeforeLong" min="1" value="4" /></label>
+        <label><input type="checkbox" id="autoStartNext" /> Démarrer
+          automatiquement la session suivante</label>
+        <button id="savePomSettings">Enregistrer</button>
+      </div>
+    </section>
 
-      <!-- Flashcards -->
-      <section id="flashcards" class="panel" role="tabpanel" hidden>
-        <div class="flash-controls">
-          <input id="cardFront" placeholder="Question / recto" /><br>
-          <input id="cardBack" placeholder="Réponse / verso" /><br>
-          <button id="addCard"><span class="material-symbols-outlined">add</span>Ajouter la fiche</button><br>
-          <button id="clearCards"><span class="material-symbols-outlined">delete_forever</span>Tout supprimer</button>
-        </div>
-        <div id="cardArea" class="card-area"></div>
-        <div id="cardMenu" class="card-menu">
-          <button id="dupCard"><span class="material-symbols-outlined">content_copy</span> Dupliquer la carte</button>
-          <button id="delCard"><span class="material-symbols-outlined">delete</span> Supprimer la carte</button>
-        </div>
-      </section>
+    <!-- Notes -->
+    <section id="notes" class="panel" role="tabpanel" hidden>
+      <div class="notes-top">
+        <input id="noteTitle" placeholder="Titre rapide" />
+        <button id="addNote">
+          <span class="material-symbols-rounded">add</span> Ajouter
+        </button>
+      </div>
+      <textarea id="noteEditor" placeholder="Rédige ta note ici..."></textarea>
 
-      <!-- Calculator -->
-      <section id="calc" class="panel" role="tabpanel" hidden>
-        <div class="calc-wrap">
-          <div class="calc-top">
-            <div class="calc-mode">
-              <button id="modeBasic" class="active" title="Mode standard">
-                Basique
-              </button>
-              <button id="modeSci" title="Mode scientifique">
-                Scientifique
-              </button>
-            </div>
-            <div class="calc-tools">
-              <button id="copyResult" title="Copier le résultat">
-                <span class="material-symbols-outlined">content_copy</span>
-              </button>
-              <button id="clearHistory" title="Vider l'historique">
-                <span class="material-symbols-outlined">delete</span>
-              </button>
-            </div>
+      <div id="notesList" class="notes-list" aria-live="polite"></div>
+    </section>
+
+    <!-- Flashcards -->
+    <section id="flashcards" class="panel" role="tabpanel" hidden>
+      <div class="flash-controls">
+        <input id="cardFront" placeholder="Question / recto" /><br>
+        <input id="cardBack" placeholder="Réponse / verso" /><br>
+        <button id="addCard"><span class="material-symbols-rounded">add</span>Ajouter la fiche</button><br>
+        <button id="clearCards"><span class="material-symbols-rounded">delete_forever</span>Tout supprimer</button>
+      </div>
+      <div id="cardArea" class="card-area"></div>
+      <div id="cardMenu" class="card-menu">
+        <button id="dupCard"><span class="material-symbols-rounded">content_copy</span> Dupliquer la carte</button>
+        <button id="delCard"><span class="material-symbols-rounded">delete</span> Supprimer la carte</button>
+      </div>
+    </section>
+
+    <!-- Calculator -->
+    <section id="calc" class="panel" role="tabpanel" hidden>
+      <div class="calc-wrap">
+        <div class="calc-top">
+          <div class="calc-mode">
+            <button id="modeBasic" class="active" title="Mode standard">
+              Basique
+            </button>
+            <button id="modeSci" title="Mode scientifique">
+              Scientifique
+            </button>
           </div>
-
-          <div class="display">
-            <div id="historyLine"></div>
-            <input
-              id="screen"
-              type="text"
-              inputmode="decimal"
-              autocomplete="off"
-              spellcheck="false"
-            />
-          </div>
-
-          <div class="keys">
-            <!-- Mémoire -->
-            <button class="key mem" data-act="MC">MC</button>
-            <button class="key mem" data-act="MR">MR</button>
-            <button class="key mem" data-act="M+">M+</button>
-            <button class="key mem" data-act="M-">M-</button>
-            <button class="key" data-act="CE" style="background-color: red">
-              CE
+          <div class="calc-tools">
+            <button id="copyResult" title="Copier le résultat">
+              <span class="material-symbols-rounded">content_copy</span>
             </button>
-            <button class="key" data-act="C" style="background-color: grey">
-              C
+            <button id="clearHistory" title="Vider l'historique">
+              <span class="material-symbols-rounded">delete</span>
             </button>
-            <button class="key" data-act="DEL">
-              <span class="material-symbols-outlined">backspace</span>
-            </button>
-            <button class="key op" data-insert="/">÷</button>
-
-            <!-- Scientifique (ligne 1) -->
-            <button class="key sci" data-insert="sin(">sin</button>
-            <button class="key sci" data-insert="cos(">cos</button>
-            <button class="key sci" data-insert="tan(">tan</button>
-            <button class="key sci" data-insert="sqrt(">√</button>
-            <button class="key" data-insert="(">(</button>
-            <button class="key" data-insert=")">)</button>
-            <button class="key op" data-insert="^">xʸ</button>
-            <button class="key op" data-insert="*">×</button>
-
-            <!-- Scientifique (ligne 2) -->
-            <button class="key sci" data-insert="ln(">ln</button>
-            <button class="key sci" data-insert="log10(">log</button>
-            <button class="key sci" data-insert="abs(">abs</button>
-            <button class="key sci" data-insert="!">n!</button>
-            <button class="key op" data-insert="-">−</button>
-
-            <!-- Chiffres -->
-            <button class="key sci" data-insert="π">π</button>
-            <button class="key sci" data-insert="e">e</button>
-            <button class="key sci" data-act="sign">±</button>
-            <button class="key" data-insert="%">%</button>
-
-            <button class="key op" data-insert="+">+</button>
-            <button class="key" data-insert=",">,</button>
-
-            <button class="key" data-insert="0">0</button>
-            <button class="key" data-insert="1">1</button>
-            <button class="key" data-insert="2">2</button>
-            <button class="key" data-insert="3">3</button>
-            <button class="key" data-insert="4">4</button>
-            <button class="key" data-insert="5">5</button>
-            <button class="key" data-insert="6">6</button>
-            <button class="key" data-insert="7">7</button>
-            <button class="key" data-insert="8">8</button>
-            <button class="key" data-insert="9">9</button>
-
-            <button class="key wide equals" data-act="=">=</button>
           </div>
         </div>
-        <div class="history">
-          <h4>Historique</h4>
-          <ul id="histList"></ul>
+
+        <div class="display">
+          <div id="historyLine"></div>
+          <input id="screen" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" />
         </div>
-      </section>
 
-      <!-- To-do -->
-      <section id="todo" class="panel" role="tabpanel" hidden>
-        <div class="todo-top">
-          <input id="todoInput" placeholder="Nouvelle tâche..." />
-          <button id="addTodo">Ajouter</button>
-          <button id="clearTodos">Supprimer terminées</button>
+        <div class="keys">
+          <!-- Mémoire -->
+          <button class="key mem" data-act="MC">MC</button>
+          <button class="key mem" data-act="MR">MR</button>
+          <button class="key mem" data-act="M+">M+</button>
+          <button class="key mem" data-act="M-">M-</button>
+          <button class="key" data-act="CE" style="background-color: red">
+            CE
+          </button>
+          <button class="key" data-act="C" style="background-color: grey">
+            C
+          </button>
+          <button class="key" data-act="DEL">
+            <span class="material-symbols-rounded">backspace</span>
+          </button>
+          <button class="key op" data-insert="/">÷</button>
+
+          <!-- Scientifique (ligne 1) -->
+          <button class="key sci" data-insert="sin(">sin</button>
+          <button class="key sci" data-insert="cos(">cos</button>
+          <button class="key sci" data-insert="tan(">tan</button>
+          <button class="key sci" data-insert="sqrt(">√</button>
+          <button class="key" data-insert="(">(</button>
+          <button class="key" data-insert=")">)</button>
+          <button class="key op" data-insert="^">xʸ</button>
+          <button class="key op" data-insert="*">×</button>
+
+          <!-- Scientifique (ligne 2) -->
+          <button class="key sci" data-insert="ln(">ln</button>
+          <button class="key sci" data-insert="log10(">log</button>
+          <button class="key sci" data-insert="abs(">abs</button>
+          <button class="key sci" data-insert="!">n!</button>
+          <button class="key op" data-insert="-">−</button>
+
+          <!-- Chiffres -->
+          <button class="key sci" data-insert="π">π</button>
+          <button class="key sci" data-insert="e">e</button>
+          <button class="key sci" data-act="sign">±</button>
+          <button class="key" data-insert="%">%</button>
+
+          <button class="key op" data-insert="+">+</button>
+          <button class="key" data-insert=",">,</button>
+
+          <button class="key" data-insert="0">0</button>
+          <button class="key" data-insert="1">1</button>
+          <button class="key" data-insert="2">2</button>
+          <button class="key" data-insert="3">3</button>
+          <button class="key" data-insert="4">4</button>
+          <button class="key" data-insert="5">5</button>
+          <button class="key" data-insert="6">6</button>
+          <button class="key" data-insert="7">7</button>
+          <button class="key" data-insert="8">8</button>
+          <button class="key" data-insert="9">9</button>
+
+          <button class="key wide equals" data-act="=">=</button>
         </div>
-        <ul id="todoList" class="todo-list"></ul>
-      </section>
+      </div>
+      <div class="history">
+        <h4>Historique</h4>
+        <ul id="histList"></ul>
+      </div>
+    </section>
 
-      <!-- Stats -->
-      <section id="stats" class="panel" role="tabpanel" hidden>
-        <h3>Statistiques</h3>
-        <p>
-          Sessions de travail complétées : <strong id="statSessions">0</strong>
-        </p>
-        <p>
-          Temps total en concentration :
-          <strong id="statMinutes">0</strong> minutes
-        </p>
-        <button id="resetStats">Réinitialiser</button>
-      </section>
-    </main>
+    <!-- To-do -->
+    <section id="todo" class="panel" role="tabpanel" hidden>
+      <div class="todo-top">
+        <input id="todoInput" placeholder="Nouvelle tâche..." />
+        <button id="addTodo">Ajouter</button>
+        <button id="clearTodos">Supprimer terminées</button>
+      </div>
+      <ul id="todoList" class="todo-list"></ul>
+    </section>
 
-    <script src="script.js"></script>
-    <script src="../focusmode.js"></script>
-  </body>
+    <!-- Stats -->
+    <section id="stats" class="panel" role="tabpanel" hidden>
+      <h3>Statistiques</h3>
+      <p>
+        Sessions de travail complétées : <strong id="statSessions">0</strong>
+      </p>
+      <p>
+        Temps total en concentration :
+        <strong id="statMinutes">0</strong> minutes
+      </p>
+      <button id="resetStats">Réinitialiser</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="../focusmode.js"></script>
+</body>
+
 </html>

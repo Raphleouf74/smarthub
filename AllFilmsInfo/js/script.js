@@ -368,7 +368,7 @@ function displayFavorites(movies) {
   const backButton = document.createElement('button');
   backButton.id = 'back-home';
   backButton.classList.add('action-btn');
-  backButton.innerHTML = '<span class="material-symbols-outlined"> arrow_back_ios </span> Retour';
+  backButton.innerHTML = '<span class="material-symbols-rounded"> arrow_back_ios </span> Retour';
   container.appendChild(backButton);
 
   backButton.addEventListener('click', () => {

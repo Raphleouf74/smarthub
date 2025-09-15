@@ -75,8 +75,6 @@ if (!localStorage.getItem('firstDay')) {
     localStorage.setItem('firstDay', 'lundi');
 }
 
-
-
 function getWeekdayName(date) {
     const jsIndex = date.getDay(0); // 0 = dimanche, 1 = lundi...
     const days = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
@@ -120,6 +118,7 @@ function getEvents() {
 function saveEvents(events) {
     localStorage.setItem('events', JSON.stringify(events));
 }
+
 document.getElementById('saveEventBtn').addEventListener('click', () => {
     const title = document.getElementById('eventTitle').value;
     const date = document.getElementById('eventDate').value;
@@ -135,6 +134,7 @@ document.getElementById('saveEventBtn').addEventListener('click', () => {
     renderEvents(); // Affiche les événements mis à jour
     location.reload() // Recharger la page pour bien afficher les événements
 });
+
 function renderEvents() {
     const container = document.getElementById('eventsList');
     const events = getEvents();
@@ -155,6 +155,7 @@ function renderEvents() {
     });
     updateEmptyMessage();
 }
+
 function deleteEvent(index) {
     const events = getEvents();
     events.splice(index, 1);
@@ -162,19 +163,16 @@ function deleteEvent(index) {
     renderEvents();
     updateEmptyMessage();
 }
+
 function showModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.classList.remove('hidden');
     modal.classList.add('shown');
-
-    // Optionnel : ajouter un délai pour déclencher une animation CSS
-    setTimeout(() => modal.classList.add('show'), 10);
 }
 
 function hideModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.classList.remove('shown');
-    modal.classList.remove('show');
     modal.classList.add('hidden');
 }
 
@@ -182,6 +180,7 @@ document.getElementById('CreateEventBtn').addEventListener('click', () => {
     showModal('CreateEventModal');
     renderEvents();
 });
+
 const emptyMessage = document.getElementById('emptyEvent')
 function updateEmptyMessage() {
     const emptyMessage = document.getElementById('emptyEvent');
@@ -191,8 +190,6 @@ function updateEmptyMessage() {
     const visibleEvents = [...eventsList.children].filter(child => child.tagName !== 'HR');
     emptyMessage.style.display = visibleEvents.length > 0 ? 'none' : 'block';
 }
-
-
 
 document.getElementById('EventBtn').addEventListener('click', () => {
     showModal('EventModal');
@@ -222,53 +219,6 @@ document.addEventListener('keydown', e => {
 });
 updateEmptyMessage();
 
-function showCriticalNotification(title, body) {
-    const notification = document.createElement("div");
-    notification.classList.add("notification", "hidden", "critical");
-    notification.innerHTML = `
-              <div class="notiglow"></div>
-              <div class="notiborderglow"></div>
-              <div class="notititle"><b>${title}</b></div>
-              <div class="notibody"><i>${body}</i></div>
-            `;
-    notificationsContainer.prepend(notification);
-
-    setTimeout(() => {
-        // Force un reflow ici avant d'ajouter la classe
-        void notification.offsetWidth;
-        notification.classList.remove("hidden");
-        notification.classList.add("show");
-        notification.classList.add("critical");
-        updateNotificationPositions();
-    }, 100);
-
-    setTimeout(() => {
-        notification.classList.remove("show");
-        notification.classList.add("hidden");
-        setTimeout(() => {
-            notification.remove();
-            updateNotificationPositions();
-        }, 200);
-    }, 9999999999999); // Notification critique, ne disparaît pas automatiquement
-
-    if (notificationsContainer.children.length > 3) {
-        const lastNotification = notificationsContainer.children[3];
-        lastNotification.classList.remove("show");
-        lastNotification.classList.add("hidden");
-        setTimeout(() => {
-            lastNotification.remove();
-            updateNotificationPositions();
-        }, 300);
-    }
-    notification.addEventListener("click", (e) => {
-        notification.classList.remove("show");
-        notification.classList.add("hidden");
-        setTimeout(() => {
-            notification.remove();
-            updateNotificationPositions();
-        }, 100);
-    });
-}
 function checkTodayEvents() {
     const today = new Date().toISOString().split('T')[0];
     const events = JSON.parse(localStorage.getItem('events')) || [];
@@ -352,30 +302,126 @@ CloseSettingsBtn.addEventListener(('click'), () => {
     SettingsModal.classList.remove('shown');
 });
 
-const cards = document.querySelectorAll(".category-card");
-const contents = document.querySelectorAll(".category-content");
-const Setgrid = document.querySelector(".category-grid");
 
-cards.forEach(card => {
-    card.addEventListener("click", () => {
-        const targetId = card.dataset.category;
 
-        // Cacher la grille et afficher la section ciblée
-        Setgrid.style.display = "none";
-        contents.forEach(content => {
-            if (content.id === targetId) {
-                content.classList.add("show");
-            } else {
-                content.classList.remove("show");
-            }
-        });
-    });
+flatpickr("#eventDate", {
+    dateFormat: "d-m-Y",
+    locale: "fr"
 });
 
-document.querySelectorAll(".backBtn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        contents.forEach(c => c.classList.remove("show"));
-        Setgrid.style.display = "grid";
-    });
+// ...existing code...
+
+let selectedDateForMenu = null;
+
+// Fonction utilitaire pour formater la date en d-m-Y pour flatpickr
+function formatDateDMY(dateStr) {
+    const [year, month, day] = dateStr.split('-');
+    return `${day}-${month}-${year}`;
+}
+
+// Fonction utilitaire pour formater la date en YYYY-MM-DD
+function formatDateYMD(dateStr) {
+    const [day, month, year] = dateStr.split('-');
+    return `${year}-${month}-${day}`;
+}
+
+// ...existing code...
+
+document.addEventListener('contextmenu', function (e) {
+
+
+    e.preventDefault();
+    // Vérifie si on a cliqué sur un jour du calendrier
+    const dayDiv = e.target.closest('.calendar-day');
+    if (!dayDiv) return;
+
+    e.preventDefault();
+
+    // Récupère le jour et le mois affichés
+    const day = dayDiv.querySelector('span').textContent;
+    const monthYearText = document.getElementById('month-year').textContent;
+    const [monthName, year] = monthYearText.split(' ');
+    const months = [
+        'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+        'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+    ];
+    const month = (months.indexOf(monthName.toLowerCase()) + 1).toString().padStart(2, '0');
+    const dateYMD = `${year}-${month}-${day.padStart(2, '0')}`;
+    selectedDateForMenu = dateYMD;
+
+    // Affiche le nombre d'événements ce jour-là
+    const events = getEvents();
+    const nb = events.filter(ev => ev.date === dateYMD).length;
+    document.getElementById('EventNb').textContent = nb;
+    // ...calcul de selectedDateForMenu et du nombre d'événements...
+
+    const Appmenu = document.getElementById('AppMenu');
+    Appmenu.style.display = 'flex';
+
+    // Positionnement intelligent
+    const menuWidth = Appmenu.offsetWidth || 250; // valeur par défaut si pas encore rendu
+    const menuHeight = Appmenu.offsetHeight || 100;
+    let left = e.pageX - 225;
+    let top = e.pageY;
+
+    // Ajuste si dépasse à droite
+    if (left + menuWidth > window.innerWidth) {
+        left = window.innerWidth - menuWidth - 10;
+    }
+    // Ajuste si dépasse à gauche
+    if (left < 0) left = 10;
+
+    // Ajuste si dépasse en bas
+    if (top + menuHeight > window.innerHeight) {
+        top = window.innerHeight - menuHeight - 10;
+    }
+    // Ajuste si dépasse en haut
+    if (top < 0) top = 10;
+
+    Appmenu.style.left = left + 'px';
+    Appmenu.style.top = top + 'px';
+});
+
+// ...existing code...
+
+// Fermer le menu si clic ailleurs
+document.addEventListener('click', (e) => {
+    const Appmenu = document.getElementById('AppMenu');
+    if (!Appmenu.contains(e.target)) {
+        Appmenu.style.display = 'none';
+    }
+});
+
+// Quand on clique sur "Ajouter un évènement au jour sélectionné"
+document.getElementById('AddEventToDayBtn').addEventListener('click', () => {
+    if (!selectedDateForMenu) return;
+    showModal('CreateEventModal');
+    // Préremplir la date dans le format d-m-Y pour flatpickr
+    const fp = document.getElementById('eventDate')._flatpickr;
+    if (fp) {
+        fp.setDate(formatDateDMY(selectedDateForMenu), true, "d-m-Y");
+    } else {
+        document.getElementById('eventDate').value = formatDateDMY(selectedDateForMenu);
+    }
+    document.getElementById('AppMenu').style.display = 'none';
+});
+
+// Ouvre le panneau de personnalisation de la page
+document.getElementById('customizePageBtn').addEventListener('click', function () {
+    SettingsModal.classList.remove('shown');
+
+    document.getElementById('page-customizer').style.display = 'flex';
+});
+
+// Ferme le panneau
+document.getElementById('closePageCustomizer').addEventListener('click', function () {
+    document.getElementById('page-customizer').style.display = 'none';
+});
+
+// Applique les styles choisis
+document.getElementById('applyPageStyle').addEventListener('click', function () {
+    document.body.style.background = document.getElementById('pageBgColor').value;
+    document.body.style.fontFamily = document.getElementById('pageFontFamily').value;
+    document.body.style.fontSize = document.getElementById('pageFontSize').value + 'px';
 });
 

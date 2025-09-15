@@ -10,101 +10,6 @@ function updateNotificationPositions() {
     });
 }
 
-function showNotification(title, body) {
-    const notification = document.createElement("div");
-    notification.classList.add("notification", "hidden");
-    notification.innerHTML = `
-              <div class="notiglow"></div>
-              <div class="notiborderglow"></div>
-              <div class="notititle"><b>${title}</b></div>
-              <div class="notibody"><i>${body}</i></div>
-            `;
-    notificationsContainer.prepend(notification);
-
-    setTimeout(() => {
-        // Force un reflow ici avant d'ajouter la classe
-        void notification.offsetWidth;
-        notification.classList.remove("hidden");
-        notification.classList.add("show");
-        updateNotificationPositions();
-    }, 100);
-
-    setTimeout(() => {
-        notification.classList.remove("show");
-        notification.classList.add("hidden");
-        setTimeout(() => {
-            notification.remove();
-            updateNotificationPositions();
-        }, 200);
-    }, 5000);
-
-    if (notificationsContainer.children.length > 5) {
-        const lastNotification = notificationsContainer.children[5];
-        lastNotification.classList.remove("show");
-        lastNotification.classList.add("hidden");
-        setTimeout(() => {
-            lastNotification.remove();
-            updateNotificationPositions();
-        }, 300);
-    }
-    notification.addEventListener("click", (e) => {
-        notification.classList.remove("show");
-        notification.classList.add("hidden");
-        setTimeout(() => {
-            notification.remove();
-            updateNotificationPositions();
-        }, 100);
-    });
-}
-
-function showCriticalNotification(title, body) {
-    const notification = document.createElement("div");
-    notification.classList.add("notification", "hidden", "critical", "Work");
-    notification.innerHTML = `
-              <div class="notiglow"></div>
-              <div class="notiborderglow"></div>
-              <div class="notititle"><b>${title}</b></div>
-              <div class="notibody"><i>${body}</i></div>
-              <i class="notibody">Cliquez sur la notification pour la cacher</i>
-            `;
-    notificationsContainer.prepend(notification);
-
-    setTimeout(() => {
-        // Force un reflow ici avant d'ajouter la classe
-        void notification.offsetWidth;
-        notification.classList.remove("hidden");
-        notification.classList.add("show");
-        notification.classList.add("critical");
-        updateNotificationPositions();
-    }, 100);
-
-    setTimeout(() => {
-        notification.classList.remove("show");
-        notification.classList.add("hidden");
-        setTimeout(() => {
-            notification.remove();
-            updateNotificationPositions();
-        }, 200);
-    }, 9999999999999); // Notification critique, ne disparaît pas automatiquement
-
-    if (notificationsContainer.children.length > 5) {
-        const lastNotification = notificationsContainer.children[5];
-        lastNotification.classList.remove("show");
-        lastNotification.classList.add("hidden");
-        setTimeout(() => {
-            lastNotification.remove();
-            updateNotificationPositions();
-        }, 300);
-    }
-    notification.addEventListener("click", (e) => {
-        notification.classList.remove("show");
-        notification.classList.add("hidden");
-        setTimeout(() => {
-            notification.remove();
-            updateNotificationPositions();
-        }, 100);
-    });
-}
 
 
 /* FocusSpace — JS (Pomodoro, Notes, Flashcards, Audio, Calc, Todo, Stats)
@@ -207,16 +112,16 @@ function startPom() {
     if (pomState.running) return;
     pomState.running = true;
     if (!pomInterval) pomInterval = setInterval(tick, 1000);
-    showNotification('<span class="material-symbols-outlined">check</span> Pomodoro activé', '');
-    setTimeout(() => { showNotification('<span class="material-symbols-outlined">bedtime</span> Mode "Ne pas déranger" activé', "") }, 500);
+    showNotification('<span class="material-symbols-rounded">check</span> Pomodoro activé', '');
+    setTimeout(() => { showNotification('<span class="material-symbols-rounded">bedtime</span> Mode "Ne pas déranger" activé', "") }, 500);
     updatePomUI();
 }
 function pausePom() {
     pomState.running = false;
     clearInterval(pomInterval); pomInterval = null;
     updatePomUI();
-    showNotification('<span class="material-symbols-outlined">check</span>Pomodoro mit en pause', '')
-    setTimeout(() => { showNotification('<span class="material-symbols-outlined">bedtime_off</span> Mode "Ne pas déranger" désactivé', "") }, 500);
+    showNotification('<span class="material-symbols-rounded">check</span>Pomodoro mit en pause', '')
+    setTimeout(() => { showNotification('<span class="material-symbols-rounded">bedtime_off</span> Mode "Ne pas déranger" désactivé', "") }, 500);
 
 }
 function resetPom() {
@@ -226,7 +131,7 @@ function resetPom() {
     pomState.cyclesDone = 0;
     clearInterval(pomInterval); pomInterval = null;
     updatePomUI();
-    showNotification('<span class="material-symbols-outlined">check</span>Pomodoro réinitialisé', '')
+    showNotification('<span class="material-symbols-rounded">check</span>Pomodoro réinitialisé', '')
 }
 
 startBtn.addEventListener('click', () => { startPom(); });
@@ -301,9 +206,9 @@ function renderNotes() {
                 <strong>${n.title || 'Sans titre'}</strong><br><small>${new Date(n.t).toLocaleString()}</small>
             </div>
             <div>
-                <button data-index="${idx}" class="editNote" title="Éditer la note"><span class="material-symbols-outlined">edit</span></button>
-                <button data-index="${idx}" class="delNote" title="Supprimer la note"><span class="material-symbols-outlined">delete</span></button>
-                <button data-index="${idx}" class="hideNote" title="Cacher la note"><span class="material-symbols-outlined">visibility_lock</span></button>
+                <button data-index="${idx}" class="editNote" title="Éditer la note"><span class="material-symbols-rounded">edit</span></button>
+                <button data-index="${idx}" class="delNote" title="Supprimer la note"><span class="material-symbols-rounded">delete</span></button>
+                <button data-index="${idx}" class="hideNote" title="Cacher la note"><span class="material-symbols-rounded">visibility_lock</span></button>
             </div>`;
         notesList.appendChild(div);
     });

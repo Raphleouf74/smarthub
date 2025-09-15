@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartHub - To-Do List</title>
+    <link rel="stylesheet" href="todo.css">
+    <link rel="stylesheet" href="../focusmode.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+</head>
+
+<body>
+    <div id="ThemeMenu" class="theme-menu">
+        <button id="light"><span class="material-symbols-rounded">light_mode</span>Thème clair</button>
+        <button id="dark"><span class="material-symbols-rounded">dark_mode</span> Thème sombre</button>
+    </div>
+    <div id="AppMenu" class="app-menu">
+        <a href="../index.html"><button><span
+                    class="material-symbols-rounded">arrow_back_ios</span>SmartHub</button></a>
+        <a href="../QuickNotes/quicknotes.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>QuickNotes</button></a>
+        <a href="../Calendar/calendar.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>SmartCalendar</button></a>
+        <a href="../AllFilmsInfo/index.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>AllFilmsInfo</button></a>
+        <a href="../WorkHelp/index.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>WorkHelp</button></a>
+        <a href="../LegalDocs/privacypolicy.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>Politique de confidentialité</button></a>
+        <a href="../LegalDocs/ugc.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>Conditions générales d'utilisations du service</button></a>
+        <a href="../platformstate.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>Etat de la plateforme</button></a>
+        <a href="../Jobs/jobs.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>Nous rejoindre</button></a>
+    </div>
+    <div id="notifications-container">
+        <div class="notification hidden">
+            <div class="notiglow"></div>
+            <div class="notiborderglow"></div>
+            <div class="notititle"></div>
+            <div class="notibody"></div>
+        </div>
+    </div>
+
+    <!-- Overlay qui empêche interactions sur le reste du site en focus-mode -->
+
+    <!-- Modal principal -->
+    <header class="fs-header">
+        <div class="fs-title">
+            <h2>DoSmart</h2>
+        </div>
+
+        <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <span class="material-symbols-rounded"> routine </span>Changer de thème
+        </button>
+
+        <a href="../index.html" class="backbtn"><span class="material-symbols-rounded"> arrow_back_ios </span>Retour
+            vers SmartHub</a>
+    </header>
+
+    <button id="CreateToDo"
+        onclick="document.getElementById('AddToDo').style.opacity = 1; document.getElementById('AddToDo').style.zIndex = 100;"><span
+            class="material-symbols-rounded">add</span> Créer une tâche</button>
+    <div id="AddToDo">
+        <div id="ToDoContent">
+            <h1>Créer une tâche</h1>
+            <form id="taskForm">
+                <input type="text" id="taskTitle" placeholder="Nom de la tâche" required>
+                <input type="date" id="taskDeadline">
+                <p>Priorité de la tâche:</p>
+                <select id="taskPriority">
+                    <option value="Bas">Basse</option>
+                    <option value="Moyen">Moyenne</option>
+                    <option value="Haut">Haute</option>
+                    <option value="Absolu">Absolue</option>
+                </select>
+                <p>Catégorie:</p>
+                <select id="taskCategory">
+                    <option value="Travail">Travail</option>
+                    <option value="Loisir">Loisir</option>
+                    <option value="Autre">Autre</option>
+                    <option value="" disabled><i>Pour créer une catégorie, créez une tâche et éditez la afin de mettre la catégorie que vous voulez.</i></option>
+                </select>
+                <button type="submit"
+                    onclick="document.getElementById('AddToDo').style.opacity = 0; document.getElementById('AddToDo').style.zIndex = -1;"><span
+                        class="material-symbols-rounded">add</span> Ajouter</button>
+                <button style="background-color: red;"
+                    onclick="document.getElementById('AddToDo').style.opacity = 0; document.getElementById('AddToDo').style.zIndex = -1;"><span
+                        class="material-symbols-rounded">close</span> Fermer</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="taskList"></div>
+
+
+    <script src="todo.js"></script>
+    <script src="../focusmode.js"></script>
+</body>
+
+</html>

@@ -6,11 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SmartCalendar</title>
   <link rel="stylesheet" href="calendar.css" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&icon_names=arrow_back_ios" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
   <link rel="stylesheet" href="../focusmode.css">
   <script src="../focusmode.js"></script>
   <link rel="icon" href="../medias/logo.png" type="png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
 </head>
 
 <body>
@@ -62,7 +64,7 @@
     <h1>SmartCalendar</h1>
     <a style="margin-bottom: 25px" href="../"><button class="Back">
         <p>
-          <span class="material-symbols-outlined"> arrow_back_ios </span>
+          <span class="material-symbols-rounded"> arrow_back_ios </span>
           Retour vers SmartHub
         </p>
       </button></a>
@@ -70,20 +72,28 @@
       Créer un évènement
     </button>
     <button style="margin-bottom: 5px" id="EventBtn">Évènements</button>
-    <button style="margin-bottom: 5px" class="Work" id="TaskBtn">
-      Tâches
-    </button>
+    <a href="../ToDo/index.html" style="text-decoration: none;"><button style="margin-bottom: 5px" id="TaskBtn">
+        Tâches
+      </button></a>
     <button style="margin-bottom: 5px" class="Work" id="FeedbackBtn">
       Feedback
     </button>
     <button style="margin-bottom: 5px" id="SettingsBtn">Paramètres</button>
+    <button style="margin-bottom: 5px" onclick="toggleTheme()">
+      Changer de thème
+    </button>
   </header>
-
+  <div id="AppMenu" class="app-menu">
+    <button id="AddEventToDayBtn">
+      <span class="material-symbols-rounded">add</span>Ajouter un évènement ce jour
+    </button>
+    <p><span id="EventNb">-</span> évènement(s) ce jour-là</p>
+  </div>
   <div class="calendar-header">
     <div class="calendar-nav">
-      <button id="prev">&lt;</button>
+      <button id="prev"><span class="material-symbols-rounded">arrow_back_ios</span></button>
       <span id="month-year"></span>
-      <button id="next">&gt;</button>
+      <button id="next"><span class="material-symbols-rounded">arrow_forward_ios</span></button>
     </div>
     <main class="calendar-container">
       <div class="calendar-days">
@@ -105,14 +115,19 @@
     <div id="SettingsContent" class="modal-content">
       <h2 class="modal-item">Paramètres</h2>
 
-      <label for="darkMode" class="modal-item">Mode Sombre</label>
-      <input type="checkbox" class="modal-item" id="darkMode" />
-      <label for="lightMode" class="modal-item">Mode Clair</label>
-      <input type="checkbox" class="modal-item" id="lightMode" />
-      <!-- <button class="Work" disabled id="customizeWidgetBtn">
-          Paramètres du widget
-        </button> -->
+      <button id="customizeWidgetBtn" onclick="toggleTheme()">
+        <span class="material-symbols-rounded">routine</span>
+        Changer le thème
+      </button>
+      <button  id="customizeWidgetBtn">
+        Modifier le widget flottant
+      </button>
+      <button disabled id="customizePageBtn">
+        <span class="material-symbols-rounded">build</span>
+        En développement...
+      </button>
       <button id="CloseSettings" class="modal-item">
+
         Enregistrer et fermer
       </button>
       <footer>
@@ -126,7 +141,7 @@
     <div class="modal-content modal-item">
       <h2 class="modal-item">Créer un événement</h2>
       <label class="modal-item">Titre : <input type="text" id="eventTitle" /></label>
-      <label class="modal-item">Date : <input type="date" id="eventDate" /></label>
+      <label class="modal-item">Date : <input type="text" id="eventDate" /></label>
       <label class="modal-item">Description : <textarea id="eventDesc"></textarea>
       </label>
       <button id="saveEventBtn" class="modal-item">Enregistrer</button>
@@ -147,9 +162,36 @@
     </div>
   </div>
 
+  <div id="page-customizer">
+
+    <h2>Personnalisation de la page</h2>
+    <label>Couleur de fond :
+      <input type="color" id="pageBgColor" value="#ffffff">
+    </label>
+    <br><br>
+    <label>Police :
+      <select id="pageFontFamily">
+        <option value="Poppins">Poppins</option>
+        <option value="Arial">Arial</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Courier New">Courier New</option>
+      </select>
+    </label>
+    <br><br>
+    <label>Taille du texte :
+      <input type="number" id="pageFontSize" min="10" max="40" value="16"> px
+    </label>
+    <br><br>
+    <button id="applyPageStyle">Appliquer</button>
+    <button id="closePageCustomizer">Fermer</button>
+
+  </div>
+
+
+
   <script src="calendar.js"></script>
   <style>
-    .material-symbols-outlined {
+    .material-symbols-rounded {
       font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
     }
   </style>

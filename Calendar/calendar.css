@@ -53,7 +53,7 @@ header {
 }
 
 header:hover {
-    height: 425px;
+    height: 510px;
     box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -151,24 +151,25 @@ header h1 {
     justify-content: space-between;
     align-items: center;
     gap: 1px;
-    background-color: rgb(100, 100, 100, 0.4);
+    background-color: rgb(150, 150, 150, 0.4);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-    width: 375px;
-    margin-top: 10px;
+    width: 400px;
     position: fixed;
-    top: -2.5px;
+    top: 0px;
     padding: 10px;
-    border-radius: 15px;
-    left: calc(50% - (375px/2));
+    border-radius: 0 0 15px 15px;
+    left: calc(50% - (400px/2));
     font-size: 30px;
     transition: all 0.3s ease-in-out;
 }
 
 .calendar-nav:hover {
-    background-color: rgb(50, 50, 50, 0.6);
+    background-color: rgb(75, 75, 75, 0.6);
     -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
+    width: 375px;
+    left: calc(50% - (375px/2));
 }
 
 .calendar-nav button {
@@ -184,6 +185,9 @@ header h1 {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .calendar-nav button:hover {
@@ -248,11 +252,14 @@ header h1 {
 
 .calendar-grid div span {
     position: relative;
+    transform: translateX(-10px) translateY(-10px);
+
     overflow: hidden;
     top: 35%;
     left: 38%;
-    font-family: "Bahnschrift";
+    font-family: "Special Gothic Expanded One";
     font-size: 100px;
+    font-weight: 100;
     transition: all 0.3s;
     z-index: 100;
 }
@@ -269,7 +276,9 @@ header h1 {
 }
 
 .calendar-grid div:hover span {
-    transform: translateX(-10px) translateY(-5px);
+    transform: translateX(-20px) translateY(-15px);
+    font-weight: 1000;
+
 }
 
 .calendar-grid div:hover {
@@ -365,83 +374,70 @@ header h1 {
     }
 }
 
-
 #CreateEventModal,
 #EventModal {
     position: fixed;
-    background-color: transparent;
-    padding: 20px;
-    color: #092241;
-    border-radius: 10px;
-    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
-    pointer-events: auto;
-    transition: all 0.3s ease;
-    width: 550px;
-    height: 1px;
-    transform: translateY(-500px);
+    pointer-events: none;
+    transition: opacity 0.3s;
 }
 
 #CreateEventModal.shown,
 #EventModal.shown {
     opacity: 1;
     pointer-events: auto;
-    z-index: 101;
-    transform: translateY(0);
-}
-
-#CreateEventModal.hidden .modal-content,
-#EventModal.hidden .modal-content {
-    transform: translateY(-100px);
-    height: auto;
-    max-height: 80vh;
-    z-index: 102;
-}
-
-.modal-content textarea {
-    width: 100%;
-    height: 100px;
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    resize: none;
-    font-size: 16px;
-    margin-bottom: 20px;
-    font-family: "Poppins";
-}
-
-.modal-content input[type="text"] {
-    width: 100%;
-    max-height: 5px;
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    margin-bottom: 20px;
-    font-family: "Poppins";
-}
-
-.modal-content input[type="date"] {
-    width: 100%;
-    height: 5px;
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    margin-bottom: 20px;
-    font-family: "Poppins";
 }
 
 .modal-content {
+    background: #fff;
+    color: #092241;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 90vw;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    z-index: 101;
+    gap: 1rem;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s;
+    position: relative;
+    z-index: 10001;
 }
 
+/* Inputs et textarea */
+.modal-content textarea,
+.modal-content input[type="text"],
+.modal-content input[type="date"] {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: "Poppins";
+    box-sizing: border-box;
+}
+
+.modal-content textarea {
+    height: 100px;
+    resize: none;
+}
+
+/* Boutons dans le modal */
+.modal-content button,
 .modal button {
     background: #007bff;
     color: white;
@@ -451,50 +447,53 @@ header h1 {
     cursor: pointer;
     font-size: 16px;
     transition: all 0.3s;
-    position: absolute;
-    bottom: 25px;
-    
-    box-shadow: rgb(0, 0, 0) 0px 6px 0px 5px;
+    margin-top: 10px;
+    position: static;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.modal-content button:hover,
 .modal button:hover {
     background: #36fa71;
-    transform: scale(1.1) translateY(5px);
-    box-shadow: rgb(0, 0, 0) 0px 10px 0px 5px;
+    color: #092241;
+    transform: scale(1.05);
 }
 
+.modal-content button:active,
 .modal button:active {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: rgb(0, 0, 0) 0px 0px 0px 5px;
+    transform: scale(0.98);
 }
 
+/* Animation d'apparition */
+#CreateEventModal .modal-content,
+#EventModal .modal-content {
+    animation: slideFadeIn 0.3s;
+}
 
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
+/* Pour masquer le modal proprement */
+#CreateEventModal:not(.shown),
+#EventModal:not(.shown) {
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Optionnel : pour les .modal-item si tu utilises */
 .modal-item {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: all 0.3s ease;
-}
-
-/* Une fois que le modal s'ouvre */
-#CreateEventModal .modal-item,
-#SettingsModal #SettingsModalContent:nth-child,
-#EventModal .modal-item {
-    opacity: 0;
-    transform: translateY(-50px);
-}
-#CreateEventModal.shown .modal-item,
-#SettingsModal.shown #SettingsModalContent:nth-child,
-#EventModal.shown .modal-item {
     opacity: 1;
     transform: translateY(0);
-}
-
-.modal-item {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: all 0.4s ease;
+    transition: all 0.3s;
 }
 
 /* Quand le modal est ouvert */
@@ -504,13 +503,33 @@ header h1 {
 }
 
 /* Animation en cascade */
-#SettingsModal.shown .modal-item:nth-child(1) { transition-delay: 0.1s; }
-#SettingsModal.shown .modal-item:nth-child(2) { transition-delay: 0.15s; }
-#SettingsModal.shown .modal-item:nth-child(3) { transition-delay: 0.2s; }
-#SettingsModal.shown .modal-item:nth-child(4) { transition-delay: 0.25s; }
-#SettingsModal.shown .modal-item:nth-child(5) { transition-delay: 0.3s; }
-#SettingsModal.shown .modal-item:nth-child(6) { transition-delay: 0.35s; }
-#SettingsModal.shown .modal-item:nth-child(7) { transition-delay: 0.4s; }
+#SettingsModal.shown .modal-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+#SettingsModal.shown .modal-item:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+#SettingsModal.shown .modal-item:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+#SettingsModal.shown .modal-item:nth-child(4) {
+    transition-delay: 0.25s;
+}
+
+#SettingsModal.shown .modal-item:nth-child(5) {
+    transition-delay: 0.3s;
+}
+
+#SettingsModal.shown .modal-item:nth-child(6) {
+    transition-delay: 0.35s;
+}
+
+#SettingsModal.shown .modal-item:nth-child(7) {
+    transition-delay: 0.4s;
+}
 
 
 #SettingsModal footer {
@@ -567,6 +586,7 @@ header h1 {
     opacity: 1;
     height: 500px;
 }
+
 #SettingsOptions {
     display: flex;
     flex-direction: column;
@@ -847,6 +867,25 @@ header h1 {
     text-decoration: none;
 }
 
+#SettingsContent #customizeWidgetBtn,
+#customizePageBtn {
+    border-radius: 10px;
+    width: 95%;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.52);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: rgb(116, 116, 116);
+    margin: 0 0 0 0;
+    display: flex;
+    position: static;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 25px;
+    transition: all 0.3s;
+    font-family: "Poppins";
+    text-decoration: none;
+}
+
 #customizeWidgetBtn:hover,
 #customizer-content button:hover {
     background: rgba(255, 255, 255, 0.3);
@@ -1008,8 +1047,83 @@ header h1 {
         opacity: 1;
     }
 }
+
 .today {
     border: 10px solid limegreen;
     color: blue;
     font-weight: bold;
+}
+
+.app-menu {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    background: rgba(40, 40, 40, 0.95);
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+    width: 250px;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.app-menu button {
+    background: none;
+    border: 0;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Poppins";
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    text-align: right;
+    background: white;
+    width: 100%;
+    color: black;
+}
+
+.app-menu p {
+    background: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Poppins";
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+.app-menu button:hover {
+    color: white;
+    background: rgb(255, 255, 255, 0.7);
+}
+
+#page-customizer {
+    display: none;
+    position: fixed;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 20000;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+    color: black;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    height: 275px;
+    bottom: 0;
+}
+
+#customizePageBtn span {animation: spin 3s linear infinite ;}
+
+@keyframes spin {
+    0% {rotate: 0;}
+    50% {rotate: 300deg;}
+    75% {rotate: 359deg;}
+    100% {rotate: 360deg;}
 }

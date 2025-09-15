@@ -70,13 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="movie-info">
                         <div class="FilmStats">
                             <div id="ReleaseDate"><span>${movie.release_date.slice(0, 4)}</span></div>
-                            <div id="Rating"><span><span class="material-symbols-outlined">star</span> ${movie.vote_average.toFixed(1)}/10</span></div>
-                            <div id="MovieDuration"><span><span class="material-symbols-outlined">timer</span>${movie.runtime} min</span></div>
+                            <div id="Rating"><span><span class="material-symbols-rounded">star</span> ${movie.vote_average.toFixed(1)}/10</span></div>
+                            <div id="MovieDuration"><span><span class="material-symbols-rounded">timer</span>${movie.runtime} min</span></div>
                         </div>
                         <div id="MovieSummary"><p>${movie.overview || 'Aucun résumé disponible.'}</p></div>
                         <div class="movie-actions">
-                            <button id="add-favorite" class="action-btn"><span class="material-symbols-outlined">favorite</span> Ajouter aux favoris</button>
-                            <button id="rate-movie" class="action-btn"><span class="material-symbols-outlined">star</span> Noter ce film</button>
+                            <button id="add-favorite" class="action-btn"><span class="material-symbols-rounded">favorite</span> Ajouter aux favoris</button>
+                            <button id="rate-movie" class="action-btn"><span class="material-symbols-rounded">star</span> Noter ce film</button>
                         </div>
                         <div id="rating-form" class="hidden">
                             <label for="rating-input">Votre note (0 à 10) :</label>
@@ -188,10 +188,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateFavButton(isFav) {
         const favBtn = document.querySelector('#add-favorite');
         if (isFav) {
-            favBtn.innerHTML = `<span class="material-symbols-outlined">favorite</span> Retirer des favoris`;
+            favBtn.innerHTML = `<span class="material-symbols-rounded">favorite</span> Retirer des favoris`;
             favBtn.classList.add('favorite-active');
         } else {
-            favBtn.innerHTML = `<span class="material-symbols-outlined">favorite_border</span> Ajouter aux favoris`;
+            favBtn.innerHTML = `<span class="material-symbols-rounded">favorite_border</span> Ajouter aux favoris`;
             favBtn.classList.remove('favorite-active');
         }
     }
