@@ -425,3 +425,103 @@ document.getElementById('applyPageStyle').addEventListener('click', function () 
     document.body.style.fontSize = document.getElementById('pageFontSize').value + 'px';
 });
 
+function applyPageStyle(liveOnly = true) {
+    let bg = document.getElementById('pageBgColor').value;
+    let text = document.getElementById('pageTextColor').value;
+    let font = document.getElementById('pageFontFamily').value;
+    let size = document.getElementById('pageFontSize').value + 'px';
+
+    // Si preset choisi
+    const bgPreset = document.getElementById('bgColorPreset').value;
+    if (bgPreset === 'gradient') {
+        bg = 'linear-gradient(135deg, #36fa71, #007bff, #ffc107)';
+    } else if (bgPreset !== bg) {
+        bg = bgPreset;
+    }
+    // Si couleur perso
+    const customBg = document.getElementById('customBgColor').value;
+    if (customBg) bg = customBg;
+
+    // Idem pour texte
+    const textPreset = document.getElementById('textColorPreset').value;
+    if (textPreset !== text) text = textPreset;
+    const customText = document.getElementById('customTextColor').value;
+    if (customText) text = customText;
+
+    document.body.style.background = bg;
+    document.body.style.color = text;
+    document.body.style.fontFamily = font;
+    document.body.style.fontSize = size;
+
+    // Ajoute aux couleurs récentes
+    addRecentColor('recentBgColors', bg);
+    addRecentColor('recentTextColors', text);
+
+    // Enregistre si demandé
+    if (!liveOnly) {
+        localStorage.setItem('pageStyle', JSON.stringify({ bg, text, font, size }));
+    }
+}
+
+// Appliquer en direct
+document.getElementById('applyPageStyle').addEventListener('click', () => applyPageStyle(true));
+// Enregistrer
+document.getElementById('savePageStyle').addEventListener('click', () => applyPageStyle(false));
+// Fermer
+document.getElementById('closePageCustomizer').addEventListener('click', function () {
+    document.getElementById('page-customizer').style.display = 'none';
+});
+
+// Ouvre le customizer
+document.getElementById('customizePageBtn').addEventListener('click', function () {
+    document.getElementById('page-customizer').style.display = 'flex';
+});
+
+// Charger les préférences au démarrage
+window.addEventListener('DOMContentLoaded', () => {
+    const style = localStorage.getItem('pageStyle');
+    if (style) {
+        const { bg, text, font, size } = JSON.parse(style);
+        document.body.style.background = bg;
+        document.body.style.color = text;
+        document.body.style.fontFamily = font;
+        document.body.style.fontSize = size;
+    }
+});
+
+// Ajout et affichage des couleurs récentes
+function addRecentColor(containerId, color) {
+    if (!color) return;
+    let colors = JSON.parse(localStorage.getItem(containerId)) || [];
+    if (!colors.includes(color)) {
+        colors.unshift(color);
+        if (colors.length > 8) colors = colors.slice(0, 8);
+        localStorage.setItem(containerId, JSON.stringify(colors));
+    }
+    renderRecentColors(containerId);
+}
+
+function renderRecentColors(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+    const colors = JSON.parse(localStorage.getItem(containerId)) || [];
+    colors.forEach(c => {
+        const dot = document.createElement('span');
+        dot.className = 'color-dot';
+        dot.style.background = c;
+        dot.title = c;
+        dot.onclick = () => {
+            if (containerId === 'recentBgColors') document.getElementById('pageBgColor').value = c;
+            if (containerId === 'recentTextColors') document.getElementById('pageTextColor').value = c;
+            applyPageStyle(true);
+        };
+        container.appendChild(dot);
+    });
+}
+
+// Initialiser les couleurs récentes au démarrage
+window.addEventListener('DOMContentLoaded', () => {
+    renderRecentColors('recentBgColors');
+    renderRecentColors('recentTextColors');
+});

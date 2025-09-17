@@ -1104,26 +1104,163 @@ header h1 {
 #page-customizer {
     display: none;
     position: fixed;
-    left: 0;
-    background: rgba(0, 0, 0, 0.4);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    color: #222;
     z-index: 20000;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background: #fff;
-    color: black;
     padding: 2rem;
-    border-radius: 12px;
-    width: 100%;
-    height: 275px;
-    bottom: 0;
+    border-radius: 16px;
+    min-width: 350px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
-#customizePageBtn span {animation: spin 3s linear infinite ;}
+.color-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
 
-@keyframes spin {
-    0% {rotate: 0;}
-    50% {rotate: 300deg;}
-    75% {rotate: 359deg;}
-    100% {rotate: 360deg;}
+.styled-select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+    font-size: 16px;
+    font-family: "Poppins";
+    margin-top: 4px;
+}
+
+.recent-colors {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.recent-colors .color-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.controls button {
+    padding: 10px;
+    border-radius: 10px;
+    height: 50px;
+    width: 80%;
+    font-family: "Poppins";
+    border: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+#applyPageStyle {
+    background-color: rgb(0, 0, 255, 0.4);
+    color: white;
+}
+
+#savePageStyle {
+    background-color: rgb(0, 255, 0, 0.4);
+    color: white;
+}
+
+#closePageCustomizer {
+    background-color: rgb(255, 0, 0, 0.4);
+    color: white;
+}
+
+
+.controls button:hover {
+    border: black solid 1px;
+    background-color: rgb(255, 255, 255, 0);
+    color: black;
+}
+
+.controls button span {
+    transition: all 0.3s ease-in-out;
+}
+
+.controls button:hover span {
+    scale: 1.2;
+}
+
+
+.div-controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, rgb(175, 175, 175), rgb(255, 255, 255) 75px);
+    border-radius: 10px;
+}
+
+#fullscreen {
+    border-radius: 10px;
+    font-size: 2px;
+    height: 30px;
+    margin-left: 5px;
+    width: 30px;
+    background-color: rgb(220, 220, 220);
+    border: 1px solid black;
+    transition: all 0.15s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#fullscreen:hover {
+    border-radius: 5px;
+    scale: 1.2;
+    background: rgb(100, 220, 200);
+    border: 1.5px solid black;
+}
+
+#fullscreen span {
+    transition: all 0.3s ease-in-out;
+}
+
+#fullscreen:hover span {
+    rotate: 180deg;
+    animation: pop 0.5s forwards;
+    animation-delay: 0.35s;
+}
+
+@keyframes pop {
+    0% {
+        scale: 1;
+        rotate: 180deg;
+    }
+
+    50% {
+        scale: 1.2;
+        rotate: 150deg;
+    }
+
+    100% {
+        scale: 1;
+        rotate: 180deg;
+    }
 }

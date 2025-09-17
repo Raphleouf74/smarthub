@@ -119,12 +119,12 @@
         <span class="material-symbols-rounded">routine</span>
         Changer le thème
       </button>
-      <button  id="customizeWidgetBtn">
+      <button id="customizeWidgetBtn">
         Modifier le widget flottant
       </button>
-      <button disabled id="customizePageBtn">
-        <span class="material-symbols-rounded">build</span>
-        En développement...
+      <button id="customizePageBtn">
+        <span class="material-symbols-rounded">edit</span>
+        Personnaliser la page
       </button>
       <button id="CloseSettings" class="modal-item">
 
@@ -163,27 +163,66 @@
   </div>
 
   <div id="page-customizer">
-
+    <div class="div-controls">
+      <button id="fullscreen"><span class="material-symbols-rounded">open_in_full</span></button>
+    </div>
     <h2>Personnalisation de la page</h2>
     <label>Couleur de fond :
-      <input type="color" id="pageBgColor" value="#ffffff">
+      <div class="color-row">
+        <input type="color" id="pageBgColor" value="#ffffff">
+        <select id="bgColorPreset">
+          <option value="#ffffff">Blanc</option>
+          <option value="#222">Noir</option>
+          <option value="#007bff">Bleu</option>
+          <option value="#36fa71">Vert</option>
+          <option value="#ffc107">Jaune</option>
+          <option value="gradient">Dégradé</option>
+        </select>
+        <input type="text" id="customBgColor" placeholder="Couleur perso (#hex ou rgb)">
+      </div>
+      <div id="recentBgColors" class="recent-colors"></div>
     </label>
-    <br><br>
+    <br>
+    <label>Couleur du texte :
+      <div class="color-row">
+        <input type="color" id="pageTextColor" value="#092241">
+        <select id="textColorPreset">
+          <option value="#092241">Bleu foncé</option>
+          <option value="#fff">Blanc</option>
+          <option value="#222">Noir</option>
+          <option value="#36fa71">Vert</option>
+          <option value="#ffc107">Jaune</option>
+        </select>
+        <input type="text" id="customTextColor" placeholder="Couleur perso (#hex ou rgb)">
+      </div>
+      <div id="recentTextColors" class="recent-colors"></div>
+    </label>
+    <br>
     <label>Police :
-      <select id="pageFontFamily">
+      <select id="pageFontFamily" class="styled-select">
         <option value="Poppins">Poppins</option>
         <option value="Arial">Arial</option>
-        <option value="Times New Roman">Times New Roman</option>
+        <option value="Bahnschrift">Bahnschrift</option>
+        <option value="Roboto">Roboto</option>
+        <option value="Montserrat">Montserrat</option>
+        <option value="Comic Sans MS">Comic Sans MS</option>
         <option value="Courier New">Courier New</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Special Gothic Expanded One">Special Gothic Expanded One</option>
+        <!-- Ajoute autant de polices que tu veux -->
       </select>
     </label>
-    <br><br>
+    <br>
     <label>Taille du texte :
       <input type="number" id="pageFontSize" min="10" max="40" value="16"> px
     </label>
-    <br><br>
-    <button id="applyPageStyle">Appliquer</button>
-    <button id="closePageCustomizer">Fermer</button>
+    <br>
+    <div class="controls">
+      <button id="applyPageStyle"><span class="material-symbols-rounded">texture_add</span> Appliquer</button>
+      <button id="savePageStyle"><span class="material-symbols-rounded">save</span> Sauvegarder</button>
+      <button id="closePageCustomizer"><span class="material-symbols-rounded">close</span> Fermer</button>
+    </div>
 
   </div>
 
