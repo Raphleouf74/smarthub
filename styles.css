@@ -1,66 +1,284 @@
-/* Importations */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-
+* {
+    font-family: "Inter";
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
 
 
 /* Laptop styles */
-@media(min-width: 1024px) {
 
-    /* ----------------------------- */
-    /*         GLOBAL RESET         */
-    /* ----------------------------- */
-    body {
-        background: linear-gradient(to bottom, #0033FF 0%, #0033FF 101vh, #a6b8ff 120vh);
-        overflow-x: hidden;
-        justify-content: center;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        font-size: auto;
-        font-family: "Poppins";
+/* ----------------------------- */
+/*         GLOBAL RESET         */
+/* ----------------------------- */
+body {
+    background: linear-gradient(to bottom, #0033FF 0%, #0033FF 101vh, #a6b8ff 120vh);
+    overflow-x: hidden;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: auto;
+    font-family: "Inter";
+}
+
+body.hide-scrollbar::-webkit-scrollbar {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body::-webkit-scrollbar {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+body {
+    overflow-y: scroll;
+}
+
+body.light-theme {
+    background: linear-gradient(to bottom, #0033FF 0%, #0033FF 101vh, #a6b8ff 120vh);
+    color: #0c0022;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark-theme {
+    background: linear-gradient(to bottom, #0033FF 0%, #0033FF 101vh, #3a3c42 120vh);
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- */
+/*         HEADER STYLES        */
+/* ----------------------------- */
+
+.long {
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    position: absolute;
+    
+    top: 20%;
+}
+
+.short {
+    transition: all 0.3s ease-in-out;
+
+    opacity: 0;
+    position: absolute;
+    left: -100px;
+    top: 10px;
+}
+
+header {
+    pointer-events: auto;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    background: rgb(100, 100, 100, 0.2);
+    background-size: 100% 300%;
+    background-position: 0% 0%;
+    color: white;
+    padding: 0;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-radius: 30px;
+    width: 325px;
+    align-self: center;
+    position: fixed;
+    top: -100px;
+    left: 10px;
+    margin-bottom: 35px;
+    font-family: "Inter";
+    transition: none;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+    overflow: hidden;
+    padding: 20px;
+}
+
+header.hover {
+    top: -100px;
+}
+
+header.scrolled {
+    pointer-events: auto;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    background: rgb(100, 100, 100, 0.2);
+    background-size: 100% 300%;
+    background-position: 0% 0%;
+    color: white;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-radius: 30px;
+    width: 325px;
+    align-self: center;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    margin-bottom: 35px;
+    font-family: "Inter";
+    overflow: hidden;
+    transition: none;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+    padding: 20px;
+}
+
+header.scrolled.hover {
+    height: 100vh;
+    border-radius: 0;
+    padding: 20px;
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+    background: rgb(100, 100, 100, 0.5);
+    border: 1px solid rgba(100, 100, 100, 0.25);
+    top: 0;
+    left: 0;
+    width: 335px;
+    margin-bottom: 35px;
+    font-family: "Inter";
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+}
+
+header.hovered {
+    top: 30px;
+    animation: haveAttention 0.6s ease-in-out infinite alternate;
+    transition: top 0.3s ease;
+}
+
+@keyframes haveAttention {
+    0% {
+        transform: scale(1);
+        background-color: #ffcccc;
     }
 
-    body.hide-scrollbar::-webkit-scrollbar {
+    100% {
+        transform: scale(1.15);
+        background-color: #ff5454;
+    }
+}
+
+header.scrolled {
+    background: rgb(100, 100, 100, 0.2);
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+
+}
+
+header a {
+    width: 100%;
+}
+
+header.hover p {
+    font-size: 20px;
+    opacity: 1;
+}
+
+header p {
+    opacity: 0;
+    font-size: 1px;
+    transition: all 0.3s ease-in-out;
+}
+
+header button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1.05);
+}
+
+header h1 {
+    margin-top: -5px;
+}
+
+header.hover h1 {
+    opacity: 0;
+    top: -200px;
+}
+
+
+header button {
+    opacity: 0;
+    display: flex;
+    width: 100%;
+    height: 100px;
+    font-family: "Inter";
+    justify-content: space-around;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 3);
+    transition: all 0.3s;
+    font-size: 25px;
+    text-align: center;
+    border: 2px solid black;
+    color: #092241;
+    text-decoration: none;
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+header.hover button {
+    opacity: 1;
+}
+
+header a {
+    text-decoration: none;
+    color: #092241;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header button:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 1023px) {
+    .long {
         opacity: 0;
-        transition: opacity 0.5s ease;
+        position: absolute;
+        left: -100px;
+        top: 10px;
     }
 
-    body::-webkit-scrollbar {
+    .short {
         opacity: 1;
-        transition: opacity 0.5s ease;
+        position: absolute;
+        left: 12.5px;
+        top: 15px;
     }
-
-    body {
-        overflow-y: scroll;
-    }
-
-    body.light-theme {
-        background: linear-gradient(to bottom, #0033FF 0%, #0033FF 101vh, #a6b8ff 120vh);
-        color: #0c0022;
-        transition: all 0.3s ease-in-out;
-    }
-
-    body.dark-theme {
-        background: linear-gradient(to bottom, #0033FF 0%, #0033FF 101vh, #3a3c42 120vh);
-        color: #fff;
-        transition: all 0.3s ease-in-out;
-
-    }
-
-
-
-
-
-
-
-
-
-
-    /* ----------------------------- */
-    /*         HEADER STYLES        */
-    /* ----------------------------- */
 
     header {
         pointer-events: auto;
@@ -81,13 +299,13 @@
         align-items: center;
         height: 50px;
         border-radius: 30px;
-        width: 325px;
+        width: 50px;
         align-self: center;
         position: fixed;
         top: -100px;
         left: 10px;
         margin-bottom: 35px;
-        font-family: "Poppins";
+        font-family: "Inter";
         transition: none;
         transition: all 0.3s ease-in-out;
         z-index: 2;
@@ -95,9 +313,11 @@
         padding: 20px;
     }
 
-    header:hover {
+    header.hover {
         top: -100px;
     }
+
+
 
     header.scrolled {
         pointer-events: auto;
@@ -116,13 +336,13 @@
         align-items: center;
         height: 50px;
         border-radius: 30px;
-        width: 325px;
+        width: 50px;
         align-self: center;
         position: fixed;
         top: 10px;
         left: 10px;
         margin-bottom: 35px;
-        font-family: "Poppins";
+        font-family: "Inter";
         overflow: hidden;
         transition: none;
         transition: all 0.3s ease-in-out;
@@ -130,29 +350,6 @@
         padding: 20px;
     }
 
-    header.scrolled:hover {
-        height: 100vh;
-        border-radius: 0;
-        padding: 20px;
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-        -webkit-backdrop-filter: blur(40px);
-        backdrop-filter: blur(40px);
-        background: rgb(100, 100, 100, 0.5);
-        border: 1px solid rgba(100, 100, 100, 0.25);
-        top: 0;
-        left: 0;
-        width: 335px;
-        margin-bottom: 35px;
-        font-family: "Poppins";
-        transition: all 0.3s ease-in-out;
-        z-index: 2;
-    }
-
-    header.hovered {
-        top: 30px;
-        animation: haveAttention 0.6s ease-in-out infinite alternate;
-        transition: top 0.3s ease;
-    }
 
     @keyframes haveAttention {
         0% {
@@ -177,34 +374,12 @@
         width: 100%;
     }
 
-    #account {
-        border-radius: 20px;
-        width: 90%;
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        color: white;
-        font-size: 10px;
-        opacity: 0;
-        transition: all 0.3s ease-in-out;
-        display: flex;
-        padding: 10px;
-        justify-content: space-around;
-        height: 70px;
-        background-color: transparent;
-        font-size: 20px;
-        align-items: center;
-        cursor: pointer;
-        z-index: 2;
-    }
-
-    header:hover #account,
-    header:hover p {
+    header.hover p {
         font-size: 20px;
         opacity: 1;
     }
 
-    header p,
-    header #account {
+    header p {
         opacity: 0;
         font-size: 1px;
         transition: all 0.3s ease-in-out;
@@ -221,23 +396,13 @@
         margin-top: -5px;
     }
 
-    #account:hover {
-        background-color: rgb(255, 255, 255, 0.7);
-        transform: scale(1.1);
-    }
-
-
-    #account:active {
-        background-color: rgb(255, 255, 255, 0.7);
-        transform: scale(1.05);
-    }
 
     header button {
         opacity: 0;
         display: flex;
         width: 100%;
         height: 100px;
-        font-family: "Poppins";
+        font-family: "Inter";
         justify-content: space-around;
         border-radius: 25px;
         background: rgba(255, 255, 255, 3);
@@ -255,7 +420,7 @@
         backdrop-filter: blur(10px);
     }
 
-    header:hover button {
+    header.hover button {
         opacity: 1;
     }
 
@@ -271,1824 +436,646 @@
     header button:hover {
         transform: scale(1.05);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    /* ----------------------------- */
-    /*         TOOLS STYLES         */
-    /* ----------------------------- */
-    #ToolsContent {
-        display: grid;
-        justify-content: space-between;
-        align-items: center;
-        height: auto;
-        width: 100%;
-        border-radius: 25px;
-        background-color: transparent;
-        transition: all 0.3s;
-        font-size: 20px;
-        text-align: center;
-        z-index: 100;
-        color: #092241;
-        display: flex;
-        align-items: center;
-    }
-
-    #ToolsDiv {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        height: auto;
-        width: 90%;
-        border-radius: 25px;
-        margin-top: 50px;
-        background-color: white;
-        transition: all 0.3s;
-        font-size: 20px;
-        padding: 25px;
-        z-index: 0;
-        align-items: center;
-        color: #092241;
-    }
-
-    #ToolsDiv a {
-        cursor: pointer;
-        border-radius: 25px;
-        transition: 0.3s;
-        height: 150px;
-    }
-
-    .toolbtn {
-        font-family: "Special Gothic Expanded One";
-    }
-
-    .Tools {
-        width: 95%;
-        background-color: transparent;
-        box-shadow: none;
-        display: flex;
-        transition: all 0.3s;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-    }
-
-
-
-    #qn,
-    #sc,
-    #afi {
-        position: relative;
-
-        /* Fond gris foncé */
-        overflow: none;
-        color: #092241;
-        text-align: center;
-        height: 70%;
-        font-family: "Poppins";
-        display: flex;
-        flex-direction: column;
-        margin-right: 10px;
-        width: calc(97%/3);
-        border-radius: 20px;
-        padding: 40px 10px;
-
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-    }
-
-
-
-
-    #qn,
-    #sc,
-    #afi {
-        transition: all 0.3s;
-    }
-
-    #qn {
-        background: #00418b3b;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background-position: -800px 0px;
-        font-family: "Poppins";
-        font-size: 15px;
-        font-weight: 200;
-    }
-
-    #qn h1 {
-        font-weight: 800;
-        font-size: 50px;
-        text-decoration: none;
-    }
-
-    #qn:hover {
-        background: #44c8fc38;
-        transform: scale(1.05);
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-    }
-
-    #sc {
-        background: greenyellow;
-        background: rgba(172, 255, 47, 0.25);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background-position: -800px 0px;
-        font-family: "Poppins";
-        font-weight: 200;
-        font-size: 15px;
-    }
-
-    #sc h1 {
-        text-decoration: none;
-        font-weight: 800;
-        font-size: 50px;
-    }
-
-    #sc:hover {
-        background: #00418b36;
-        transform: scale(1.05);
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-    }
-
-    #afi {
-        background: blue;
-        background: rgba(255, 200, 60, 0.25);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background-position: -800px 0px;
-        font-family: "Poppins";
-        font-weight: 200;
-        font-size: 15px;
-    }
-
-    #afi h1 {
-        text-decoration: none;
-        font-weight: 800;
-        font-size: 50px;
-    }
-
-    #afi:hover {
-        background: #00418b36;
-        transform: scale(1.05);
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-    }
-
-
-    #sh {
-        background: linear-gradient(135deg,
-                #28ff6f3b 25%,
-                #00418b3b 25%,
-                #00418b3a 50%,
-                #28ff6f3b 50%,
-                #28ff6f3b 75%,
-                #00418b3b 75%,
-                rgba(0, 255, 42, 0.25) 10%);
-
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background-size: 1750px 1750px;
-        background-position: -800px 0px;
-        font-family: "Poppins";
-        font-size: 15px;
-        font-weight: 200;
-    }
-
-    #sh h1 {
-        font-weight: 800;
-        font-size: 50px;
-        text-decoration: none;
-    }
-
-    #sh:hover {
-        transform: scale(1.05);
-        background-size: 2000px 2000px;
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-        background-position: -2000px 0%;
-    }
-
-
-
-    .Productivity:hover,
-    .Organisation:hover,
-    .SmartHome:hover {
-        background-color: rgb(240, 240, 240);
-        transform: scale(1.05);
-    }
-
-    #ToolsDiv button:hover {
-        background: #ddd;
-        transform: scale(1.05);
-    }
-
-    .Work {
-        cursor: not-allowed;
-        position: relative;
-        background-color: #444;
-        /* Fond gris foncé */
-        overflow: hidden;
-        color: white;
-        text-align: center;
-        font-family: "Poppins";
-        display: flex;
-        flex-direction: column;
-        border-radius: 20px;
-        padding: 40px 10px;
-        box-shadow: #092241 2px 5px 10px 2px;
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-    }
-
-    /* Bande animée */
-    .Work::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 200%;
-        height: 100%;
-        background: linear-gradient(135deg,
-                #ffc107 25%,
-                #444 25%,
-                #444 50%,
-                #ffc107 50%,
-                #ffc107 75%,
-                #444 75%,
-                #444 100%);
-        background-size: 80px 80px;
-        animation: moveStripes 1s linear infinite;
-        opacity: 0.5;
-        z-index: 0;
-        transition: all 0.3s;
-    }
-
-    .Work {
-        transition: all 0.3s;
-    }
-
-    .Work:hover {
-        transform: scale(1.05);
-    }
-
-
-    /* Texte au-dessus des bandes */
-    .Work h2 {
-        position: relative;
-        z-index: 2;
-    }
-
-    /* Animation des bandes */
-    @keyframes moveStripes {
-        0% {
-            background-position: 0 0;
-        }
-
-        100% {
-            background-position: 80px 0;
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* ----------------------------- */
-    /*         NOTIFICATIONS        */
-    /* ----------------------------- */
-    .notification {
-        top: 10px;
-        right: 17.5%;
-        /* Commence en dehors de l'écran */
-        position: fixed;
-        transition: all 0.3s ease;
-        z-index: 501;
-        will-change: transform, opacity;
-    }
-
-    /* Conteneur pour toutes les notifications */
-    #notifications-container {
-        position: fixed;
-        top: 10px;
-        left: 17.5%;
-        right: 17.5%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        /* Espace entre les notifications */
-        z-index: 500;
-        height: 1px;
-    }
-
-    /* Affichage de la notification */
-
-    .notification.show {
-        opacity: 1;
-        top: 10px;
-        transition: all 0.3s ease;
-        z-index: 100000;
-    }
-
-    /* Disparition de la notification */
-    .notification.hidden {
-        opacity: 0;
-        top: -100px;
-        z-index: 100;
-        transition: all 0.3s ease;
-    }
-
-    .notification {
-        background: rgba(255, 255, 255, 0.15);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        display: flex;
-        flex-direction: column;
-        isolation: isolate;
-        position: fixed;
-        width: 65%;
-        height: auto;
-        cursor: default;
-        transform: translateY(0);
-        transition: all 0.3s ease;
-        border-radius: 1rem;
-        overflow: hidden;
-        padding: 10px 10px 10px 10px;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 16px;
-        --gradient: linear-gradient(to bottom, #32a6ff, #3d8cff, #61a0ff);
-        --gradientC: linear-gradient(to bottom, red, #ff3d3d, #ff6161);
-        --color: #32a6ff;
-        z-index: 2;
-        border: 2px rgb(240, 250, 200);
-    }
-
-    .notification:before {
-        position: absolute;
-        content: "";
-        inset: 0.0625rem;
-        border-radius: 0.9375rem;
-        background: rgba(255, 255, 255, 0.15);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        z-index: 2;
-    }
-
-    .notification:after {
-        position: absolute;
-        content: "";
-        width: 0.25rem;
-        inset: 0.65rem auto 0.65rem 0.5rem;
-        border-radius: 0.125rem;
-        background: var(--gradient);
-        transition: transform 300ms ease;
-        z-index: 4;
-    }
-
-    .critical::after {
-        background: var(--gradientC);
-        color: var(--gradientC);
-    }
-
-
-
-    .notification:hover:after {
-        transform: translateX(0.15rem);
-    }
-
-    .notititle {
-        color: var(--color);
-        padding: 0.65rem 0.25rem 0.4rem 1.25rem;
-        font-weight: 500;
-        font-size: 1.1rem;
-        transition: transform 300ms ease;
-        z-index: 5;
-    }
-
-    .critical .notititle {
-        color: red;
-    }
-
-    .critical {
-        color: var(--gradientC);
-    }
-
-
-    .notification:hover .notititle {
-        transform: translateX(0.15rem);
-    }
-
-    .notibody {
-        color: #99999d;
-        padding: 0 1.25rem;
-        transition: all 300ms ease;
-        z-index: 5;
-    }
-
-    .notification:hover .notibody {
-        transform: translateX(0.25rem);
-        color: #092241;
-    }
-
-    .notiglow,
-    .notiborderglow {
-        position: absolute;
-        width: 20rem;
-        height: 20rem;
-        transform: translate(-50%, -50%);
-        background: radial-gradient(circle closest-side at center, white, transparent);
-        opacity: 0;
-        transition: opacity 300ms ease;
-    }
-
-    .notiglow {
-        z-index: 3;
-    }
-
-    .notiborderglow {
-        z-index: 1;
-    }
-
-    .notification:hover .notiglow {
-        opacity: 0.1;
-    }
-
-    .notification:hover .notiborderglow {
-        opacity: 0.1;
-    }
-
-    .notification:hover {
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-    }
-
-
-    /* Contenu */
-
-    #content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        margin-top: 0;
-        z-index: 1;
-    }
-
-
-
-
-
-
-    /* Outils */
-
-
-
-
-    /* Div Nouveautés */
-
-    #News {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 90%;
-        height: auto;
-        border-radius: 25px;
-        background-color: white;
-        transition: all 0.3s;
-        font-size: 20px;
-        text-align: end;
-        color: white;
-        display: flex;
-        padding: 25px;
-        align-items: center;
-        color: #092241;
-    }
-
-    .NewBox {
-        width: 98%;
-        height: auto;
-        background-color: rgb(50, 50, 50);
-        box-shadow: none;
-        display: flex;
-        color: white;
-        flex-direction: column;
-        transition: all 0.3s;
-        gap: 10px;
-        margin-bottom: 10px;
-        text-align: left;
-        padding: 10px;
-        border-radius: 15px;
-        border: 1px solid white;
-    }
-
-    .NewBox:hover p, .NewBox:hover a {
-        transform: translateX(5px);
-    }
-
-    .NewBox h3 {
-        font-weight: 900;
-        font-family: "Poppins";
-        font-size: 35px;
-        margin: 0;
-        padding: 0;
-    }
-
-    .NewBox p {
-
-        font-size: 15px;
-        margin: 0;
-        padding: 0;
-    }
-
-    #NewsContent {
-        width: 100%;
-        height: auto;
-        overflow-y: auto;
-        overflow-x: hidden;
-        background-color: transparent;
-        border-radius: 10px;
-    }
-
-    /* Scrollbar personnalisée pour Chrome, Edge et Safari */
-    ::-webkit-scrollbar {
-        width: 10px;
-        height: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-
-        /* ou une couleur assortie comme #1e1e1e */
-    }
-
-
-    ::-webkit-scrollbar-thumb {
-        background: #092241;
-        border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: #09224173;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-    }
-
-    /* Scrollbar sans flèches */
-    ::-webkit-scrollbar-button {
-        display: none;
-    }
-
-
-
-    /* Scrollbar stylée */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: #9999995e;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-
-
-
-    /* -- */
-    #AboutUs,
-    #PlatformStatus {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        height: auto;
-        align-items: center;
-        height: 350px;
-        width: 90%;
-        margin-top: 25px;
-        margin-bottom: 50px;
-        border-radius: 25px;
-        background-color: white;
-        transition: all 0.3s;
-        font-size: 20px;
-        padding: 25px;
-        align-items: center;
-        color: #092241;
-        box-shadow: #092241 0px 3px 10px 5px;
-    }
-
-
-
-    #AccountSettings {
-        transform: translateX(-100%);
-        opacity: 1;
-        background: radial-gradient(at bottom right, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.8));
-        color: #092241;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 70%;
-        font-size: 20px;
-        z-index: 100;
-        border-top-right-radius: 25px;
-        border-bottom-right-radius: 25px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        -webkit-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px);
-        /* glass effect */
-
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-        transition: transform 0.4s ease, opacity 0.4s ease;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    #AccountSettings.shown {
-        transform: translateX(0%);
-        opacity: 1;
-        background: radial-gradient(at bottom right, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.8));
-        color: #092241;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 70%;
-        font-size: 20px;
-        z-index: 100;
-        border-top-right-radius: 25px;
-        border-bottom-right-radius: 25px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        -webkit-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px);
-        /* glass effect */
-
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-        transition: transform 0.4s ease, opacity 0.4s ease;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-
-    #CloseAccSett {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 50px;
-        height: 50px;
-        background-color: #092241;
-        border-radius: 20px;
-        border: none;
-        font-size: 20px;
-        cursor: pointer;
-        color: white;
-        transition: all 0.3s;
-        z-index: 1000;
-    }
-
-    #CloseAccSett:hover {
-        background-color: rgb(255, 0, 0, 0.7);
-        transform: scale(1.1);
-    }
-
-    #CloseAccSett:active {
-        background-color: rgb(255, 0, 0, 0.5);
-        transform: scale(0.95);
-    }
-
-    #PlatformStatusContent {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #PlatformStatusContent button {
-        background-color: white;
-        height: 50px;
-        width: 150px;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-    }
-
-    #PlatformStatusContent p {
-        text-align: center;
-    }
-
-    #PlatformStatusContent b {
-        color: green;
-    }
-
-    #ToolsDiv,
-    #News,
-    #AboutUs,
-    #PlatformStatus,
-    .SmartHome,
-    .Work,
-    .Productivity,
-    .Organisation {
-        background: rgba(255, 255, 255, 0.15);
-        justify-content: center;
-        align-self: center;
-        align-items: center;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    }
-
-    /* Optionnel : hover effet plus intense */
-    #ToolsDiv:hover,
-    #News:hover,
-    #AboutUs:hover,
-    #PlatformStatus:hover,
-    .SmartHome:hover,
-    .Work:hover,
-    .Productivity:hover,
-    .Organisation:hover {
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-    }
-
-    .NewBox {
-        overflow: hidden;
-    }
-
-    .biggersize p {
-        margin-top: 0;
-    }
-
-    .biggersize:hover {
-        height: 225px;
-    }
-
-    .biggersize h6 {
-        opacity: 1;
-        color: white;
-        transition: all 0.3s;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-
-    .biggersize:hover h6 {
-        opacity: 0;
-    }
-
-
-
-
 }
 
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- */
+/*         TOOLS STYLES         */
+/* ----------------------------- */
+
+
+iframe {
+    height: auto;
+    min-height: 300px;
+    width: 100%;
+}
+
+#ToolsDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    border-radius: 25px;
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    font-size: 20px;
+    padding: 25px;
+    color: #092241;
+    transition: all 0.3s;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.tools-grid a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+    padding: 20px;
+    width: 95%;
+    text-decoration: none;
+    color: #092241;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: "Inter";
+    transition: all 0.3s;
+    min-height: 50px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tools-grid a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive : 1 colonne sur mobile */
 @media (max-width: 1023px) {
-    body {
-        overflow-x: none;
-        font-size: auto;
-        font-family: "Poppins";
+    .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 5px;
     }
 
-    /* Header */
-
-    header {
-        pointer-events: auto;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background: rgb(100, 100, 100, 0.2);
-        background-size: 100% 300%;
-        background-position: 0% 0%;
-        color: white;
-        padding: 0;
-        font-size: 1.5em;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+    .tools-grid a {
+        grid-template-columns: 1fr;
         height: 50px;
-        border-radius: 30px;
-        width: 325px;
-        align-self: center;
-        position: fixed;
-        top: -100px;
-        left: 10px;
-        ;
-        margin-bottom: 35px;
-        font-family: "Poppins";
-        transition: none;
-        transition: all 0.3s ease-in-out;
-        z-index: 2;
-        overflow: hidden;
-        padding: 20px;
     }
-
-    header:hover {
-        top: -100px;
-    }
-
-    header.scrolled {
-        pointer-events: auto;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background: rgb(100, 100, 100, 0.2);
-        background-size: 100% 300%;
-        background-position: 0% 0%;
-        color: white;
-        padding: 0;
-        font-size: 1.5em;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        height: 50px;
-        border-radius: 30px;
-        width: 325px;
-        align-self: center;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        ;
-        margin-bottom: 35px;
-        font-family: "Poppins";
-        overflow: hidden;
-        transition: none;
-        transition: all 0.3s ease-in-out;
-        z-index: 2;
-        padding: 20px;
-    }
-
-    header.endscroll {
-        pointer-events: auto;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background: rgb(100, 100, 100, 0.2);
-        background-size: 100% 300%;
-        background-position: 0% 0%;
-        color: #092241;
-        padding: 0;
-        font-size: 1.5em;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        height: 50px;
-        border-radius: 30px;
-        width: 95%;
-        align-self: center;
-        position: fixed;
-        top: 90%;
-        left: 2%;
-        margin-bottom: 35px;
-        font-family: "Poppins";
-        overflow: hidden;
-        transition: none;
-        transition: all 0.3s ease-in-out;
-        z-index: 2;
-        padding: 20px;
-    }
-
-    header.scrolled:hover {
-        height: 900px;
-        padding: 20px;
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-        -webkit-backdrop-filter: blur(40px);
-        backdrop-filter: blur(40px);
-        background: rgb(100, 100, 100, 0.5);
-        border: 1px solid rgba(100, 100, 100, 0.25);
-        top: 15px;
-        border-radius: 50px;
-        margin-bottom: 35px;
-        font-family: "Poppins";
-        transition: all 0.3s ease-in-out;
-        z-index: 2;
-    }
-
-    header.scrolled:hover {
-        left: 10px;
-        ;
-    }
-
-    header.scrolled {
-        background: rgb(100, 100, 100, 0.2);
-        -webkit-backdrop-filter: blur(25px);
-        backdrop-filter: blur(25px);
-
-    }
-
-    header a {
-        width: 100%;
-    }
-
-    #account {
-        border-radius: 20px;
-        width: 90%;
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        color: white;
-        font-size: 1px;
-        opacity: 0;
-        transition: all 0.3s;
-        display: flex;
-        justify-content: space-around;
-        height: 70px;
-        background-color: transparent;
-        transition: all 0.6s ease;
-        font-size: 20px;
-        padding: 10px;
-        align-items: center;
-        cursor: pointer;
-        z-index: 2;
-    }
-
-    header:hover #account,
-    header:hover p {
-        font-size: 15px;
-        opacity: 1;
-    }
-
-    header p,
-    header #account {
-        opacity: 0;
-        font-size: 1;
-    }
-
-    header button:hover {
-        background: rgba(255, 255, 255, 0.3);
-        color: white;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transform: translateY(-2px) scale(1.05);
-    }
-
-    header h1 {
-        margin-top: -5px;
-    }
-
-
-    #ToolsContent {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        height: auto;
-        width: 100%;
-        gap: 15px;
-        border-radius: 25px;
-        background-color: transparent;
-        transition: all 0.3s;
-        font-size: 20px;
-        text-align: center;
-        color: #0c0022;
-        display: flex;
-        align-items: center;
-    }
-
-
-
-    #ToolsContent div {
-        width: 95%;
-        height: 75px;
-    }
-
-
-
-    /* Header: Compte */
-    #account {
-        display: none;
-    }
-
-    header button {
-        opacity: 0;
-        display: flex;
-        width: 100%;
-        height: 100px;
-        font-family: "Poppins";
-        justify-content: space-around;
-        border-radius: 25px;
-        background: rgba(255, 255, 255, 3);
-        transition: all 0.3s;
-        font-size: 25px;
-        text-align: end;
-        color: #092241;
-        text-decoration: none;
-        padding: 10px;
-        align-items: center;
-        cursor: pointer;
-        z-index: 2;
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-
-    }
-
-    header:hover button {
-        opacity: 1;
-    }
-
-    header a {
-        text-decoration: none;
-        color: #092241;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    header button:hover {
-        transform: scale(1.05);
-    }
-
-    /* Contenu */
-
-    #content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        margin-top: 0;
-        z-index: 1;
-    }
-
-
-
-
-
-
-    /* Outils */
-
-    #ToolsDiv {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        height: auto;
-        width: 90%;
-        border-radius: 25px;
-        background-color: white;
-        transition: all 0.3s;
-        font-size: 20px;
-        padding: 25px;
-        align-items: center;
-        color: #092241;
-    }
-
-    #ToolsDiv button {
-        background: #fff;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: 0.3s;
-    }
-
-    .toolbtn {
-        font-family: "Special Gothic Expanded One";
-    }
-
-    .Tools {
-        width: 95%;
-        background-color: transparent;
-        box-shadow: none;
-        display: flex;
-        transition: all 0.3s;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    #qn,
-    #sc {
-        position: relative;
-
-        /* Fond gris foncé */
-        overflow: hidden;
-        color: #092241;
-        text-align: center;
-        height: 70%;
-        font-family: "Poppins";
-        display: flex;
-        flex-direction: column;
-        margin-right: 10px;
-        width: 97%;
-        border-radius: 20px;
-        padding: 40px 10px;
-
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-    }
-
-
-
-
-    #qn,
-    #sc {
-        transition: all 0.3s;
-    }
-
-    #qn {
-        background: linear-gradient(135deg,
-                #44c8fc3b 25%,
-                #00418b3b 25%,
-                #00418b3a 50%,
-                #44c8fc38 50%,
-                #44c8fc33 75%,
-                #00418b3b 75%,
-                rgba(0, 0, 255, 0.25) 10%);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background-size: 1750px 1750px;
-        background-position: -800px 0px;
-        font-family: "Poppins";
-        font-size: 15px;
-        font-weight: 200;
-    }
-
-    #qn h1 {
-        font-weight: 800;
-        font-size: 50px;
-        text-decoration: none;
-    }
-
-    #qn:hover {
-        transform: scale(1.05);
-        background-size: 2000px 2000px;
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-        background-position: -2000px 0%;
-    }
-
-    #sc {
-        background: greenyellow;
-        background: linear-gradient(135deg,
-                rgba(172, 255, 47, 0.25) 25%,
-                #00418b36 25%,
-                #00418b36 50%,
-                rgba(172, 255, 47, 0.25) 50%,
-                rgba(172, 255, 47, 0.25) 75%,
-                #00418b34 75%,
-                rgba(172, 255, 47, 0.25) 10%);
-        background-size: 1750px 1750px;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background-position: -800px 0px;
-        font-family: "Poppins";
-        font-weight: 200;
-        font-size: 10px;
-    }
-
-    #sc h1 {
-        text-decoration: none;
-        font-weight: 800;
-        font-size: 40px;
-    }
-
-    #sc:hover {
-        transform: scale(1.05);
-        background-size: 2000px 2000px;
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-        background-position: -2000px 0%;
-    }
-
-
-    /* Texte au-dessus des bandes */
-    #qn h2 {
-        position: relative;
-        z-index: 2000;
-    }
-
-    /* Animation des bandes */
-    @keyframes moveStripes {
-        0% {
-            background-position: 0 0;
-        }
-
-        100% {
-            background-position: 80px 0;
-        }
-    }
-
-    /* Div Nouveautés */
-
-    #News {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 90%;
-        height: auto;
-        border-radius: 25px;
-        background-color: white;
-        transition: all 0.3s;
-        font-size: 20px;
-        text-align: end;
-        color: white;
-        display: flex;
-        padding: 25px;
-        align-items: center;
-        color: #092241;
-    }
-
-    .NewBox {
-        width: auto;
-        height: auto;
-        background-color: rgb(50, 50, 50);
-        box-shadow: none;
-        display: flex;
-        flex-direction: column;
-        transition: all 0.3s;
-        gap: 10px;
-        margin-bottom: 10px;
-        text-align: left;
-        padding-left: 15px;
-        padding-top: 10px;
-        border-radius: 15px;
-    }
-
-    .NewBox h3 {
-        color: white;
-        font-weight: 900;
-        font-family: "Poppins";
-        font-size: auto;
-        margin: 0;
-        padding: 0;
-    }
-
-    .NewBox p {
-        color: white;
-        font-size: 15px;
-        margin: 0;
-        padding: 0;
-    }
-
-    #NewsContent {
-        width: 100%;
-        height: 475px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        background-color: white;
-        border-radius: 10px;
-    }
-
-    /* Scrollbar personnalisée pour Chrome, Edge et Safari */
-    ::-webkit-scrollbar {
-        width: 10px;
-        height: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: transparent;
-        /* ou une couleur assortie comme #1e1e1e */
-    }
-
-
-    ::-webkit-scrollbar-thumb {
-        background: #092241;
-        border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: #092241;
-    }
-
-    /* Scrollbar sans flèches */
-    ::-webkit-scrollbar-button {
-        display: none;
-    }
-
-    body.hide-scrollbar::-webkit-scrollbar {
-        opacity: 0;
-        transition: opacity 0.5s ease;
-    }
-
-    body::-webkit-scrollbar {
-        opacity: 1;
-        transition: opacity 0.5s ease;
-    }
-
-
-    body {
-        overflow-y: scroll;
-    }
-
-    /* Scrollbar stylée */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: #99999969;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border-radius: 4px;
-    }
-
-
-    ::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    .Work {
-        display: none;
-    }
-
-    /* Bande animée */
-    .Work::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 200%;
-        height: 100%;
-        background: linear-gradient(135deg,
-                #ffc107 25%,
-                #444 25%,
-                #444 50%,
-                #ffc107 50%,
-                #ffc107 75%,
-                #444 75%,
-                #444 100%);
-        background-size: 80px 80px;
-        animation: moveStripes 1s linear infinite;
-        opacity: 0.5;
-        z-index: 0;
-        transition: all 0.3s;
-    }
-
-    .Work {
-        transition: all 0.3s;
-    }
-
-    .Work:hover {
-        transform: scale(1.05);
-    }
-
-
-    /* Texte au-dessus des bandes */
-    .Work h2 {
-        position: relative;
-        z-index: 2;
-    }
-
-    /* Animation des bandes */
-    @keyframes moveStripes {
-        0% {
-            background-position: 0 0;
-        }
-
-        100% {
-            background-position: 80px 0;
-        }
-    }
-
-
-
-
-
-    /* -- */
-    #AboutUs {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        height: auto;
-        width: 90%;
-        margin-top: 25px;
-        border-radius: 25px;
-        background-color: white;
-        transition: all 0.3s;
-        font-size: 20px;
-        padding: 25px;
-        align-items: center;
-        color: #092241;
-        box-shadow: #092241 0px 3px 10px 5px;
-        margin-bottom: 125px;
-    }
-
-    #MenuSettings {
-        transform-origin: top;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        position: absolute;
-        top: 90px;
-        left: 0;
-        width: 100%;
-        border-radius: 25px;
-        background: radial-gradient(at bottom right, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.8));
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-
-        padding: 10px;
-        text-align: left;
-        font-size: 10px;
-        color: #092241;
-        z-index: 100;
-        overflow: hidden;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        opacity: 0;
-        transform: scaleY(0);
-        pointer-events: none;
-    }
-
-
-    #MenuSettings.shown {
-        opacity: 1;
-        transform: scaleY(1);
-        pointer-events: auto;
-    }
-
-
-    #MenuSettings.hidden {
-        transform: scaleY(0);
-        opacity: 0;
-        pointer-events: none;
-    }
-
-
-    #MenuSettings button {
-        display: flex;
-        width: 95%;
-        height: 60px;
-        font-family: "Poppins";
-        justify-content: space-around;
-        border-radius: 25px;
-        background: rgba(255, 255, 255, 0.8);
-        transition: all 0.3s;
-        font-size: 15px;
-        text-align: end;
-        color: #092241;
-        display: flex;
-        text-decoration: none;
-        padding: 10px;
-        align-items: center;
-        cursor: pointer;
-        z-index: 2;
-        text-align: center;
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        /* glass effect */
-
-    }
-
-    #MenuSettings button:hover {
-        background-color: rgb(255, 255, 255, 0.5);
-        transform: scale(1.05);
-    }
-
-    #AccountSettings.hidden {
-        transform: translateX(-100%);
-        opacity: 1;
-        background: radial-gradient(at bottom right, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.8));
-        color: #092241;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 70%;
-        font-size: 20px;
-        z-index: 100;
-        border-top-right-radius: 25px;
-        border-bottom-right-radius: 25px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        -webkit-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px);
-        /* glass effect */
-
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-        transition: transform 0.4s ease, opacity 0.4s ease;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-
-    }
-
-    #AccountSettings.shown {
-        transform: translateX(0%);
-        opacity: 1;
-        background: radial-gradient(at bottom right, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.8));
-        color: #092241;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100%;
-        font-size: 20px;
-        z-index: 100;
-        border-top-right-radius: 25px;
-        border-bottom-right-radius: 25px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        -webkit-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px);
-        /* glass effect */
-
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-        transition: transform 0.4s ease, opacity 0.4s ease;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-
-    #CloseAccSett {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 50px;
-        height: 50px;
-        background-color: #092241;
-        border-radius: 20px;
-        border: none;
-        font-size: 20px;
-        cursor: pointer;
-        color: white;
-        transition: all 0.3s;
-        z-index: 1000;
-    }
-
-    #CloseAccSett:hover {
-        background-color: rgb(255, 0, 0, 0.7);
-        transform: scale(1.1);
-    }
-
-    #CloseAccSett:active {
-        background-color: rgb(255, 0, 0, 0.5);
-        transform: scale(0.95);
-    }
-
-    #ToolsDiv,
-    #News,
-    #AboutUs,
-    .SmartHome,
-    .Work,
-    .Productivity,
-    .Organisation {
-        background: rgba(255, 255, 255, 0.15);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    }
-
-    /* Optionnel : hover effet plus intense */
-    #ToolsDiv:hover,
-    #News:hover,
-    #AboutUs:hover,
-    .SmartHome:hover,
-    .Work:hover,
-    .Productivity:hover,
-    .Organisation:hover {
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-    }
-
-    #newbanner {
-        height: 30px;
-        width: 75px;
-        background-color: red;
-        color: white;
-        border-radius: 15px;
-        position: absolute;
-        top: -5px;
-        right: -15px;
-        display: flex;
-        justify-content: center;
-
-        align-items: center;
-        font-size: 15px;
-    }
-
-    .NewBox {
-        overflow: hidden;
-    }
-
-    .biggersize {
-        display: none;
-    }
-
-    .notification {
-        top: 10px;
-        right: 1%;
-        /* Commence en dehors de l'écran */
-        position: fixed;
-        transition: all 0.3s ease;
-        z-index: 501;
-        will-change: transform, opacity;
-    }
-
-    /* Conteneur pour toutes les notifications */
-    #notifications-container {
-        position: fixed;
-        top: 10px;
-        left: 1%;
-        right: 1%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        /* Espace entre les notifications */
-        z-index: 500;
-        height: 1px;
-    }
-
-    /* Affichage de la notification */
-
-    .notification.show {
-        opacity: 1;
-        top: 10px;
-        transition: all 0.3s ease;
-        z-index: 100000;
-    }
-
-    /* Disparition de la notification */
-    .notification.hidden {
-        opacity: 0;
-        top: -100px;
-        z-index: 100;
-        transition: all 0.3s ease;
-    }
-
-    .notification {
-        background: rgba(255, 255, 255, 0.15);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        display: flex;
-        flex-direction: column;
-        isolation: isolate;
-        position: fixed;
-        width: 98%;
-        height: 6rem;
-        cursor: default;
-        transform: translateY(0);
-        transition: all 0.3s ease;
-        border-radius: 1rem;
-        overflow: hidden;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 16px;
-        --gradient: linear-gradient(to bottom, #2eadff, #3d83ff, #7e61ff);
-        --color: #32a6ff;
-        z-index: 2;
-        border: 2px rgb(240, 250, 200);
-    }
-
-    .notification:before {
-        position: absolute;
-        content: "";
-        inset: 0.0625rem;
-        border-radius: 0.9375rem;
-        background: rgba(255, 255, 255, 0.15);
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        z-index: 2;
-    }
-
-    .notification:after {
-        position: absolute;
-        content: "";
-        width: 0.25rem;
-        inset: 0.65rem auto 0.65rem 0.5rem;
-        border-radius: 0.125rem;
-        background: var(--gradient);
-        transition: transform 300ms ease;
-        z-index: 4;
-    }
-
-    .notification:hover:after {
-        transform: translateX(0.15rem);
-    }
-
-    .notititle {
-        color: var(--color);
-        padding: 0.65rem 0.25rem 0.4rem 1.25rem;
-        font-weight: 500;
-        font-size: 1.1rem;
-        transition: transform 300ms ease;
-        z-index: 5;
-    }
-
-    .notification:hover .notititle {
-        transform: translateX(0.15rem);
-    }
-
-    .notibody {
-        color: #99999d;
-        padding: 0 1.25rem;
-        transition: transform 300ms ease;
-        z-index: 5;
-    }
-
-    .notification:hover .notibody {
-        transform: translateX(0.25rem);
-    }
-
-    .notiglow,
-    .notiborderglow {
-        position: absolute;
-        width: 20rem;
-        height: 20rem;
-        transform: translate(-50%, -50%);
-        background: radial-gradient(circle closest-side at center, white, transparent);
-        opacity: 0;
-        transition: opacity 300ms ease;
-    }
-
-    .notiglow {
-        z-index: 3;
-    }
-
-    .notiborderglow {
-        z-index: 1;
-    }
-
-    .notification:hover .notiglow {
-        opacity: 0.1;
-    }
-
-    .notification:hover .notiborderglow {
-        opacity: 0.1;
-    }
-
-    .notification:hover {
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
-    }
-
 }
 
+.toolbtn {
+    font-family: "Special Gothic Expanded One";
+}
+
+.Tools {
+    width: 95%;
+    background-color: transparent;
+    box-shadow: none;
+    display: flex;
+    transition: all 0.3s;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+.tools-grid a {
+    color: #092241;
+    text-align: center;
+    height: 70%;
+    font-family: "Inter";
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transition: all 0.3s;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    font-weight: 800;
+    font-size: 25px;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+
+#qn {
+    background: #00418b9c;
+}
+
+#qn:hover {
+    background: #44c8fc38;
+}
+
+#sc {
+    background: rgba(172, 255, 47, 0.25);
+}
+
+
+#sc:hover {
+    background: #00418b36;
+}
+
+#afi {
+    background: rgba(255, 200, 60, 0.25);
+}
+
+#afi:hover {
+    background: #32f55236;
+}
+
+#wkh {
+    background: rgba(8, 214, 152, 0.25);
+}
+
+
+#wkh:hover {
+    background: #3f87d836;
+}
+
+#dos {
+    background: rgba(78, 10, 168, 0.25);
+}
+
+#dos:hover {
+    background: #0bccc236;
+}
+
+.tools-grid a span {
+    position: absolute;
+    right: 75px;
+    scale: 8;
+    transition: all 0.2s ease-in-out;
+}
+
+.dark-theme .tools-grid a span {
+    color: rgb(200, 200, 200);
+}
+
+.light-theme .tools-grid a span {
+    color: rgb(50, 50, 50);
+}
+
+.tools-grid a:hover span {
+    transform: translateX(-5px) scale(1.05);
+    color: rgb(100, 100, 200);
+}
+
+
+
+/* ----------------------------- */
+/*         NOTIFICATIONS         */
+/* ----------------------------- */
+.notification {
+    top: 10px;
+    right: 17.5%;
+    /* Commence en dehors de l'écran */
+    position: fixed;
+    transition: all 0.3s ease;
+    z-index: 501;
+    will-change: transform, opacity;
+}
+
+/* Conteneur pour toutes les notifications */
+#notifications-container {
+    position: fixed;
+    top: 10px;
+    left: 17.5%;
+    right: 17.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Espace entre les notifications */
+    z-index: 500;
+    height: 1px;
+}
+
+/* Affichage de la notification */
+
+.notification.show {
+    opacity: 1;
+    top: 10px;
+    transition: all 0.3s ease;
+    z-index: 100000;
+}
+
+/* Disparition de la notification */
+.notification.hidden {
+    opacity: 0;
+    top: -100px;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.notification {
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    isolation: isolate;
+    position: fixed;
+    width: 65%;
+    height: auto;
+    cursor: default;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    border-radius: 1rem;
+    overflow: hidden;
+    padding: 10px 10px 10px 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    --gradient: linear-gradient(to bottom, #32a6ff, #3d8cff, #61a0ff);
+    --gradientC: linear-gradient(to bottom, red, #ff3d3d, #ff6161);
+    --color: #32a6ff;
+    z-index: 2;
+    border: 2px rgb(240, 250, 200);
+}
+
+.notification:before {
+    position: absolute;
+    content: "";
+    inset: 0.0625rem;
+    border-radius: 0.9375rem;
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+.notification:after {
+    position: absolute;
+    content: "";
+    width: 0.25rem;
+    inset: 0.65rem auto 0.65rem 0.5rem;
+    border-radius: 0.125rem;
+    background: var(--gradient);
+    transition: transform 300ms ease;
+    z-index: 4;
+}
+
+.critical::after {
+    background: var(--gradientC);
+    color: var(--gradientC);
+}
+
+
+
+.notification:hover:after {
+    transform: translateX(0.15rem);
+}
+
+.notititle {
+    color: var(--color);
+    padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: transform 300ms ease;
+    z-index: 5;
+}
+
+.critical .notititle {
+    color: red;
+}
+
+.critical {
+    color: var(--gradientC);
+}
+
+
+.notification:hover .notititle {
+    transform: translateX(0.15rem);
+}
+
+.notibody {
+    color: #99999d;
+    padding: 0 1.25rem;
+    transition: all 300ms ease;
+    z-index: 5;
+}
+
+.notification:hover .notibody {
+    transform: translateX(0.25rem);
+    color: #092241;
+}
+
+.notiglow,
+.notiborderglow {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle closest-side at center, white, transparent);
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.notiglow {
+    z-index: 3;
+}
+
+.notiborderglow {
+    z-index: 1;
+}
+
+.notification:hover .notiglow {
+    opacity: 0.1;
+}
+
+.notification:hover .notiborderglow {
+    opacity: 0.1;
+}
+
+.notification:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Contenu */
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    z-index: 1;
+}
+
+
+
+
+
+
+/* Outils */
+
+
+
+
+/* Div Nouveautés */
+
+#News {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: auto;
+    border-radius: 25px;
+    background-color: white;
+    transition: all 0.3s;
+    font-size: 20px;
+    text-align: end;
+    color: white;
+    display: flex;
+    padding: 25px;
+    align-items: center;
+    color: #092241;
+}
+
+.NewBox {
+    width: 98%;
+    height: auto;
+    background-color: rgb(50, 50, 50);
+    box-shadow: none;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    transition: all 0.3s;
+    gap: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid white;
+}
+
+.NewBox:hover p,
+.NewBox:hover a {
+    transform: translateX(5px);
+}
+
+.NewBox h3 {
+    font-weight: 900;
+    font-family: "Inter";
+    font-size: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+.NewBox p {
+
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+#NewsContent {
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+/* Scrollbar personnalisée pour Chrome, Edge et Safari */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+
+    /* ou une couleur assortie comme #1e1e1e */
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #092241;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #09224173;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+/* Scrollbar sans flèches */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+
+
+/* Scrollbar stylée */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9999995e;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+
+
+/* -- */
+#AboutUs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: auto;
+    align-items: center;
+    width: 90%;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    border-radius: 25px;
+    background-color: white;
+    transition: all 0.3s;
+    font-size: 20px;
+    padding: 25px;
+    align-items: center;
+    color: #092241;
+    box-shadow: #092241 0px 3px 10px 5px;
+}
+
+#PlatformStatus {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: auto;
+    align-items: center;
+    width: 90%;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    border-radius: 25px;
+    background-color: white;
+    transition: all 0.3s;
+    font-size: 20px;
+    padding: 25px;
+    align-items: center;
+    color: #092241;
+    box-shadow: #092241 0px 3px 10px 5px;
+}
+
+
+#News,
+#AboutUs,
+#PlatformStatus{
+    background: rgba(255, 255, 255, 0.15);
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Optionnel : hover effet plus intense */
+#News:hover,
+#AboutUs:hover,
+#PlatformStatus:hover{
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+}
+
+.NewBox {
+    overflow: hidden;
+}
+
+.biggersize p {
+    margin-top: 0;
+}
+
+.biggersize:hover {
+    height: 225px;
+}
+
+.biggersize h6 {
+    opacity: 1;
+    color: white;
+    transition: all 0.3s;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.biggersize:hover h6 {
+    opacity: 0;
+}
+
+
+
+/* Bande animée */
+.Work::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(135deg,
+            #ffc107 25%,
+            #444 25%,
+            #444 50%,
+            #ffc107 50%,
+            #ffc107 75%,
+            #444 75%,
+            #444 100%);
+    background-size: 80px 80px;
+    animation: moveStripes 1s linear infinite;
+    opacity: 0.5;
+    z-index: 0;
+    transition: all 0.3s;
+}
+
+.Work {
+    transition: all 0.3s;
+}
+
+.Work:hover {
+    transform: scale(1.05);
+}
+
+
+/* Texte au-dessus des bandes */
+.Work h2 {
+    position: relative;
+    z-index: 200;
+    opacity: 1;
+}
+
+/* Animation des bandes */
+@keyframes moveStripes {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 80px 0;
+    }
+}
 
 
 .update-notification {
@@ -2138,15 +1125,6 @@
         transform: translateX(-50%) translateY(0);
     }
 }
-
-
-
-
-
-
-
-
-
 
 /* ----------------------------- */
 /*         WELCOME SECTION      */
@@ -2252,11 +1230,12 @@
 #smartUIdiv {
     width: 400px;
     height: 100px;
-    margin-bottom: 15px;
+    margin: 15px 15px 15px 15px;
     background: #092241;
     border-radius: 25px;
     cursor: pointer;
-    position: sticky;
+    position: relative;
+
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -2280,7 +1259,7 @@
 
 #smartUIdiv:hover {
     background: white;
-    width: 450px;
+    width: 525px;
     transform: scale(1.2);
     color: #092241;
     box-shadow: 0 0 20px 10px #092241;
@@ -2291,10 +1270,20 @@
     transition: all 0.2s ease-in-out;
 }
 
-#smartUIdiv:hover span {
-    font-size: 35px;
-    color: #092241;
+
+#smartUIdiv span {
+    position: absolute;
+    right: 15px;
+    top: -5px;
+    font-size: 100px;
+    font-family: 'Bahnschrift';
+    color: rgba(128, 128, 128, 0.3);
     transition: all 0.2s ease-in-out;
+}
+
+#smartUIdiv:hover span {
+    color: black;
+    font-weight: 800;
 }
 
 #smartUIdiv:active {
@@ -2342,7 +1331,7 @@
     justify-content: center;
     align-items: center;
     z-index: -1;
-    font-family: "Poppins";
+    font-family: "Inter";
     border: none;
     cursor: pointer;
     background: linear-gradient(to top, #092241 30%, transparent 100%);
@@ -2364,7 +1353,7 @@
     align-items: center;
     z-index: 1000;
     opacity: 1;
-    font-family: "Poppins";
+    font-family: "Inter";
     border: none;
     cursor: pointer;
     transform: scale(1) translateY(0);
@@ -2386,7 +1375,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1002;
-    font-family: "Poppins";
+    font-family: "Inter";
     border: white 0.1px solid;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -2404,7 +1393,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1002;
-    font-family: "Poppins";
+    font-family: "Inter";
     border: white 0.1px solid;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -2426,7 +1415,7 @@
 
 
 #AssistantContent input {
-    font-family: "Poppins";
+    font-family: "Inter";
     width: 85%;
     height: 100%;
     border-radius: 20px;
@@ -2573,4 +1562,70 @@ p,
 a {
     color: #fff;
     transition: all 0.3s ease-in-out;
+}
+
+.Work {
+    cursor: not-allowed;
+    position: relative;
+    background-color: #444;
+    /* Fond gris foncé */
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    font-family: "Inter";
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: #092241 2px 5px 10px 2px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Bande animée */
+.Work::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    background: linear-gradient(135deg,
+            #ffc107 25%,
+            #444 25%,
+            #444 50%,
+            #ffc107 50%,
+            #ffc107 75%,
+            #444 75%,
+            #444 100%);
+    background-size: 80px 80px;
+    animation: moveStripes 1s linear infinite;
+    opacity: 0.5;
+    z-index: 0;
+    transition: all 0.3s;
+}
+
+.Work {
+    transition: all 0.3s;
+}
+
+.Work:hover {
+    transform: scale(1.05);
+}
+
+
+/* Texte au-dessus des bandes */
+.Work h2 {
+    position: relative;
+    z-index: 2;
+}
+
+/* Animation des bandes */
+@keyframes moveStripes {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 80px 0;
+    }
 }

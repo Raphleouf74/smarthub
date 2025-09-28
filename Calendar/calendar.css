@@ -7,7 +7,7 @@
 
 body {
     margin: 0;
-    font-family: "Poppins", sans-serif;
+    font-family: "Inter", sans-serif;
     background: white;
     color: white;
     display: flex;
@@ -44,7 +44,7 @@ header {
     left: 10px;
     ;
     margin-bottom: 35px;
-    font-family: "Poppins";
+    font-family: "Inter";
     overflow: hidden;
     transition: none;
     transition: all 0.3s ease-in-out;
@@ -62,7 +62,7 @@ header:hover {
     left: 10px;
     ;
     margin-bottom: 35px;
-    font-family: "Poppins";
+    font-family: "Inter";
     transition: all 0.3s ease-in-out;
     z-index: 200;
     animation: SlideUp 0.6s forwards;
@@ -86,7 +86,7 @@ header button {
     font-size: 25px;
     opacity: 0;
     transition: all 0.3s;
-    font-family: "Poppins";
+    font-family: "Inter";
     text-decoration: none;
 }
 
@@ -427,7 +427,7 @@ header h1 {
     border: 1px solid #ccc;
     font-size: 16px;
     margin-bottom: 20px;
-    font-family: "Poppins";
+    font-family: "Inter";
     box-sizing: border-box;
 }
 
@@ -601,7 +601,7 @@ header h1 {
 #SettingsModal footer p {
     font-size: 10px;
     color: #092241;
-    font-family: "Poppins";
+    font-family: "Inter";
     margin: 0;
 }
 
@@ -615,7 +615,7 @@ header h1 {
     overflow: hidden;
     color: white;
     text-align: center;
-    font-family: "Poppins";
+    font-family: "Inter";
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -663,7 +663,7 @@ header h1 {
     background-color: rgb(100, 100, 255);
     border: solid 1px white;
     height: 40px;
-    font-family: "Poppins";
+    font-family: "Inter";
     width: 125px;
     border-radius: 20px;
     transition: all 0.3s;
@@ -683,7 +683,7 @@ header h1 {
     background-color: rgb(255, 100, 100);
     border: solid 1px white;
     height: 40px;
-    font-family: "Poppins";
+    font-family: "Inter";
     width: 125px;
     border-radius: 20px;
     transition: all 0.3s;
@@ -863,7 +863,7 @@ header h1 {
     justify-content: space-around;
     font-size: 25px;
     transition: all 0.3s;
-    font-family: "Poppins";
+    font-family: "Inter";
     text-decoration: none;
 }
 
@@ -882,7 +882,7 @@ header h1 {
     justify-content: space-around;
     font-size: 25px;
     transition: all 0.3s;
-    font-family: "Poppins";
+    font-family: "Inter";
     text-decoration: none;
 }
 
@@ -1075,7 +1075,7 @@ header h1 {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-family: "Poppins";
+    font-family: "Inter";
     padding: 8px 12px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
@@ -1091,7 +1091,7 @@ header h1 {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-family: "Poppins";
+    font-family: "Inter";
     padding: 8px 12px;
     transition: all 0.3s ease-in-out;
 }
@@ -1104,19 +1104,44 @@ header h1 {
 #page-customizer {
     display: none;
     position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: #fff;
+    right: 10px;
+    top: 75px;
+    background: #ffffff90;
+    color: #222;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    z-index: 20000;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 16px;
+    width: 450px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease-in-out;
+    height: 600px;
+}
+
+#page-customizer.fullscreen {
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translate(0, 0);
+    background: #ffffff80;
+    -webkit-backdrop-filter: blur(35px);
+    backdrop-filter: blur(35px);
     color: #222;
     z-index: 20000;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem;
-    border-radius: 16px;
-    min-width: 350px;
+    border-radius: 16px 0 0 16px;
+    width: 500px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    height: 100vh;
+}
+
+#page-customizer.fullscreen .div-controls {
+    border-radius: 16px 0 0 16px;
 }
 
 .color-row {
@@ -1131,7 +1156,7 @@ header h1 {
     border: 1px solid #ccc;
     background: #f7f7f7;
     font-size: 16px;
-    font-family: "Poppins";
+    font-family: "Inter";
     margin-top: 4px;
 }
 
@@ -1164,7 +1189,7 @@ header h1 {
     border-radius: 10px;
     height: 50px;
     width: 80%;
-    font-family: "Poppins";
+    font-family: "Inter";
     border: none;
     display: flex;
     justify-content: space-around;
@@ -1212,11 +1237,12 @@ header h1 {
     width: 100%;
     display: flex;
     align-items: center;
-    background: linear-gradient(to right, rgb(175, 175, 175), rgb(255, 255, 255) 75px);
+    background: linear-gradient(to right, rgb(200, 200, 200) 30%, rgb(255, 255, 255, 0) 75%);
     border-radius: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
-#fullscreen {
+.div-controls button {
     border-radius: 10px;
     font-size: 2px;
     height: 30px;
@@ -1238,7 +1264,14 @@ header h1 {
     border: 1.5px solid black;
 }
 
-#fullscreen span {
+#closePCustomizer:hover {
+    border-radius: 5px;
+    scale: 1.2;
+    background: rgb(220, 150, 150);
+    border: 1.5px solid black;
+}
+
+.div-controls button span {
     transition: all 0.3s ease-in-out;
 }
 
@@ -1248,19 +1281,22 @@ header h1 {
     animation-delay: 0.35s;
 }
 
+#closePCustomizer:hover span {
+    rotate: 90deg;
+    animation: pop 0.5s forwards;
+    animation-delay: 0.35s;
+}
 @keyframes pop {
     0% {
-        scale: 1;
         rotate: 180deg;
     }
 
     50% {
-        scale: 1.2;
         rotate: 150deg;
     }
 
     100% {
-        scale: 1;
         rotate: 180deg;
     }
 }
+

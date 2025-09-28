@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    font-family: "Inter";
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
 /* Éléments désactivés en mode focus */
 .focus-mode .focus-disable {
     pointer-events: none !important;
@@ -32,7 +41,7 @@ body {
     overflow: hidden;
     color: white;
     text-align: center;
-    font-family: "Poppins";
+    font-family: "Inter";
     display: flex;
     flex-direction: column;
     border-radius: 20px;
@@ -49,7 +58,6 @@ body {
     top: 0;
     left: 0;
     width: 200%;
-    min-height: 100%;
     background: linear-gradient(135deg,
             #ffc107 25%,
             #444 25%,

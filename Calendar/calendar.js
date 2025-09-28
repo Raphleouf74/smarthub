@@ -472,6 +472,10 @@ document.getElementById('closePageCustomizer').addEventListener('click', functio
     document.getElementById('page-customizer').style.display = 'none';
 });
 
+document.getElementById('closePCustomizer').addEventListener('click', function () {
+    document.getElementById('page-customizer').style.display = 'none';
+});
+
 // Ouvre le customizer
 document.getElementById('customizePageBtn').addEventListener('click', function () {
     document.getElementById('page-customizer').style.display = 'flex';
@@ -525,3 +529,9 @@ window.addEventListener('DOMContentLoaded', () => {
     renderRecentColors('recentBgColors');
     renderRecentColors('recentTextColors');
 });
+
+const fullscreenPageCustomizerBtn = document.getElementById("fullscreen");
+const PageCustomizer = document.getElementById("page-customizer");
+fullscreenPageCustomizerBtn.addEventListener('click', () => {
+    PageCustomizer.classList.toggle('fullscreen');
+})

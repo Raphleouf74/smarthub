@@ -22,9 +22,9 @@ const body = document.querySelector('body');
 // showCriticalNotification();
 
 // Header scroll effect
+const header = document.querySelector('header');
 body.classList.add('scroll-hidden');
 window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
 
     if (window.scrollY > 30) {
         header.classList.add('scrolled');
@@ -35,21 +35,15 @@ window.addEventListener('scroll', () => {
     }
 });
 
-
-
-// const UserSettingsBtn = document.getElementById('AccSettings');
-// const accountSettings = document.getElementById('AccountSettings');
-// const closeAccSettingsBtn = document.getElementById('CloseAccSett');
-// UserSettingsBtn.addEventListener('click', () => {
-//     showNotification("Créez un compte pour pouvoir modifier vos infos !", "Pour l'instant, vous ne pouvez pas modifier vos informations car vous n'avez pas de compte. Pour en créer un, rendez-vous dans la section 'Créer un compte' dans le menu !");
-
-//     accountSettings.classList.toggle('shown');
-//     setTimeout(() => accountSettings.classList.add('show'), 0); // un petit délai pour déclencher la transition
-// });
-
-// closeAccSettingsBtn.addEventListener('click', () => {
-//     accountSettings.classList.toggle('shown'); // attendre que l'anim sorte
-// });
+header.addEventListener('click', () => {
+    header.classList.toggle('hover');
+});
+document.addEventListener('click', (e) => {
+    const header = document.querySelector('header');
+    if (!header.contains(e.target)) {
+        header.classList.remove('hover');
+    }
+});
 
 // ----- Vérification de version -----
 async function checkSiteVersion() {
@@ -235,7 +229,6 @@ function adjustTextColorForElement(elem) {
     elem.style.color = color;
 }
 
-const header = document.querySelector('header');
 const notifs = document.querySelectorAll('.notification');
 
 adjustTextColorForElement(header);
@@ -275,13 +268,9 @@ function checkTodayEvents() {
 window.addEventListener('DOMContentLoaded', checkTodayEvents);
 const welcomebtn = document.getElementById("welcomebtn");
 const welcometext = document.getElementById("welcometext");
-const easteregg = document.getElementById("easteregg");
 welcometext.style.transform = "translateY(75px)";
 welcometext.style.transition = "all 0.3s ease-in-out";
 welcometext.style.opacity = "0";
-easteregg.style.transform = "translateY(50px)";
-easteregg.style.transition = "all 0.3s ease-in-out";
-easteregg.style.opacity = "0";
 welcomebtn.style.opacity = "0";
 welcomebtn.style.transform = "translateY(50px)";
 setTimeout(() => {
@@ -295,10 +284,6 @@ setTimeout(() => {
     welcomebtn.style.transform = "translateY(0) ";
     welcomebtn.style.opacity = "1";
 }, 5000);
-setTimeout(() => {
-    easteregg.style.transform = "translateY(0) ";
-    easteregg.style.opacity = "1";
-}, 50000);
 function scrollToTools() {
     const toolsDiv = document.getElementById("ToolsDiv");
     toolsDiv.scrollIntoView({ behavior: "smooth" });
@@ -327,4 +312,4 @@ document.addEventListener("keydown", (e) => {
 const ToolsNo = document.getElementById('ToolsNo');
 const tools = document.querySelectorAll('#ToolsContent a');
 
-ToolsNo.innerHTML = `Il y a ${tools.length} outils disponibles`;
+ToolsNo.innerHTML = `Il y a ${tools.length - 1} outils disponibles`;

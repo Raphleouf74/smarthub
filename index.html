@@ -11,10 +11,15 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
   <link rel="stylesheet" href="focusmode.css" />
   <script src="focusmode.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-  <div id="Assistant" class"focus-disable">
+  <div id="Assistant" class="focus-disable">
     <div id="AssistantContent">
       <input id="commandInput"
         placeholder="Tapez une commande... Appuyez sur la touche 'Entrée' pour lancer la commande. Ecrivez 'Fermer' ou 'Cacher' pour fermer l'assistant." />
@@ -58,27 +63,33 @@
     </div>
   </div>
   <header>
-    <h1>SmartHub</h1>
+    <h1 class="long">SmartHub</h1>
+    <h1 class="short">SH</h1>
 
     <!-- <button id="LightMode" class="modal-item">Mode clair</button> -->
-    <a href="../LegalDocs/privacypolicy.html" class="modal-item"><button class="modal-item focus-disable" id="PrivacyPolicy">
+    <a href="../LegalDocs/privacypolicy.html" class="modal-item"><button class="modal-item focus-disable"
+        id="PrivacyPolicy">
         Politique de confidentialité
       </button></a>
     <a href="../LegalDocs/ugc.html" class="modal-item"><button class="modal-item focus-disable" id="UGC">
         Conditions Générales d'Utilisation du Service
       </button></a>
     <button class="theme-toggle-btn" onclick="toggleTheme()">
-      
+
       Changer de thème
     </button>
     <a href="Jobs/jobs.html"><button class="modal-item" id="JoinUs">
-      
-      Nous rejoindre
-    </button></a>
+
+        Nous rejoindre
+      </button></a>
     <a href="https://smartdcbot.netlify.app"><button class="modal-item" id="Bot">
-      
-      Notre bot Discord
-    </button></a>
+
+        Notre bot Discord
+      </button></a>
+    <a href="Social/index.html"><button class="modal-item" id="Social">
+
+        Nos réseaux sociaux
+      </button></a>
 
     <p class="modal-item">
       Version site: <span id="SiteVersion">Chargement...</span> <br />
@@ -103,55 +114,64 @@
       <button id="welcomebtn" onclick="scrollToTools()">
         <span class="scrolltext">Découvrir nos outils</span>
         <span class="scrollarrow"><span class="material-symbols-rounded">
-            keyboard_arrow_down
+            arrow_downward
           </span></span>
       </button>
-      <span id="easteregg">coucou :D</span>
       <button id="toggleLinesBtn">Masquer les lignes</button>
     </div>
 
     <div id="ToolsDiv">
       <h1>Outils disponibles</h1>
       <p><span id="ToolsNo">X</span></p>
-      <div id="ToolsContent">
+      <div id="ToolsContent" class="tools-grid">
         <a id="qn" href="/QuickNotes/quicknotes.html">
           <h1>QuickNotes</h1>
+          <span class="material-symbols-rounded">edit</span>
         </a>
 
         <a id="sc" href="/Calendar/calendar.html">
           <h1>SmartCalendar</h1>
+          <span class="material-symbols-rounded">calendar_month</span>
+
         </a>
 
         <a id="afi" href="/AllFilmsInfo/index.html" class"focus-disable">
           <h1>All Films Info</h1>
+          <span class="material-symbols-rounded">theaters</span>
+
         </a>
-        <a id="afi" href="/WorkHelp/index.html">
+        <a id="wkh" href="/WorkHelp/index.html">
           <h1>WorkHelp</h1>
+          <span class="material-symbols-rounded">work</span>
+
         </a>
-        <a id="afi" href="/ToDo/" class"focus-disable">
+        <a id="dos" href="/ToDo/" class"focus-disable">
           <h1>DoSmart</h1>
+          <span class="material-symbols-rounded">checklist</span>
+        </a>
+        <a class="Work" class"focus-disable">
+          <h2>En développement...</h2>
+          <span class="material-symbols-rounded">build</span>
         </a>
       </div>
     </div>
   </div>
+
   <div id="News">
     <h2>Nouveautés du Hub</h2>
     <div id="NewsContent">
       <div class="NewBox">
         <div class="NewTitle">
-          <h3>MàJ globale v1.8 !🆕</h3>
+          <h3>MàJ globale v1.9.1 !🆕</h3>
         </div>
         <div class="NewContent">
           <p>
-            - Introduction d'un nouvel outil: WorkHelp. Concentrez vous au
-            maximum dans vos tâches: études, travail ou autre. Avec des outils
-            utiles et un mode de concentration: bloque les distraction sur
-            tout le site SmartHub pendant que le Pomodoro est actif. N'hésitez
-            pas à y jeter un oeil. Version outil: WH1.0. ATTENTION: L'outil
-            peut être soumis à des bugs et/ou des modifications.
-            <br />
-            Mise à jour de smartUI 1.3.5: - Améliorations et corrections
-            diverses.
+            - Changement graphique: Le site a été mis à jour avec un tout nouveau design
+            plus moderne et épuré. Nous avons également changé la police d'écriture afin de mieux correspondre à la modernité et la simplicité du site. 
+            La police est faite de sorte à être très familière de celle d'une certaine compagnie de technologie américaine.
+            Font "Poppins" -> Font "Inter".
+            <br>
+            Cet version introduit  également smartUI 1.5.
           </p>
         </div>
       </div>
@@ -187,19 +207,14 @@
   </div>
 
   <div id="PlatformStatus">
-    <h2>Etat de la plateforme</h2>
-    <div id="PlatformStatusContent">
-      <p>État général de la plateforme <b>OK</b><br /></p>
-      <a href="platformstate.html"><button>Voir l'état complet de la plateforme</button></a>
-      <button onclick="location.reload()">Recharger la page</button>
-    </div>
+    <iframe src="/platformstate.html" style="border: none;"></iframe>
+
   </div>
-  <!-- <button onclick="sendTestNotification()">
-        🔔 Envoyer notification test
-      </button> -->
+
   <h2>Website powered by</h2>
   <div id="smartUIdiv">
     <h1>smartUI</h1>
+    <span>1.5</span>
   </div>
 
   <p>

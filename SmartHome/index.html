@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartHub - SmartHome</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../focusmode.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body style="font-family: 'Inter', sans-serif;">
+    <div id="ThemeMenu" class="theme-menu">
+        <button id="light"><span class="material-symbols-rounded">light_mode</span>Thème clair</button>
+        <button id="dark"><span class="material-symbols-rounded">dark_mode</span> Thème sombre</button>
+    </div>
+    <div id="AppMenu" class="app-menu">
+        <a href="../index.html"><button><span
+                    class="material-symbols-rounded">arrow_back_ios</span>SmartHub</button></a>
+        <a href="../QuickNotes/quicknotes.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>QuickNotes</button></a>
+        <a href="../Calendar/calendar.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>SmartCalendar</button></a>
+        <a href="../AllFilmsInfo/index.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>AllFilmsInfo</button></a>
+        <a href="../WorkHelp/index.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>WorkHelp</button></a>
+        <a href="../LegalDocs/privacypolicy.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>Politique de confidentialité</button></a>
+        <a href="../LegalDocs/ugc.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>Conditions générales d'utilisations du service</button></a>
+        <a href="../platformstate.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>Etat de la plateforme</button></a>
+        <a href="../Jobs/jobs.html"><button><span class="material-symbols-rounded">
+                    arrow_forward
+                </span>Nous rejoindre</button></a>
+    </div>
+    <div id="notifications-container">
+        <div class="notification hidden">
+            <div class="notiglow"></div>
+            <div class="notiborderglow"></div>
+            <div class="notititle"></div>
+            <div class="notibody"></div>
+        </div>
+    </div>
+
+    <!-- Overlay qui empêche interactions sur le reste du site en focus-mode -->
+
+    <!-- Modal principal -->
+    <header class="fs-header">
+        <div class="fs-title">
+            <h1>SmartHome</h1>
+        </div>
+
+        <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <span class="material-symbols-rounded"> routine </span>Changer de thème
+        </button>
+
+        <a href="../index.html" class="backbtn"><span class="material-symbols-rounded"> arrow_back_ios </span>Retour
+            vers SmartHub</a>
+    </header>
+
+
+
+    <div id="deviceList">
+        <div id="Connexions">
+            <button id="Google">
+                <img src="images/download.png" alt="GoogleHome image" height="50px">Se connecter avec Google Home
+            </button>
+            <button id="Amazon">
+                <span class="material-symbols-rounded">home</span>Se connecter avec Amazon Alexa
+            </button>
+        </div>
+        <!-- <div id="DeviceDiv">
+            <h3 id="DeviceName">Volet Chambre</h3>
+
+            <button id="MenuBtn"><span class="material-symbols-rounded">more_vert</span></button>
+            <div id="DeviceMenu">
+                <button id="MenuDeviceAction"><span class="material-symbols-rounded">delete</span>
+                    Supprimer</button>
+                <button id="MenuDeviceAction"><span class="material-symbols-rounded">link_off</span>
+                    Dissocier</button>
+            </div>
+            <span id="DeviceIcon" class="material-symbols-rounded">blinds</span>
+            <div id="DeviceActions">
+                <button class="Act1" id="DeviceAction"><span
+                        class="material-symbols-rounded">arrow_upward</span></button>
+                <button id="DeviceAction"><span class="material-symbols-rounded">circle</span></button>
+                <button id="DeviceAction"><span class="material-symbols-rounded">arrow_downward</span></button>
+                <button class="Act4" id="DeviceAction"><span class="material-symbols-rounded">close</span></button>
+            </div>
+
+
+        </div> -->
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="../focusmode.js"></script>
+</body>
+
+</html>

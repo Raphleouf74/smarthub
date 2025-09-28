@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 
 :root {
@@ -19,7 +19,7 @@ body {
     height: 100%;
     margin: 0;
     width: 100%;
-    font-family: "Poppins", system-ui;
+    font-family: "Inter", system-ui;
 }
 
 /* header */
@@ -68,7 +68,7 @@ body {
     border: 0;
     z-index: 110;
     padding: 8px 12px;
-    font-family: "Poppins";
+    font-family: "Inter";
     border-radius: 15px;
     cursor: pointer;
     font-weight: 600;
@@ -143,7 +143,7 @@ section {
 
 .timer {
     font-size: 75px;
-    font-family: "Poppins";
+    font-family: "Inter";
     font-weight: 800;
     letter-spacing: 1px
 }
@@ -347,7 +347,7 @@ section {
     position: fixed;
     left: 15%;
     width: 70%;
-    font-family: "Poppins";
+    font-family: "Inter";
 }
 
 .notes-top {
@@ -362,7 +362,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    font-family: "Poppins";
+    font-family: "Inter";
     transition: all 0.3s;
 }
 
@@ -384,7 +384,7 @@ section {
     border: 1px solid rgba(0, 0, 0);
     color: black;
     background: transparent;
-    font-family: "Poppins";
+    font-family: "Inter";
 }
 
 .dark-theme .notes-top input {
@@ -395,7 +395,7 @@ section {
     border: 1px solid rgba(255, 255, 255);
     color: white;
     background: transparent;
-    font-family: "Poppins";
+    font-family: "Inter";
 }
 
 .notes-top button {
@@ -429,7 +429,7 @@ section {
     overflow-y: auto;
     height: 400px;
     width: 100%;
-    font-family: "Poppins";
+    font-family: "Inter";
 }
 
 .note-item button {
@@ -474,7 +474,7 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.04);
     background: transparent;
     resize: vertical;
-    font-family: "Poppins";
+    font-family: "Inter";
 }
 
 .light-theme #noteEditor {
@@ -485,7 +485,7 @@ section {
     color: black;
     background: transparent;
     resize: vertical;
-    font-family: "Poppins";
+    font-family: "Inter";
 }
 
 .dark-theme #noteEditor {
@@ -496,7 +496,7 @@ section {
     color: white;
     background: transparent;
     resize: vertical;
-    font-family: "Poppins";
+    font-family: "Inter";
 }
 
 
@@ -571,7 +571,7 @@ transition: all 0.3s ease-in-out;}
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: "Poppins";
+    font-family: "Inter";
     margin-top: -20px;
 }
 
@@ -660,7 +660,7 @@ transition: all 0.3s ease-in-out;}
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: "Poppins";
+    font-family: "Inter";
     padding: 8px 12px;
     text-align: left;
     transition: all 0.3s ease-in-out;
@@ -698,7 +698,7 @@ transition: all 0.3s ease-in-out;}
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: "Poppins";
+    font-family: "Inter";
     padding: 8px 12px;
     text-align: left;
     transition: all 0.3s ease-in-out;
@@ -733,7 +733,7 @@ transition: all 0.3s ease-in-out;}
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: "Poppins";
+    font-family: "Inter";
     padding: 8px 12px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
@@ -763,7 +763,7 @@ transition: all 0.3s ease-in-out;}
     --kbd: #2a2f3a;
     --btn: rgba(255, 255, 255, .08);
     --btn-hover: rgba(255, 255, 255, .16);
-    font-family: system-ui, "Segoe UI", Roboto, "Poppins", Arial;
+    font-family: system-ui, "Segoe UI", Roboto, "Inter", Arial;
     position: relative;
     max-width: 1000px;
     margin: 24px auto;
@@ -852,7 +852,7 @@ transition: all 0.3s ease-in-out;}
     animation: toright 0.3s forwards;
     bottom: 0;
     width: 400px;
-    font-family: "Poppins";
+    font-family: "Inter";
     font-size: 25px;
     height: 85vh;
     transition: all 0.3s;
@@ -909,7 +909,7 @@ transition: all 0.3s ease-in-out;}
     display: grid;
     width: 100%;
     height: 100%;
-    font-family: "Poppins";
+    font-family: "Inter";
     grid-template-columns: repeat(8, 1fr);
     gap: 8px;
     align-items: stretch
@@ -922,7 +922,7 @@ transition: all 0.3s ease-in-out;}
     padding: 12px;
     border-radius: 10px;
     cursor: pointer;
-    font-family: "Poppins";
+    font-family: "Inter";
     font-size: 30px;
     font-weight: 600;
     transition: transform .06s ease, background .2s ease;
@@ -1139,7 +1139,7 @@ transition: all 0.3s ease-in-out;}
     display: flex;
     font-size: 15px;
     width: 225px;
-    font-family: "Poppins";
+    font-family: "Inter";
     justify-content: space-between;
     background-color: rgb(75, 75, 75, 0.1);
     padding: 10px;

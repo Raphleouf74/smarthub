@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
@@ -82,7 +82,7 @@ header:hover {
     font-weight: 500;
     cursor: pointer;
     position: fixed;
-    font-family: "Poppins";
+    font-family: "Inter";
     background: var(--glass-effect);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
@@ -136,7 +136,7 @@ header:hover {
     align-items: center;
     width: 197px;
     z-index: 1001;
-    font-family: "Poppins";
+    font-family: "Inter";
     height: 51.5px;
     left: 265px;
     padding: 10px;
@@ -185,7 +185,7 @@ header:hover {
     justify-content: left;
     flex-direction: column;
     opacity: 0;
-    font-family: "Poppins";
+    font-family: "Inter";
     padding: 10px;
     color: white;
     font-size: 20px;
@@ -448,7 +448,7 @@ body::before {
     transition: all 0.3s ease-in-out;
     border: none;
     color: white;
-    font-family: "Poppins";
+    font-family: "Inter";
     cursor: pointer;
     z-index: 100;
 }
@@ -479,7 +479,7 @@ body::before {
     transition: all 0.3s ease-in-out;
     border: none;
     color: white;
-    font-family: "Poppins";
+    font-family: "Inter";
     opacity: 0;
     z-index: -1;
 }
@@ -653,7 +653,7 @@ body::before {
     transition: background 0.3s;
     display: flex;
     align-items: center;
-    font-family: "Poppins";
+    font-family: "Inter";
     font-size: 20px;
     justify-content: center;
 }
@@ -672,7 +672,7 @@ body::before {
     padding: 15px;
     background: #000;
     border-radius: 15px;
-    font-family: "Poppins";
+    font-family: "Inter";
     font-size: 15px;
     color: white;
     transition: all 0.3s ease-in-out;
