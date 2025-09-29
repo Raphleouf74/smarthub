@@ -12,10 +12,10 @@
   <link rel="stylesheet" href="focusmode.css" />
   <script src="focusmode.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -108,17 +108,19 @@
 
   <div id="content">
     <div id="Welcome">
-      <canvas id="welcomeCanvas"></canvas>
+      <div class="aura"></div>
       <h1 id="welcometext">Bienvenue sur SmartHub !</h1>
 
       <button id="welcomebtn" onclick="scrollToTools()">
-        <span class="scrolltext">Découvrir nos outils</span>
+        <p class="scrolltext">Découvrir nos outils</p>
         <span class="scrollarrow"><span class="material-symbols-rounded">
             arrow_downward
           </span></span>
       </button>
-      <button id="toggleLinesBtn">Masquer les lignes</button>
     </div>
+
+
+
 
     <div id="ToolsDiv">
       <h1>Outils disponibles</h1>
@@ -167,11 +169,17 @@
         <div class="NewContent">
           <p>
             - Changement graphique: Le site a été mis à jour avec un tout nouveau design
-            plus moderne et épuré. Nous avons également changé la police d'écriture afin de mieux correspondre à la modernité et la simplicité du site. 
-            La police est faite de sorte à être très familière de celle d'une certaine compagnie de technologie américaine.
+            plus moderne et épuré. Nous avons également changé la police d'écriture afin de mieux correspondre à la
+            modernité et la simplicité du site.
+            La police est faite de sorte à être très familière de celle d'une certaine compagnie de technologie
+            américaine.
             Font "Poppins" -> Font "Inter".
             <br>
-            Cet version introduit  également smartUI 1.5.
+            - Nouvelle page d'accueil: La page d'accueil a été repensée pour plus de dynamisme et de simplicité. Il à
+            également été pensé pour abbaisser la consommation de ressources et abaisser le ralentissement de vos
+            appareils moins performants.
+            <br>
+            Cet version introduit également smartUI 1.5.
           </p>
         </div>
       </div>
