@@ -35,6 +35,15 @@ window.addEventListener('scroll', () => {
     }
 });
 
+const cookiesdiv = document.getElementById('cookiesdiv');
+cookiesdiv.classList.add('hidden');
+setTimeout(() => {
+
+    cookiesdiv.classList.add('show');
+    cookiesdiv.classList.remove('hidden');
+
+}, 5000);
+
 header.addEventListener('click', () => {
     header.classList.toggle('hover');
 });
@@ -48,17 +57,31 @@ document.addEventListener('click', (e) => {
 // ----- Vérification de version -----
 async function checkSiteVersion() {
     const SiteVersion = document.getElementById("SiteVersion");
+    const BuildVersion = document.getElementById("BuildVersion");
     try {
-        const res = await fetch('/version.json', { cache: 'no-cache' });
-        const { version: latest } = await res.json();
-        const current = localStorage.getItem('siteVersion');
-        SiteVersion.innerText = current;
+        const res = await fetch('../version.json');
+        
 
-        if (current && current !== latest) {
+        const data = await res.json();
+        const latest = data.version;
+        const latestBuild = data.build;
+
+        const current = localStorage.getItem('siteVersion');
+        const currentBuild = localStorage.getItem('buildVersion');
+
+        // Mise à jour de l'affichage
+        SiteVersion.innerText = latest;
+        BuildVersion.innerText = latestBuild;
+
+
+        // Vérification des mises à jour
+        if (current && current !== latest || currentBuild && currentBuild !== latestBuild) {
             showUpdateNotification();
         }
         localStorage.setItem('siteVersion', latest);
-    } catch { }
+    } catch { 
+        console.error("Erreur")
+    }
 }
 
 function showUpdateNotification() {
@@ -157,3 +180,18 @@ const ToolsNo = document.getElementById('ToolsNo');
 const tools = document.querySelectorAll('#ToolsContent a');
 
 ToolsNo.innerHTML = `Il y a ${tools.length - 1} outils disponibles`;
+
+
+function acceptCookies() {
+    localStorage.setItem('cookiesAccepted', 'true');
+    const cookiesdiv = document.getElementById('cookiesdiv');
+    cookiesdiv.classList.add('hidden');
+    cookiesdiv.classList.remove('show');
+}
+
+function rejectCookies() {
+    localStorage.setItem('cookiesAccepted', 'false');
+    const cookiesdiv = document.getElementById('cookiesdiv');
+    cookiesdiv.classList.add('hidden');
+    cookiesdiv.classList.remove('show');
+}

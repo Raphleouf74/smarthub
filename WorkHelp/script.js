@@ -300,7 +300,7 @@ function renderCards() {
 
 
 $('#addCard').addEventListener('click', () => {
-    const f = $('#cardFront').value.trim(); 
+    const f = $('#cardFront').value.trim();
     const b = $('#cardBack').value.trim();
     if (!f || !b) return alert('Remplis recto et verso.');
 
@@ -557,6 +557,19 @@ $('#delCard').addEventListener('click', () => {
     });
 
 
+    const historyDiv = document.querySelector('.history');
+    const toggleHistoryBtn = document.getElementById('toggleHistory');
+    const closeHistory = document.getElementById("closeHistory")
+    
+    historyDiv.classList.remove('shown');
+    toggleHistoryBtn.addEventListener('click', () => {
+        historyDiv.classList.toggle('shown');
+    });
+    closeHistory.addEventListener('click', () => {
+        historyDiv.classList.remove('shown');
+    });
+
+    // ...existing code...
     // init
     setScreen('');
     renderHistory();
@@ -651,7 +664,7 @@ const Appmenu = document.getElementById('AppMenu');
 // afficher le menu au clic droit
 document.querySelector('.backbtn').addEventListener('contextmenu', (e) => {
     e.preventDefault(); // empêche le menu contextuel du navigateur
-    Appmenu.style.left = (e.pageX - 225 )+ 'px';
+    Appmenu.style.left = (e.pageX - 225) + 'px';
     Appmenu.style.top = e.pageY + 'px';
     Appmenu.style.display = 'flex';
 });

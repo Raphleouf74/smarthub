@@ -65,10 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="NoteHeader">
                 <div class="NoteTitle" contenteditable="true">${title}</div>
                 <div class="NoteOptions">
-                    <button class="option-button HideNote" title="Cacher la note">👁️‍🗨️</button>
-                    <button class="option-button DeleteNote" title="Supprimer la note">🗑️</button>
-                    <button class="option-button EditNote" title="Modifier la note">✏️</button>
-                    <button class="option-button DuplicateNote" title="Dupliquer la note">📄</button>
+                    <button class="option-button HideNote" title="Cacher la note"><span class="material-symbols-rounded">visibility_off</span></button>
+                    <button class="option-button DeleteNote" title="Supprimer la note"><span class="material-symbols-rounded">delete</span></button>
+                    <button class="option-button EditNote" title="Modifier la note"><span class="material-symbols-rounded">edit</span></button>
+                    <button class="option-button DuplicateNote" title="Dupliquer la note"><span class="material-symbols-rounded">content_copy</span></button>
                 </div>
             </div>
             <div class="NoteContent">${content}</div>
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function askToUnlockHiddenNotes() {
         showUnlockModal();
     }
-    document.getElementById('HiddenNotesBtn').addEventListener( ('click'), () => {
+    document.getElementById('HiddenNotesBtn').addEventListener(('click'), () => {
         askToUnlockHiddenNotes();
     })
     document.getElementById('CancelUnlock').addEventListener('click', hideUnlockModal);
@@ -242,4 +242,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+});
+
+const Font = Quill.import('formats/font');
+Font.whitelist = [
+    'sans-serif', 'serif', 'monospace',
+    'poppins', 'roboto', 'montserrat',
+    'comic-sans', 'cursive', 'garamond'
+];
+Quill.register(Font, true);
+
+const Size = Quill.import('attributors/style/size');
+Size.whitelist = [
+    '10px', '12px', '14px', '16px', '18px',
+    '20px', '24px', '28px', '32px', '40px'
+];
+Quill.register(Size, true);
+
+const quill = new Quill('#NoteContentInput', {
+    theme: 'snow',
+    modules: {
+        toolbar: '#toolbar'
+    }
+});
+document.getElementById('customSize').addEventListener('change', e => {
+    const size = e.target.value + 'px';
+    quill.format('size', size);
 });

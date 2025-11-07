@@ -7,7 +7,7 @@
   <title>WorkHelp</title>
   <link rel="icon" href="../medias/logo.png" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="../focusmode.css" />
+  <link rel="stylesheet" href="../public/focusmode.css" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
 </head>
 
@@ -168,6 +168,9 @@
             <button id="clearHistory" title="Vider l'historique">
               <span class="material-symbols-rounded">delete</span>
             </button>
+            <button id="toggleHistory" class="toggle-history" title="Voir l'historique">
+              <span class="material-symbols-rounded">history</span>
+            </button>
           </div>
         </div>
 
@@ -233,8 +236,11 @@
           <button class="key wide equals" data-act="=">=</button>
         </div>
       </div>
+      <!-- Ajoute ce bouton dans la section #calc -->
+
       <div class="history">
         <h4>Historique</h4>
+        <button id="closeHistory"><span class="material-symbols-rounded">close</span></button>
         <ul id="histList"></ul>
       </div>
     </section>
@@ -264,7 +270,7 @@
   </main>
 
   <script src="script.js"></script>
-  <script src="../focusmode.js"></script>
+  <script src="../public/focusmode.js"></script>
 </body>
 
 </html>

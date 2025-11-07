@@ -205,9 +205,14 @@ section {
     animation: grow 0.5s forwards;
 }
 
-.pom-controls button.hover-anim span#rotate1,
-.pom-controls button.hover-anim span#rotate2 {
-    animation: rotate 0.5s forwards;
+@keyframes rotate {
+    0% {
+        rotate: 0;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
 }
 
 .pom-controls button.hover-anim span#shrink1 {
@@ -532,18 +537,28 @@ section {
     top: 20vh;
 }
 
-.light-theme #flashcards {color: black;
-transition: all 0.3s ease-in-out;}
-.dark-theme #flashcards {color: white;}
+.light-theme #flashcards {
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
 
-.light-theme #flashcards input {color: black;
-transition: all 0.3s ease-in-out;}
-.dark-theme #flashcards input {color: white;}
+.dark-theme #flashcards {
+    color: white;
+}
+
+.light-theme #flashcards input {
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.dark-theme #flashcards input {
+    color: white;
+}
 
 .flash-controls {
     display: flex;
     flex-direction: column;
-    
+
     align-items: center;
     justify-content: center;
 }
@@ -554,7 +569,7 @@ transition: all 0.3s ease-in-out;}
     width: 50%;
     height: 50px;
     border-radius: 8px;
-    border: 1px solid rgba(0,0,0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.6);
     background: transparent;
 }
 
@@ -587,7 +602,7 @@ transition: all 0.3s ease-in-out;}
     height: 120px;
     perspective: 1000px;
     cursor: pointer;
-    
+
 }
 
 .flash-card-inner:hover {
@@ -601,7 +616,7 @@ transition: all 0.3s ease-in-out;}
     transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1), border 0.15s ease-in-out;
     transform-style: preserve-3d;
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     border: solid 1px transparent;
 }
 
@@ -611,7 +626,7 @@ transition: all 0.3s ease-in-out;}
 }
 
 /* faces */
-.flash-card .front, 
+.flash-card .front,
 .flash-card .back {
     position: absolute;
     width: 100%;
@@ -643,10 +658,10 @@ transition: all 0.3s ease-in-out;}
     position: absolute;
     display: none;
     flex-direction: column;
-    background: rgba(40,40,40,0.95);
+    background: rgba(40, 40, 40, 0.95);
     color: white;
     border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     z-index: 9999;
     overflow: hidden;
     animation: fadeIn 0.2s ease-in-out;
@@ -666,26 +681,49 @@ transition: all 0.3s ease-in-out;}
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
-#delCard {color: red;}
-#delCard:hover {color: black; background: red;}
-#dupCard {color: white;}
-#dupCard:hover {color: black; background: white;}
-.card-menu button:hover {
-    background: rgba(255,255,255,0.1);
+
+#delCard {
+    color: red;
 }
+
+#delCard:hover {
+    color: black;
+    background: red;
+}
+
+#dupCard {
+    color: white;
+}
+
+#dupCard:hover {
+    color: black;
+    background: white;
+}
+
+.card-menu button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .theme-menu {
     position: absolute;
     display: none;
     flex-direction: column;
-    background: rgba(40,40,40,0.95);
+    background: rgba(40, 40, 40, 0.95);
     color: white;
     border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     z-index: 9999;
     overflow: hidden;
     animation: fadeIn 0.2s ease-in-out;
@@ -703,12 +741,12 @@ transition: all 0.3s ease-in-out;}
     text-align: left;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
-    background: white; 
+    background: white;
     color: black;
 }
 
 .theme-menu button:hover {
-    color: white; 
+    color: white;
     background: black;
 }
 
@@ -716,10 +754,10 @@ transition: all 0.3s ease-in-out;}
     position: absolute;
     display: none;
     flex-direction: column;
-    background: rgba(40,40,40,0.95);
+    background: rgba(40, 40, 40, 0.95);
     color: white;
     border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     z-index: 9999;
     width: 225px;
     overflow: hidden;
@@ -738,17 +776,17 @@ transition: all 0.3s ease-in-out;}
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     text-align: right;
-    background: white; 
+    background: white;
     width: 100%;
     color: black;
 }
 
 .app-menu button:hover {
-    color: white; 
+    color: white;
     background: black;
 }
 
-.app-menu a  {
+.app-menu a {
     background: none;
     text-decoration: none;
 }
@@ -782,7 +820,7 @@ transition: all 0.3s ease-in-out;}
     flex-direction: column;
     grid-template-columns: 1fr 240px;
     gap: 12px;
-    width: calc(100% - 400px);
+    width: 100%;
     height: 85vh;
     background: var(--bg);
     -webkit-backdrop-filter: blur(10px);
@@ -791,6 +829,8 @@ transition: all 0.3s ease-in-out;}
     padding: 16px;
     border: 1px solid rgba(255, 255, 255, .12);
 }
+
+
 
 .calc-top {
     grid-column: 1 / -1;
@@ -837,7 +877,7 @@ transition: all 0.3s ease-in-out;}
 }
 
 #clearHistory:hover {
-    background-color: rgb(255,0,0,0.8);
+    background-color: rgb(255, 0, 0, 0.8);
 }
 
 .display {
@@ -847,40 +887,47 @@ transition: all 0.3s ease-in-out;}
     gap: 6px;
 }
 
+
+
 .history {
+    top: 125px;
     position: fixed;
-    animation: toright 0.3s forwards;
-    bottom: 0;
-    width: 400px;
-    font-family: "Inter";
-    font-size: 25px;
-    height: 85vh;
-    transition: all 0.3s;
-    border-left: 1px solid rgba(255, 255, 255, .1);
-    padding-left: 12px;
-    overflow: hidden;
-}
-#calc.active .history {
-    animation: toleft 0.3s forwards;
+    width: 50%;
+    background: #fff;
+    z-index: 10000;
+    height: calc(100% - 125px);
+    box-shadow: none;
+    border: none;
+    padding: 10px;
+    right: -100%;
+
+    border-radius: 15px 0 0 15px ;
+    transition: all 0.3s ease-in-out;
 }
 
-@keyframes toleft {
-    0% {
-        right: -110%;
-    }
-    100% {
-        right: 0;
-    }
-    
+.dark-theme .history {
+    background-color: #000;
 }
-@keyframes toright {
-    0% {
-        right: -110%;
-    }
-    100% {
-        right: 0;
-    }
-    
+
+.history.shown {
+    right: 0;
+    z-index: 20000000;
+}
+
+.history button {
+    position: absolute;
+    right: 15px;
+    top:15px;
+    background: var(--btn);
+    color: var(--fg);
+    padding: 8px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 50px;
+    height: 40px;
+    transition: all 0.15s ease-in-out;
+    background-color: red;
+    border: none;
 }
 
 #historyLine {

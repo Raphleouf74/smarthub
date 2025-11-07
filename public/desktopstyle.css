@@ -17,13 +17,10 @@
 body {
     background: linear-gradient(to bottom, #000 0%, #000 101vh, #a6b8ff 120vh);
     overflow-x: hidden;
-    justify-content: center;
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    text-align: center;
-    font-size: auto;
-    font-family: "Inter";
 }
 
 body.hide-scrollbar::-webkit-scrollbar {
@@ -32,13 +29,11 @@ body.hide-scrollbar::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar {
-    opacity: 1;
+    opacity: 0;
+    background: #000;
     transition: opacity 0.5s ease;
 }
 
-body {
-    overflow-y: scroll;
-}
 
 body.light-theme {
     background: linear-gradient(to bottom, #000 0%, #000 101vh, #a6b8ff 120vh);
@@ -49,8 +44,6 @@ body.light-theme {
 body.dark-theme {
     background: linear-gradient(to bottom, #000 0%, #2b2c30 101vh, #3a3c42 120vh);
     color: #fff;
-
-
 }
 
 
@@ -441,9 +434,8 @@ header button:hover {
 
 
 iframe {
-    height: auto;
-    min-height: 300px;
-    width: 100%;
+    height: 500px;
+    width: 90%;
 }
 
 #ToolsDiv {
@@ -1118,8 +1110,9 @@ iframe {
 /* ----------------------------- */
 #Welcome {
     position: relative;
-    width: 100%;
-    height: 100vh;
+    width: calc(100% + 20px);
+    left: 0;
+    height: 102vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -1621,4 +1614,105 @@ a {
     100% {
         background-position: 80px 0;
     }
+}
+
+#discordbtn {
+    width: 350px;
+    height: 75px;
+    border-radius: 50px;
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(to top right, #711ce0, #a651c0);
+    background-size: 100% 500%;
+    background-position: 0% 0%;
+    color: white;
+    border: 3px black solid;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    pointer-events: all;
+    z-index: 100;
+}
+
+
+#discordlogo {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+#discordbtn svg {
+    fill: rgb(209, 195, 243);
+}
+
+#discordbtn:hover {
+    background-position: 100% 100%;
+    box-shadow: 0 0px 32px #711ce0;
+    transform: scale(1.05);
+}
+
+#discordbtn:hover #discordlogo {
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    rotate: -7.5deg;
+    scale: 1.25;
+}
+
+#cookiesdiv {
+    position: fixed;
+    bottom: -250px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(150, 150, 150, 0.3);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    color: #092241;
+    padding: 15px 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: "Inter";
+    transition: all 0.3s ease-in-out;
+}
+
+#cookiesdiv:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+    color: #092241;
+}
+
+#cookiesdiv p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: #092241;
+}
+
+#cookiesdiv button {
+    background: #36fa7149;
+    color: white;
+    border: none;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+#cookiesdiv button:hover {
+    background: #36fa71;
+    color: #092241;
+}
+
+#cookiesdiv.show {
+    bottom: 15px;
 }

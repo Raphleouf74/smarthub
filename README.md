@@ -6,22 +6,23 @@ SmartHub est une plateforme web tout-en-un regroupant plusieurs outils pratiques
 
 Les outils disponibles sur SmartHub
 
-Il y a plusieurs outils disponibles sur SmartHub, il y en a 4: 
+Il y a plusieurs outils disponibles sur SmartHub, il y en a 5: 
     - QuickNotes: Prenez des notes facilement, rapidement et intuitivement avec des outils crées pour cela
     - SmartCalendar: Ajoutez des évènements, gérez les et ajouter des rappels. Tout est sécurisé, tout est sauvegardé dans votre machine en utilisant la fonction `localStorage`
     - AllFilmsInfo: Trouvez facilement toutes les informations concernant vos films préférés. Connectez vous avec TheMovieDatabase afin d'avoir un compte et de pouvoir ajouter des films en favorie ou d'en ajouter des avis.
     - WorkHelp: Travaillez encore plus efficacement avec cet outil, vous pouvez créer un timer Pomodoro et toutes les distractions du sites sont inaccessibles. Plusieurs petits outils sont intégrés pour vous aider dans votre travail comme un bloc-notes, vous pouvez créer des fiches de révisions pour mieux apprendre, une calculatrice intégrée, vous aurez bientôt la possibilité de vous enregistrer et de vous réecouter pour une présentation par exemple, enfin vous pouvez aussi créer une liste de tâches pour vous retrouvez dans ce que vous devez faire !
+    - DoSmart: Créez et planifiez des tâches facilement !
 
  Fonctionnalités supplémentaires dispoonible sur SmartHub
 
     - Assistant intégré : permet de naviguer dans le site par commandes textuelles. L'Assistant est tolérant par rapport aux fautes de frappe, ne vous inquétez plus d'être mal compris(e) ! Il est également insensible à la casse. Avec l'assistant vous pouvez ouvrir des pages, mettre en avant des boutons, scroller automatiquement vers une section, etc.
 
 
- Informations diverses et complémentaires
+Informations diverses et complémentaires
 
 En utilisant SmartHub, vous acceptez les conditions générales d'utilisation ci-après: 
 
-Dernière mise à jour : juillet 2025
+Dernière mise à jour : octobre 2025
         1. Acceptation des conditions
         En utilisant SmartHub, vous acceptez ces conditions générales d'utilisation. Si vous n'acceptez pas ces
             conditions, veuillez ne pas utiliser le service.
@@ -71,5 +72,5 @@ Dernière mise à jour : juillet 2025
 
 
 SmartHub © 2024-2025 
-QuickNotes, SmartCalendar, AllFilmsInfo, WorkHelp, SmartPomodoro, SmartAssist, SmartUI, SmartJobs, SmartPeople et SmartHub sont des noms appartenant à SmartHub.
-Toute copie, partielle ou totale sans le consentement de son auteur est interdit et illégal.
+QuickNotes, SmartCalendar, AllFilmsInfo, WorkHelp, Dosmart, SmartPomodoro, SmartAssist, SmartUI, SmartJobs, SmartHome, SmartPeople et SmartHub sont des noms appartenant à SmartHub.
+Toute copie, partielle ou totale sans le consentement de son auteur est interdit et illégale.
