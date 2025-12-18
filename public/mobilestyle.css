@@ -15,14 +15,15 @@
 /*         GLOBAL RESET         */
 /* ----------------------------- */
 body {
-    background: linear-gradient(to bottom, #000 0%, #000 101vh, #a6b8ff 120vh);
+    background: white;
     overflow-x: hidden;
     justify-content: center;
     display: flex;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    font-size: 15;
+    width: 100vw;
+    
     font-family: "Inter";
     scroll-behavior: smooth;
 }
@@ -43,13 +44,13 @@ body {
 }
 
 body.light-theme {
-    background: linear-gradient(to bottom, #000 0%, #000 101vh, #a6b8ff 120vh);
+    background: white;
     color: #0c0022;
 
 }
 
 body.dark-theme {
-    background: linear-gradient(to bottom, #000 0%, #2b2c30 101vh, #3a3c42 120vh);
+    background: black;
     color: #fff;
 }
 
@@ -65,15 +66,6 @@ body.dark-theme {
 /* ----------------------------- */
 /*         HEADER STYLES        */
 /* ----------------------------- */
-.long {
-    opacity: 0;
-    display: none;
-}
-
-.short {
-    opacity: 1;
-    display: block;
-}
 
 header {
     pointer-events: auto;
@@ -83,29 +75,25 @@ header {
     border: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     background: rgb(100, 100, 100, 0.2);
-    background-size: 100% 300%;
-    background-position: 0% 0%;
     color: white;
-    padding: 0;
     font-size: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 50px;
-    border-radius: 30px;
-    width: 50px;
+    border-radius: 0;
+    width: 100vw;
     align-self: center;
     position: fixed;
     top: -100px;
-    left: 10px;
+    left: 0;
     margin-bottom: 35px;
     font-family: "Inter";
     transition: all 0.3s ease-in-out;
 
     z-index: 2;
     overflow: hidden;
-    padding: 20px;
 }
 
 header.hover {
@@ -121,27 +109,22 @@ header.scrolled {
     border: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     background: rgb(100, 100, 100, 0.2);
-    background-size: 100% 300%;
-    background-position: 0% 0%;
     color: white;
     font-size: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 25px;
-    border-radius: 30px;
-    width: 50px;
+    border-radius: 0;
+    width: 100vw;
     align-self: center;
     position: fixed;
-    top: 10px;
-    left: 10px;
+    top: 0;
     margin-bottom: 35px;
     font-family: "Inter";
     overflow: hidden;
     transition: all 0.3s ease-in-out;
     z-index: 2;
-    padding: 20px;
 }
 
 
@@ -187,21 +170,22 @@ header button:hover {
 }
 
 header h1 {
-    margin-top: -5px;
+    margin-top: 5px;
 }
+
 
 
 header button {
     opacity: 0;
     display: flex;
-    width: 100%;
-    height: 100px;
+    width: 50%;
+    height: 50px;
     font-family: "Inter";
     justify-content: space-around;
     border-radius: 25px;
     background: rgba(255, 255, 255, 3);
     transition: all 0.3s;
-    font-size: 25px;
+    font-size: 15px;
     text-align: center;
     border: 2px solid black;
     color: #092241;
@@ -222,6 +206,7 @@ header a {
     text-decoration: none;
     color: #092241;
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -232,18 +217,9 @@ header button:hover {
 }
 
 header.scrolled.hover {
-    height: calc(100vh - 20px);
-    border-radius: 25px;
-    padding: 20px;
-    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+    height: 50vh;
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
-    background: rgb(100, 100, 100, 0.5);
-    border: 1px solid rgba(100, 100, 100, 0.25);
-    top: 10px;
-    left: 20px;
-    width: 335px;
-    margin-bottom: 35px;
     font-family: "Inter";
     justify-content: space-around;
 
@@ -273,7 +249,7 @@ iframe {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     border-radius: 0;
     margin-top: 50px;
     background: rgba(255, 255, 255, 0.15);
@@ -282,14 +258,16 @@ iframe {
     border: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     font-size: 20px;
-    padding: 25px;
     color: #092241;
     transition: all 0.3s;
 }
 
 .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 15px;
     width: 100%;
 }
@@ -298,18 +276,23 @@ iframe {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(100, 100, 100, 0.25);
     border-radius: 15px;
     padding: 20px;
-    width: 90%;
+    width: 40%;
+    max-width: 350px;
     text-decoration: none;
     color: #092241;
-    font-size: 18px;
+    font-size: 1.5rem;
     margin-bottom: 10px;
     font-family: "Inter";
     transition: all 0.3s;
     min-height: 50px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tools-grid a.Work {
+    display: none;
 }
 
 .tools-grid a:hover {
@@ -337,7 +320,7 @@ iframe {
 
 
 .tools-grid a {
-    color: #092241;
+    color: black;
     text-align: center;
     height: 70%;
     font-family: "Inter";
@@ -358,47 +341,10 @@ iframe {
     overflow: hidden;
 }
 
-
-#qn {
-    background: #00418b9c;
-}
-
-#qn:hover {
-    background: #44c8fc38;
-}
-
-#sc {
-    background: rgba(172, 255, 47, 0.25);
-}
-
-
-#sc:hover {
-    background: #00418b36;
-}
-
-#afi {
-    background: rgba(255, 200, 60, 0.25);
-}
-
-#afi:hover {
-    background: #32f55236;
-}
-
-#wkh {
-    background: rgba(8, 214, 152, 0.25);
-}
-
-
-#wkh:hover {
-    background: #3f87d836;
-}
-
-#dos {
-    background: rgba(78, 10, 168, 0.25);
-}
-
-#dos:hover {
-    background: #0bccc236;
+.tools-grid a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
 }
 
 .tools-grid a span {
@@ -467,7 +413,7 @@ iframe {
     transition: all 0.3s ease;
     border-radius: 1rem;
     overflow: hidden;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 16px;
     --gradient: linear-gradient(to bottom, #32a6ff, #3d8cff, #61a0ff);
@@ -586,7 +532,7 @@ iframe {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     margin-top: 0;
     z-index: 1;
@@ -610,7 +556,7 @@ iframe {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 100vw;
     height: auto;
     border-radius: 0;
     background-color: white;
@@ -619,7 +565,6 @@ iframe {
     text-align: end;
     color: white;
     display: flex;
-    padding: 25px;
     align-items: center;
     color: #092241;
 }
@@ -636,7 +581,6 @@ iframe {
     gap: 10px;
     margin-bottom: 10px;
     text-align: left;
-    padding: 10px;
     border-radius: 15px;
     border: 1px solid white;
 }
@@ -651,18 +595,15 @@ iframe {
     font-family: "Inter";
     font-size: 25px;
     margin: 0;
-    padding: 0;
 }
 
 .NewBox p {
-
     font-size: 12.5px;
     margin: 0;
-    padding: 0;
 }
 
 #NewsContent {
-    width: 100%;
+    width: 100vw;
     height: auto;
     overflow-y: auto;
     overflow-x: hidden;
@@ -729,14 +670,13 @@ iframe {
     justify-content: space-around;
     height: auto;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     margin-top: 25px;
     margin-bottom: 50px;
     border-radius: 0;
     background-color: white;
     transition: all 0.3s;
     font-size:  15px;
-    padding: 25px;
     align-items: center;
     color: #092241;
     box-shadow: #092241 0px 3px 10px 5px;
@@ -748,13 +688,12 @@ iframe {
     justify-content: space-around;
     height: auto;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     margin-bottom: 50px;
     border-radius: 0;
     background-color: white;
     transition: all 0.3s;
     font-size: 15px;
-    padding: 25px;
     align-items: center;
     color: #092241;
     box-shadow: #092241 0px 3px 10px 5px;
@@ -807,56 +746,6 @@ iframe {
 }
 
 
-
-/* Bande animée */
-.Work::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(135deg,
-            #ffc107 25%,
-            #444 25%,
-            #444 50%,
-            #ffc107 50%,
-            #ffc107 75%,
-            #444 75%,
-            #444 100%);
-    background-size: 80px 80px;
-    animation: moveStripes 1s linear infinite;
-    opacity: 0.5;
-    z-index: 0;
-    transition: all 0.3s;
-}
-
-.Work {
-    transition: all 0.3s;
-}
-
-.Work:hover {
-    transform: scale(1.05);
-}
-
-
-/* Texte au-dessus des bandes */
-.Work h2 {
-    position: relative;
-    z-index: 200;
-    opacity: 1;
-}
-
-/* Animation des bandes */
-@keyframes moveStripes {
-    0% {
-        background-position: 0 0;
-    }
-
-    100% {
-        background-position: 80px 0;
-    }
-}
 
 
 .update-notification {
@@ -912,8 +801,8 @@ iframe {
 /* ----------------------------- */
 #Welcome {
     position: relative;
-    width: 110%;
-    margin-top: 0;
+    width: 100vw;
+    margin: 0;
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -931,8 +820,8 @@ iframe {
     position: absolute;
     top: -50%;
     left: 50%;
-    width: 500px;
-    height: 200px;
+    width: 100vw;
+    height: 600px;
     background: radial-gradient(circle,
             rgba(0, 100, 255) 0%,
             rgba(255, 200, 50) 15%,
@@ -1018,66 +907,8 @@ iframe {
     }
 }
 
-
-
-#smartUIdiv {
-    width: 400px;
-    height: 100px;
-    margin: 15px 15px 15px 15px;
-    background: #092241;
-    border-radius: 25px;
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    color: white;
-    overflow: hidden;
-    border: 5px solid #092241;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 0 0px 0px #092241;
-}
-
-#smartUIdiv h1 {
-    color: white;
-    overflow: hidden;
-    font-size: 70px;
-    top: -50%;
-    left: 0px;
-    z-index: 2;
-    transition: all 0.2s ease-in-out;
-}
-
-#smartUIdiv:hover {
-    background: white;
-    width: 525px;
-    transform: scale(1.2);
-    color: #092241;
-    box-shadow: 0 0 20px 10px #092241;
-}
-
-#smartUIdiv:hover h1 {
-    color: #092241;
-    transition: all 0.2s ease-in-out;
-}
-
-
-#smartUIdiv span {
-    font-size: 100px;
-    font-family: 'Bahnschrift';
-    color: rgba(128, 128, 128, 0.3);
-    transition: all 0.2s ease-in-out;
-}
-
-#smartUIdiv:hover span {
-    color: black;
-    font-weight: 800;
-}
-
-#smartUIdiv:active {
-    scale: 0.95;
-    opacity: 1;
+.smartUI, #smartUIdiv {
+    display: none;
 }
 
 
@@ -1092,7 +923,7 @@ iframe {
     padding: 10px 20px;
     font-size: 20px;
     color: white;
-    border: 1px solid transparent;
+    border: 1px  transparent;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1106,228 +937,10 @@ iframe {
     transition: all 0.3s ease;
 }
 
-#Assistant {
-    transform: scale(1.01) translateY(50px);
-    position: fixed;
-    bottom: 0px;
-    left: 0;
-    width: 100%;
-    height: 125px;
-    color: white;
-    opacity: 0;
-    border-radius: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: -1;
-    font-family: "Inter";
-    border: none;
-    cursor: pointer;
-    background: linear-gradient(to top, #092241 30%, transparent 100%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-    animation: slideUpBounce 0.6s ease-out forwards;
+#Assistant, #AssistantContent, #CommandInput ,#commandmodal, #commandmodalcontent {
+    display: none;
 }
 
-#Assistant.show {
-    position: fixed;
-    bottom: 0px;
-    left: 0;
-    width: 100%;
-    height: 125px;
-    color: white;
-    border-radius: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    opacity: 1;
-    font-family: "Inter";
-    border: none;
-    cursor: pointer;
-    transform: scale(1) translateY(0);
-    background: linear-gradient(to top, #092241 30%, transparent 100%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-    animation: slideUpBounce 0.6s ease-out forwards;
-}
-
-#AssistantContent {
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
-    height: 60px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1002;
-    font-family: "Inter";
-    border: white 0.1px solid;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-}
-
-#Assistant.show #AssistantContent {
-    width: 90%;
-    height: 60px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 25px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1002;
-    font-family: "Inter";
-    border: white 0.1px solid;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-    animation: slideUpBounce 0.6s ease-out forwards;
-}
-
-#AssistantContent:hover {
-    border: #0056b3 2px solid;
-    background-color: white;
-    height: 90px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-
-#AssistantContent:active {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-
-#AssistantContent input {
-    font-family: "Inter";
-    width: 85%;
-    height: 100%;
-    border-radius: 20px;
-    border: none;
-    padding: 0 10px;
-    font-size: 16px;
-    color: white;
-
-    background-color: transparent;
-    outline: none;
-}
-
-#AssistantContent button {
-    right: 10px;
-    height: 100%;
-    background-color: rgb(0, 0, 0, 0.1);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-
-}
-
-#AssistantContent button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes pulseGlow {
-    0% {
-        box-shadow: 0 0 10px #007bff;
-    }
-
-    50% {
-        box-shadow: 0 0 20px #00c3ff;
-    }
-
-    100% {
-        box-shadow: 0 0 10px #007bff;
-    }
-}
-
-#AssistantContentContent.show {
-    animation: pulseGlow 1.5s infinite;
-}
-
-
-
-
-#AssistantContentContent button {
-    margin-left: 10px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-
-}
-
-#AssistantContentContent button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#AssistantContent #closeAssistant {
-    background-color: rgb(2550, 0, 0, 0.7);
-}
-
-#AssistantContent #closeAssistant:hover {
-    background-color: rgb(255, 0, 0, 0.4);
-}
-
-#CommandInput {
-    color: white;
-}
-
-#commandmodal {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.9);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: -1;
-    transition: all 0.15s ease-in-out;
-    flex-direction: column;
-    padding: 20px;
-    opacity: 0;
-    align-items: center;
-    justify-content: center;
-}
-
-#commandmodalcontent {
-    display: flex;
-    background-color: white;
-    border-radius: 20px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    z-index: 1001;
-}
-
-#commandmodalcontent h1 {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-#commandmodalcontent button {
-    width: 80px;
-    height: 40px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    padding: 0 10px;
-    font-size: 16px;
-    color: #092241;
-    background-color: red;
-    outline: none;
-}
 
 .light-theme #ToolsDiv,
 .light-theme #ToolsContent,
@@ -1342,8 +955,8 @@ a {
 }
 
 .dark-theme #ToolsDiv,
-.light-theme #ToolsContent,
-.light-theme #ToolsContent a,
+.dark-theme #ToolsContent,
+.dark-theme #ToolsContent a,
 .dark-theme #News,
 .dark-theme #AboutUs,
 .dark-theme #PlatformStatus,
@@ -1354,69 +967,7 @@ a {
 }
 
 .Work {
-    cursor: not-allowed;
-    position: relative;
-    background-color: #444;
-    /* Fond gris foncé */
-    overflow: hidden;
-    color: white;
-    text-align: center;
-    font-family: "Inter";
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    box-shadow: #092241 2px 5px 10px 2px;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-
-/* Bande animée */
-.Work::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    background: linear-gradient(135deg,
-            #ffc107 25%,
-            #444 25%,
-            #444 50%,
-            #ffc107 50%,
-            #ffc107 75%,
-            #444 75%,
-            #444 100%);
-    background-size: 80px 80px;
-    animation: moveStripes 1s linear infinite;
-    opacity: 0.5;
-    z-index: 0;
-    transition: all 0.3s;
-}
-
-.Work {
-    transition: all 0.3s;
-}
-
-.Work:hover {
-    transform: scale(1.05);
-}
-
-
-/* Texte au-dessus des bandes */
-.Work h2 {
-    position: relative;
-    z-index: 2;
-}
-
-/* Animation des bandes */
-@keyframes moveStripes {
-    0% {
-        background-position: 0 0;
-    }
-
-    100% {
-        background-position: 80px 0;
-    }
+    display: none;
 }
 
 #discordbtn {
@@ -1466,8 +1017,7 @@ a {
 }
 
 .footer {
-    width: 100%;
-    padding: 20px;
+    width: 100vw;
     height: 75px;
     display: flex;
     flex-direction: column;
@@ -1478,7 +1028,7 @@ a {
 }
 
 #cookiesdiv {
-    position: fixed;
+    /* position: fixed;
     bottom: -250px;
     left: 50%;
     transform: translateX(-50%);
@@ -1497,6 +1047,8 @@ a {
     gap: 15px;
     font-family: "Inter";
     transition: all 0.3s ease-in-out;
+     */
+     display: none;
 }
 
 #cookiesdiv:hover {
@@ -1507,7 +1059,6 @@ a {
 
 #cookiesdiv p {
     margin: 0;
-    padding: 0;
     font-size: 14px;
     color: #092241;
 }

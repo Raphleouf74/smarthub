@@ -54,7 +54,7 @@ else {
         $json | ConvertTo-Json -Depth 10 | Set-Content $versionFile -Encoding UTF8
         Write-Host "version.json mis à jour à la version $newVersion (build $newBuild)"
     }
-    Write-Host "Git pull en gours..."
+    Write-Host "Git pull en cours..."
     $pullResult = git pull origin main 2>&1
     if ($pullResult -match "Merge automatique n'a pas abouti") {
         Write-Host "⚠️ Des conflits de merge ont été détectés ! Résolution en cours..." -ForegroundColor Yellow

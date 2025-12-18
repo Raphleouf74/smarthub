@@ -456,6 +456,8 @@ $('#delCard').addEventListener('click', () => {
             renderHistory();
         } catch (e) {
             historyLine.textContent = 'Erreur : ' + e.message;
+            historyLine.style.color = "red";
+            historyLine.style.fontWeight = "1000";
         }
     }
 

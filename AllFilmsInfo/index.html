@@ -2,146 +2,150 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All Films Info</title>
-  <!-- Styles pour ordinateur -->
-  <link rel="stylesheet" href="css/desktop-styles.css" media="screen and (min-width: 769px)" />
-  <link rel="stylesheet" href="../public/focusmode.css">
-  <script src="../public/focusmode.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Films Info</title>
+    <!-- Styles pour ordinateur -->
+    <link rel="stylesheet" href="css/desktop-styles.css" media="screen and (min-width: 769px)" />
+    <link rel="stylesheet" href="../public/focusmode.css">
+    <script src="../public/focusmode.js"></script>
 
-  <!-- Styles pour mobile -->
-  <link rel="stylesheet" href="css/mobile-styles.css" media="screen and (max-width: 768px)" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <!-- Styles pour mobile -->
+    <link rel="stylesheet" href="css/mobile-styles.css" media="screen and (max-width: 768px)" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="category-container">
-    <button id="SelectFilmCategory" class="category-btn">
-      <span class="material-symbols-rounded">menu</span><span>Catégories</span>
-      <div id="FilmCategoryList" class="category-dropdown">
-        <ul>
-          <h2 style="margin-right: 73px;">Studios de films</h2>
-          <li data-category="marvel">
-            <img src="icons/marvel_icon.png" height="50px" alt="Marvel Logo" />
-          </li>
-          <li data-category="pixar">
-            <img src="icons/pixar_icon.png" height="50px" alt="Pixar Logo" />
-          </li>
-          <li data-category="disney">
-            <img src="icons/disney_icon.png" height="50px" alt="Disney Logo" />
-          </li>
-          <li data-category="netflix">
-            <img src="icons/netflix_icon.png" height="50px" alt="Netflix Logo" />
-          </li>
-          <li data-category="lucasfilm">
-            <img src="icons/lucasfilm_icon.png" height="50px" alt="Lucas Film Logo" />
-          </li>
-          <li data-category="warnerbros">
-            <img src="icons/warnerbros_icon.png" height="50px" alt="Warner Bros Logo" />
-          </li>
-          <li data-category="paramount">
-            <img src="icons/paramount_icon.png" height="50px" alt="Warner Bros Logo" />
-          </li>
-          <li data-category="sony">
-            <img src="icons/sony_icon.png" height="50px" alt="Warner Bros Logo" />
-          </li>
-          <li data-category="twentiethcentury">
-            <img src="icons/20century_icon.png" height="50px" alt="Warner Bros Logo" />
-          </li>
-          <li data-category="dreamworks">
-            <img src="icons/dreamworks_icon.png" height="50px" alt="Warner Bros Logo" />
-          </li>
-          <li data-category="lionsgate">
-            <img src="icons/lionsgate_icon.png" height="50px" alt="Warner Bros Logo" />
-          </li>
-          <br>
-          <h2 style="margin-right: 73px; margin-bottom: 5px;">Catégories de films</h2> <br>
-          <li data-genre="10751">Enfants</li>
-          <li data-genre="16">Animation</li>
-          <li data-genre="27">Horreur</li>
-          <li data-genre="35">Comédie</li>
-          <li data-genre="37">Western</li>
-          <li data-genre="10749">Romance</li>
-          <li data-genre="28">Action</li>
-          <li data-genre="12">Aventure</li>
-          <li data-genre="878">Science-fiction</li>
-          <li data-genre="18">Drame</li>
+    <div id="FilmCategoryModal">
+        <div id="FilmCategoryList" class="category-dropdown">
+            <ul>
+                <h2 style="margin-right: 73px;">Studios de films</h2>
+                <li data-category="marvel">
+                    <img src="icons/marvel_icon.png" height="50px" alt="Marvel Logo" />
+                </li>
+                <li data-category="pixar">
+                    <img src="icons/pixar_icon.png" height="50px" alt="Pixar Logo" />
+                </li>
+                <li data-category="disney">
+                    <img src="icons/disney_icon.png" height="50px" alt="Disney Logo" />
+                </li>
+                <li data-category="netflix">
+                    <img src="icons/netflix_icon.png" height="50px" alt="Netflix Logo" />
+                </li>
+                <li data-category="lucasfilm">
+                    <img src="icons/lucasfilm_icon.png" height="50px" alt="Lucas Film Logo" />
+                </li>
+                <li data-category="warnerbros">
+                    <img src="icons/warnerbros_icon.png" height="50px" alt="Warner Bros Logo" />
+                </li>
+                <li data-category="paramount">
+                    <img src="icons/paramount_icon.png" height="50px" alt="Warner Bros Logo" />
+                </li>
+                <li data-category="sony">
+                    <img src="icons/sony_icon.png" height="50px" alt="Warner Bros Logo" />
+                </li>
+                <li data-category="twentiethcentury">
+                    <img src="icons/20century_icon.png" height="50px" alt="Warner Bros Logo" />
+                </li>
+                <li data-category="dreamworks">
+                    <img src="icons/dreamworks_icon.png" height="50px" alt="Warner Bros Logo" />
+                </li>
+                <li data-category="lionsgate">
+                    <img src="icons/lionsgate_icon.png" height="50px" alt="Warner Bros Logo" />
+                </li>
+                <br>
+                <h2 style="margin-right: 73px; margin-bottom: 5px;">Catégories de films</h2> <br>
+                <li data-genre="10751">Enfants</li>
+                <li data-genre="16">Animation</li>
+                <li data-genre="27">Horreur</li>
+                <li data-genre="35">Comédie</li>
+                <li data-genre="37">Western</li>
+                <li data-genre="10749">Romance</li>
+                <li data-genre="28">Action</li>
+                <li data-genre="12">Aventure</li>
+                <li data-genre="878">Science-fiction</li>
+                <li data-genre="18">Drame</li>
 
-        </ul>
-      </div>
+            </ul>
+        </div>
+    </div>
+    <div class="category-container">
+        <button id="SelectFilmCategory" class="category-btn">
+      <span class="material-symbols-rounded">menu</span>
+      <span>Catégories</span>
+      
     </button>
-  </div>
-  <div class="search-container">
-    <input id="searchInput" type="text" placeholder="Rechercher un film..." />
-    <button id="searchBtn" title="Rechercher">
+    </div>
+    <div class="search-container">
+        <input id="searchInput" type="text" placeholder="Rechercher un film..." />
+        <button id="searchBtn" title="Rechercher">
       <span class="material-symbols-rounded"> search </span>
     </button>
-  </div>
+    </div>
 
-  <header>
-    <a href="index.html" style="text-decoration: none;">
-      <div class="header-content">
-        <h1 class="logo">All Films Info</h1>
-      </div>
-    </a>
-  </header>
-  <div id="menu">
-    <span class="material-symbols-rounded">menu</span>
+    <header>
+        <a href="index.html" style="text-decoration: none;">
+            <div class="header-content">
+                <h1 class="logo">All Films Info</h1>
+            </div>
+        </a>
+    </header>
+    <div id="menu">
+        <span class="material-symbols-rounded">menu</span>
 
-  </div>
-  <button id="login-tmdb" class="nav-button"><span class="material-symbols-rounded">
+    </div>
+    <button id="login-tmdb" class="nav-button"><span class="material-symbols-rounded">
       login
     </span>Se connecter avec TMDb </button>
-  <button id="profile-btn" class="nav-button">
+    <button id="profile-btn" class="nav-button">
     <span class="material-symbols-rounded">account_circle</span> Compte
   </button>
-  <a href="../index.html"><button id="back-btn">
+    <a href="../index.html"><button id="back-btn">
       <span class="material-symbols-rounded"> arrow_back_ios </span>
       Retour vers SmartHub
     </button>
   </a>
-  <button class="theme-toggle-btn" onclick="toggleTheme()">
+    <button class="theme-toggle-btn" onclick="toggleTheme()">
     <span class="material-symbols-rounded">
       routine
     </span>
     Changer de thème
   </button>
 
-  <div id="profile-menu" class="profile-menu hidden">
-    <h1>Profil TMDb</h1>
-    <div class="profile-header">
-      <img id="profile-avatar" src="icons/default-avatar.png" alt="Avatar" />
-      <span id="profile-username">Invité</span>
+    <div id="profile-menu" class="profile-menu hidden">
+        <h1>Profil TMDb</h1>
+        <div class="profile-header">
+            <img id="profile-avatar" src="icons/default-avatar.png" alt="Avatar" />
+            <span id="profile-username">Invité</span>
+        </div>
+        <div class="profile-actions">
+            <button id="login-tmdb" class="profile-action">Se connecter avec TMDb</button>
+            <button id="view-favorites" class="profile-action hidden">Mes Favoris</button>
+            <button id="logout-tmdb" class="profile-action hidden">Déconnexion</button>
+            <p><i>Cliquez pour fermer</i></p>
+        </div>
     </div>
-    <div class="profile-actions">
-      <button id="login-tmdb" class="profile-action">Se connecter avec TMDb</button>
-      <button id="view-favorites" class="profile-action hidden">Mes Favoris</button>
-      <button id="logout-tmdb" class="profile-action hidden">Déconnexion</button>
-      <p><i>Cliquez pour fermer</i></p>
-    </div>
-  </div>
 
-  <main>
-    <!-- Accueil -->
-    <section id="homepage">
-      <h2>Bienvenue sur All Films Info</h2>
-    </section>
+    <main>
+        <!-- Accueil -->
+        <section id="homepage">
+            <h2>Bienvenue sur All Films Info</h2>
+        </section>
 
-    <!-- Catégories et recherche -->
-    <section id="category-section">
-      <div id="movies-placeholder">
-        <p>Choisissez une catégorie ou recherchez un film</p>
+        <!-- Catégories et recherche -->
+        <section id="category-section">
+            <div id="movies-placeholder">
+                <p>Choisissez une catégorie ou recherchez un film</p>
 
-      </div>
-      <div id="movies-container" class="grid hidden"></div>
-      <button id="load-more" class="action-btn" type="button" style="display:none;">Voir plus</button>
+            </div>
+            <div id="movies-container" class="grid hidden"></div>
+            <button id="load-more" class="action-btn" type="button" style="display:none;">Voir plus</button>
 
 
-    </section>
-  </main>
+        </section>
+    </main>
 
-  <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

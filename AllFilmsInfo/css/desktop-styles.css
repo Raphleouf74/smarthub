@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 /* -------- HEADER---------------- */
 
+
 /* -------- VARIABLES -------- */
+
 :root {
     --primary-color: #e50914;
     --secondary-color: #b00710;
@@ -16,9 +17,11 @@
 }
 
 
+/* -------- HEADER -------- */
+
 
 /* -------- HEADER -------- */
-/* -------- HEADER -------- */
+
 header {
     position: fixed;
     top: 20px;
@@ -52,7 +55,9 @@ header:hover {
     white-space: nowrap;
 }
 
+
 /* -------- SEARCH BAR -------- */
+
 .search-container {
     flex: 1;
     width: 450px;
@@ -124,7 +129,9 @@ header:hover {
     background-color: rgb(0, 0, 0, 0.3);
 }
 
+
 /* -------- CATEGORY DROPDOWN -------- */
+
 .category-container {
     position: sticky;
     top: 25px;
@@ -167,79 +174,65 @@ header:hover {
     background: rgb(150, 150, 150, 0.6);
 }
 
-
 .dropdown-icon {
     font-size: 0.8rem;
     transition: transform 0.3s;
 }
 
+
 /* -----------------*/
 
+#FilmCategoryModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    display: none;
+}
 
+#FilmCategoryModal.show {
+    display: flex;
+}
 
+#SelectFilmCategory:hover {
+    background: rgba(60, 60, 60, 0.8);
+    transform: scale(1.05);
+}
 
 #FilmCategoryList {
-    top: 0px;
-    left: 200px;
-    width: 650px;
-    border-radius: 25px;
-    justify-content: left;
-    flex-direction: column;
-    opacity: 0;
-    font-family: "Inter";
-    padding: 10px;
-    background: rgb(255, 255, 255);
+    height: auto;
+    width: 40%;
     color: white;
-    font-size: 20px;
-    font-weight: 500;
-    cursor: pointer;
-    position: fixed;
-    background: var(--light-glass-effect);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    display: flex;
-    text-align: center;
-    align-items: center;
-    z-index: -1;
-    transition: all 0.3s ease-in-out;
-    transform: translateX(-15px);
-    height: 50px;
-    pointer-events: none;
-    overflow: hidden;
+    padding: 0 10px 0 10px;
+    background: rgba(20, 20, 20, 0.9);
+    border-radius: 15px;
+    transform: translate(0, 0);
 }
 
-#FilmCategoryList.show {
-    opacity: 1;
-    z-index: 100;
-    pointer-events: all;
-    height: 375px;
-    transform: translateX(0);
-}
-
-#FilmCategoryList.show:hover {
+#FilmCategoryList:hover {
     -webkit-backdrop-filter: blur(50px);
     backdrop-filter: blur(50px);
 }
 
 #FilmCategoryList ul {
-    width: 100%;
-    left: 0;
     display: flex;
     flex-wrap: wrap;
-    margin: 0 0 0 0;
-    margin-top: -10px;
-    gap: 1%;
+    gap: 10px;
 }
 
 #FilmCategoryList li {
     display: flex;
+    color: black;
     justify-content: center;
     align-items: center;
-    transform: translateX(-17.5px);
     margin: 8px 0;
     width: 49%;
+    height: 50px;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
     cursor: pointer;
@@ -248,7 +241,6 @@ header:hover {
 
 #FilmCategoryList li:hover {
     background: rgba(80, 80, 80, 0);
-    transform: translateX(-18px) scale(1.05);
 }
 
 @keyframes fadeIn {
@@ -256,16 +248,11 @@ header:hover {
         opacity: 0;
         transform: translateX(-10px) translateY(-10px);
     }
-
     to {
         opacity: 1;
         transform: translateX(0) translateY(0);
     }
 }
-
-
-
-
 
 
 /* Garde tes styles initiaux */
@@ -277,14 +264,15 @@ body {
     text-align: center;
 }
 
+
 /* Grille des films */
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
 }
-
 
 .movie-card:hover {
     transform: scale(1.05);
@@ -340,14 +328,15 @@ body {
         opacity: 0;
         transform: translateX(-50%) translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateX(-50%) translateY(0);
     }
 }
 
+
 /* Placeholder (avant que l’utilisateur choisisse) */
+
 .placeholder {
     color: #ccc;
     text-align: center;
@@ -362,8 +351,8 @@ body {
 }
 
 
-
 /* Animation des cartes de film */
+
 .movie-card {
     opacity: 0;
     max-width: 200px;
@@ -378,20 +367,25 @@ body {
     }
 }
 
+
 /* Transition du menu catégories */
+
 #FilmCategoryList {
     transition: all 0.4s ease, opacity 0.4s ease;
 }
 
 
 /* Arrière-plan global avec dégradé */
+
 body {
     background: radial-gradient(circle at 20% 30%, #141414, #000);
     background-attachment: fixed;
     color: white;
 }
 
+
 /* Fond dynamique (affiche floutée) */
+
 body::before {
     content: '';
     position: fixed;
@@ -406,7 +400,9 @@ body::before {
     transition: background-image 0.6s ease, opacity 0.6s ease;
 }
 
+
 /* Glow léger sur les cartes */
+
 .movie-card {
     background: rgba(30, 30, 30, 0.8);
     border-radius: 12px;
@@ -419,12 +415,10 @@ body::before {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
 }
 
-
 .movie-info h1 span {
     font-weight: normal;
     color: #aaa;
 }
-
 
 #menu {
     position: fixed;
@@ -445,11 +439,14 @@ body::before {
     font-family: "Inter";
     cursor: pointer;
     z-index: 100;
+    rotate: 0deg;
+    scale: 1;
 }
 
 #menu:hover {
     background-color: rgb(150, 150, 150);
-    scale: 1.05;
+    scale: 1.1;
+    rotate: 180deg;
 }
 
 #login-tmdb,
@@ -498,8 +495,6 @@ body::before {
     border-radius: 0;
 }
 
-
-
 #back-btn {
     border-radius: 0;
     right: -200px;
@@ -521,7 +516,7 @@ body::before {
     font-size: 17.5px;
 }
 
-#login-tmdb:hover{
+#login-tmdb:hover {
     background-color: rgb(150, 150, 150);
     transform: translateX(-5px);
     font-size: 16.5px;
