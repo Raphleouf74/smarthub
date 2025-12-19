@@ -2,14 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectFilmCategoryButton = document.getElementById('SelectFilmCategory');
     const filmCategoryList = document.getElementById('FilmCategoryModal');
     const header = document.querySelector('header');
+    const searchContainer = document.querySelector('.search-container');
     const originalHeaderHeight = header.offsetHeight;
 
     document.addEventListener('scroll', function() {
         const header = document.querySelector('header');
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
+            searchContainer.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
+            searchContainer.classList.remove('scrolled');
         }
     });
 

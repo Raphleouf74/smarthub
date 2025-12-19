@@ -192,11 +192,17 @@ header:hover {
     justify-content: center;
     align-items: center;
     z-index: 1001;
-    display: none;
+    display: flex;
+    opacity: 0;
+    scale: 1.1;
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
 }
 
 #FilmCategoryModal.show {
-    display: flex;
+    opacity: 1;
+    scale: 1;
+    pointer-events: all;
 }
 
 #SelectFilmCategory:hover {
@@ -240,8 +246,9 @@ header:hover {
 }
 
 #FilmCategoryList li:hover {
-    background: rgba(80, 80, 80, 0);
+    background: rgba(100, 150, 150);
 }
+
 
 @keyframes fadeIn {
     from {
