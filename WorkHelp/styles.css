@@ -142,6 +142,108 @@ section {
 }
 
 .timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transform: all 0.2s ease-in-out;
+}
+
+.timer .current-time {
+    font-size: 14px;
+    opacity: 0.75;
+    color: var(--muted);
+}
+
+/* classic: gros, contrasté (par défaut actuel) */
+.timer.timer-classic {
+    color: white;
+    background: transparent;
+}
+
+/* modern: fond arrondi, ombre */
+.timer.timer-modern {
+    padding: 18px;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#0b1220 0%, rgba(59,130,246,0.06) 100%);
+    box-shadow: 0 8px 24px rgba(11,18,32,0.6);
+    color: white;
+}
+
+/* minimal: très sobre, petite taille */
+.timer.timer-minimal {
+    background: transparent;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 46px;
+}
+
+/* barres de progression */
+.timer .timer-bars {
+    width: 180px;
+    height: 10px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+.timer .timer-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg,var(--accent), #7ad1ff);
+    width: 0%;
+    transition: width 300ms linear;
+}
+
+/* body panels */
+.fs-body {
+    display: flex;
+    gap: 12px;
+    padding: 14px;
+    width: 100%;
+    align-items: flex-start
+}
+
+.panel {
+    flex: 1;
+    min-height: 260px;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.panel.active {
+    display: flex;
+    flex-direction: row;
+}
+
+/* pomodoro layout */
+.pomodoro-display {
+    display: flex;
+    position: fixed;
+    top: 50px;
+    left: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px;
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    background: transparent;
+    border-radius: 10px
+}
+
+
+section {
+    width: 100%;
+}
+
+.timer {
     font-size: 75px;
     font-family: "Inter";
     font-weight: 800;
@@ -304,30 +406,27 @@ section {
 .pom-settings {
     display: grid;
     position: fixed;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    width: 90vh;
-    top: 20%;
-    left: 15px;
-    height: 200px;
+    width: 50%;
+    top: 25%;
+    bottom: 25%;
+    pointer-events: none;
+    left: 25%;
+    height: 50%;
     padding: 15px;
     background: rgba(25, 25, 25, 1);
     border-radius: 25px;
     transform: translateY(-50px);
     opacity: 0;
+    box-shadow: 0 0 24px 50vh rgba(255,255,255, 0.05);
 }
 
 .pom-settings.shown {
-    opacity: 1;
-    width: 90vh;
-    top: 20%;
-    left: 15px;
-    height: 200px;
-    padding: 15px;
-    background: rgba(25, 25, 25, 1);
-    border-radius: 25px;
     transform: translateY(-30px);
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .pom-settings label {
@@ -1095,7 +1194,7 @@ section {
 }
 
 .calc-grid .equals {
-    grid-column: 1 / -1;
+    grid-column: span 4;
     background: var(--accent);
 }
 

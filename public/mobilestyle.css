@@ -55,7 +55,57 @@ body.dark-theme {
 }
 
 
+#focusmodedivnotif {
+    position: fixed;
+    top: -260px;
+    right: 10px;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
 
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    background: rgb(155, 100, 100, 0.2);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    font-family: "Inter";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50px;
+    width: 250px;
+    transition: all 0.3s ease-in-out;
+}
+
+#focusmodedivnotif.show {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    background: rgb(155, 100, 100, 0.2);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    font-family: "Inter";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50px;
+    width: 250px;
+    transition: all 0.3s ease-in-out;
+}
+
+#focusmodedivnotif p {
+    display: none;
+}
 
 
 

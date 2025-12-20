@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="NoteHeader">
                 <div class="NoteTitle" contenteditable="true">${title}</div>
                 <div class="NoteOptions">
+                
                     <button class="option-button HideNote" title="Cacher la note"><span class="material-symbols-rounded">visibility_off</span></button>
                     <button class="option-button DeleteNote" title="Supprimer la note"><span class="material-symbols-rounded">delete</span></button>
                     <button class="option-button EditNote" title="Modifier la note"><span class="material-symbols-rounded">edit</span></button>

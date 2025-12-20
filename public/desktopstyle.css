@@ -47,9 +47,60 @@ body.dark-theme {
 }
 
 
+#focusmodedivnotif {
+    position: fixed;
+    top: -200px;
+    right: 20px;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
 
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    background: rgb(155, 100, 100, 0.2);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    font-family: "Inter";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 75px;
+    width: 250px;
+    transition: all 0.3s ease-in-out;
+}
 
+#focusmodedivnotif.show {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
 
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    background: rgb(155, 100, 100, 0.2);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    font-family: "Inter";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 75px;
+    width: 250px;
+    transition: all 0.3s ease-in-out;
+}
+
+#focusmodedivnotif p {
+    margin: -20px   0 0 0;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
 
 
 
@@ -70,7 +121,7 @@ body.dark-theme {
 }
 
 header {
-    pointer-events: auto;
+    pointer-events: none;
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
 
@@ -87,24 +138,28 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    border-radius: 30px;
     width: 325px;
+    border-bottom-right-radius: 30px;
     align-self: center;
     position: fixed;
-    top: -100px;
-    left: 10px;
+    top: -30px;
+    left: 0px;
     margin-bottom: 35px;
     font-family: "Inter";
     z-index: 2;
     overflow: hidden;
     padding: 20px;
+    opacity: 0;
 }
 
-header.hover {
-    top: -100px;
+header:hover {
+    top: -30px;
+    left: 0px;
+    opacity: 0;
 }
 
 header.scrolled {
+    opacity: 1;
     pointer-events: auto;
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
@@ -120,12 +175,12 @@ header.scrolled {
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    border-radius: 30px;
+    border-bottom-right-radius: 30px;
     width: 325px;
     align-self: center;
     position: fixed;
-    top: 10px;
-    left: 10px;
+    top: 0;
+    left: 0;
     margin-bottom: 35px;
     font-family: "Inter";
     overflow: hidden;
@@ -133,18 +188,14 @@ header.scrolled {
     padding: 20px;
 }
 
-header.scrolled.hover {
-    height: 100vh;
-    border-radius: 0;
-    padding: 20px;
+header.scrolled:hover {
+    height: 75vh;
     box-shadow: 0 8px 48px rgba(0, 0, 0, 0.25);
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
-    background: rgb(100, 100, 100, 0.5);
     border: 1px solid rgba(100, 100, 100, 0.25);
     top: 0;
     left: 0;
-    width: 335px;
     margin-bottom: 35px;
     font-family: "Inter";
     justify-content: space-around;
@@ -153,7 +204,6 @@ header.scrolled.hover {
 }
 
 header.hovered {
-    top: 30px;
     animation: haveAttention 0.6s ease-in-out infinite alternate;
     transition: top 0.3s ease;
 }
@@ -181,7 +231,7 @@ header a {
     width: 100%;
 }
 
-header.hover p {
+header:hover p {
     font-size: 20px;
     opacity: 1;
 }
@@ -203,7 +253,7 @@ header h1 {
     margin-top: -5px;
 }
 
-header.hover h1 {
+header:hover h1 {
     margin: 0 0 0 0;
 }
 
@@ -232,7 +282,7 @@ header button {
     backdrop-filter: blur(10px);
 }
 
-header.hover button {
+header:hover button {
     opacity: 1;
 }
 
@@ -248,184 +298,6 @@ header a {
 header button:hover {
     transform: scale(1.05);
 }
-
-@media (max-width: 1023px) {
-    .long {
-        opacity: 0;
-        display: none;
-    }
-
-    .short {
-        opacity: 1;
-        display: block;
-    }
-
-    header {
-        pointer-events: auto;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background: rgb(100, 100, 100, 0.2);
-        background-size: 100% 300%;
-        background-position: 0% 0%;
-        color: white;
-        padding: 0;
-        font-size: 1.5em;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        height: 50px;
-        border-radius: 30px;
-        width: 50px;
-        align-self: center;
-        position: fixed;
-        top: -100px;
-        left: 10px;
-        margin-bottom: 35px;
-        font-family: "Inter";
-        transition: none;
-
-        z-index: 2;
-        overflow: hidden;
-        padding: 20px;
-    }
-
-    header.hover {
-        top: -100px;
-    }
-
-
-
-    header.scrolled {
-        pointer-events: auto;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        background: rgb(100, 100, 100, 0.2);
-        background-size: 100% 300%;
-        background-position: 0% 0%;
-        color: white;
-        font-size: 1.5em;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        height: 50px;
-        border-radius: 30px;
-        width: 50px;
-        align-self: center;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        margin-bottom: 35px;
-        font-family: "Inter";
-        overflow: hidden;
-        transition: none;
-
-        z-index: 2;
-        padding: 20px;
-    }
-
-
-    @keyframes haveAttention {
-        0% {
-            transform: scale(1);
-            background-color: #ffcccc;
-        }
-
-        100% {
-            transform: scale(1.15);
-            background-color: #ff5454;
-        }
-    }
-
-    header.scrolled {
-        background: rgb(100, 100, 100, 0.2);
-        -webkit-backdrop-filter: blur(25px);
-        backdrop-filter: blur(25px);
-
-    }
-
-    header a {
-        width: 100%;
-    }
-
-    header.hover p {
-        font-size: 20px;
-        opacity: 1;
-    }
-
-    header p {
-        opacity: 0;
-        font-size: 1px;
-
-    }
-
-    header button:hover {
-        background: rgba(255, 255, 255, 0.3);
-        color: white;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transform: translateY(-2px) scale(1.05);
-    }
-
-    header h1 {
-        margin-top: -5px;
-    }
-
-
-    header button {
-        opacity: 0;
-        display: flex;
-        width: 100%;
-        height: 100px;
-        font-family: "Inter";
-        justify-content: space-around;
-        border-radius: 25px;
-        background: rgba(255, 255, 255, 3);
-        transition: all 0.3s;
-        font-size: 25px;
-        text-align: center;
-        border: 2px solid black;
-        color: #092241;
-        text-decoration: none;
-        padding: 10px;
-        align-items: center;
-        cursor: pointer;
-        z-index: 2;
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-    }
-
-    header.hover button {
-        opacity: 1;
-    }
-
-    header a {
-        text-decoration: none;
-        color: #092241;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    header button:hover {
-        transform: scale(1.05);
-    }
-}
-
-
-
-
-
-
-
-
-
 
 
 /* ----------------------------- */
@@ -1218,7 +1090,7 @@ iframe {
 
 
 #smartUIdiv {
-    width: 400px;
+    width: 475px;
     height: 100px;
     margin: 15px 15px 15px 15px;
     background: #092241;

@@ -1,7 +1,25 @@
+function getUserIP() {
+    return fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => data.ip)
+        .catch(() => 'IP non disponible');
+}
+getUserIP().then(ip => {
+    console.log('User IP Address:', ip);
+});
+
+function fetchHourAPI() {
+    const timeSpan = document.getElementById('clock-time');
+    
+    timeSpan.textContent = curl -X 'GET' 'https://timeapi.io/api/time/current/ip?ipAddress=$' -H 'accept: application/json';
+    dateSpan.textContent = `Aujourd'hui : ${dateStr}`;
+}
+
 const grid = document.getElementById("calendar-grid");
 const monthYear = document.getElementById("month-year");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
+
 
 let currentDate = new Date();
 function renderWeekDays() {

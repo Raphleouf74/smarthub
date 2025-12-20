@@ -38,7 +38,11 @@ tabs.forEach(t => t.addEventListener('click', e => {
 /* ---------- Pomodoro ---------- */
 let pomState = load('pomState') || {
     work: 25, short: 5, long: 15, cyclesBeforeLong: 4, autoNext: false,
-    mode: 'work', remaining: 25 * 60, cyclesDone: 0, running: false
+    mode: 'work', remaining: 25 * 60, cyclesDone: 0, running: false,
+    // nouveaux paramètres stylistiques par défaut
+    timerStyle: 'classic',    // classic | modern | minimal
+    displayTime: false,       // afficher l'heure actuelle
+    timerDigits: 'minutesSeconds' // minutesSeconds|totalSeconds|percentage|bars|hours|Normal
 };
 const timerDisplay = $('#timerDisplay');
 const sessionType = $('#sessionType');
@@ -52,8 +56,67 @@ const fullscreenPom = $('#fullscreenPom');
 
 function formatTime(sec) { const m = Math.floor(sec / 60).toString().padStart(2, '0'); const s = (sec % 60).toString().padStart(2, '0'); return `${m}:${s}`; }
 
+function formatHMS(sec) {
+    const h = Math.floor(sec / 3600);
+    const m = Math.floor((sec % 3600) / 60).toString().padStart(2, '0');
+    const s = (sec % 60).toString().padStart(2, '0');
+    return `${h}:${m}:${s}`;
+}
+
+let clockInterval = null;
+
+function startClockIfNeeded() {
+    if (pomState.displayTime && !clockInterval) {
+        clockInterval = setInterval(() => updatePomUI(), 1000);
+    } else if (!pomState.displayTime && clockInterval) {
+        clearInterval(clockInterval); clockInterval = null;
+    }
+}
+
+function applyTimerStyle() {
+    timerDisplay.classList.remove('timer-classic','timer-modern','timer-minimal');
+    switch (pomState.timerStyle) {
+        case 'modern': timerDisplay.classList.add('timer-modern'); break;
+        case 'minimal': timerDisplay.classList.add('timer-minimal'); break;
+        default: timerDisplay.classList.add('timer-classic'); break;
+    }
+}
+
+function renderTimerDisplay() {
+    const total = pomState.mode === 'work' ? pomState.work * 60 : (pomState.mode === 'short' ? pomState.short * 60 : pomState.long * 60);
+    const rem = pomState.remaining;
+    let main = '';
+
+    switch (pomState.timerDigits) {
+        case 'totalSeconds':
+            main = String(rem);
+            break;
+        case 'percentage':
+            const pct = total > 0 ? Math.round((1 - rem / total) * 100) : 0;
+            main = pct + '%';
+            break;
+        case 'bars':
+            const pctNum = total > 0 ? Math.round((1 - rem / total) * 100) : 0;
+            main = `<div class="timer-bars"><div class="timer-bar-fill" style="width:${pctNum}%"></div></div>`;
+            break;
+        case 'hours':
+        case 'Normal':
+            main = formatHMS(rem);
+            break;
+        default:
+            main = formatTime(rem); // mm:ss
+    }
+
+    // heure actuelle (option)
+    const nowHtml = pomState.displayTime ? `<div class="current-time">${new Date().toLocaleTimeString()}</div>` : '';
+
+    timerDisplay.innerHTML = `<div class="main-timer">${main}</div>${nowHtml}`;
+}
+
 function updatePomUI() {
-    timerDisplay.textContent = formatTime(pomState.remaining);
+    // remplace l'affichage simple par rendu suivant les options
+    renderTimerDisplay();
+    applyTimerStyle();
 
     sessionType.textContent = pomState.mode === 'work' ? 'Travail' : (pomState.mode === 'short' ? 'Pause courte' : 'Pause longue');
     $('#sessionStatus').textContent = pomState.running ? 'Travail en cours...' : 'Prêt à commencer ?';
@@ -61,12 +124,12 @@ function updatePomUI() {
 
     if (pomState.running) {
         localStorage.setItem('focusMode', 'true');
-
     } else {
         localStorage.setItem('focusMode', 'false');
     }
 
     save('pomState', pomState);
+    startClockIfNeeded();
 }
 
 
@@ -148,6 +211,14 @@ $('#savePomSettings').addEventListener('click', () => {
     pomState.long = Number($('#longBreak').value) || 15;
     pomState.cyclesBeforeLong = Number($('#cyclesBeforeLong').value) || 4;
     pomState.autoNext = $('#autoStartNext').checked;
+    // nouveaux champs stylistiques
+    pomState.timerStyle = $('#timerStyle').value || 'classic';
+    pomState.displayTime = $('#displayTime').checked;
+    pomState.timerDigits = $('#timerDigits').value || 'minutesSeconds';
+    pomState.timerBackgroundColor = $('#timerBackgroundColor').value || '#0f1724';
+    pomState.timerTextColor = $('#timerTextColor').value || '#ffffff';
+    pomSettings.classList.remove('shown');
+
     // reset remaining nicely
     pomState.remaining = pomState.mode === 'work' ? pomState.work * 60 : pomState.mode === 'short' ? pomState.short * 60 : pomState.long * 60;
     save('pomState', pomState);
@@ -160,6 +231,12 @@ $('#shortBreak').value = pomState.short;
 $('#longBreak').value = pomState.long;
 $('#cyclesBeforeLong').value = pomState.cyclesBeforeLong;
 $('#autoStartNext').checked = pomState.autoNext;
+// nouveaux champs
+$('#timerStyle').value = pomState.timerStyle || 'classic';
+$('#displayTime').checked = !!pomState.displayTime;
+$('#timerDigits').value = pomState.timerDigits || 'minutesSeconds';
+$('#timerBackgroundColor').value = pomState.timerBackgroundColor || '#0f1724';
+$('#timerTextColor').value = pomState.timerTextColor || '#ffffff';
 updatePomUI();
 
 /* very small beep using WebAudio */

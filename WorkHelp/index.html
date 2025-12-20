@@ -107,6 +107,7 @@
       </div>
 
       <div class="pom-settings" id="pomSettings">
+        <h1>Paramètres Pomodoro</h1>
         <label>Durée travail (min):
           <input type="number" id="workDuration" min="1" value="25" /></label>
         <label>Pause courte (min):
@@ -117,7 +118,39 @@
           <input type="number" id="cyclesBeforeLong" min="1" value="4" /></label>
         <label><input type="checkbox" id="autoStartNext" /> Démarrer
           automatiquement la session suivante</label>
-        <button id="savePomSettings">Enregistrer</button>
+        
+        <h1>Paramètres de style</h1>
+        <label>Son de fin de session:
+          <select id="endSound">
+            <option value="alarm1">Alarme 1</option>
+            <option value="alarm2">Alarme 2</option>
+            <option value="bell">Cloche</option>
+            <option value="chime">Carillon</option>
+            <option value="none">Aucun</option>
+          </select>
+        </label>
+        <label>Style de minuteur:
+          <select id="timerStyle">
+            <option value="classic">Classique</option>
+            <option value="modern">Moderne</option>
+            <option value="minimal">Minimal</option>
+          </select> 
+        </label>
+        <label><input type="checkbox" id="displayTime"> Afficher l'heure actuelle</label>
+        <label>
+          <select id="timerDigits">
+            <option value="minutesSeconds">Minutes:Secondes</option>
+            <option value="totalSeconds">Secondes totales</option>
+            <option value="percentage">Pourcentage</option>
+            <option value="bars">Barres de progression</option>
+            <option value="hours">Heures:Minutes:Secondes</option>
+            <option value="Normal">Normal (H:MM:SS)</option>
+          </select>
+        </label>
+        <label><input type="color" id="timerBackgroundColor"> Couleur de fond du minuteur</label>
+        <label><input type="color" id="timerTextColor"> Couleur du texte du minuteur</label>
+
+        <button id="savePomSettings">Enregistrer et fermer (redémarre à 0)</button>
       </div>
     </section>
 
